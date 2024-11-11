@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PelamarController;
 
-Route::get('/pelamar', function () {
-    return view('PelamarIndex');
-});
+Route::get('/pelamar', [PelamarController::class, 'index']);
+
