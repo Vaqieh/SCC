@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,3 +13,4 @@
     <p>Halaman ini ditampilkan tanpa menggunakan controller.</p>
 </body>
 </html>
+@endsection
