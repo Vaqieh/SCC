@@ -11,6 +11,7 @@
 <body>
     <h1>Selamat datang di Halaman Pelamar!</h1>
     <p>Halaman ini ditampilkan tanpa menggunakan controller.</p>
+    <p>RAWRRRRRRRRRRRRRRRRRRRRRRRRR</p>
 </body>
 </html>
 @endsection
