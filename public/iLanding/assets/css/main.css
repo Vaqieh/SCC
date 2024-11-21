@@ -431,7 +431,7 @@ h6 {
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
   }
-
+  
   .mobile-nav-active {
     overflow: hidden;
   }
@@ -458,7 +458,13 @@ h6 {
     display: block;
   }
 }
-
+body {
+  padding-top: 80px; /* Tambahkan padding untuk menghindari header */
+}
+header.header {
+  height: 80px; /* Pastikan ini sesuai dengan tinggi header Anda */
+  line-height: 80px; /* Selaraskan isi header secara vertikal */
+}
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/

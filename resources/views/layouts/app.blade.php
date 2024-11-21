@@ -61,8 +61,10 @@
 
     </div>
   </header>
-
-  @yield('content')
+  <!-- Content -->
+  <main>
+    @yield('content')
+  </main>
 
   <footer id="footer" class="footer">
 
