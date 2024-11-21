@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - iLanding Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
 
-  <!-- Favicons -->
-  <link href="{{url('iLanding/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{url('iLanding/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Index - iLanding Bootstrap Template</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+    <link href="{{ asset('iLanding/assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ asset('iLanding/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-  <!-- Vendor CSS Files -->
-  <link href="{{url('iLanding/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{url('iLanding/assets/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{url('iLanding/assets/vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{url('iLanding/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-  <link href="{{url('iLanding/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="{{url('iLanding/css/main.css')}}" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{{ asset('iLanding/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('iLanding/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('iLanding/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('iLanding/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('iLanding/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="{{ asset('iLanding/assets/css/main.css') }}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iLanding
@@ -119,15 +119,15 @@
 
           <div class="col-lg-6">
             <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-              <img src="{{url('public/iLanding/img/illustration-1.webp')}}" alt="Hero Image" class="img-fluid">
+              <img src="{{ asset('iLanding/assets/img/illustration-1.webp') }}" alt="Hero Image" class="img-fluid">
 
               <div class="customers-badge">
                 <div class="customer-avatars">
-                  <img src="{{url('iLanding/assets/img/avatar-1.webp" alt="Customer 1')}}" class="avatar">
-                  <img src="{{url('iLanding/assets/img/avatar-2.webp" alt="Customer 2')}}" class="avatar">
-                  <img src="{{url('iLanding/assets/img/avatar-3.webp" alt="Customer 3')}}" class="avatar">
-                  <img src="{{url('iLanding/assets/img/avatar-4.webp" alt="Customer 4')}}" class="avatar">
-                  <img src="{{url('iLanding/assets/img/avatar-5.webp" alt="Customer 5')}}" class="avatar">
+                  <img src="{{ asset('iLanding/assets/img/avatar-1.webp') }}" alt="Customer 1" class="avatar">
+                  <img src="{{ asset('iLanding/assets/img/avatar-2.webp') }}" alt="Customer 2" class="avatar">
+                  <img src="{{ asset('iLanding/assets/img/avatar-3.webp') }}" alt="Customer 3" class="avatar">
+                  <img src="{{ asset('iLanding/assets/img/avatar-4.webp') }}" alt="Customer 4" class="avatar">
+                  <img src="{{ asset('iLanding/assets/img/avatar-5.webp') }}" alt="Customer 5" class="avatar">
                   <span class="avatar more">12+</span>
                 </div>
                 <p class="mb-0 mt-2">12,000+ lorem ipsum dolor sit amet consectetur adipiscing elit</p>
@@ -217,15 +217,14 @@
             </div>
 
             <div class="info-wrapper">
-              <div class="row gy-4">
-                <div class="col-lg-5">
-                  <div class="profile d-flex align-items-center gap-3">
-                    <img src="{{url('iLanding/assets/img/avatar-1.webp" alt="CEO Profile')}}" class="profile-image">
-                    <div>
-                      <h4 class="profile-name">Mario Smith</h4>
-                      <p class="profile-position">CEO &amp; Founder</p>
-                    </div>
-                  </div>
+                <div class="row gy-4">
+                  <div class="col-lg-5">
+                    <div class="profile d-flex align-items-center gap-3">
+                      <img src="{{ asset('iLanding/assets/img/avatar-1.webp') }}" alt="CEO Profile" class="profile-image">
+                      <div>
+                        <h4 class="profile-name">Mario Smith</h4>
+                        <p class="profile-position">CEO &amp; Founder</p>
+                      </div>
                 </div>
                 <div class="col-lg-7">
                   <div class="contact-info d-flex align-items-center gap-2">
@@ -243,8 +242,8 @@
           <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
             <div class="image-wrapper">
               <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
-                <img src="{{url('iLanding/assets/img/about-5.webp" alt="Business Meeting')}}" class="img-fluid main-image rounded-4">
-                <img src="{{url('iLanding/assets/img/about-2.webp" alt="Team Discussion')}}"  class="img-fluid small-image rounded-4">
+                <img src="{{ asset('iLanding/assets/img/about-5.webp') }}" alt="Business Meeting" class="img-fluid main-image rounded-4">
+                <img src="{{ asset('iLanding/assets/img/about-2.webp') }}" alt="Team Discussion" class="img-fluid small-image rounded-4">
               </div>
               <div class="experience-badge floating">
                 <h3>15+ <span>Years</span></h3>
@@ -312,7 +311,7 @@
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="{{url('iLanding/assets/img/features-illustration-1.webp')}}" alt="" class="img-fluid">
+                <img src="{{ asset('iLanding/assets/img/features-illustration-1.webp') }}" alt="Features Illustration" class="img-fluid">
               </div>
             </div>
           </div><!-- End tab content item -->
@@ -333,7 +332,7 @@
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="{{url('iLanding/assets/img/features-illustration-2.webp')}}" alt="" class="img-fluid">
+                <img src="{{ asset('iLanding/assets/img/features-illustration-2.webp') }}" alt="Features Illustration 2" class="img-fluid">
               </div>
             </div>
           </div><!-- End tab content item -->
@@ -353,7 +352,7 @@
                 </p>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="{{url('iLanding/assets/img/features-illustration-3.webp')}}" alt="" class="img-fluid">
+                <img src="{{ asset('iLanding/assets/img/features-illustration-3.webp') }}" alt="Features Illustration 3" class="img-fluid">
               </div>
             </div>
           </div><!-- End tab content item -->
@@ -457,8 +456,8 @@
           </div>
 
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="phone-mockup text-center">
-              <img src="{{url('public/iLanding/assets/img/phone-app-screen.webp')}}" alt="Phone Mockup" class="img-fluid">
+            <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{{ asset('iLanding/assets/img/features-illustration-3.webp') }}" alt="Features Illustration 3" class="img-fluid">
             </div>
           </div><!-- End Phone Mockup -->
 
@@ -602,14 +601,14 @@
             }
           </script>
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="{{url('iLanding/assets/img/clients/client-1.png')}}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{{url('iLanding/assets/img/clients/client-2.png')}}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{{url('iLanding/assets/img/clients/client-3.png')}}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{{url('iLanding/assets/img/clients/client-4.png')}}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{{url('iLanding/assets/img/clients/client-5.png')}}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{{url('iLanding/assets/img/clients/client-6.png')}}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{{url('iLanding/assets/img/clients/client-7.png')}}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{{url('iLanding/assets/img/clients/client-8.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{ asset('iLanding/assets/img/clients/client-1.png') }}" class="img-fluid" alt="Client 1"></div>
+            <div class="swiper-slide"><img src="{{ asset('iLanding/assets/img/clients/client-2.png') }}" class="img-fluid" alt="Client 2"></div>
+            <div class="swiper-slide"><img src="{{ asset('iLanding/assets/img/clients/client-3.png') }}" class="img-fluid" alt="Client 3"></div>
+            <div class="swiper-slide"><img src="{{ asset('iLanding/assets/img/clients/client-4.png') }}" class="img-fluid" alt="Client 4"></div>
+            <div class="swiper-slide"><img src="{{ asset('iLanding/assets/img/clients/client-5.png') }}" class="img-fluid" alt="Client 5"></div>
+            <div class="swiper-slide"><img src="{{ asset('iLanding/assets/img/clients/client-6.png') }}" class="img-fluid" alt="Client 6"></div>
+            <div class="swiper-slide"><img src="{{ asset('iLanding/assets/img/clients/client-7.png') }}" class="img-fluid" alt="Client 7"></div>
+            <div class="swiper-slide"><img src="{{ asset('iLanding/assets/img/clients/client-8.png') }}" class="img-fluid" alt="Client 8"></div>
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -633,7 +632,7 @@
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="testimonial-item">
-              <img src="public/iLanding/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <img src="{{ asset('iLanding/assets/img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt="Testimonial 1">
               <h3>Saul Goodman</h3>
               <h4>Ceo &amp; Founder</h4>
               <div class="stars">
@@ -649,7 +648,7 @@
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="testimonial-item">
-              <img src="public/iLanding/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <img src="{{ asset('iLanding/assets/img/testimonials/testimonials-2.jpg') }}" class="testimonial-img" alt="Testimonial 2">
               <h3>Sara Wilsson</h3>
               <h4>Designer</h4>
               <div class="stars">
@@ -665,7 +664,7 @@
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
             <div class="testimonial-item">
-              <img src="public/iLanding/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                <img src="{{ asset('iLanding/assets/img/testimonials/testimonials-3.jpg') }}" class="testimonial-img" alt="Testimonial 3">
               <h3>Jena Karlis</h3>
               <h4>Store Owner</h4>
               <div class="stars">
@@ -681,7 +680,7 @@
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
             <div class="testimonial-item">
-              <img src="iLanding/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                <img src="{{ asset('iLanding/assets/img/testimonials/testimonials-4.jpg') }}" class="testimonial-img" alt="Testimonial 4">
               <h3>Matt Brandon</h3>
               <h4>Freelancer</h4>
               <div class="stars">
@@ -1222,15 +1221,15 @@
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{{url('iLanding/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{url('iLanding/assets/vendor/php-email-form/validate.js')}}"></script>
-  <script src="{{url('iLanding/assets/vendor/aos/aos.js')}}"></script>
-  <script src="{{url('iLanding/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-  <script src="{{url('iLanding/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-  <script src="{{url('iLanding/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+  <script src="{{ asset('iLanding/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('iLanding/assets/vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ asset('iLanding/assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ asset('iLanding/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ asset('iLanding/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ asset('iLanding/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
 
   <!-- Main JS File -->
-  <script src="{{url('iLanding/assets/js/main.js')}}"></script>
+  <script src="{{ asset('iLanding/assets/js/main.js') }}"></script>
 
 </body>
 </html>
