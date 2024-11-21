@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistem Bursa Kerja - SCC Politeknik Caltex Riau</title>
-</head>
-<body>
-  <!-- Navigasi -->
-  <header>
-    <nav style="background-color: #2d3748; color: white; padding: 10px;">
-      <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-        <div style="font-weight: bold;">Sistem Bursa Kerja - SCC Politeknik Caltex Riau</div>
-        <ul style="list-style: none; display: flex; margin: 0; padding: 0; gap: 15px;">
-          <li><a href="#" style="text-decoration: none; color: white;">Beranda</a></li>
-          <li><a href="#" style="text-decoration: none; color: white;">Artikel</a></li>
-          <li><a href="#" style="text-decoration: none; color: white;">Lowongan</a></li>
-          <li><a href="#" style="text-decoration: none; color: white; background-color: #4a5568; border-radius: 5px; padding: 5px 10px;">Tentang Kami</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+@extends('layouts.app')
 
-  <!-- Konten Utama -->
+@section('content')
   <main>
     <section style="text-align: center; padding: 50px 20px;">
       <div>
@@ -41,5 +20,4 @@
       </ul>
     </section>
   </main>
-</body>
-</html>
+  @endsection

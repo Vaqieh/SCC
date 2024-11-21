@@ -459,11 +459,11 @@ h6 {
   }
 }
 body {
-  padding-top: 80px; /* Tambahkan padding untuk menghindari header */
+  padding-top: 50px; /* Tambahkan padding untuk menghindari header */
 }
 header.header {
-  height: 80px; /* Pastikan ini sesuai dengan tinggi header Anda */
-  line-height: 80px; /* Selaraskan isi header secara vertikal */
+  height: 50px; /* Pastikan ini sesuai dengan tinggi header Anda */
+  line-height: 20px; /* Selaraskan isi header secara vertikal */
 }
 /*--------------------------------------------------------------
 # Global Footer

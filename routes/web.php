@@ -6,4 +6,4 @@ use App\Http\Controllers\PengunjungController;
 
 Route::get('/pelamar', [PelamarController::class, 'index']);
 Route::get('/pengunjung', [PengunjungController::class, 'index']);
-
+Route::view('/tentang-kami', 'tentang-kami');

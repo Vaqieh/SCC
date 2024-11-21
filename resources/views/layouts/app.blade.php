@@ -53,7 +53,7 @@
           <li><a href="#hero" class="active">Dashboard</a></li>
           <li><a href="#about">Artikel</a></li>
           <li><a href="#features">Lowongan Kami</a></li>
-          <li><a href="#services">Tentang Kami</a></li>
+          <li><a href="/tentang-kami">Tentang Kami</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
