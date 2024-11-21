@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('perusahaans', function (Blueprint $table) {
             $table->id();
+            $table->string('p_nama');
+            $table->string('email_perusahaan');
+            $table->string('jenis_industri');
+            $table->string('p_password');
+            $table->string('p_tahunBerdiri');
+            $table->string('p_alamat');
+            $table->string('tanggal_verfikasi');
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('perusahaans');
