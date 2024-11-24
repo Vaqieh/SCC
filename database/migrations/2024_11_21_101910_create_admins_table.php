@@ -13,8 +13,12 @@ return new class extends Migration
             $table->string('admin_nama');
             $table->string('admin_nohp');
             $table->string('email');
-            $table->timestamps('login_history');
-            $table->timestamps('logout_history');
+            
+            // Membuat kolom untuk login_history dan logout_history
+            $table->timestamp('login_history')->nullable();
+            $table->timestamp('logout_history')->nullable();
+            
+            // Membuat kolom created_at dan updated_at
             $table->timestamps();
         });
     }

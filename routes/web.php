@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KelolaPelamarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PelamarController;
 use App\Http\Controllers\PengunjungController;
@@ -12,3 +13,7 @@ Route::view('/tentang-kami', 'tentang-kami');
 Route::get('home', function(){
     return view('layouts.admin');
 });
+
+
+
+Route::resource('kpelamar',KelolaPelamarController::class);
