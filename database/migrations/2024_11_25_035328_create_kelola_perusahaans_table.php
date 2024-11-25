@@ -11,17 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kelola_perusahaans', function (Blueprint $table) {
+        Schema::create('kelolaPerusahaans', function (Blueprint $table) {
             $table->id();
+            $table->string('p_nama');
+            $table->string('email_perusahaan');
+            $table->string('jenis_industri');
+            $table->string('p_tahunBerdiri');
+            $table->string('negara');
+            $table->string('provinsi');
+            $table->string('kabupaten');
+            $table->string('kota');
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('kelola_perusahaans');
+        Schema::dropIfExists('kelolaPerusahaans');
     }
 };
