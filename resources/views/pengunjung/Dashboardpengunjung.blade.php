@@ -8,6 +8,10 @@
         <div class="row align-items-center">
           <div class="col-lg-6">
             <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+              <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-link mt-2 mt-sm-0 glightbox">
+                <i class="bi bi-play-circle me-1"></i>
+                Play Video
+              </a>
               <h1 class="mb-4">
                 SUMATERA CAREER CENTER <br>
               </h1>
@@ -20,10 +24,7 @@
                 <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">LOGIN PELAMAR</a>
                 <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">LOGIN PERUSAHAAN</a>
                 <br>
-                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-link mt-2 mt-sm-0 glightbox">
-                  <i class="bi bi-play-circle me-1"></i>
-                  Play Video
-                </a>
+                
               </div>
             </div>
           </div>
