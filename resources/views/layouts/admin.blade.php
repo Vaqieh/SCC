@@ -51,11 +51,11 @@
                         </li>
 
                         <li class="sidebar-item  has-sub">
-                            <a href="{{ route('kpelamar.index') }}" class='sidebar-link'>
+                            <a href="/kelola_pelamar" class='sidebar-link'>
                                 <i class="bi bi-pen-fill"></i>
                                 <span>Kelola Perusahaan</span>
                             </a>
-                            
+
                         </li>
 
                         <li class="sidebar-item  ">
@@ -72,16 +72,16 @@
             </div>
         </div>
         <div id="main">
-            
-        
+
+
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
 
-            
-            
+
+
             <main>
                 @yield('content')
               </main>

@@ -11,7 +11,7 @@ class PengunjungController extends Controller
      */
     public function index()
     {
-        return view('PengunjungIndex');
+        return view('Dashboarpengunjung');
     }
 
     /**
