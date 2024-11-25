@@ -23,4 +23,4 @@ Route::resource('kelolapelamar',KelolaPelamarController::class);
 Route::resource('pelamar',PelamarController::class);
 Route::resource('pengunjung',PengunjungController::class);
 Route::resource('perusahaan',PerusahaanController::class);
-Route::resource('perusahaan',LamarController::class);
+Route::resource('lamar',LamarController::class);
