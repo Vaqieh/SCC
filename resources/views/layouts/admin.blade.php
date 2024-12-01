@@ -613,13 +613,13 @@
                 </a>
                 <ul>
                     <li>
-                        <a  href="./buyer-dashboard.html">Dashboard</a>
+                        <a  href="{{ asset('cakeadmin/html/pages/buyer-dashboard.html') }}">Dashboard</a>
                     </li>
                     <li>
-                        <a  href="./buyer-orders.html">Orders</a>
+                        <a  href="{{ asset('cakeadmin/html/pages//buyer-orders.html') }}">Orders</a>
                     </li>
                     <li>
-                        <a  href="./buyer-addresses.html">Addresses</a>
+                        <a  href="{{ asset('cakeadmin/html/pages/buyer-addresses.html') }}">Addresses</a>
                     </li>
                     <li>
                         <a  href="./buyer-wishlist.html">Wishlist</a>
