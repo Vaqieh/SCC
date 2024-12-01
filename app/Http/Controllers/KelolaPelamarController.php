@@ -11,7 +11,7 @@ class KelolaPelamarController extends Controller
     public function index()
     {
     $data['kpelamar'] = \App\Models\Kelola_Pelamar::latest()->paginate(10);
-    return view('admin.Kelola_Pelamar', compact('kpelamar'));
+    return view('admin.Kelola_Pelamar', $data);
     }
 
     public function create()

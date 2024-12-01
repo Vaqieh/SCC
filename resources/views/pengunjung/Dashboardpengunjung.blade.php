@@ -4,34 +4,28 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section">
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row align-items-center">
           <div class="col-lg-6">
             <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
               <div class="company-badge mb-4">
-                <i class="bi bi-gear-fill me-2"></i>
-                Working for your success
+                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8">
+                <i class="bi bi-play-circle-fill fs-4"></i>
+                <span>Play Video</span>
               </div>
-
               <h1 class="mb-4">
-                Maecenas Vitae <br>
-                Consectetur Led <br>
-                <span class="accent-text">Vestibulum Ante</span>
+                SUMATERA CAREER CENTER <br>
               </h1>
 
               <p class="mb-4 mb-md-5">
-                Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.
-                Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
+                Mulai Perjalanan Karir Anda!
               </p>
 
               <div class="hero-buttons">
-                <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
-                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-link mt-2 mt-sm-0 glightbox">
-                  <i class="bi bi-play-circle me-1"></i>
-                  Play Video
-                </a>
+                <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">LOGIN PELAMAR</a>
+                <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">LOGIN PERUSAHAAN</a>
+                <br>
+                
               </div>
             </div>
           </div>
@@ -59,44 +53,40 @@
           <div class="col-lg-3 col-md-6">
             <div class="stat-item">
               <div class="stat-icon">
-                <i class="bi bi-trophy"></i>
+                <i class="bi bi-person"></i>
               </div>
               <div class="stat-content">
-                <h4>3x Won Awards</h4>
-                <p class="mb-0">Vestibulum ante ipsum</p>
+                <h4>Total Pelamar</h4>
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="stat-item">
               <div class="stat-icon">
-                <i class="bi bi-briefcase"></i>
+                <i class="bi bi-building"></i>
               </div>
               <div class="stat-content">
-                <h4>6.5k Faucibus</h4>
-                <p class="mb-0">Nullam quis ante</p>
+                <h4>Total Perusahaan</h4>
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="stat-item">
               <div class="stat-icon">
-                <i class="bi bi-graph-up"></i>
+                <i class="bi bi-unlock"></i>
               </div>
               <div class="stat-content">
-                <h4>80k Mauris</h4>
-                <p class="mb-0">Etiam sit amet orci</p>
+                <h4>Total Lowongan Buka</h4>
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="stat-item">
               <div class="stat-icon">
-                <i class="bi bi-award"></i>
+                <i class="bi bi-lock"></i>
               </div>
               <div class="stat-content">
-                <h4>6x Phasellus</h4>
-                <p class="mb-0">Vestibulum ante ipsum</p>
+                <h4>Total Lowongan Tutup</h4>
               </div>
             </div>
           </div>
@@ -104,78 +94,45 @@
 
       </div>
 
-    </section><!-- /Hero Section -->
+    </section>
+    <!-- /Hero Section -->
 
     <!-- About Section -->
-    <section id="about" class="about section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4 align-items-center justify-content-between">
-
-          <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
-            <span class="about-meta">MORE ABOUT US</span>
-            <h2 class="about-title">Voluptas enim suscipit temporibus</h2>
-            <p class="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
-            <div class="row feature-list-wrapper">
-              <div class="col-md-6">
-                <ul class="feature-list">
-                  <li><i class="bi bi-check-circle-fill"></i> Lorem ipsum dolor sit amet</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Consectetur adipiscing elit</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Sed do eiusmod tempor</li>
-                </ul>
-              </div>
-              <div class="col-md-6">
-                <ul class="feature-list">
-                  <li><i class="bi bi-check-circle-fill"></i> Incididunt ut labore et</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Dolore magna aliqua</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Ut enim ad minim veniam</li>
-                </ul>
+    <div class="border p-4 rounded shadow">
+      <!-- Kotak dengan latar belakang biru muda dan teks di tengah -->
+      <div class="bg-light p-4 text-center rounded shadow-sm">
+        <p class="about-description mb-0 fs-5">
+          Sumatera Career Center membuka peluang kerja sama dengan
+          industri, Dunia Usaha dan Dunia Kerja (IDUKA). 
+          <br>
+          Hubungi
+        </p>
+      </div>
+    
+      <!-- Kontak info wrapper -->
+      <div class="info-wrapper mt-4">
+        <div class="row gy-4">
+          <div class="col-lg-12 d-flex justify-content-center gap-4">
+            <!-- Ikon Telepon dan Email berdekatan -->
+            <div class="contact-info d-flex align-items-center gap-3">
+              <i class="bi bi-telephone-fill fs-2 text-primary"></i>
+              <div>
+                <p class="contact-number fs-4 mb-0">09117574101</p>
               </div>
             </div>
-
-            <div class="info-wrapper">
-              <div class="row gy-4">
-                <div class="col-lg-5">
-                  <div class="profile d-flex align-items-center gap-3">
-                    <img src="assets/img/avatar-1.webp" alt="CEO Profile" class="profile-image">
-                    <div>
-                      <h4 class="profile-name">Mario Smith</h4>
-                      <p class="profile-position">CEO &amp; Founder</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-7">
-                  <div class="contact-info d-flex align-items-center gap-2">
-                    <i class="bi bi-telephone-fill"></i>
-                    <div>
-                      <p class="contact-label">Call us anytime</p>
-                      <p class="contact-number">+123 456-789</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="image-wrapper">
-              <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
-                <img src="assets/img/about-5.webp" alt="Business Meeting" class="img-fluid main-image rounded-4">
-                <img src="assets/img/about-2.webp" alt="Team Discussion" class="img-fluid small-image rounded-4">
-              </div>
-              <div class="experience-badge floating">
-                <h3>15+ <span>Years</span></h3>
-                <p>Of experience in business service</p>
+    
+            <div class="contact-info d-flex align-items-center gap-3">
+              <i class="bi bi-envelope-fill fs-2 text-primary"></i>
+              <div>
+                <p class="contact-number fs-4 mb-0">scc@pcr.ac.id</p>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
-    </section><!-- /About Section -->
+    </div>    
+    </section>
+    <!-- /About Section -->
 
     <!-- Features Section -->
     <section id="features" class="features section">

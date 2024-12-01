@@ -11,20 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('perusahaans', function (Blueprint $table) {
+        Schema::create('kelolaPerusahaans', function (Blueprint $table) {
             $table->id();
             $table->string('p_nama');
             $table->string('email_perusahaan');
             $table->string('jenis_industri');
-            $table->string('p_password');
             $table->string('p_tahunBerdiri');
-            $table->string('p_alamat');
-            $table->string('tanggal_verfikasi');
+            $table->string('negara');
+            $table->string('provinsi');
+            $table->string('kabupaten');
+            $table->string('kota');
             $table->timestamps();
         });
     }
     public function down(): void
     {
-        Schema::dropIfExists('perusahaans');
+        Schema::dropIfExists('kelolaPerusahaans');
     }
 };

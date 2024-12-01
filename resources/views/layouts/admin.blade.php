@@ -49,8 +49,7 @@
                                 <span>Kelola Pelamar</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item  has-sub">
+                            
                             <a href="/kpelamar/index" class='sidebar-link'>
                                 <i class="bi bi-pen-fill"></i>
                                 <span>Kelola Perusahaan</span>

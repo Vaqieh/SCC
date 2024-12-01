@@ -32,9 +32,9 @@
                     </div>
                     <div class="row mb-3 mt-3">
                         <div class="col-md-6">
-        
+
                             <a href="#" class="btn btn-primary btn-sm">Tambah Poli</a>
-        
+
                         </div>
                     </div>
                     <div class="card-body">
@@ -60,7 +60,7 @@
                                     <td>{{ $item->p_nama }}</td>
                                     <td>{{ $item->jenis_industri }}</td>
                                     <td>{{ $item->email_perusahaan }}</td>
-                                    <td>{{ $item->negara }}</td>  
+                                    <td>{{ $item->negara }}</td>
                                     <td>{{ $item->provinsi }}</td>
                                     <td>{{ $item->kabupaten }}</td>
                                     <td>{{ $item->kota }}</td>
@@ -73,8 +73,8 @@
                                                 onclick="return confirm('Yakin ingin menghapus data?')">HAPUS</button>
                                         </form>
                                     </td>
-                                </tr>  
-                                @endforeach   
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         {!! $kpelamar->links() !!}
@@ -84,5 +84,5 @@
             </section>
         </div>
     </div>
-            
+
         @endsection

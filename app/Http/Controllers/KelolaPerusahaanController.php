@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Pengunjung;
+use App\Models\KelolaPerusahaan;
+use App\Http\Requests\StoreKelolaPerusahaanRequest;
+use App\Http\Requests\UpdateKelolaPerusahaanRequest;
 
-class PengunjungController extends Controller
+class KelolaPerusahaanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data['pengunjung'] = Pengunjung::latest()->paginate(10);
-        return view('Pengunjung.DashboardPengunjung', $data);
+        //
+        
     }
 
     /**
@@ -27,7 +28,7 @@ class PengunjungController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreKelolaPerusahaanRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class PengunjungController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(KelolaPerusahaan $kelolaPerusahaan)
     {
         //
     }
@@ -43,7 +44,7 @@ class PengunjungController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(KelolaPerusahaan $kelolaPerusahaan)
     {
         //
     }
@@ -51,7 +52,7 @@ class PengunjungController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateKelolaPerusahaanRequest $request, KelolaPerusahaan $kelolaPerusahaan)
     {
         //
     }
@@ -59,7 +60,7 @@ class PengunjungController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(KelolaPerusahaan $kelolaPerusahaan)
     {
         //
     }
