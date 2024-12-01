@@ -54,35 +54,6 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-    <!-- Custom CSS -->
-    <style>
-        /* Atur margin dan padding agar tidak ada jarak */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #add8e6; /* Background untuk keseluruhan halaman */
-        }
-
-        nav {
-            margin-bottom: 0 !important; /* Hilangkan margin bawah dari nav */
-        }
-
-        main {
-            margin: 0;
-            padding: 0;
-        }
-
-        .card {
-            border-radius: 15px;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
->>>>>>> 10f57d9e29c3d553666e0c6416778cfb1ef9c4a7
 </head>
 <body>
     <div id="app">
@@ -101,8 +72,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto"></ul>
-
-<<<<<<< HEAD
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div
             class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
