@@ -51,7 +51,7 @@
                         </li>
 
                         <li class="sidebar-item  has-sub">
-                            <a href="{{ route('kpelamar.index') }}" class='sidebar-link'>
+                            <a href="/kpelamar/index" class='sidebar-link'>
                                 <i class="bi bi-pen-fill"></i>
                                 <span>Kelola Perusahaan</span>
                             </a>
