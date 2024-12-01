@@ -17,14 +17,92 @@
     <style>
         /* Warna biru untuk navbar */
         .navbar {
-            background-color: #0386D0 !important;
-            /* Biru tua */
-            color: white;
+            background: linear-gradient(90deg, #007bff, #4dc0b5);
+            /* Gradien modern */
+            padding: 15px 30px;
+            /* Ruang di dalam navbar */
+            border-bottom: 2px solid #e0e0e0;
+            /* Garis bawah tipis */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* Bayangan lembut */
         }
 
-        .navbar-brand,
-        .nav-link {
-            color: white !important;
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            /* Warna putih untuk brand */
+            text-transform: uppercase;
+            /* Huruf besar semua */
+            letter-spacing: 2px;
+            /* Jarak antar huruf */
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            /* Efek bayangan */
+        }
+
+        .navbar-brand:hover {
+            color: #f8f9fa;
+            /* Warna hover lebih cerah */
+            text-decoration: none;
+            /* Hilangkan underline */
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff;
+            /* Warna link */
+            font-size: 16px;
+            margin-right: 15px;
+            /* Jarak antar link */
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f8d7da;
+            /* Warna hover link */
+            text-decoration: none;
+            /* Hilangkan underline */
+        }
+
+        .navbar-toggler {
+            border: none;
+            /* Hilangkan border tombol */
+            background-color: #ffffff;
+            /* Warna putih untuk toggle */
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23333" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%280, 0, 0, 0.5%29" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+        }
+
+        .navbar-toggler:hover {
+            background-color: #d9edf7;
+            /* Efek hover pada toggle */
+        }
+
+        .dropdown-menu {
+            background: #ffffff;
+            /* Warna putih untuk dropdown */
+            border-radius: 10px;
+            /* Sudut membulat */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            /* Bayangan dropdown */
+        }
+
+        .dropdown-menu .dropdown-item {
+            font-size: 16px;
+            color: #333;
+            /* Warna teks */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #007bff;
+            /* Warna hover */
+            color: #ffffff;
+            /* Teks putih saat hover */
         }
 
         /* Warna biru muda untuk konten utama */
