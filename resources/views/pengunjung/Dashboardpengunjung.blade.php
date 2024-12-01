@@ -9,18 +9,18 @@
                     <div class="col-lg-6">
                         <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
                             <div class="company-badge mb-4">
-                                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8">
+                                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" style="text-decoration: none; color: inherit;">
                                     <i class="bi bi-play-circle-fill fs-4"></i>
                                     <span>Play Video</span>
+                                </a>
                             </div>
                             <h1 class="mb-4">
                                 SUMATERA CAREER CENTER <br>
                             </h1>
-
-                            <p class="mb-4 mb-md-5">
+        
+                            <h3 class="mb-4 mb-md-5">
                                 Mulai Perjalanan Karir Anda!
-                            </p>
-
+                            </h3>
                             <div class="hero-buttons">
                                 <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">LOGIN PELAMAR</a>
                                 <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">LOGIN PERUSAHAAN</a>
