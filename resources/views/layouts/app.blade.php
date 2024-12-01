@@ -35,6 +35,53 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+=======
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- Custom CSS -->
+    <style>
+        /* Atur margin dan padding agar tidak ada jarak */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #add8e6; /* Background untuk keseluruhan halaman */
+        }
+
+        nav {
+            margin-bottom: 0 !important; /* Hilangkan margin bawah dari nav */
+        }
+
+        main {
+            margin: 0;
+            padding: 0;
+        }
+
+        .card {
+            border-radius: 15px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+>>>>>>> 10f57d9e29c3d553666e0c6416778cfb1ef9c4a7
 </head>
 
 <body>
@@ -52,9 +99,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto"></ul>
 
-                    <header id="header" class="header d-flex align-items-center fixed-top">
-                        <div
-                            class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+<<<<<<< HEAD
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div
+            class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
                             <a href="#" class="logo d-flex align-items-center me-auto me-xl-0">
                                 <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -111,23 +159,34 @@
                                     </ul>
                                 </div>
 
-                                <div class="col-lg-4 col-md-6 footer-links">
-                                    <h4>Kontak</h4>
-                                    <ul>
-                                        <li><a href="#">Telp : 08117574101 & (0761) - 554224/a></li>
-                                        <li> Email : scc@pcr.ac.id </li>
-                                    </ul>
-                                    <div class="social-links d-flex mt-4">
-                                        <a href=""><i class="bi bi-twitter-x"></i></a>
-                                        <a href=""><i class="bi bi-facebook"></i></a>
-                                        <a href=""><i class="bi bi-instagram"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><a href="#">Telp : 08117574101 & (0761) - 554224/a></li>
+                          <li>  Email : scc@pcr.ac.id </li>
+                        </ul>
+                    <div class="social-links d-flex mt-4">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                    </div>
                 </div>
+            </div>
+        </div>
 
-                </footer>
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">iLanding</strong> <span>All Rights Reserved</span>
+            </p>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you've purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+
+    </footer>
 
                 <!-- Scroll Top -->
                 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
@@ -141,9 +200,54 @@
                 <script src="{{ asset('iLanding/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
                 <script src="{{ asset('iLanding/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
 
-                <!-- Main JS File -->
-                <script src="{{ asset('iLanding/assets/js/main.js') }}"></script>
+    <!-- Main JS File -->
+    <script src="{{ asset('iLanding/assets/js/main.js') }}"></script>
 
+=======
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4" style="margin: 0; padding: 0;">
+            @yield('content')
+        </main>
+        
+    </div>
+>>>>>>> 10f57d9e29c3d553666e0c6416778cfb1ef9c4a7
 </body>
 
 </html>
