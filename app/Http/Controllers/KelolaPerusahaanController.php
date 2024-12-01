@@ -14,6 +14,7 @@ class KelolaPerusahaanController extends Controller
     public function index()
     {
         //
+        
     }
 
     /**
