@@ -568,14 +568,14 @@
                     <span class="nav-link-icon">
                         <i class="bi bi-receipt"></i>
                     </span>
-                    <span>Orders</span>
+                    <span>Kelola Perusahaan </span>
                 </a>
                 <ul>
                     <li>
-                        <a  href="./orders.html">List</a>
+                        <a href="{{ route('kelolapelamar.index') }}">Data Perusahaan</a>
                     </li>
                     <li>
-                        <a  href="./order-detail.html">Detail</a>
+                        <a  href=".{{ route('kelolapelamar.create') }}">Tambah Data Perusahaan </a>
                     </li>
                 </ul>
             </li>
