@@ -588,7 +588,7 @@
                 </a>
                 <ul>
                     <li>
-                        <a  href="/kelolapelamar/index">Daftar Pelamar</a>
+                        <a  href="/kelolapelamar/index">Data Pelamar</a>
                     </li>
                     <li>
                         <a  href="/kelolapelamar/create">Tambah Pelamar</a>
