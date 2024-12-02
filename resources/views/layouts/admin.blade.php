@@ -8,7 +8,7 @@
     <title> CakeAdmin Bootstrap 5 Demo - Free Admin Template </title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../favicon.png"/>
+    <link rel="shortcut icon" href="{{ asset('cakeadmin/html/favicon.png') }}"/>
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -572,7 +572,7 @@
                 </a>
                 <ul>
                     <li>
-                        <a href="{{ route('kelolapelamar.index') }}">Data Perusahaan</a>
+                        <a href="">Data Perusahaan</a>
                     </li>
                     <li>
                         <a  href=".{{ route('kelolapelamar.create') }}">Tambah Data Perusahaan </a>
@@ -584,14 +584,14 @@
                     <span class="nav-link-icon">
                         <i class="bi bi-truck"></i>
                     </span>
-                    <span>Products</span>
+                    <span>Kelola Pelamar</span>
                 </a>
                 <ul>
                     <li>
-                        <a  href="./product-list.html">List View</a>
+                        <a  href="/kelolapelamar/index">Daftar Pelamar</a>
                     </li>
                     <li>
-                        <a  href="./product-grid.html">Grid View</a>
+                        <a  href="/kelolapelamar/create">Tambah Pelamar</a>
                     </li>
                     <li>
                         <a  href="./product-detail.html">Product Detail</a>
@@ -1007,3 +1007,4 @@
 <script src="{{ asset('cakeadmin/html/js/app.js') }}"></script>
 </body>
 </html>
+
