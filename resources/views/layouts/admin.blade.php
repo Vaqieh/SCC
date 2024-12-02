@@ -563,7 +563,7 @@
             <ul>
                 <li class="menu-divider">Dashboard</li>
                 <li>
-                    <a class="active" href="./dashboard.html">
+                    <a class="active" href="admin.DashboardAdmin"> {{-- Tandai --}}
                         <span class="nav-link-icon">
                             <i class="bi bi-bar-chart"></i>
                         </span>
