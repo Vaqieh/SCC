@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('kelolapelamar',KelolaPelamarController::class);
+    Route::resource('DashboardAdmin',KelolaPelamarController::class);
 });
 
 Route::resource('pelamar',PelamarController::class);
