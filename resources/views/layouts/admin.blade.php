@@ -517,7 +517,7 @@
 <!-- menu -->
 <div class="menu">
     <div class="menu-header">
-        <a href="./dashboard.html" class="menu-header-logo">
+        <a href="/DashboardAdmin" class="menu-header-logo">
             <img src="{{ asset('image/logo_scc (1).png') }}" alt="logo">
             <span>Sumatera Carrer Center</span>
         </a>
