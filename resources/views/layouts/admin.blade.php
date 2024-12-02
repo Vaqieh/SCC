@@ -579,7 +579,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="/kelolapelamar/index">Data Perusahaan</a>
+                            <a href="/kelolaperusahaan">Data Perusahaan</a>
                         </li>
                         <li>
                             <a href="/kelolapelamar/create">Tambah Data Perusahaan </a>
@@ -595,7 +595,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="/kelolapelamar/index">Data Pelamar</a>
+                            <a href="/kelolapelamar">Data Pelamar</a>
                         </li>
                         <li>
                             <a href="/kelolapelamar/create">Tambah Pelamar</a>
