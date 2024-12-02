@@ -1,128 +1,7 @@
 @extends('layouts.admin', ['title' => 'Kelola Data Pelamar'])
 @section('content')
-<div class="layout-wrapper">
-
-    <!-- header -->
-    <div class="header">
-    <div class="menu-toggle-btn"> <!-- Menu close button for mobile devices -->
-        <a href="#">
-            <i class="bi bi-list"></i>
-        </a>
-    </div>
-    <!-- Logo -->
-    <a href="./dashboard.html" class="logo">
-        <img width="100" src="../logo.png" alt="logo">
-    </a>
-    <!-- ./ Logo -->
-    <div class="page-title">Orders</div>
-    <form class="search-form">
-        <div class="input-group">
-            <button class="btn btn-outline-light" type="button" id="button-addon1">
-                <i class="bi bi-search"></i>
-            </button>
-            <input type="text" class="form-control" placeholder="Search..."
-                   aria-label="Example text with button addon" aria-describedby="button-addon1">
-            <a href="#" class="btn btn-outline-light close-header-search-bar">
-                <i class="bi bi-x"></i>
-            </a>
-        </div>
-    </form>
-    <div class="header-bar ms-auto">
-        <ul class="navbar-nav justify-content-end">
-            <li class="nav-item">
-                <a href="#" class="nav-link nav-link-notify" data-count="2" data-sidebar-target="#notifications">
-                    <i class="bi bi-bell icon-lg"></i>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link nav-link-notify" data-count="3" data-bs-toggle="dropdown">
-                    <i class="bi bi-cart2 icon-lg"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
-                    <h6 class="m-0 px-4 py-3 border-bottom">Shopping Cart</h6>
-                    <div class="dropdown-menu-body">
-                        <div class="list-group list-group-flush">
-                            <div class="list-group-item d-flex align-items-center">
-                                <a href="#" class="text-danger me-3" title="Remove">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                                <a href="#" class="me-3 flex-shrink-0 ">
-                                    <img src="../images/products/3.jpg" class="rounded" width="60"
-                                         alt="...">
-                                </a>
-                                <div>
-                                    <h6>Digital clock</h6>
-                                    <div>1 x $1.190,90</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list-group list-group-flush">
-                            <div class="list-group-item d-flex align-items-center">
-                                <a href="#" class="text-danger me-3" title="Remove">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                                <a href="#" class="me-3 flex-shrink-0 ">
-                                    <img src="../images/products/4.jpg" class="rounded" width="60"
-                                         alt="...">
-                                </a>
-                                <div>
-                                    <h6>Toy Car</h6>
-                                    <div>1 x $139.58</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list-group list-group-flush">
-                            <div class="list-group-item d-flex align-items-center">
-                                <a href="#" class="text-danger me-3" title="Remove">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                                <a href="#" class="me-3 flex-shrink-0 ">
-                                    <img src="../images/products/5.jpg" class="rounded" width="60"
-                                         alt="...">
-                                </a>
-                                <div>
-                                    <h6>Sunglasses</h6>
-                                    <div>2 x $50,90</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list-group list-group-flush">
-                            <div class="list-group-item d-flex align-items-center">
-                                <a href="#" class="text-danger me-3" title="Remove">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                                <a href="#" class="me-3 flex-shrink-0 ">
-                                    <img src="../images/products/6.jpg" class="rounded" width="60"
-                                         alt="...">
-                                </a>
-                                <div>
-                                    <h6>Cake</h6>
-                                    <div>1 x $10,50</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <h6 class="m-0 px-4 py-3 border-top small">Sub Total : <strong
-                            class="text-primary">$1.442,78</strong></h6>
-                </div>
-            </li>
-            <li class="nav-item ms-3">
-                            </li>
-        </ul>
-    </div>
-    <!-- Header mobile buttons -->
-    <div class="header-mobile-buttons">
-        <a href="#" class="search-bar-btn">
-            <i class="bi bi-search"></i>
-        </a>
-        <a href="#" class="actions-btn">
-            <i class="bi bi-three-dots"></i>
-        </a>
-    </div>
-    <!-- ./ Header mobile buttons -->
-</div>
 <div class="content ">
-    
+
     <div class="mb-4">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -188,15 +67,320 @@
         <table class="table table-custom table-lg mb-0" id="orders">
             <thead>
             <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>Alamat</th>
-                <th>Email</th>
-                <th>Contact</th></th>
+                <th>
+                    <input class="form-check-input select-all" type="checkbox" data-select-all-target="#orders"
+                           id="defaultCheck1">
+                </th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Status</th>
                 <th class="text-end">Actions</th>
             </tr>
             </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                    <a href="#">#3210</a>
+                </td>
+                <td>Cortie Gemson</td>
+                <td>May 23, 2021</td>
+                <td>$239,00</td>
+                <td>
+                    <span class="badge bg-primary">Processing</span>
+                </td>
+                <td class="text-end">
+                    <div class="d-flex">
+                        <div class="dropdown ms-auto">
+                            <a href="#" data-bs-toggle="dropdown"
+                               class="btn btn-floating"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Edit</a>
+                                <a href="#" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                    <a href="#">#3210</a>
+                </td>
+                <td>Mathilde Tumilson</td>
+                <td>May 15, 2021</td>
+                <td>$650,50</td>
+                <td>
+                    <span class="badge bg-dark">Shipped</span>
+                </td>
+                <td class="text-end">
+                    <div class="d-flex">
+                        <div class="dropdown ms-auto">
+                            <a href="#" data-bs-toggle="dropdown"
+                               class="btn btn-floating"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Edit</a>
+                                <a href="#" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                    <a href="#">#3210</a>
+                </td>
+                <td>Audrye Heaford</td>
+                <td>Apr 24, 2021</td>
+                <td>$100,00</td>
+                <td>
+                    <span class="badge bg-success">Completed</span>
+                </td>
+                <td class="text-end">
+                    <div class="d-flex">
+                        <div class="dropdown ms-auto">
+                            <a href="#" data-bs-toggle="dropdown"
+                               class="btn btn-floating"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Edit</a>
+                                <a href="#" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                    <a href="#">#3210</a>
+                </td>
+                <td>Brantley Mell</td>
+                <td>Apr 10, 2021</td>
+                <td>$19</td>
+                <td>
+                    <span class="badge bg-warning">Refunded</span>
+                </td>
+                <td class="text-end">
+                    <div class="d-flex">
+                        <div class="dropdown ms-auto">
+                            <a href="#" data-bs-toggle="dropdown"
+                               class="btn btn-floating"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Edit</a>
+                                <a href="#" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                    <a href="#">#3210</a>
+                </td>
+                <td>Dominique Enriques</td>
+                <td>March 5, 2021</td>
+                <td>$150,00</td>
+                <td>
+                    <span class="badge bg-danger">Cancelled</span>
+                </td>
+                <td class="text-end">
+                    <div class="d-flex">
+                        <div class="dropdown ms-auto">
+                            <a href="#" data-bs-toggle="dropdown"
+                               class="btn btn-floating"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Edit</a>
+                                <a href="#" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                    <a href="#">#3210</a>
+                </td>
+                <td>Cortie Gemson</td>
+                <td>May 23, 2021</td>
+                <td>$239,00</td>
+                <td>
+                    <span class="badge bg-primary">Processing</span>
+                </td>
+                <td class="text-end">
+                    <div class="d-flex">
+                        <div class="dropdown ms-auto">
+                            <a href="#" data-bs-toggle="dropdown"
+                               class="btn btn-floating"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Edit</a>
+                                <a href="#" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                    <a href="#">#3210</a>
+                </td>
+                <td>Mathilde Tumilson</td>
+                <td>May 15, 2021</td>
+                <td>$650,50</td>
+                <td>
+                    <span class="badge bg-dark">Shipped</span>
+                </td>
+                <td class="text-end">
+                    <div class="d-flex">
+                        <div class="dropdown ms-auto">
+                            <a href="#" data-bs-toggle="dropdown"
+                               class="btn btn-floating"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Edit</a>
+                                <a href="#" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                    <a href="#">#3210</a>
+                </td>
+                <td>Audrye Heaford</td>
+                <td>Apr 24, 2021</td>
+                <td>$100,00</td>
+                <td>
+                    <span class="badge bg-success">Completed</span>
+                </td>
+                <td class="text-end">
+                    <div class="d-flex">
+                        <div class="dropdown ms-auto">
+                            <a href="#" data-bs-toggle="dropdown"
+                               class="btn btn-floating"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Edit</a>
+                                <a href="#" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                    <a href="#">#3210</a>
+                </td>
+                <td>Brantley Mell</td>
+                <td>Apr 10, 2021</td>
+                <td>$19</td>
+                <td>
+                    <span class="badge bg-warning">Refunded</span>
+                </td>
+                <td class="text-end">
+                    <div class="d-flex">
+                        <div class="dropdown ms-auto">
+                            <a href="#" data-bs-toggle="dropdown"
+                               class="btn btn-floating"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Edit</a>
+                                <a href="#" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                    <a href="#">#3210</a>
+                </td>
+                <td>Dohhhjminique Enriques</td>
+                <td>March 5, 2021</td>
+                <td>$150,00</td>
+                <td>
+                    <span class="badge bg-danger">Cancelled</span>
+                </td>
+                <td class="text-end">
+                    <div class="d-flex">
+                        <div class="dropdown ms-auto">
+                            <a href="#" data-bs-toggle="dropdown"
+                               class="btn btn-floating"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Edit</a>
+                                <a href="#" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
         </table>
     </div>
 
