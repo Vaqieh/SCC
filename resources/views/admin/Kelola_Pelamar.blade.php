@@ -357,7 +357,7 @@
                 <td>
                     <a href="#">#3210</a>
                 </td>
-                <td>Dominique Enriques</td>
+                <td>Dohhhjminique Enriques</td>
                 <td>March 5, 2021</td>
                 <td>$150,00</td>
                 <td>
