@@ -38,18 +38,7 @@
 
                 <div class="col-lg-6">
                     <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                        <img src="assets/img/gedung_pcr" alt="Politeknik Caltex Riau" class="img-fluid">
-
-                        <div class="customers-badge">
-                            <div class="customer-avatars">
-                                <img src="assets/img/avatar-1.webp" alt="Customer 1" class="avatar">
-                                <img src="assets/img/avatar-2.webp" alt="Customer 2" class="avatar">
-                                <img src="assets/img/avatar-3.webp" alt="Customer 3" class="avatar">
-                                <img src="assets/img/avatar-4.webp" alt="Customer 4" class="avatar">
-                                <img src="assets/img/avatar-5.webp" alt="Customer 5" class="avatar">
-                            </div>
-                            <p class="mb-0 mt-2">12,000+ lorem ipsum dolor sit amet consectetur adipiscing elit</p>
-                        </div>
+                        <img src="iLanding/assets/img/dashboard.png" alt="Team Work" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -139,11 +128,245 @@
 
     </section><!-- /Hero Section -->
 
+    <!-- Features Cards Section -->
+    <section id="features-cards" class="features-cards section">
+
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div
+                        style="border: 1px solid #ddd; border-radius: 10px; width: 100%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                        <img src="iLanding/assets/img/programmer.jpg" alt="Poster Programmer"
+                            style="width: 100%; height: 150px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: left;">
+                            <h4 style="margin-bottom: 10px; font-size: 18px;">
+                                <center><a href="LowonganDetail1.html" style="text-decoration: none; color: black;"
+                                        onmouseover="this.style.color='blue'"
+                                        onmouseout="this.style.color='black'">Programmer</a> </center>
+                            </h4>
+                            <p style="font-size: 14px; color: #555; margin: 5px 0;">
+                                <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>POLITEKNIK
+                                CALTEX RIAU
+                            </p>
+                            <p style="font-size: 13px; color: #777; margin: 5px 0;">
+                                <i class="bi bi-lock" style="margin-right: 5px; color: #777;"></i>17 September 2024 -
+                                13 Oktober 2024
+                            </p>
+                            <p style="font-size: 13px; color: #777;">
+                                <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Dibutuhkan: 0
+                                orang
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- End Feature Borx-->
+
+                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div
+                        style="border: 1px solid #ddd; border-radius: 10px; width: 100%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                        <img src="iLanding/assets/img/staf_marketing.jpg" alt="Poster Marketing"
+                            style="width: 100%; height: 150px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: left;">
+                            <h4 style="margin-bottom: 10px; font-size: 18px;">
+                                <center><a href="detail2.html" style="text-decoration: none; color: black;"
+                                        onmouseover="this.style.color='blue'"
+                                        onmouseout="this.style.color='black'">Staf Marketing PCR</a> </center>
+                            </h4>
+                            <p style="font-size: 14px; color: #555; margin: 5px 0;">
+                                <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>POLITEKNIK
+                                CALTEX RIAU
+                            </p>
+                            <p style="font-size: 13px; color: #777; margin: 5px 0;">
+                                <i class="bi bi-lock" style="margin-right: 5px; color: #777;"></i>17 September 2024 -
+                                13 Oktober 2024
+                            </p>
+                            <p style="font-size: 13px; color: #777;">
+                                <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Dibutuhkan: 0
+                                orang
+                            </p>
+                        </div>
+                    </div>
+
+                </div><!-- End Feature Borx-->
+
+                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div
+                        style="border: 1px solid #ddd; border-radius: 10px; width: 100%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                        <img src="iLanding/assets/img/staf_administrasi.png" alt="Poster Staf Administrasi"
+                            style="width: 100%; height: 150px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: left;">
+                            <h4 style="margin-bottom: 10px; font-size: 18px;">
+                                <center><a href="detail3.html" style="text-decoration: none; color: black;"
+                                        onmouseover="this.style.color='blue'"
+                                        onmouseout="this.style.color='black'">Staf Administrasi</a> </center>
+                            </h4>
+                            <p style="font-size: 14px; color: #555; margin: 5px 0;">
+                                <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>POLITEKNIK
+                                CALTEX RIAU
+                            </p>
+                            <p style="font-size: 13px; color: #777; margin: 5px 0;">
+                                <i class="bi bi-lock" style="margin-right: 5px; color: #777;"></i>17 September 2024 -
+                                13 Oktober 2024
+                            </p>
+                            <p style="font-size: 13px; color: #777;">
+                                <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Dibutuhkan: 0
+                                orang
+                            </p>
+                        </div>
+                    </div><!-- End Feature Borx-->
+
+                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                        <div
+                            style="border: 1px solid #ddd; border-radius: 10px; width: 100%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                            <img src="iLanding/assets/img/dosen.png" alt="Poster Dosen"
+                                style="width: 100%; height: 150px; object-fit: cover;">
+                            <div style="padding: 15px; text-align: left;">
+                                <h4 style="margin-bottom: 10px; font-size: 18px;">
+                                    <center><a href="detail4.html" style="text-decoration: none; color: black;"
+                                            onmouseover="this.style.color='blue'"
+                                            onmouseout="this.style.color='black'">Dosen Program Studi Sistem
+                                            Informasi</a> </center>
+                                </h4>
+                                <p style="font-size: 14px; color: #555; margin: 5px 0;">
+                                    <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>POLITEKNIK
+                                    CALTEX RIAU
+                                </p>
+                                <p style="font-size: 13px; color: #777; margin: 5px 0;">
+                                    <i class="bi bi-lock" style="margin-right: 5px; color: #777;"></i>17 September
+                                    2024 - 13 Oktober 2024
+                                </p>
+                                <p style="font-size: 13px; color: #777;">
+                                    <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Dibutuhkan: 0
+                                    orang
+                                </p>
+                            </div>
+                        </div><!-- End Feature Borx-->
+
+                    </div>
+
+                </div>
+
+    </section><!-- /Features 2 Section -->
+
     <!-- Features Section -->
     <section id="features" class="features section">
 
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials section light-background">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Testimonials</h2>
+                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="row g-5">
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="testimonial-item">
+                            <img src="iLanding/assets/img/testimonials/profile4.jpg" class="testimonial-img"
+                                alt="">
+                            <h3>Xavier</h3>
+                            <h4>Programmer</h4>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                <i class="bi bi-quote quote-icon-left"></i>
+                                <span>Saya merasa terbantu sekali dengan platform Sumatera Career Center. Melalui
+                                    platform ini, saya bisa
+                                    menemukan berbagai lowongan pekerjaan yang sesuai dengan keahlian, minat dan bakat
+                                    saya pada bidang Teknologi Informasi.
+                                    Proses pendaftaran yang mudah, membuat saya lebih percaya diri dalam mencari
+                                    pekerjaan.
+                                </span>
+                                <i class="bi bi-quote quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="testimonial-item">
+                            <img src="iLanding/assets/img/testimonials/profile1.jpg" class="testimonial-img"
+                                alt="">
+                            <h3>Sara Wilsson</h3>
+                            <h4>Web Designer</h4>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                <i class="bi bi-quote quote-icon-left"></i>
+                                <span>Sebagai fresh graduate pada bidang UI/UX saya terbantu dengan adanya informasi
+                                    lowongan pekerjaan
+                                    yang up to date dari platform Sumatera Career Center. Saya berhasil mendapatkan
+                                    pekerjaan pertama saya
+                                    sebagai seorang Web Designer di salah satu perusahaan besar yang terletak di pulau
+                                    jawa.</span>
+                                <i class="bi bi-quote quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="testimonial-item">
+                            <img src="iLanding/assets/img/testimonials/profile3.jpg" class="testimonial-img"
+                                alt="">
+                            <h3>Jena Karlis</h3>
+                            <h4>Manager</h4>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                <i class="bi bi-quote quote-icon-left"></i>
+                                <span>Saya merupakan alumni Politeknik Caltex Riau, berkat platform SCC saya mendapatkan
+                                    pekerjaan pertama saya
+                                    sebagai Manager di salah satu perusahaan ternama. </span>
+                                <i class="bi bi-quote quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="testimonial-item">
+                            <img src="iLanding/assets/img/testimonials/profile2.jpg" class="testimonial-img"
+                                alt="">
+                            <h3>Matthew Bomer</h3>
+                            <h4>Direktur PT.Sumber Mandiri</h4>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                <i class="bi bi-quote quote-icon-left"></i>
+                                <span>Perusahaan kami bekerja sama dengan SCC untuk mencari kandidat yang berkualitas,
+                                    platform yang
+                                    sangat membantu kami dalam menyebar informasi mengenai lowongan pekerjaan dan kami
+                                    berhasil menemukan
+                                    kandidat yang diinginkan.</span>
+                                <i class="bi bi-quote quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                </div>
+
+            </div>
+
+        </section><!-- /Testimonials Section -->
+
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
+
             <h2>Tentang Kami</h2>
             <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
         </div><!-- End Section Title -->
@@ -177,8 +400,10 @@
                             class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                             <h3>Visi</h3>
                             <ul>
-                                <li><i class="bi bi-check2-all"></i> <span>Menjadi institusi karir yang mewadahi para alumni yang berbasis IT
-                                dalam menyajikan informasi karis, pengembangan diri, dan pelayanan rekruitment</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Menjadi institusi karir yang mewadahi para
+                                        alumni yang berbasis IT
+                                        dalam menyajikan informasi karis, pengembangan diri, dan pelayanan
+                                        rekruitment</span></li>
                             </ul>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -193,14 +418,19 @@
                             class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                             <h3>Misi</h3>
                             <ul>
-                                <li><i class="bi bi-check2-all"></i> <span>Membangun organisasi yang mewadahi alumni dan menjadi tempat untuk
+                                <li><i class="bi bi-check2-all"></i> <span>Membangun organisasi yang mewadahi alumni
+                                        dan menjadi tempat untuk
                                         menjalin komunikasi dan silaturahmi bagi alumni.</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span>Menjadi career center pertama yang mengedepankan inovasi, professionalisme,
-                                        salingmenghargai, dan religious.</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span>Memberikan informasi rekrutment dan karir yang terpercaya, serta program pengembangan
+                                <li><i class="bi bi-check2-all"></i> <span>Menjadi career center pertama yang
+                                        mengedepankan inovasi, professionalisme,
+                                        saling menghargai, dan religious.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Memberikan informasi rekrutment dan karir
+                                        yang terpercaya, serta program pengembangan
                                         diri kepada mahasiswa dan alumni</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span> Memberikan layanan rekrutmen yang efektif dan solutif kepada perusahaan</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span>Memberikan dukungan pada kampus dalam pengembangan karir mahasiswa dan alumni, 
+                                <li><i class="bi bi-check2-all"></i> <span> Memberikan layanan rekrutmen yang efektif
+                                        dan solutif kepada perusahaan</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Memberikan dukungan pada kampus dalam
+                                        pengembangan karir mahasiswa dan alumni,
                                         serta kerjasama dengan dunia industri</span></li>
                             </ul>
                         </div>
@@ -215,51 +445,6 @@
         </div>
 
     </section><!-- /Features Section -->
-
-    <!-- Features Cards Section -->
-    <section id="features-cards" class="features-cards section">
-
-        <div class="container">
-
-            <div class="row gy-4">
-
-                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="feature-box orange">
-                        <i class="bi bi-award"></i>
-                        <h4>Corporis voluptates</h4>
-                        <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                    </div>
-                </div><!-- End Feature Borx-->
-
-                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="feature-box blue">
-                        <i class="bi bi-patch-check"></i>
-                        <h4>Explicabo consectetur</h4>
-                        <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
-                    </div>
-                </div><!-- End Feature Borx-->
-
-                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="feature-box green">
-                        <i class="bi bi-sunrise"></i>
-                        <h4>Ullamco laboris</h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                    </div>
-                </div><!-- End Feature Borx-->
-
-                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="feature-box red">
-                        <i class="bi bi-shield-check"></i>
-                        <h4>Labore consequatur</h4>
-                        <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                    </div>
-                </div><!-- End Feature Borx-->
-
-            </div>
-
-        </div>
-
-    </section><!-- /Features 2 Section -->
 
     <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section">
@@ -312,105 +497,6 @@
         </div>
 
     </section><!-- /Call To Action Section -->
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section light-background">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Testimonials</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-        </div><!-- End Section Title -->
-
-        <div class="container">
-
-            <div class="row g-5">
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-item">
-                        <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                        <h3>Saul Goodman</h3>
-                        <h4>Ceo &amp; Founder</h4>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
-                        </div>
-                        <p>
-                            <i class="bi bi-quote quote-icon-left"></i>
-                            <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
-                                rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                                risus at semper.</span>
-                            <i class="bi bi-quote quote-icon-right"></i>
-                        </p>
-                    </div>
-                </div><!-- End testimonial item -->
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-item">
-                        <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                        <h3>Sara Wilsson</h3>
-                        <h4>Designer</h4>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
-                        </div>
-                        <p>
-                            <i class="bi bi-quote quote-icon-left"></i>
-                            <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid
-                                cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet
-                                legam anim culpa.</span>
-                            <i class="bi bi-quote quote-icon-right"></i>
-                        </p>
-                    </div>
-                </div><!-- End testimonial item -->
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="testimonial-item">
-                        <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                        <h3>Jena Karlis</h3>
-                        <h4>Store Owner</h4>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
-                        </div>
-                        <p>
-                            <i class="bi bi-quote quote-icon-left"></i>
-                            <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam
-                                duis minim tempor labore quem eram duis noster aute amet eram fore quis sint
-                                minim.</span>
-                            <i class="bi bi-quote quote-icon-right"></i>
-                        </p>
-                    </div>
-                </div><!-- End testimonial item -->
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="testimonial-item">
-                        <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                        <h3>Matt Brandon</h3>
-                        <h4>Freelancer</h4>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
-                        </div>
-                        <p>
-                            <i class="bi bi-quote quote-icon-left"></i>
-                            <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat
-                                minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore
-                                labore illum veniam.</span>
-                            <i class="bi bi-quote quote-icon-right"></i>
-                        </p>
-                    </div>
-                </div><!-- End testimonial item -->
-
-            </div>
-
-        </div>
-
-    </section><!-- /Testimonials Section -->
 
     <!-- Services Section -->
     <section id="services" class="services section light-background">
