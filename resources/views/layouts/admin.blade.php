@@ -572,10 +572,10 @@
                 </a>
                 <ul>
                     <li>
-                        <a href="">Data Perusahaan</a>
+                        <a href="/kelolapelamar/index">Data Perusahaan</a>
                     </li>
                     <li>
-                        <a  href=".{{ route('kelolapelamar.create') }}">Tambah Data Perusahaan </a>
+                        <a  href="/kelolapelamar/create">Tambah Data Perusahaan </a>
                     </li>
                 </ul>
             </li>
