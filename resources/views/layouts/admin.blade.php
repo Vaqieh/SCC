@@ -8,7 +8,7 @@
     <title> CakeAdmin Bootstrap 5 Demo - Free Admin Template </title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../favicon.png"/>
+    <link rel="shortcut icon" href="{{ asset('cakeadmin/html/favicon.png') }}"/>
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -518,8 +518,8 @@
 <div class="menu">
     <div class="menu-header">
         <a href="./dashboard.html" class="menu-header-logo">
-            <img src="{{ asset('cakeadmin/html/logo.svg') }}" alt="logo">
-            <span>CakeAdmin</span>
+            <img src="{{ asset('image/logo_scc (1).png') }}" alt="logo">
+            <span>Sumatera Carrer Center</span>
         </a>
         <a href="#" class="btn btn-sm menu-close-btn">
             <i class="bi bi-x"></i>
@@ -568,14 +568,14 @@
                     <span class="nav-link-icon">
                         <i class="bi bi-receipt"></i>
                     </span>
-                    <span>Orders</span>
+                    <span>Kelola Perusahaan </span>
                 </a>
                 <ul>
                     <li>
-                        <a  href="./orders.html">List</a>
+                        <a href="/kelolapelamar/index">Data Perusahaan</a>
                     </li>
                     <li>
-                        <a  href="./order-detail.html">Detail</a>
+                        <a  href="/kelolapelamar/create">Tambah Data Perusahaan </a>
                     </li>
                 </ul>
             </li>
@@ -584,14 +584,14 @@
                     <span class="nav-link-icon">
                         <i class="bi bi-truck"></i>
                     </span>
-                    <span>Products</span>
+                    <span>Kelola Pelamar</span>
                 </a>
                 <ul>
                     <li>
-                        <a  href="./product-list.html">List View</a>
+                        <a  href="/kelolapelamar/index">Daftar Pelamar</a>
                     </li>
                     <li>
-                        <a  href="./product-grid.html">Grid View</a>
+                        <a  href="/kelolapelamar/create">Tambah Pelamar</a>
                     </li>
                     <li>
                         <a  href="./product-detail.html">Product Detail</a>
@@ -1007,3 +1007,4 @@
 <script src="{{ asset('cakeadmin/html/js/app.js') }}"></script>
 </body>
 </html>
+
