@@ -556,7 +556,7 @@
         <ul>
             <li class="menu-divider">Dashboard</li>
             <li>
-                <a  class="active"  href="./dashboard.html">
+                <a  class="active"  href="/DashboardAdmin">
                     <span class="nav-link-icon">
                         <i class="bi bi-bar-chart"></i>
                     </span>
@@ -572,10 +572,10 @@
                 </a>
                 <ul>
                     <li>
-                        <a href="/kelolapelamar/index">Data Perusahaan</a>
+                        <a href="/kelolaperusahaan">Data Perusahaan</a>
                     </li>
                     <li>
-                        <a  href="/kelolapelamar/create">Tambah Data Perusahaan </a>
+                        <a  href="/kelolaperusahaan/create">Tambah Data Perusahaan </a>
                     </li>
                 </ul>
             </li>
@@ -588,7 +588,7 @@
                 </a>
                 <ul>
                     <li>
-                        <a  href="/kelolapelamar/index">Daftar Pelamar</a>
+                        <a  href="/kelolapelamar">Daftar Pelamar</a>
                     </li>
                     <li>
                         <a  href="/kelolapelamar/create">Tambah Pelamar</a>
