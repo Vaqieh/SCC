@@ -1003,7 +1003,7 @@
     <script src="{{ asset('cakeadmin/html/libs/nicescroll.js') }}"></script>
 
     <!-- Apex chart -->
-    <script src="{{ asset('admin/html/libs/charts/apex/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('cakeadmin/html/libs/charts/apex/apexcharts.min.js') }}"></script>
 
     <!-- Slick -->
     <script src="{{ asset('cakeadmin/html/libs/slick/slick.min.js') }}"></script>

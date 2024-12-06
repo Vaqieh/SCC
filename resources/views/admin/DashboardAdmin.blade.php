@@ -206,7 +206,7 @@
                             <div>
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="avatar me-3">
-                                        <img src="../images/user/women_avatar5.jpg" class="rounded-circle"
+                                        <img src=" cakeadmin/images/user/women_avatar5.jpg" class="rounded-circle"
                                             alt="image">
                                     </div>
                                     <div>
@@ -366,7 +366,7 @@
                         <div class="list-group list-group-flush">
                             <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                                 <div class="d-flex flex-grow-1 align-items-center">
-                                    <img width="45" class="me-3" src="../images/flags/united-states-of-america.svg"
+                                    <img width="45" class="me-3" src="cakeadmin/images/flags/united-states-of-america.svg"
                                         alt="...">
                                     <span>United States</span>
                                 </div>
@@ -374,7 +374,7 @@
                             </div>
                             <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                                 <div class="d-flex flex-grow-1 align-items-center">
-                                    <img width="45" class="me-3" src="../images/flags/venezuela.svg"
+                                    <img width="45" class="me-3" src="cakeadmin/images/flags/venezuela.svg"
                                         alt="...">
                                     <span>Venezuela</span>
                                 </div>
@@ -382,7 +382,7 @@
                             </div>
                             <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                                 <div class="d-flex flex-grow-1 align-items-center">
-                                    <img width="45" class="me-3" src="../images/flags/salvador.svg"
+                                    <img width="45" class="me-3" src="cakeadmin/images/flags/salvador.svg"
                                         alt="...">
                                     <span>Salvador</span>
                                 </div>
@@ -390,7 +390,7 @@
                             </div>
                             <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                                 <div class="d-flex flex-grow-1 align-items-center">
-                                    <img width="45" class="me-3" src="../images/flags/russia.svg" alt="...">
+                                    <img width="45" class="me-3" src="cakeadmin/images/flags/russia.svg" alt="...">
                                     <span>Russia</span>
                                 </div>
                                 <span>$1.042,00</span>
@@ -508,7 +508,7 @@
                                         </td>
                                         <td>
                                             <a href="#">
-                                                <img src="../images/products/10.jpg" class="rounded" width="40"
+                                                <img src="cakeadmin/images/products/10.jpg" class="rounded" width="40"
                                                     alt="...">
                                             </a>
                                         </td>
@@ -539,7 +539,7 @@
                                         </td>
                                         <td>
                                             <a href="#">
-                                                <img src="../images/products/7.jpg" class="rounded" width="40"
+                                                <img src="cakeadmin/images/products/7.jpg" class="rounded" width="40"
                                                     alt="...">
                                             </a>
                                         </td>
@@ -570,7 +570,7 @@
                                         </td>
                                         <td>
                                             <a href="#">
-                                                <img src="../images/products/8.jpg" class="rounded" width="40"
+                                                <img src="cakeadmin/images/products/8.jpg" class="rounded" width="40"
                                                     alt="...">
                                             </a>
                                         </td>
@@ -601,7 +601,7 @@
                                         </td>
                                         <td>
                                             <a href="#">
-                                                <img src="../images/products/9.jpg" class="rounded" width="40"
+                                                <img src="cakeadmin/images/products/9.jpg" class="rounded" width="40"
                                                     alt="...">
                                             </a>
                                         </td>
