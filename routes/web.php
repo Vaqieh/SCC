@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelolaPelamarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PelamarController;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('kelolapelamar',KelolaPelamarController::class);
-    Route::resource('DashboardAdmin',KelolaPelamarController::class);
+    Route::resource('DashboardAdmin',HomeController::class);
 });
 
 Route::resource('pelamar',PelamarController::class);
