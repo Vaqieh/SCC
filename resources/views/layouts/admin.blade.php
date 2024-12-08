@@ -559,7 +559,10 @@
         <ul>
             <li class="menu-divider">Dashboard</li>
             <li>
+
                 <a  class="active"  href="./dashboard.html">
+       <a  class="active"  href="/DashboardAdmin">
+
                     <span class="nav-link-icon">
                         <i class="bi bi-bar-chart"></i>
                     </span>
@@ -575,10 +578,12 @@
                 </a>
                 <ul>
                     <li>
-                        <a href="/kelolapelamar">Data Perusahaan</a>
+                        <a href="/kelolaperusahaan">Data Perusahaan</a>
                     </li>
                     <li>
+
                         <a href="/kelolapelamar/create">Tambah Data Perusahaan </a>
+       <a  href="/kelolaperusahaan/create">Tambah Data Perusahaan </a>
                     </li>
                 </ul>
             </li>
@@ -592,6 +597,8 @@
                 <ul>
                     <li>
                         <a  href="./product-list.html">List View</a>
+
+                        <a  href="/kelolapelamar">Daftar Pelamar</a>
                     </li>
                     <li>
                         <a  href="./product-grid.html">Grid View</a>
@@ -1457,8 +1464,328 @@
                 <a href="#" class="nav-link">Get Help</a>
             </nav>
         </div>
+
     </footer>
     <!-- ./ content-footer -->
+
+        <div class="menu-body">
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center" data-bs-toggle="dropdown">
+                    <div class="avatar me-3">
+                        <img src="{{ asset('cakeadmin/html/images/user/man_avatar5.jpg') }}" class="rounded-circle"
+                            alt="image">
+                    </div>
+                    <div>
+                        <div class="fw-bold">Timotheus Bendan</div>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a href="#" class="dropdown-item d-flex align-items-center">
+                        <i class="bi bi-person dropdown-item-icon"></i> Profile
+                    </a>
+                    <a href="#" class="dropdown-item d-flex align-items-center">
+                        <i class="bi bi-envelope dropdown-item-icon"></i> Inbox
+                    </a>
+                    <a href="#" class="dropdown-item d-flex align-items-center"
+                        data-sidebar-target="#settings">
+                        <i class="bi bi-gear dropdown-item-icon"></i> Settings
+                    </a>
+                    <a href="./login.html" class="dropdown-item d-flex align-items-center text-danger"
+                        target="_blank">
+                        <i class="bi bi-box-arrow-right dropdown-item-icon"></i> Logout
+                    </a>
+                </div>
+            </div>
+            <ul>
+                <li class="menu-divider">Dashboard</li>
+                <li>
+                    <a class="active" href="/DashboardAdmin"> {{-- Tandai --}}
+                        <span class="nav-link-icon">
+                            <i class="bi bi-bar-chart"></i>
+                        </span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-receipt"></i>
+                        </span>
+                        <span>Kelola Perusahaan </span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolaperusahaan">Data Perusahaan</a>
+                        </li>
+                        <li>
+                            <a href="/kelolapelamar/create">Tambah Data Perusahaan </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-truck"></i>
+                        </span>
+                        <span>Kelola Pelamar</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolapelamar">Data Pelamar</a>
+                        </li>
+                        <li>
+                            <a href="/kelolapelamar/create">Tambah Pelamar</a>
+                        </li>
+                        <li>
+                            <a href="./product-detail.html">Product Detail</a>
+                        </li>
+                        <li>
+                            <a href="./shopping-cart.html">Shopping Cart</a>
+                        </li>
+                        <li>
+                            <a href="./checkout.html">Checkout</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-wallet2"></i>
+                        </span>
+                        <span>Buyer</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ asset('cakeadmin/html/pages/buyer-dashboard.html') }}">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="{{ asset('cakeadmin/html/pages//buyer-orders.html') }}">Orders</a>
+                        </li>
+                        <li>
+                            <a href="{{ asset('cakeadmin/html/pages/buyer-addresses.html') }}">Addresses</a>
+                        </li>
+                        <li>
+                            <a href="./buyer-wishlist.html">Wishlist</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./customers.html">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-person-badge"></i>
+                        </span>
+                        <span>Customers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-receipt"></i>
+                        </span>
+                        <span>Invoices</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="./invoices.html">List</a>
+                        </li>
+                        <li>
+                            <a href="./invoice-detail.html">Detail</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-divider">Apps</li>
+                <li>
+                    <a href="./chats.html">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-chat-square"></i>
+                        </span>
+                        <span>Chats</span>
+                        <span class="badge bg-success rounded-circle ms-auto">2</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./email.html">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+                        <span>Email App</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="./email.html">
+                                <span>Inbox</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./email.html-detail">
+                                <span>Detail</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./todo-list.html">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </span>
+                        <span>Todo App</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="./todo-list.html">
+                                <span>List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./todo-detail.html">
+                                <span>Details</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-divider">Pages</li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        <span>Profile</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="./profile-posts.html">Post</a>
+                        </li>
+                        <li>
+                            <a href="./profile-connections.html">Connections</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-person-circle"></i>
+                        </span>
+                        <span>Users</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="./user-list.html">List View</a>
+                        </li>
+                        <li>
+                            <a href="./user-grid.html">Grid View</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <span>Authentication</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="./login.html" target="_blank">Login</a>
+                        </li>
+                        <li>
+                            <a href="./register.html" target="_blank">Register</a>
+                        </li>
+                        <li>
+                            <a href="./reset-password.html" target="_blank">Reset Password</a>
+                        </li>
+                        <li>
+                            <a href="./lock-screen.html" target="_blank">Lock Screen</a>
+                        </li>
+                        <li>
+                            <a href="./account-verified.html" target="_blank">Account Verified</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-exclamation-octagon"></i>
+                        </span>
+                        <span>Error Pages</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="./404.html" target="_blank">404</a>
+                        </li>
+                        <li>
+                            <a href="./access-denied.html">Access Denied</a>
+                        </li>
+                        <li>
+                            <a href="./under-construction.html" target="_blank">Under Construction</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./settings.html">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-gear"></i>
+                        </span>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./pricing-table.html">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-wallet2"></i>
+                        </span>
+                        <span>Pricing Table</span>
+                        <span class="badge bg-success ms-auto">New</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./search-page.html">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <span>Search Page</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./faq.html">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-question-circle"></i>
+                        </span>
+                        <span>FAQ</span>
+                    </a>
+                </li>
+                <li class="menu-divider">Other</li>
+                <li>
+                    <a target="_blank" href="https://cakeadmin.com/bootstrap-docs/introduction">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-file-earmark-medical"></i>
+                        </span>
+                        <span>Documentation</span>
+                    </a>
+                    <a target="_blank" href="https://github.com/bundui/cakeadmin">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-github"></i>
+                        </span>
+                        <span>CakeAdmin Github</span>
+                    </a>
+                    <a target="_blank" href="https://cakeadmin.com">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-file-person"></i>
+                        </span>
+                        <span>CakeAdmin About</span>
+                    </a>
+                    <a target="_blank" href="https://cakeadmin.com/contact">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-person-raised-hand"></i>
+                        </span>
+                        <span>Support</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- ./  menu -->
 
 </div>
 <!-- ./ layout-wrapper -->

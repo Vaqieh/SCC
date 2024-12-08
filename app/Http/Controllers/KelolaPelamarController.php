@@ -22,6 +22,7 @@ class KelolaPelamarController extends Controller
     }
     public function show(KelolaPelamar $KelolaPelamar)
     {
+        return view('admin.DashboardAdmin');
     }
     public function edit(KelolaPelamar $KelolaPelamar)
     {
