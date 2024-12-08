@@ -1,8 +1,6 @@
 @extends('layouts.admin', ['title' => 'Kelola Data Pelamar'])
 @section('content')
-<<<<<<< HEAD
-    
-=======
+
 <div class="content ">
 
     <div class="mb-4">
@@ -17,7 +15,7 @@
             </ol>
         </nav>
     </div>
->>>>>>> b35d6d040ecc2363bb959e2bf7d1c5886c40afc9
+
 
             <div class="mb-4">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -79,7 +77,7 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
+
             <div class="table-responsive">
                 <table class="table table-custom table-lg mb-0" id="orders">
                     <thead>
@@ -96,7 +94,6 @@
                     </thead>
                 </table>
             </div>
-=======
     <div class="table-responsive">
         <table class="table table-custom table-lg mb-0" id="orders">
             <thead>
@@ -417,7 +414,6 @@
             </tbody>
         </table>
     </div>
->>>>>>> b35d6d040ecc2363bb959e2bf7d1c5886c40afc9
 
             <nav class="mt-4" aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
