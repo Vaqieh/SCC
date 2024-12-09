@@ -19,14 +19,35 @@ class KelolaPerusahaanController extends Controller
     {
         return view('admin.tambahPerusahaan');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
+        // Validasi data yang dikirimkan melalui form
+        $requestData = $request->validate([
+            'p_nama' => 'required|string|max:255',
+            'email_perusahaan' => 'required|email|max:255|unique:kelola_perusahaans,email_perusahaan',
+            'jenis_industri' => 'required|string|max:255',
+            'p_tahunBerdiri' => 'required|digits:4',  // Tahun harus 4 digit
+            'negara' => 'required|string|max:255',
+            'provinsi' => 'required|string|max:255',
+            'kabupaten' => 'required|string|max:255',
+            'kota' => 'required|string|max:255',
+        ]);
+
+        // Membuat instance baru dari model KelolaPerusahaan
+        $kelolaPerusahaan = new KelolaPerusahaan();
         
+        // Mengisi properti model dengan data yang sudah divalidasi
+        $kelolaPerusahaan->fill($requestData);
+
+        // Menyimpan data ke dalam database
+        $kelolaPerusahaan->save();
+
+
+
+        // Mengalihkan ke halaman daftar perusahaan (index)
+        return redirect()->route('kelolaperusahaan.index');
     }
+
 
     /**
      * Display the specified resource.
