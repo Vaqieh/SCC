@@ -44,87 +44,62 @@
             </div>
 
             <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
-                <div class="col-lg-3 col-md-6">
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="bi bi-trophy"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h4>3x Won Awards</h4>
-                            <p class="mb-0">Vestibulum ante ipsum</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="bi bi-briefcase"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h4>6.5k Faucibus</h4>
-                            <p class="mb-0">Nullam quis ante</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="bi bi-graph-up"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h4>80k Mauris</h4>
-                            <p class="mb-0">Etiam sit amet orci</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="bi bi-award"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h4>6x Phasellus</h4>
-                            <p class="mb-0">Vestibulum ante ipsum</p>
-                        </div>
-                    </div>
+                <div class="col-lg-3 col-md-6"></div>
+                <div class="stat-content">
+                    <img src="iLanding/assets/img/pertamina.png" class="testimonial-img" alt=""
+                        style="width: 19%; height: 150px; object-fit: cover;">
+
+                    <img src="iLanding/assets/img/slb.jpg" class="testimonial-img" alt=""
+                        style="width: 19%; height: 150px; object-fit: cover;">
+
+                    <img src="iLanding/assets/img/hb.png" class="testimonial-img" alt=""
+                        style="width: 19%; height: 150px; object-fit: cover;">
+
+                    <img src="iLanding/assets/img/raap.jpg" class="testimonial-img" alt=""
+                        style="width: 19%; height: 150px; object-fit: cover;">
+
+                    <img src="iLanding/assets/img/fp.png" class="testimonial-img" alt=""
+                        style="width: 18%; height: 150px; object-fit: cover;">
                 </div>
             </div>
+        </div>
+        </div>
 
-            <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
+        <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
 
-                <div class="row gy-4">
+            <div class="row gy-4">
 
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Clients</p>
-                        </div>
-                    </div><!-- End Stats Item -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item text-center w-100 h-100">
+                        <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Total Pelamar</p>
+                    </div>
+                </div><!-- End Stats Item -->
 
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Projects</p>
-                        </div>
-                    </div><!-- End Stats Item -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item text-center w-100 h-100">
+                        <span data-purecounter-start="0" data-purecounter-end="30" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Total Perusahaan</p>
+                    </div>
+                </div><!-- End Stats Item -->
 
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Hours Of Support</p>
-                        </div>
-                    </div><!-- End Stats Item -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item text-center w-100 h-100">
+                        <span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Lowongan Terbuka</p>
+                    </div>
+                </div><!-- End Stats Item -->
 
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Workers</p>
-                        </div>
-                    </div><!-- End Stats Item -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item text-center w-100 h-100">
+                        <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Lowongan Tertutup</p>
+                    </div>
+                </div><!-- End Stats Item -->
 
     </section><!-- /Hero Section -->
 
@@ -217,8 +192,38 @@
                     </div><!-- End Feature Borx-->
 
                 </div>
-
+                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div
+                        style="border: 1px solid #ddd; border-radius: 10px; width: 100%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                        <img src="iLanding/assets/img/dosen.jpg" alt="Poster Dosen"
+                            style="width: 100%; height: 150px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: left;">
+                            <h4 style="margin-bottom: 10px; font-size: 18px;">
+                                <center><a href="detail4.html" style="text-decoration: none; color: black;"
+                                        onmouseover="this.style.color='blue'"
+                                        onmouseout="this.style.color='black'">Dosen
+                                        Prodi SI</a> </center>
+                            </h4>
+                            <p style="font-size: 14px; color: #555; margin: 5px 0;">
+                                <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>POLITEKNIK
+                                CALTEX RIAU
+                            </p>
+                            <p style="font-size: 13px; color: #777; margin: 5px 0;">
+                                <i class="bi bi-lock" style="margin-right: 5px; color: #777;"></i>17 September 2024 -
+                                13
+                                Oktober 2024
+                            </p>
+                            <p style="font-size: 13px; color: #777;">
+                                <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Dibutuhkan: 0
+                                orang
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
+        </div>
 
     </section><!-- /Features 2 Section -->
 
