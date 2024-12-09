@@ -13,7 +13,8 @@ class KelolaPerusahaanController extends Controller
      */
     public function index()
     {
-        //
+        $data['kelolaperusahaan'] = \App\Models\KelolaPerusahaan::latest()->paginate(10);
+        return view('admin.KelolaPerusahaan', $data);
         
     }
 
