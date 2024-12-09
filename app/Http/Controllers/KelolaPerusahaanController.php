@@ -2,36 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\KelolaPerusahaan;
 use App\Http\Requests\StoreKelolaPerusahaanRequest;
 use App\Http\Requests\UpdateKelolaPerusahaanRequest;
 
 class KelolaPerusahaanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $data['kelolaperusahaan'] = \App\Models\KelolaPerusahaan::latest()->paginate(10);
         return view('admin.KelolaPerusahaan', $data);
         
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.tambahPerusahaan');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreKelolaPerusahaanRequest $request)
+    public function store(Request $request)
     {
-        //
+        
     }
 
     /**
