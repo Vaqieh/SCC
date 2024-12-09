@@ -1,7 +1,7 @@
 @extends('layouts.admin', ['title' => 'Kelola Data Pelamar'])
 @section('content')
 <div class="content ">
-        
+
     <div class="mb-4">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -372,7 +372,7 @@
                                 <i class="bi bi-three-dots"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Show</a>
+                                <a href="#" class="dropdown-item">Shooow</a>
                                 <a href="#" class="dropdown-item">Edit</a>
                                 <a href="#" class="dropdown-item">Delete</a>
                             </div>

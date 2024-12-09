@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+// use PhpParser\Node\NullableType;
 
 return new class extends Migration
 {
@@ -10,14 +11,14 @@ return new class extends Migration
     {
         Schema::create('kelola_pelamars', function (Blueprint $table) {
             $table->id();
-            // $table->string('p_nama');
-            // $table->string('email_perusahaan');
-            // $table->string('jenis_industri');
-            // $table->string('p_tahunBerdiri');
-            // $table->string('negara');
-            // $table->string('provinsi');
-            // $table->string('kabupaten');
-            // $table->string('kota');
+            $table->string('NamaPelamar');
+            $table->date('TanggalLahir');
+            $table->string('Alamat');
+            $table->enum('JenisKelamin', ['laki-laki','perempuan']);
+            $table->string('Kompetensi')->nullable();
+            $table->string('sertifikat')->nullable();
+            $table->string('cv');
+            $table->date('TanggalVerifikasi');
             $table->timestamps();
         });
     }
