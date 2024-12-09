@@ -146,7 +146,7 @@
                                 style="width: 100%; height: 150px; object-fit: cover;">
                             <div style="padding: 15px; text-align: left;"> 
                                 <h4 style="margin-bottom: 10px; font-size: 18px;">
-                                    <center><a href="detail1.html" style="text-decoration: none; color: black;"
+                                    <center><a href="/LowonganPengunjung.php" style="text-decoration: none; color: black;"
                                         onmouseover="this.style.color='blue'"
                                         onmouseout="this.style.color='black'">Programmer</a> </center>
                                 </h4>
@@ -547,6 +547,7 @@
                 </div>
             </section>
             <!-- /Faq Section -->
+            
             <!-- Contact Section -->
             <section id="contact" class="contact section light-background">
 
