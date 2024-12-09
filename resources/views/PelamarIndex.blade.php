@@ -557,9 +557,8 @@
             <div class="row">
 
                 <div class="col-lg-5" data-aos="fade-up">
-                    <h2 class="faq-title">Have a question? Check out the FAQ</h2>
-                    <p class="faq-description">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero
-                        sit amet adipiscing sem neque sed ipsum.</p>
+                    <h2 class="faq-title">Punya pertanyaan? Silahkan lihat FAQ</h2>
+                    <p class="faq-description">Berikut merupakan beberapa pertanyaan yang sering di tanyakan</p>
                     <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
                         <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -574,11 +573,9 @@
                     <div class="faq-container">
 
                         <div class="faq-item faq-active">
-                            <h3>Non consectetur a erat nam at lectus urna duis?</h3>
+                            <h3>Apa saja yang peru di persiapkan untuk melamar di sebuah perusahaan?</h3>
                             <div class="faq-content">
-                                <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet
-                                    non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor
-                                    purus non.</p>
+                                <p>Untuk melamar di sebuah perusahaan hal yang harus di persiapkan adalah.</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
@@ -726,12 +723,12 @@
 
                                 <div class="col-md-6">
                                     <input type="text" name="name" class="form-control"
-                                        placeholder="Your Name" required="">
+                                        placeholder="Nama" required="">
                                 </div>
 
                                 <div class="col-md-6 ">
                                     <input type="email" class="form-control" name="email"
-                                        placeholder="Your Email" required="">
+                                        placeholder="Email" required="">
                                 </div>
 
                                 <div class="col-12">
@@ -748,7 +745,7 @@
                                     <div class="error-message"></div>
                                     <div class="sent-message">Your message has been sent. Thank you!</div>
 
-                                    <button type="submit" class="btn">Send Message</button>
+                                    <button type="submit" class="btn">Kirim Pesan</button>
                                 </div>
 
                             </div>
@@ -771,7 +768,7 @@
             <div class="row gy-4 align-items-center justify-content-between">
 
                 <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
-                    <span class="about-meta">MORE ABOUT US</span>
+                    <span class="about-meta">TENTANG KAMI LEBIH LANJUT</span>
                     <h2 class="about-title">Voluptas enim suscipit temporibus</h2>
                     <p class="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                         accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
