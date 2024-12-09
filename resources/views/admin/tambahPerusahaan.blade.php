@@ -3,7 +3,7 @@
     <div class="card">
         <h5 class="card-header">Tambah Data Perusahaan</h5>
         <div class="card-body">
-            <form action="/kelola_perusahaan" method="POST" enctype="multipart/form-data">
+            <form action="/kelolaperusahaan" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group mt-1 mb-3">
                     <label for="p_nama">Nama Perusahaan</label>

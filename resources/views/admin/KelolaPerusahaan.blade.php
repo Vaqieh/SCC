@@ -67,10 +67,6 @@
         <table class="table table-custom table-lg mb-0" id="orders">
             <thead>
             <tr>
-                <th>
-                    <input class="form-check-input select-all" type="checkbox" data-select-all-target="#orders"
-                           id="defaultCheck1">
-                </th>
                 <th>No</th>
                 <th>Nama Perusahaan</th>
                 <th>Jenis Industri</th>
