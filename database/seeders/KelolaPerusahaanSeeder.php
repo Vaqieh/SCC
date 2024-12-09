@@ -12,6 +12,6 @@ class KelolaPerusahaanSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \APP\Models\KelolaPerusahaan::factory(50)->create();
     }
 }

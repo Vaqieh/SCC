@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kelolaPerusahaans', function (Blueprint $table) {
+        Schema::create('kelola_perusahaans', function (Blueprint $table) {
             $table->id();
             $table->string('p_nama');
             $table->string('email_perusahaan');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('kota');
             $table->timestamps();
         });
+        
     }
     public function down(): void
     {

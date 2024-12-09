@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class KelolaPerusahaan extends Model
 {
-    //
+    use HasFactory;
+    protected $guarded = [];
+    protected $table = 'kelola_perusahaans';
 }
