@@ -684,9 +684,9 @@
                                 <i class="bi bi-geo-alt"></i>
                             </div>
                             <div class="content">
-                                <h4>Our Location</h4>
-                                <p>A108 Adam Street</p>
-                                <p>New York, NY 535022</p>
+                                <h4>Lokasi Kami</h4>
+                                <p>Jl. Umban Sari (Patin) No.1 Rumbai</p>
+                                <p>Pekanbaru-Riau</p>
                             </div>
                         </div>
 
