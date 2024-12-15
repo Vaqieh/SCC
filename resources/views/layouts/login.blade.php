@@ -10,7 +10,7 @@
 
     <!-- Google Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=Poppins:400,600|Roboto:400,500&display=swap" rel="stylesheet">
 
     <!-- Vite CSS and JS -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -19,8 +19,9 @@
     <style>
         /* Global Styles */
         body {
-            background: #f7f2eb; /* Warna biru solid */
-            font-family: 'Nunito', sans-serif;
+            background: #E3F2FD;
+            /* Soft blue background */
+            font-family: 'Poppins', sans-serif;
             color: #333;
             margin: 0;
             display: flex;
@@ -33,19 +34,20 @@
         /* Header */
         .main-header {
             width: 100%;
-            background-color: #0056b3;
+            background-color: #0277BD;
+            /* Blue color */
             color: #fff;
             padding: 20px 0;
             text-align: center;
             position: fixed;
             top: 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .main-header h1 {
-            font-size: 24px;
+            font-size: 28px;
             margin: 0;
-            font-weight: bold;
+            font-weight: 600;
             letter-spacing: 1px;
         }
 
@@ -56,45 +58,46 @@
         .button-group a {
             display: inline-block;
             background: #fff;
-            color: #0056b3;
-            padding: 8px 15px;
+            color: #0277BD;
+            padding: 10px 18px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
             text-decoration: none;
             border-radius: 5px;
-            margin: 0 5px;
+            margin: 0 8px;
             transition: background-color 0.3s, color 0.3s;
         }
 
         .button-group a:hover {
-            background-color: #0056b3;
+            background-color: #0277BD;
             color: #fff;
         }
 
         /* Card Container */
         .login-container {
-            max-width: 400px;
+            max-width: 420px;
             width: 100%;
-            background: #7096D1;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            padding: 30px;
-            margin-top: 100px; /* Memberi jarak dari header */
+            background: #c5e0f8;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-top: 80px;
+            /* Space from header */
         }
 
         /* Header */
         .login-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .login-header h2 {
-            font-weight: bold;
-            color: #007bff;
+            font-weight: 600;
+            color: #0277BD;
         }
 
         .login-header p {
-            color: #666;
+            color: #000000;
             font-size: 14px;
         }
 
@@ -106,7 +109,7 @@
         }
 
         .form-control {
-            border: 1px solid #dce8f0;
+            border: 1px solid #ffffff;
             border-radius: 8px;
             padding: 12px;
             font-size: 16px;
@@ -114,18 +117,18 @@
         }
 
         .form-control:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            border-color: #0277BD;
+            box-shadow: 0 0 5px rgba(2, 119, 189, 0.5);
             outline: none;
         }
 
         /* Button */
         .btn-custom {
-            background-color: #007bff;
+            background-color: #0277BD;
             color: #fff;
-            padding: 12px;
+            padding: 14px;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 600;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -133,35 +136,35 @@
         }
 
         .btn-custom:hover {
-            background-color: #0056b3;
+            background-color: #01579b;
             transform: translateY(-2px);
         }
 
         /* Links */
         .text-link {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .text-link a {
-            color: #007bff;
+            color: #0277BD;
             font-size: 14px;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .text-link a:hover {
-            color: #0056b3;
+            color: #01579b;
         }
 
         /* Logo */
         .logo {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .logo img {
-            width: 80px;
+            width: 100px;
             height: auto;
         }
     </style>
@@ -170,7 +173,10 @@
 <body>
     <!-- Header -->
     <div class="main-header">
-        <h1>SUMATERA CAREER CENTER</h1>
+        <div class="header-content">
+            <img src="ILanding/assets/imgimage/logo_scc.png" alt="SCC Logo" class="logo-img">
+            <h1>SUMATERA CAREER CENTER</h1>
+        </div>
         <div class="button-group">
             <a href="{{ route('login') }}">Login</a>
             <a href="{{ route('register') }}">Register</a>
