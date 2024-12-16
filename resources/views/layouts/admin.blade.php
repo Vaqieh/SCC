@@ -539,8 +539,8 @@
                             alt="image">
                     </div>
                     <div>
-                        <div class="fw-bold">Timotheus Bendan</div>
-                        <small class="text-muted">Admin</small>
+                        {{ Auth::user()->name }}
+                        <br><small class="text-muted">Admin</small>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
