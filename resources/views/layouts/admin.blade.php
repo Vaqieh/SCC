@@ -614,6 +614,22 @@
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
+                            <i class="bi bi-receipt"></i>
+                        </span>
+                        <span>Kelola Perusahaan </span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolalowongan">Data Lowongan</a>
+                        </li>
+                        <li>
+                            <a href="/kelolalowonga/create">Tambah Data Lowongan</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
                             <i class="bi bi-wallet2"></i>
                         </span>
                         <span>Buyer</span>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelolaPelamarController;
 use App\Http\Controllers\KelolaPerusahaanController;
+use App\Http\Controllers\KelolaLowonganController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PelamarController;
 use App\Http\Controllers\PengunjungController;
@@ -25,6 +26,7 @@ use Illuminate\Support\Facades\Auth;
 Route::middleware(['auth'])->group(function () {
     Route::resource('kelolapelamar',KelolaPelamarController::class);
     Route::resource('kelolaperusahaan',KelolaPerusahaanController::class);
+    Route::resource('kelolalowongan',KelolaLowonganController::class);
     Route::resource('DashboardAdmin',HomeController::class);
     
 });
