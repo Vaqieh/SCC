@@ -115,7 +115,7 @@
                             <nav id="navmenu" class="navmenu">
                                 <ul>
                                     <li><a href="#hero" class="active">Dashboard</a></li>
-                                    <li><a href="#hero">Lowongan</a></li>
+                                    <li><a href="#features">Lowongan</a></li>
                                     <li><a href="#about">Tentang Kami</a></li>
                                 </ul>
                                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

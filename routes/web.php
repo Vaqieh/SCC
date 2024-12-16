@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('kelolapelamar',KelolaPelamarController::class);
     Route::resource('kelolaperusahaan',KelolaPerusahaanController::class);
     Route::resource('DashboardAdmin',HomeController::class);
+    
 });
 
 Route::resource('pelamar',PelamarController::class);
@@ -39,6 +40,15 @@ Route::get('logout', function() {
     return redirect('login');
 });
 
+//login pelamar
+Route::get('/loginPelamar.blade.php', function () {
+    return view('layouts.loginPelamar');
+})->name('loginPelamar');
+
+//login perusahaan
+Route::get('/loginPerusahaan.blade.php', function () {
+    return view('layouts.loginPerusahaan');
+})->name('loginPerusahaan');
 
 Auth::routes();
 

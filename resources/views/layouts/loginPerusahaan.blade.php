@@ -197,7 +197,7 @@
         </div>
 
         <div class="login-header">
-            <h2>Login Admin</h2>
+            <h2>Login Perusahaan</h2>
             <p>Please sign in to your account</p>
         </div>
 
