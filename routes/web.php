@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     
     // Rute untuk Dashboard Admin
     Route::resource('DashboardAdmin', HomeController::class);
-
+    Route::resource('DashboardAdmin',HomeController::class);
 });
 
 // Rute untuk mengelola pelamar (semua pengguna bisa mengaksesnya)
@@ -45,8 +45,15 @@ Route::get('logout', function() {
     Auth::logout();
     return redirect('login');
 });
+//login pelamar
+Route::get('/loginPelamar.blade.php', function () {
+    return view('layouts.loginPelamar');
+})->name('loginPelamar');
 
-// Rute untuk otentikasi (login, register, dll) menggunakan Laravel Auth
+//login perusahaan
+Route::get('/loginPerusahaan.blade.php', function () {
+    return view('layouts.loginPerusahaan');
+})->name('loginPerusahaan');
 Auth::routes();
 
 // Rute untuk halaman home
