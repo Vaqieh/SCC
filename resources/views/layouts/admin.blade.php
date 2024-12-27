@@ -544,9 +544,6 @@
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a href="{{ route('profil.edit') }}" class="dropdown-item d-flex align-items-center">
-                        <i class="bi bi-person dropdown-item-icon"></i> Profile
-                    </a>
                     <a href="#" class="dropdown-item d-flex align-items-center">
                         <i class="bi bi-envelope dropdown-item-icon"></i> Inbox
                     </a>

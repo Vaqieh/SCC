@@ -4,7 +4,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelolaPelamarController;
 use App\Http\Controllers\KelolaPerusahaanController;
 use App\Http\Controllers\KelolaLowonganController;
-use App\Http\Controllers\ProfileController; // Tambahkan import controller
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PelamarController;
 use App\Http\Controllers\PengunjungController;

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }} - Register</title>
+
+    <!-- Google Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Poppins:400,600|Roboto:400,500&display=swap" rel="stylesheet">
+
+    <!-- Vite CSS and JS -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background: #E3F2FD;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Header */
+        .main-header {
+            width: 100%;
+            background-color: #0277BD;
+            color: #fff;
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .header-left img {
+            width: 150px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        .header-left h1 {
+            font-size: 22px;
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            padding-right: 20px;
+        }
+
+        .button-group a {
+            display: inline-block;
+            background: #fff;
+            color: #0277BD;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button-group a:hover {
+            background-color: #0277BD;
+            color: #fff;
+        }
+
+        /* Form Styling */
+        .register-container {
+            max-width: 700px;
+            width: 100%;
+            background: #c5e0f8;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-top: 100px;
+        }
+
+        .form-control {
+            border: 1px solid #0277BD;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #0277BD;
+            box-shadow: 0 0 5px rgba(2, 119, 189, 0.5);
+            outline: none;
+        }
+
+        .btn-custom {
+            background-color: #0277BD;
+            color: #fff;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .btn-custom:hover {
+            background-color: #01579b;
+            transform: translateY(-2px);
+        }
+
+        /* For responsiveness */
+        @media (max-width: 768px) {
+            .register-container {
+                padding: 20px;
+            }
+
+            .header-left img {
+                width: 120px;
+            }
+
+            .header-left h1 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="main-header">
+        <div class="header-left">
+            <img src="{{ asset('image/logo_scc_white.png') }}" alt="Logo SCC">
+            <h1>SUMATERA CAREER CENTER</h1>
+        </div>
+        <div class="button-group">
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Register</a>
+        </div>
+    </div>
+
+    <!-- Register Form -->
+    @yield('content')
+
+</body>
+</html>
