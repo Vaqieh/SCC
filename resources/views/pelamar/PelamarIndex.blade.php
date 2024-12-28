@@ -348,7 +348,6 @@
             <section id="about" class="testimonials section light-background">
 
                 <h2>Tentang Kami</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -415,7 +414,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center">
-                            <img src="assets/img/features-illustration-2.webp" alt="" class="img-fluid">
+                            
                         </div>
                     </div>
                 </div><!-- End tab content item -->
@@ -602,5 +601,5 @@
             </div>
         </div>
     </section><!-- /Contact Section -->
-    
+
 </main>
