@@ -9,6 +9,7 @@ use App\Http\Controllers\PelamarController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\LamarController;
+use App\Http\Controllers\LowonganController;
 use Illuminate\Support\Facades\Auth;
 
 // Rute yang dikelompokkan dengan middleware 'auth' hanya bisa diakses jika sudah login
@@ -27,17 +28,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('DashboardAdmin',HomeController::class);
 });
 
-// Rute untuk mengelola pelamar (semua pengguna bisa mengaksesnya)
-Route::resource('pelamar', PelamarController::class);
-
-// Rute untuk mengelola pengunjung
-Route::resource('pengunjung', PengunjungController::class);
-
-// Rute untuk mengelola data perusahaan
-Route::resource('perusahaan', PerusahaanController::class);
-
-// Rute untuk mengelola lamaran pekerjaan
-Route::resource('lamar', LamarController::class);
+Route::resource('pelamar',PelamarController::class);
+Route::resource('pengunjung',PengunjungController::class);
+Route::resource('perusahaan',PerusahaanController::class);
+Route::resource('lamar',LamarController::class);
 
 // Rute untuk logout
 Route::get('logout', function() {
