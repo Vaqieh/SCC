@@ -17,6 +17,7 @@
 
     <!-- Custom Styles -->
     <style>
+        /* Global Styles */
         body {
             background: #E3F2FD;
             font-family: 'Poppins', sans-serif;
@@ -85,9 +86,9 @@
             color: #fff;
         }
 
-        /* Form Styling */
+        /* Card Container */
         .register-container {
-            max-width: 700px;
+            max-width: 420px;
             width: 100%;
             background: #c5e0f8;
             border-radius: 12px;
@@ -96,8 +97,29 @@
             margin-top: 100px;
         }
 
+        .register-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .register-header h2 {
+            font-weight: 600;
+            color: #0277BD;
+        }
+
+        .register-header p {
+            color: #000000;
+            font-size: 14px;
+        }
+
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         .form-control {
-            border: 1px solid #0277BD;
+            border: 1px solid #ffffff;
             border-radius: 8px;
             padding: 12px;
             font-size: 16px;
@@ -127,19 +149,30 @@
             transform: translateY(-2px);
         }
 
-        /* For responsiveness */
-        @media (max-width: 768px) {
-            .register-container {
-                padding: 20px;
-            }
+        .text-link {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-            .header-left img {
-                width: 120px;
-            }
+        .text-link a {
+            color: #0277BD;
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-            .header-left h1 {
-                font-size: 18px;
-            }
+        .text-link a:hover {
+            color: #01579b;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
         }
     </style>
 </head>
@@ -157,8 +190,30 @@
         </div>
     </div>
 
-    <!-- Register Form -->
-    @yield('content')
+    <!-- Register Form Container -->
+    <div class="register-container">
+        <div class="logo">
+            <img src="{{ asset('image/logo_scc_white.png') }}" alt="Logo SCC">
+        </div>
 
+        <div class="register-header">
+            <h2>Register</h2>
+            <p>Create a new account</p>
+        </div>
+
+        <form class="register-form" action="{{ route('register') }}" method="POST">
+            @csrf
+            <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+            <input type="email" name="email" class="form-control" placeholder="Email" required>
+            <input type="password" name="password" class="form-control" placeholder="Password" required>
+            <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
+            <button type="submit" class="btn-custom">Register</button>
+        </form>
+
+        <div class="text-link">
+            <p>Already have an account? <a href="{{ route('login') }}">Login here</a>.</p>
+        </div>
+    </div>
 </body>
+
 </html>
