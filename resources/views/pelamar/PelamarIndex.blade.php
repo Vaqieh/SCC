@@ -2,7 +2,6 @@
 
 @section('content')
 @endsection
-
 <main class="main">
 
     <!-- Hero Section -->
@@ -221,7 +220,7 @@
                     </div>
                 </div>
             </div>
-            <center><a href="LowonganDetail1.html" style="text-decoration: none; color: black;"
+            <center><a href="/lowongan" style="text-decoration: none; color: black;"
                     onmouseover="this.style.color='blue'" onmouseout="this.style.color='black'">Tampilkan Lebih Banyak
                     Lowongan</a> </center>
         </div>
@@ -603,5 +602,5 @@
             </div>
         </div>
     </section><!-- /Contact Section -->
-
+    
 </main>

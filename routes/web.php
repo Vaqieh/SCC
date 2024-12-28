@@ -8,6 +8,7 @@ use App\Http\Controllers\PelamarController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\LamarController;
+use App\Http\Controllers\LowonganController;
 use Illuminate\Support\Facades\Auth;
 
 // use App\Models\Lamar;
@@ -32,6 +33,7 @@ Route::resource('pelamar',PelamarController::class);
 Route::resource('pengunjung',PengunjungController::class);
 Route::resource('perusahaan',PerusahaanController::class);
 Route::resource('lamar',LamarController::class);
+Route::resource('lowongan',LowonganController::class);
 
 
 Route::get('logout', function() {

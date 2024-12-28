@@ -13,7 +13,7 @@ class PelamarController extends Controller
      */
     public function index()
     {
-        return view('PelamarIndex');
+        return view('pelamar.PelamarIndex');
     }
 
     /**
