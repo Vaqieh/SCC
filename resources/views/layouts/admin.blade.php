@@ -670,7 +670,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="menu-divider">Apps</li>
+                {{-- <li class="menu-divider">Apps</li>
                 <li>
                     <a href="./chats.html">
                         <span class="nav-link-icon">
@@ -855,8 +855,8 @@
                             <i class="bi bi-person-raised-hand"></i>
                         </span>
                         <span>Support</span>
-                    </a>
-                </li>
+                    </a> --}}
+                {{-- </li> --}}
             </ul>
         </div>
     </div>
