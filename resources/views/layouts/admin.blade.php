@@ -539,14 +539,11 @@
                             alt="image">
                     </div>
                     <div>
-                        <div class="fw-bold">Timotheus Bendan</div>
-                        <small class="text-muted">Admin</small>
+                        {{ Auth::user()->name }}
+                        <br><small class="text-muted">Admin</small>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a href="#" class="dropdown-item d-flex align-items-center">
-                        <i class="bi bi-person dropdown-item-icon"></i> Profile
-                    </a>
                     <a href="#" class="dropdown-item d-flex align-items-center">
                         <i class="bi bi-envelope dropdown-item-icon"></i> Inbox
                     </a>
@@ -614,6 +611,22 @@
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
+                            <i class="bi bi-receipt"></i>
+                        </span>
+                        <span>Kelola Perusahaan </span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolalowongan">Data Lowongan</a>
+                        </li>
+                        <li>
+                            <a href="/kelolalowonga/create">Tambah Data Lowongan</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
                             <i class="bi bi-wallet2"></i>
                         </span>
                         <span>Buyer</span>
@@ -657,7 +670,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="menu-divider">Apps</li>
+                {{-- <li class="menu-divider">Apps</li>
                 <li>
                     <a href="./chats.html">
                         <span class="nav-link-icon">
@@ -842,8 +855,8 @@
                             <i class="bi bi-person-raised-hand"></i>
                         </span>
                         <span>Support</span>
-                    </a>
-                </li>
+                    </a> --}}
+                {{-- </li> --}}
             </ul>
         </div>
     </div>

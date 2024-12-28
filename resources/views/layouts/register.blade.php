@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} - Login</title>
+    <title>{{ config('app.name', 'Laravel') }} - Register</title>
 
     <!-- Google Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -87,7 +87,7 @@
         }
 
         /* Card Container */
-        .login-container {
+        .register-container {
             max-width: 420px;
             width: 100%;
             background: #c5e0f8;
@@ -97,22 +97,22 @@
             margin-top: 100px;
         }
 
-        .login-header {
+        .register-header {
             text-align: center;
             margin-bottom: 25px;
         }
 
-        .login-header h2 {
+        .register-header h2 {
             font-weight: 600;
             color: #0277BD;
         }
 
-        .login-header p {
+        .register-header p {
             color: #000000;
             font-size: 14px;
         }
 
-        .login-form {
+        .register-form {
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -190,26 +190,28 @@
         </div>
     </div>
 
-    <!-- Login Form Container -->
-    <div class="login-container">
+    <!-- Register Form Container -->
+    <div class="register-container">
         <div class="logo">
             <img src="{{ asset('image/logo_scc_white.png') }}" alt="Logo SCC">
         </div>
 
-        <div class="login-header">
-            <h2>Login Admin</h2>
-            <p>Please sign in to your account</p>
+        <div class="register-header">
+            <h2>Register</h2>
+            <p>Create a new account</p>
         </div>
 
-        <form class="login-form" action="{{ route('login') }}" method="POST">
+        <form class="register-form" action="{{ route('register') }}" method="POST">
             @csrf
+            <input type="text" name="name" class="form-control" placeholder="Full Name" required>
             <input type="email" name="email" class="form-control" placeholder="Email" required>
             <input type="password" name="password" class="form-control" placeholder="Password" required>
-            <button type="submit" class="btn-custom">Login</button>
+            <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
+            <button type="submit" class="btn-custom">Register</button>
         </form>
 
         <div class="text-link">
-            <p>Forgot your password? <a href="#">Reset it here</a>.</p>
+            <p>Already have an account? <a href="{{ route('login') }}">Login here</a>.</p>
         </div>
     </div>
 </body>
