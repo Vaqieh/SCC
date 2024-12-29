@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('kelolalowongan',AdminLowonganController::class);
 
     // Rute untuk Dashboard Admin
-    Route::resource('HomeAdmin', HomeController::class);
+    Route::resource('/HomeAdmin', HomeController::class);
 });
 
 Route::resource('pelamar',PelamarController::class);
