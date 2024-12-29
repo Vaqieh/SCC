@@ -24,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('kelolalowongan',KelolaLowonganController::class);
 
     // Rute untuk Dashboard Admin
-    Route::resource('DashboardAdmin', HomeController::class);
+    Route::resource('HomeAdmin', HomeController::class);
 });
 
 Route::resource('pelamar',PelamarController::class);
@@ -50,4 +50,4 @@ Route::get('/loginPerusahaan', function () {
 Auth::routes();
 
 // Rute untuk halaman home
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
