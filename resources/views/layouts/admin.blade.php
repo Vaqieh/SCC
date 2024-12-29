@@ -527,8 +527,8 @@
                 <img src="{{ asset('image/logo_scc (1).png') }}" alt="logo" style="width: 110px; height: auto;">
                 <span style="font-size: 20px;">Sumatera Carrer Center</span>
             </a>
-            
-            
+
+
             <a href="#" class="btn btn-sm menu-close-btn">
                 <i class="bi bi-x"></i>
             </a>
@@ -537,8 +537,7 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center" data-bs-toggle="dropdown">
                     <div class="avatar me-3">
-                        <img src="cakeadmin/html/images/user/man_avatar5.jpg" class="rounded-circle"
-                            alt="image">
+                        <img src="cakeadmin/html/images/user/man_avatar5.jpg" class="rounded-circle" alt="image">
                     </div>
                     <div>
                         {{ Auth::user()->name }}
@@ -553,10 +552,15 @@
                         data-sidebar-target="#settings">
                         <i class="bi bi-gear dropdown-item-icon"></i> Settings
                     </a>
-                    <a href="{{ route('logout') }}" class="dropdown-item d-flex align-items-center text-danger">
-                        <i class="bi bi-box-arrow-right dropdown-item-icon"></i> Logout
-                    </a>
-                    
+                    <!-- Form logout dengan metode POST -->
+                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="dropdown-item d-flex align-items-center text-danger">
+                            <i class="bi bi-box-arrow-right dropdown-item-icon"></i> Logout
+                        </button>
+                    </form>
+
+
                 </div>
             </div>
             <ul>
@@ -998,7 +1002,7 @@
         <!-- content-footer -->
         <footer class="content-footer">
             <div><a href="https://cakeadmin.com" target="_blank">Sumatera Carrer Center</a> © 2024</div>
-            
+
         </footer>
         <!-- ./ content-footer -->
 
@@ -1009,7 +1013,7 @@
     <script src="{{ asset('cakeadmin/html/libs/jquery-3.7.1.min.js') }}"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    
+
     <!-- Nicescroll -->
     <script src="{{ asset('cakeadmin/html/libs/nicescroll.js') }}"></script>
 
