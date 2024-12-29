@@ -524,9 +524,11 @@
     <div class="menu">
         <div class="menu-header">
             <a href="/DashboardAdmin" class="menu-header-logo">
-                <img src="{{ asset('image/logo_scc (1).png') }}" alt="logo">
-                <span>Sumatera Carrer Center</span>
+                <img src="{{ asset('image/logo_scc (1).png') }}" alt="logo" style="width: 110px; height: auto;">
+                <span style="font-size: 20px;">Sumatera Carrer Center</span>
             </a>
+            
+            
             <a href="#" class="btn btn-sm menu-close-btn">
                 <i class="bi bi-x"></i>
             </a>
@@ -551,10 +553,10 @@
                         data-sidebar-target="#settings">
                         <i class="bi bi-gear dropdown-item-icon"></i> Settings
                     </a>
-                    <a href="./login.html" class="dropdown-item d-flex align-items-center text-danger"
-                        target="_blank">
+                    <a href="{{ route('logout') }}" class="dropdown-item d-flex align-items-center text-danger">
                         <i class="bi bi-box-arrow-right dropdown-item-icon"></i> Logout
                     </a>
+                    
                 </div>
             </div>
             <ul>
@@ -586,7 +588,7 @@
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
-                            <i class="bi bi-truck"></i>
+                            <i class="bi-file-earmark-person"></i>
                         </span>
                         <span>Kelola Pelamar</span>
                     </a>
@@ -611,9 +613,9 @@
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
-                            <i class="bi bi-receipt"></i>
+                            <i class="bi bi-briefcase"></i>
                         </span>
-                        <span>Kelola Perusahaan </span>
+                        <span>Kelola Lowongan </span>
                     </a>
                     <ul>
                         <li>
@@ -877,7 +879,7 @@
                 <img width="100" src="{{ asset('cakeadmin/html/logo.png') }}" alt="logo">
             </a>
             <!-- ./ Logo -->
-            <div class="page-title">Dashboard</div>
+            {{-- <div class="page-title">Dashboard</div> --}}
             <form class="search-form">
                 <div class="input-group">
                     <button class="btn btn-outline-light" type="button" id="button-addon1">
@@ -898,7 +900,7 @@
                             <i class="bi bi-bell icon-lg"></i>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a href="#" class="nav-link nav-link-notify" data-count="3" data-bs-toggle="dropdown">
                             <i class="bi bi-cart2 icon-lg"></i>
                         </a>
@@ -974,7 +976,7 @@
                         <button class="btn btn-primary btn-icon">
                             <i class="bi bi-plus-circle"></i> Create Report
                         </button>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <!-- Header mobile buttons -->
@@ -995,14 +997,8 @@
 
         <!-- content-footer -->
         <footer class="content-footer">
-            <div><a href="https://cakeadmin.com" target="_blank">CakeAdmin</a> © 2023</div>
-            <div>
-                <nav class="nav gap-4">
-                    <a href="https://themeforest.net/licenses/standard" class="nav-link">Licenses</a>
-                    <a href="#" class="nav-link">Change Log</a>
-                    <a href="#" class="nav-link">Get Help</a>
-                </nav>
-            </div>
+            <div><a href="https://cakeadmin.com" target="_blank">Sumatera Carrer Center</a> © 2024</div>
+            
         </footer>
         <!-- ./ content-footer -->
 
@@ -1011,7 +1007,9 @@
 
     <!-- JQuery -->
     <script src="{{ asset('cakeadmin/html/libs/jquery-3.7.1.min.js') }}"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
     <!-- Nicescroll -->
     <script src="{{ asset('cakeadmin/html/libs/nicescroll.js') }}"></script>
 
@@ -1026,6 +1024,18 @@
 
     <!-- Main Javascript file -->
     <script src="{{ asset('cakeadmin/html/js/app.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: function() {
+                    return $(this).data('placeholder');
+                },
+                allowClear: true,
+                width: 'resolve'
+            });
+        });
+    </script>
+    @yield('js')
 </body>
 
 </html>
