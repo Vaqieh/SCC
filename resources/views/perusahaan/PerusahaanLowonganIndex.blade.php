@@ -1,7 +1,7 @@
 @extends('layouts.admin', ['title' => 'Kelola Data Pelamar'])
 @section('content')
 <div class="content ">
-    
+
     <div class="mb-4">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -64,76 +64,38 @@
     </div>
 
     <div class="table-responsive">
-        <br>
-        <a href="/kelolaperusahaan/create" class="btn btn-primary mb-3">Tambah Lowongan</a>
         <table class="table table-custom table-lg mb-0" id="orders">
             <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Perusahaan</th>
-                <th>Jenis Industri</th>
-                <th>Negara</th>
-                <th>Provinsi</th>
-                <th>Kota</th>
-                <th>Kabupate</th>
-                <th>Tahun Berdiri</th>
-                <th class="text-end">Actions</th>
-            </tr>
+                <tr>
+                    <th>Nama Lowongan</th>
+                    <th>Status</th>
+                    <th>Pendidikan</th>
+                    <th>Pengalaman Kerja</th>
+                    <th>Umur</th>
+                    <th>Tanggal Buat</th>
+                    <th>Tanggal Berakhir</th>
+                    <th>Gambar</th>
+                    <th>Aksi</th>
+                </tr>
             </thead>
             <tbody>
-                @foreach ($kelolaperusahaan as $item)
+                @foreach ($lowongans as $lowongan)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->p_nama }}</td>
-                    <td>{{ $item->jenis_industri }}</td>
-                    <td>{{ $item->negara }}</td>
-                    <td>{{ $item->provinsi }}</td>
-                    <td>{{ $item->kota }}</td>
-                    <td>{{ $item->kabupaten }}</td>
-                    <td>{{ $item->p_tahunBerdiri }}</td>
-                    <td class="text-end">
-                        <div class="d-flex">
-                            <div class="dropdown ms-auto">
-                                <a href="#" data-bs-toggle="dropdown"
-                                class="btn btn-floating"
-                                aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-three-dots"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="#" class="dropdown-item">Show</a>
-                                    <a href="{{ route('kelolaperusahaan.edit', $item->id) }}" class="dropdown-item">Edit</a>
-                                    <a href="#" class="dropdown-item">Delete</a>
-                                </div>
-                            </div>
-                        </div>
+                    <td>{{ $lowongan->nama_lowongan }}</td>
+                    <td>{{ $lowongan->status_lowongan }}</td>
+                    <td>{{ $lowongan->pendidikan }}</td>
+                    <td>{{ $lowongan->pengalaman_kerja }}</td>
+                    <td>{{ $lowongan->umur }}</td>
+                    <td>{{ $lowongan->tanggal_buat }}</td>
+                    <td>{{ $lowongan->tanggal_berakhir }}</td>
+                    <td>
+                        <img src="{{ asset('storage/' . $lowongan->gambar_lowongan) }}" alt="Gambar Lowongan" width="100">
+                    </td>
+                    <td>
+                        <a href="{{ route('perusahaan.lowongan.show', $lowongan->id) }}" class="btn btn-info">Show</a>
                     </td>
                 </tr>
                 @endforeach
-            
-        
             </tbody>
         </table>
-        <!-- Pagination Links -->
-        {{ $kelolaperusahaan->links() }}
-    </div>
-
-    <nav class="mt-4" aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    </div>
-@endsection
+        @endsection

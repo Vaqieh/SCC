@@ -5,7 +5,7 @@
     <div class="card">
         <div class="text-center">
             <img src="{{ asset('image/logo_scc (1).png') }}" alt="Sumatera Career Center" style="width: 150px;">
-            <h4>Login Admixxxxxxxxxxxxxxxxxxxx</h4>
+            <h4>Login Admin</h4>
         </div>
 
         <form method="POST" action="{{ route('login') }}">

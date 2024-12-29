@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class KelolaPerusahaan extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
-    protected $table = 'kelola_perusahaans';
+
+   
+
+    // Relasi ke Lowongan
+    public function lowongans()
+    {
+        return $this->hasMany(Lowongan::class);
+    }
 }
