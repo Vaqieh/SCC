@@ -7,20 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Admin extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'admin_id',
-        'admin_nama',
-        'admin_nohp',
-        'password_admin',
-        'email',
-        'login_history',
-        'logout_history',
-        'password_admin',
-    ];
+    protected $guard=[];
 
     // Relasi hasMany ke tabel lowongan
     public function lowongans()
     {
-        return $this->hasMany(Lowongan::class, 'admin_id');
+        return $this->hasMany(Lowongan::class);
     }
 }

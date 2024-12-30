@@ -8,19 +8,31 @@
                 @csrf
 
                 <!-- Nama Admin -->
-                <div class="form-group mt-1 mb-3">
+                <div class="form-group mt-3">
                     <label for="admin_nama">Nama Admin</label>
-                    <input type="text" class="form-control" id="admin_nama" name="admin_nama" value="{{ auth()->user()->name }}" readonly>
+                    <select name="admin_id" class="form-control select2" data-placeholder="Cari Admin" style="width: 100%;">
+                        <option value="">-- Admin --</option>
+                        @foreach ($listAdmin as $item)
+                            <option value="{{ $item->id }}" @selected(old('admin_id') == $item->id)>
+                                {{ $item->admin_nama }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <span class="text-danger">{{ $errors->first('admin_id') }}</span>
                 </div>
 
                 <!-- Nama Perusahaan -->
                 <div class="form-group mt-3">
                     <label for="perusahaan_id">Nama Perusahaan</label>
-                    <select name="perusahaan_id" id="perusahaan_id" class="form-select">
+                    <select name="perusahaan_id" class="form-control select2" data-placeholder="Cari Perusahaan" style="width: 100%;">
+                        <option value="">-- Perusahaan --</option>
                         @foreach ($listPerusahaan as $perusahaan)
-                            <option value="{{ $perusahaan->id }}">{{ $perusahaan->p_nama }}</option>
+                            <option value="{{ $perusahaan->id }}" @selected(old('perusahaan_id') == $perusahaan->id)>
+                                {{ $perusahaan->p_nama }}
+                            </option>
                         @endforeach
                     </select>
+                    <span class="text-danger">{{ $errors->first('perusahaan_id') }}</span>
                 </div>
 
                 <!-- Nama Lowongan -->
@@ -43,7 +55,8 @@
                     <label for="tanggal_buat">Tanggal Buka</label>
                     <input type="date" name="tanggal_buat" id="tanggal_buat" class="form-control" required>
                 </div>
-                <!-- Tanggal Verifikasi dan Tanggal Berakhir -->
+                
+                <!-- Tanggal Verifikasi -->
                 <div class="form-group mt-3">
                     <label for="tanggal_verifikasi">Tanggal Verifikasi</label>
                     <input type="date" name="tanggal_verifikasi" id="tanggal_verifikasi" class="form-control" required>
@@ -53,12 +66,14 @@
                     <label for="tanggal_berakhir">Tanggal Berakhir</label>
                     <input type="date" name="tanggal_berakhir" id="tanggal_berakhir" class="form-control" required>
                 </div>
-                <!-- Pengalaman KerjA -->
+
+                <!-- Pengalaman Kerja -->
                 <div class="form-group mt-3">
                     <label for="pengalaman_kerja">Pengalaman Kerja</label>
                     <input type="text" class="form-control" id="pengalaman_kerja" name="pengalaman_kerja" required>
                 </div>
-                <!--Pendidikan-->
+
+                <!-- Pendidikan -->
                 <div class="form-group mt-3">
                     <label for="pendidikan">Pendidikan Minimal</label>
                     <select class="form-control" id="pendidikan" name="pendidikan" required>
@@ -70,17 +85,25 @@
                         <option value="S3">Strata 3 (S3)</option>
                     </select>
                 </div>
-                
+
                 <!-- Gambar Lowongan -->
                 <div class="form-group mt-3">
                     <label for="gambar_lowongan">Upload Gambar Lowongan</label>
                     <input type="file" name="gambar_lowongan" class="form-control" id="gambar_lowongan" accept="image/*">
                 </div>
 
+                <!-- Syarat Umur -->
+                <div class="form-group mt-3">
+                    <label for="umur">Syarat Umur</label>
+                    <input type="number" class="form-control" id="umur" name="umur" required>
+                </div>
+
+                <!-- Detail -->
                 <div class="form-group mt-3">
                     <label for="detail">Detail</label>
                     <input type="text" name="detail" id="detail" class="form-control" required>
                 </div>
+
                 <button type="submit" class="btn btn-primary mt-3">Tambah Lowongan</button>
             </form>
         </div>

@@ -546,8 +546,9 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a href="#" class="dropdown-item d-flex align-items-center">
-                        <i class="bi bi-envelope dropdown-item-icon"></i> Inbox
+                        <i class="bi bi-person dropdown-item-icon"></i> Profil
                     </a>
+                    
                     <a href="#" class="dropdown-item d-flex align-items-center"
                         data-sidebar-target="#settings">
                         <i class="bi bi-gear dropdown-item-icon"></i> Settings

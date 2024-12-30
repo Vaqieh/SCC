@@ -10,8 +10,8 @@ class AdminKelolaLowonganController extends Controller
 {
     public function index()
     {
-        $admins = Admin::all();
-        return view('admin.KelolaLowongan', compact('admins'));
+        // $admins = Admin::all();
+        // return view('admin.KelolaLowongan', compact('admins'));
     }
 
     // Menampilkan form tambah admin
