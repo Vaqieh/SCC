@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('perusahaan/dashboard', [PerusahaanController::class, 'index'])->name('perusahaan.dashboard');
+    Route::resource('kelolalowonganperusahaan', PerusahaanController::class);
 });
 
 Route::prefix('register')->group(function () {

@@ -19,7 +19,7 @@ class PerusahaanController extends Controller
             return redirect('/login/perusahaan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
         }
 
-        return view('admin.dashboardadmin');
+        return view('perusahaan.dashboardperusahaan');
     }
 
     /**
@@ -27,7 +27,7 @@ class PerusahaanController extends Controller
      */
     public function create()
     {
-        //
+        return view('perusahaan.perusahaanLowonganIndex');
     }
 
     /**
