@@ -768,7 +768,7 @@
             <div class="row gy-4 align-items-center justify-content-between">
 
                 <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
-                    <span class="about-meta">TENTANG KAMI LEBIH LANJUT</span>
+                    <span class="about-meta">TENTANG KAMI LEBIH</span>
                     <h2 class="about-title">Voluptas enim suscipit temporibus</h2>
                     <p class="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                         accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
