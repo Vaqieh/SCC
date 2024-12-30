@@ -8,6 +8,9 @@
     <meta name="description" content="">
     <title> CakeAdmin Bootstrap 5 Demo - Free Admin Template </title>
 
+    <!-- Add this to include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('cakeadmin/html/favicon.png') }}" />
 
@@ -548,7 +551,7 @@
                     <a href="#" class="dropdown-item d-flex align-items-center">
                         <i class="bi bi-person dropdown-item-icon"></i> Profil
                     </a>
-                    
+
                     <a href="#" class="dropdown-item d-flex align-items-center"
                         data-sidebar-target="#settings">
                         <i class="bi bi-gear dropdown-item-icon"></i> Settings

@@ -19,8 +19,14 @@ class HomeController extends Controller
     if (Auth::user()->role !== 'admin') {
         return redirect()->route('login.admin');  // Redirect ke login jika bukan admin
     }
+
+    // Hitung total akun berdasarkan role
+    $totalPelamar = User::where('role', 'pelamar')->count(); // Sesuaikan dengan role yang ada di tabel users
+    $totalPerusahaan = User::where('role', 'perusahaan')->count(); // Sesuaikan dengan role yang ada
+    $totalEmail = User::where('role', 'email')->count();
+    return view('admin.dashboardadmin', compact('totalPelamar', 'totalPerusahaan', 'totalEmail'));
     // Jika role adalah admin, arahkan ke dashboard admin
-    return view('admin.dashboardadmin');
+
 }
 
 }

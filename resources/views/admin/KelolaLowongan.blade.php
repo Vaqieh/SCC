@@ -88,11 +88,11 @@
                             <td>
                                 <a href="{{ route('kelolalowongan.show', $item->id) }}" class="btn btn-info">Show</a>
 
-                                <!-- Form untuk Verifikasi -->
-                                <form action="{{ route('kelolalowongan.verify', $item->id) }}" method="POST" style="display:inline;">
+                                {{-- <!-- Form untuk Verifikasi -->
+                                <form action=" {{ route('kelolalowongan.verify', $item->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     <button type="submit" class="btn btn-success">Verifikasi</button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @endforeach

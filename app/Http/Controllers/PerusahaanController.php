@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Lowongan;
 class PerusahaanController extends Controller
 {
     /**
@@ -11,6 +12,7 @@ class PerusahaanController extends Controller
      */
     public function index()
     {
+        $lowongans = Lowongan::all();
         // Cek apakah pengguna sudah login
         if (Auth::guest()) {
             return redirect()->route('login.perusahaan');  // Redirect ke login admin jika belum login
@@ -19,7 +21,7 @@ class PerusahaanController extends Controller
             return redirect('/login/perusahaan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
         }
 
-        return view('perusahaan.dashboardperusahaan');
+        return view('perusahaan.dashboardperusahaan',compact('lowongans'));
     }
 
     /**
@@ -27,7 +29,8 @@ class PerusahaanController extends Controller
      */
     public function create()
     {
-        return view('perusahaan.perusahaanLowonganIndex');
+        $lowongans = Lowongan::all();
+        return view('perusahaan.perusahaanLowonganIndex',compact('lowongans'));
     }
 
     /**
