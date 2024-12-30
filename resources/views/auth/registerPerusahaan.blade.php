@@ -10,11 +10,11 @@
                 </div>
 
                 <div class="register-header">
-                    <h2>Register Pelamar</h2>
+                    <h2>Register Perusahaan</h2>
                     <p>Create a new account</p>
                 </div>
 
-                <form class="register-form" action="{{ route('register.pelamar.submit') }}" method="POST">
+                <form class="register-form" action="{{ route('register.perusahaan.submit') }}" method="POST">
                     @csrf
                     <input type="text" name="name" class="form-control" placeholder="Full Name" required>
                     <input type="email" name="email" class="form-control" placeholder="Email" required>
@@ -22,7 +22,7 @@
                     <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
 
                     <!-- Input tersembunyi untuk role -->
-                    <input type="hidden" name="role" value="pelamar">
+                    <input type="hidden" name="role" value="perusahaan">
                     <button type="submit" class="btn-custom">Register</button>
                 </form>
 

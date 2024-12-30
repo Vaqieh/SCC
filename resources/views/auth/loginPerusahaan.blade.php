@@ -6,11 +6,11 @@
     </div>
 
     <div class="login-header">
-        <h2>Login Pelamar</h2>
+        <h2>Login Perusahaan</h2>
         <p>Please sign in to your account</p>
     </div>
 
-    <form class="login-form" action="{{ route('login.pelamar.submit') }}" method="POST">
+    <form class="login-form" action="{{ route('login.perusahaan.submit') }}" method="POST">
         @csrf
         <input type="email" name="email" class="form-control" placeholder="Email" required>
         <input type="password" name="password" class="form-control" placeholder="Password" required>

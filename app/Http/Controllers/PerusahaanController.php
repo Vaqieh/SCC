@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pelamar;
-use App\Http\Requests\StorePelamarRequest;
-use App\Http\Requests\UpdatePelamarRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-class PelamarController extends Controller
+class PerusahaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +13,13 @@ class PelamarController extends Controller
     {
         // Cek apakah pengguna sudah login
         if (Auth::guest()) {
-            return redirect()->route('login.pelamar');  // Redirect ke login admin jika belum login
+            return redirect()->route('login.perusahaan');  // Redirect ke login admin jika belum login
+        }
+        if (Auth::user()->role !== 'perusahaan') {
+            return redirect('/login/perusahaan')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
         }
 
-        if (Auth::user()->role !== 'pelamar') {
-            return redirect('/login/pelamar')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
-        }
-
-        return view('pelamar.pelamarindex');
+        return view('admin.dashboardadmin');
     }
 
     /**
@@ -37,7 +33,7 @@ class PelamarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePelamarRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -45,7 +41,7 @@ class PelamarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pelamar $pelamar)
+    public function show(string $id)
     {
         //
     }
@@ -53,7 +49,7 @@ class PelamarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pelamar $pelamar)
+    public function edit(string $id)
     {
         //
     }
@@ -61,7 +57,7 @@ class PelamarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePelamarRequest $request, Pelamar $pelamar)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -69,7 +65,7 @@ class PelamarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pelamar $pelamar)
+    public function destroy(string $id)
     {
         //
     }

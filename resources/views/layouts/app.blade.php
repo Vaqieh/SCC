@@ -148,6 +148,12 @@
                                     <li><a href="#hero" class="active">Dashboard</a></li>
                                     <li><a href="#features">Lowongan</a></li>
                                     <li><a href="#about">Tentang Kami</a></li>
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-link text-decoration-none">Logout</button>
+                                        </form>
+                                    </li>
                                 </ul>
                                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                             </nav>

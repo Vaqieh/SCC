@@ -1,5 +1,11 @@
 @extends('layouts.admin', ['title' => 'Dashboard Admin'])
 @section('content')
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
     <div class="content ">
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
