@@ -487,6 +487,8 @@
 
                         <div class="faq-item">
                             <h3>Apakah saya bisa melamar pekerjaan tanpa membuat akun di Sumatera Career Center??
+
+
                             </h3>
                             <div class="faq-content">
                                 <p>Untuk melamar pekerjaan melalui Sumatera Career Center, Anda perlu membuat akun
@@ -674,7 +676,4 @@
         </div>
 
     </section><!-- /About Section -->
-
-=======
->>>>>>> cb4d2e97e9c0a76e61738d984633e7cac44d7274:resources/views/pelamar/PelamarIndex.blade.php
 </main>
