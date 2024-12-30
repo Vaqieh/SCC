@@ -194,6 +194,12 @@
     <div class="login-container">
         @yield('content')
     </div>
+
+    @if(request()->routeIs('login')) <!-- Disable content2 for login route -->
+        <div class="login-container">
+            @yield('content2')
+        </div>
+    @endif
 </body>
 
 </html>

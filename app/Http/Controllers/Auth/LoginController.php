@@ -32,7 +32,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.semuaLogin');
+        return view('auth.perloginan');
     }
 
     // Proses login untuk Admin
