@@ -8,18 +8,15 @@
                 @csrf
 
                 <!-- Nama Admin -->
-                <div class="form-group mt-3">
-                    <label for="admin_nama">Nama Admin</label>
-                    <select name="admin_id" class="form-control select2" data-placeholder="Cari Admin" style="width: 100%;">
-                        <option value="">-- Admin --</option>
-                        @foreach ($listAdmin as $item)
-                            <option value="{{ $item->id }}" @selected(old('admin_id') == $item->id)>
-                                {{ $item->admin_nama }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <span class="text-danger">{{ $errors->first('admin_id') }}</span>
-                </div>
+<div class="form-group mt-3">
+    <label for="admin_nama">Nama Admin</label>
+    <div class="form-control-plaintext" id="admin_nama" style="color: #3399FF;">
+        {{ Auth::user()->name }}
+    </div>
+    <span class="text-danger">{{ $errors->first('name') }}</span>
+</div>
+
+
 
                 <!-- Nama Perusahaan -->
                 <div class="form-group mt-3">
@@ -55,7 +52,7 @@
                     <label for="tanggal_buat">Tanggal Buka</label>
                     <input type="date" name="tanggal_buat" id="tanggal_buat" class="form-control" required>
                 </div>
-                
+
                 <!-- Tanggal Verifikasi -->
                 <div class="form-group mt-3">
                     <label for="tanggal_verifikasi">Tanggal Verifikasi</label>

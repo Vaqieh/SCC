@@ -540,7 +540,7 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center" data-bs-toggle="dropdown">
                     <div class="avatar me-3">
-                        <img src="cakeadmin/html/images/user/man_avatar5.jpg" class="rounded-circle" alt="image">
+                        <img src="../cakeadmin/html/images/user/man_avatar5.jpg" class="rounded-circle" alt="image">
                     </div>
                     <div>
                         {{ Auth::user()->name }}
