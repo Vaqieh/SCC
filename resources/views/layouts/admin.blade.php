@@ -8,6 +8,9 @@
     <meta name="description" content="">
     <title> CakeAdmin Bootstrap 5 Demo - Free Admin Template </title>
 
+    <!-- Add this to include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('cakeadmin/html/favicon.png') }}" />
 
@@ -524,9 +527,11 @@
     <div class="menu">
         <div class="menu-header">
             <a href="/DashboardAdmin" class="menu-header-logo">
-                <img src="{{ asset('image/logo_scc (1).png') }}" alt="logo">
-                <span>Sumatera Carrer Center</span>
+                <img src="{{ asset('image/logo_scc (1).png') }}" alt="logo" style="width: 110px; height: auto;">
+                <span style="font-size: 20px;">Sumatera Carrer Center</span>
             </a>
+
+
             <a href="#" class="btn btn-sm menu-close-btn">
                 <i class="bi bi-x"></i>
             </a>
@@ -535,29 +540,31 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center" data-bs-toggle="dropdown">
                     <div class="avatar me-3">
-                        <img src="cakeadmin/html/images/user/man_avatar5.jpg" class="rounded-circle"
-                            alt="image">
+                        <img src="cakeadmin/html/images/user/man_avatar5.jpg" class="rounded-circle" alt="image">
                     </div>
                     <div>
-                        <div class="fw-bold">Timotheus Bendan</div>
-                        <small class="text-muted">Admin</small>
+                        {{ Auth::user()->name }}
+                        <br><small class="text-muted">Admin</small>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a href="#" class="dropdown-item d-flex align-items-center">
-                        <i class="bi bi-person dropdown-item-icon"></i> Profile
+                        <i class="bi bi-person dropdown-item-icon"></i> Profil
                     </a>
-                    <a href="#" class="dropdown-item d-flex align-items-center">
-                        <i class="bi bi-envelope dropdown-item-icon"></i> Inbox
-                    </a>
+
                     <a href="#" class="dropdown-item d-flex align-items-center"
                         data-sidebar-target="#settings">
                         <i class="bi bi-gear dropdown-item-icon"></i> Settings
                     </a>
-                    <a href="./login.html" class="dropdown-item d-flex align-items-center text-danger"
-                        target="_blank">
-                        <i class="bi bi-box-arrow-right dropdown-item-icon"></i> Logout
-                    </a>
+                    <!-- Form logout dengan metode POST -->
+                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="dropdown-item d-flex align-items-center text-danger">
+                            <i class="bi bi-box-arrow-right dropdown-item-icon"></i> Logout
+                        </button>
+                    </form>
+
+
                 </div>
             </div>
             <ul>
@@ -589,7 +596,7 @@
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
-                            <i class="bi bi-truck"></i>
+                            <i class="bi-file-earmark-person"></i>
                         </span>
                         <span>Kelola Pelamar</span>
                     </a>
@@ -608,6 +615,22 @@
                         </li>
                         <li>
                             <a href="./checkout.html">Checkout</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-briefcase"></i>
+                        </span>
+                        <span>Kelola Lowongan </span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolalowongan">Data Lowongan</a>
+                        </li>
+                        <li>
+                            <a href="/kelolalowonga/create">Tambah Data Lowongan</a>
                         </li>
                     </ul>
                 </li>
@@ -657,7 +680,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="menu-divider">Apps</li>
+                {{-- <li class="menu-divider">Apps</li>
                 <li>
                     <a href="./chats.html">
                         <span class="nav-link-icon">
@@ -842,8 +865,8 @@
                             <i class="bi bi-person-raised-hand"></i>
                         </span>
                         <span>Support</span>
-                    </a>
-                </li>
+                    </a> --}}
+                {{-- </li> --}}
             </ul>
         </div>
     </div>
@@ -864,7 +887,7 @@
                 <img width="100" src="{{ asset('cakeadmin/html/logo.png') }}" alt="logo">
             </a>
             <!-- ./ Logo -->
-            <div class="page-title">Dashboard</div>
+            {{-- <div class="page-title">Dashboard</div> --}}
             <form class="search-form">
                 <div class="input-group">
                     <button class="btn btn-outline-light" type="button" id="button-addon1">
@@ -885,7 +908,7 @@
                             <i class="bi bi-bell icon-lg"></i>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a href="#" class="nav-link nav-link-notify" data-count="3" data-bs-toggle="dropdown">
                             <i class="bi bi-cart2 icon-lg"></i>
                         </a>
@@ -961,7 +984,7 @@
                         <button class="btn btn-primary btn-icon">
                             <i class="bi bi-plus-circle"></i> Create Report
                         </button>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <!-- Header mobile buttons -->
@@ -982,14 +1005,8 @@
 
         <!-- content-footer -->
         <footer class="content-footer">
-            <div><a href="https://cakeadmin.com" target="_blank">CakeAdmin</a> © 2023</div>
-            <div>
-                <nav class="nav gap-4">
-                    <a href="https://themeforest.net/licenses/standard" class="nav-link">Licenses</a>
-                    <a href="#" class="nav-link">Change Log</a>
-                    <a href="#" class="nav-link">Get Help</a>
-                </nav>
-            </div>
+            <div><a href="https://cakeadmin.com" target="_blank">Sumatera Carrer Center</a> © 2024</div>
+
         </footer>
         <!-- ./ content-footer -->
 
@@ -998,6 +1015,8 @@
 
     <!-- JQuery -->
     <script src="{{ asset('cakeadmin/html/libs/jquery-3.7.1.min.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- Nicescroll -->
     <script src="{{ asset('cakeadmin/html/libs/nicescroll.js') }}"></script>
@@ -1013,6 +1032,18 @@
 
     <!-- Main Javascript file -->
     <script src="{{ asset('cakeadmin/html/js/app.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: function() {
+                    return $(this).data('placeholder');
+                },
+                allowClear: true,
+                width: 'resolve'
+            });
+        });
+    </script>
+    @yield('js')
 </body>
 
 </html>

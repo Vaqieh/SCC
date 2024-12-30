@@ -1,16 +1,16 @@
 @extends('layouts.admin', ['title' => 'Kelola Data Pelamar'])
 @section('content')
 <div class="content ">
-
+    
     <div class="mb-4">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="#">
-                        <i class="bi bi-globe2 small me-2"></i> Dashboard
+                        <i class="bi bi-globe2 small me-2"></i> Kelola 
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                <li class="breadcrumb-item active" aria-current="page">Lowongan</li>
             </ol>
         </nav>
     </div>
@@ -64,6 +64,8 @@
     </div>
 
     <div class="table-responsive">
+        <br>
+        <a href="/kelolaperusahaan/create" class="btn btn-primary mb-3">Tambah Lowongan</a>
         <table class="table table-custom table-lg mb-0" id="orders">
             <thead>
             <tr>
@@ -99,7 +101,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a href="#" class="dropdown-item">Show</a>
-                                    <a href="#" class="dropdown-item">Edit</a>
+                                    <a href="{{ route('kelolaperusahaan.edit', $item->id) }}" class="dropdown-item">Edit</a>
                                     <a href="#" class="dropdown-item">Delete</a>
                                 </div>
                             </div>

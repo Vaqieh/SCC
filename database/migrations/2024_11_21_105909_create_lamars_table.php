@@ -10,7 +10,8 @@ return new class extends Migration
     {
         Schema::create('lamars', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('status');
+            $table->timestamps('');
         });
     }
     public function down(): void

@@ -10,275 +10,196 @@
 
     <!-- Google Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=Poppins:400,600|Roboto:400,500&display=swap" rel="stylesheet">
 
-    <!-- Vite CSS dan JS -->
+    <!-- Vite CSS and JS -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- Custom Styles -->
     <style>
-        /* Warna biru untuk navbar */
-        .navbar {
-            background: linear-gradient(90deg, #007bff, #4dc0b5);
-            /* Gradien modern */
-            padding: 15px 30px;
-            /* Ruang di dalam navbar */
-            border-bottom: 2px solid #e0e0e0;
-            /* Garis bawah tipis */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            /* Bayangan lembut */
-        }
-
-        .navbar-brand {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ffffff;
-            /* Warna putih untuk brand */
-            text-transform: uppercase;
-            /* Huruf besar semua */
-            letter-spacing: 2px;
-            /* Jarak antar huruf */
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            /* Efek bayangan */
-        }
-
-        .navbar-brand:hover {
-            color: #f8f9fa;
-            /* Warna hover lebih cerah */
-            text-decoration: none;
-            /* Hilangkan underline */
-        }
-
-        .navbar-nav .nav-link {
-            color: #ffffff;
-            /* Warna link */
-            font-size: 16px;
-            margin-right: 15px;
-            /* Jarak antar link */
-            transition: color 0.3s ease;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #f8d7da;
-            /* Warna hover link */
-            text-decoration: none;
-            /* Hilangkan underline */
-        }
-
-        .navbar-toggler {
-            border: none;
-            /* Hilangkan border tombol */
-            background-color: #ffffff;
-            /* Warna putih untuk toggle */
-            padding: 8px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .navbar-toggler-icon {
-            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23333" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%280, 0, 0, 0.5%29" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
-        }
-
-        .navbar-toggler:hover {
-            background-color: #d9edf7;
-            /* Efek hover pada toggle */
-        }
-
-        .dropdown-menu {
-            background: #ffffff;
-            /* Warna putih untuk dropdown */
-            border-radius: 10px;
-            /* Sudut membulat */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            /* Bayangan dropdown */
-        }
-
-        .dropdown-menu .dropdown-item {
-            font-size: 16px;
-            color: #333;
-            /* Warna teks */
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .dropdown-menu .dropdown-item:hover {
-            background-color: #007bff;
-            /* Warna hover */
-            color: #ffffff;
-            /* Teks putih saat hover */
-        }
-
-        /* Warna biru muda untuk konten utama */
+        /* Global Styles */
         body {
-            background-color: #E5F0F9;
-            /* Biru muda */
+            background: #E3F2FD;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
-        .card {
-            background-color: #f0f9ff;
-            /* Warna biru sangat muda untuk latar belakang */
-            border-radius: 25px;
-            /* Sudut bulat yang lebih lembut */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            /* Bayangan yang lembut dan modern */
-            padding: 40px;
-            /* Ruang ekstra di dalam card */
-            max-width: 600px;
-            /* Lebar card lebih besar */
+        /* Header */
+        .main-header {
             width: 100%;
-            /* Pastikan card mengambil 100% ruang jika layar kecil */
-            margin: 20px auto;
-            /* Pusatkan card */
-            border: 1px solid #dce8f0;
-            /* Garis pinggir lembut */
-            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: #0277BD;
+            color: #fff;
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            /* Efek melayang saat hover */
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-            /* Bayangan lebih besar */
+        .header-left {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
         }
 
-        /* Gaya untuk header di dalam card */
-        .card h4 {
-            color: #004aad;
-            /* Warna biru tua untuk teks header */
-            font-weight: bold;
-            margin-bottom: 30px;
+        .header-left img {
+            width: 150px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        .header-left h1 {
+            font-size: 22px;
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            padding-right: 20px;
+        }
+
+        .button-group a {
+            display: inline-block;
+            background: #fff;
+            color: #0277BD;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button-group a:hover {
+            background-color: #0277BD;
+            color: #fff;
+        }
+
+        /* Card Container */
+        .login-container {
+            max-width: 420px;
+            width: 100%;
+            background: #c5e0f8;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-top: 100px;
+        }
+
+        .login-header {
             text-align: center;
+            margin-bottom: 25px;
         }
 
-        /* Gaya untuk form */
-        form {
+        .login-header h2 {
+            font-weight: 600;
+            color: #0277BD;
+        }
+
+        .login-header p {
+            color: #000000;
+            font-size: 14px;
+        }
+
+        .login-form {
             display: flex;
             flex-direction: column;
             gap: 20px;
-            /* Jarak antar elemen */
         }
 
         .form-control {
-            border: 1px solid #dce8f0;
-            /* Garis lembut */
+            border: 1px solid #ffffff;
             border-radius: 8px;
-            /* Sudut melengkung */
-            padding: 12px 15px;
-            /* Ruang dalam yang cukup */
+            padding: 12px;
             font-size: 16px;
-            /* Ukuran teks lebih besar */
-            background-color: #ffffff;
-            /* Latar belakang putih */
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-            /* Bayangan dalam */
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
         }
 
         .form-control:focus {
-            border-color: #004aad;
-            /* Garis biru tua saat fokus */
-            box-shadow: 0 0 5px rgba(0, 74, 173, 0.5);
-            /* Efek glowing */
+            border-color: #0277BD;
+            box-shadow: 0 0 5px rgba(2, 119, 189, 0.5);
             outline: none;
-            /* Hilangkan outline default */
         }
 
-        /* Tombol login */
         .btn-custom {
-            background-color: #004aad;
-            /* Warna biru tua */
-            color: #ffffff;
-            /* Teks putih */
-            padding: 12px;
+            background-color: #0277BD;
+            color: #fff;
+            padding: 14px;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 600;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: background-color 0.3s ease, transform 0.2s;
         }
 
         .btn-custom:hover {
-            background-color: #00337a;
-            /* Warna biru lebih gelap saat hover */
+            background-color: #01579b;
             transform: translateY(-2px);
-            /* Efek naik sedikit */
         }
 
-        /* Gaya untuk tautan */
-        a.text-decoration-none {
-            color: #004aad;
+        .text-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .text-link a {
+            color: #0277BD;
             font-size: 14px;
-            text-decoration: underline;
-            transition: color 0.3s;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        a.text-decoration-none:hover {
-            color: #00337a;
-            /* Warna lebih gelap saat hover */
+        .text-link a:hover {
+            color: #01579b;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
         }
     </style>
 </head>
 
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <img src="{{ asset('image/logo_scc (1).png') }}" alt="Logo SCC"
-                    style="width: 80px; height: 30px; margin-right: 15px;">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Konten utama dari halaman login -->
-        <div class="container">
-            @yield('content')
+    <!-- Header -->
+    <div class="main-header">
+        <div class="header-left">
+            <img src="{{ asset('image/logo_scc_white.png') }}" alt="Logo SCC">
+            <h1>SUMATERA CAREER CENTER</h1>
+        </div>
+        <div class="button-group">
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Register</a>
         </div>
     </div>
 
-    <!-- Vite JS -->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Login Form Container -->
+    <div class="login-container">
+        @yield('content')
+    </div>
+
+    @if(request()->routeIs('login'))
+        <div class="login-container">
+            @yield('content2')
+        </div>
+    @endif
 </body>
 
 </html>

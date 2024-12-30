@@ -47,31 +47,44 @@ class KelolaPerusahaanController extends Controller
         // Mengalihkan ke halaman daftar perusahaan (index)
         return redirect()->route('kelolaperusahaan.index');
     }
-
-
-    /**
-     * Display the specified resource.
-     */
     public function show(KelolaPerusahaan $kelolaPerusahaan)
     {
-        //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(KelolaPerusahaan $kelolaPerusahaan)
+    public function edit(string $id)
     {
-        //
+        $data['kelolaperusahaan'] = \App\Models\KelolaPerusahaan::findOrFail($id);
+        return view('admin.editPerusahaan',$data);
     }
+    public function update(Request $request, string $id)
+{
+    // Validasi data yang dikirimkan oleh form
+    $requestData = $request->validate([
+        'p_nama' => 'required|string|min:3',
+        'email_perusahaan' => 'required|email',
+        'jenis_industri' => 'required|string',
+        'p_tahunBerdiri' => 'required|numeric',
+        'negara' => 'required|string',
+        'provinsi' => 'required|string',
+        'kabupaten' => 'required|string',
+        'kota' => 'required|string',  // Pastikan tipe data string
+    ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateKelolaPerusahaanRequest $request, KelolaPerusahaan $kelolaPerusahaan)
-    {
-        //
-    }
+    // Cari data perusahaan berdasarkan ID
+    $kelolaPerusahaan = \App\Models\KelolaPerusahaan::findOrFail($id);
+
+    // Mengisi data perusahaan dengan data yang telah divalidasi
+    $kelolaPerusahaan->fill($requestData);
+
+    // Menyimpan perubahan ke database
+    $kelolaPerusahaan->save();
+
+    // Menampilkan pesan sukses
+    
+
+    // Kembali ke halaman kelola perusahaan
+    return redirect()->route('kelolaperusahaan.index');
+}
+
 
     /**
      * Remove the specified resource from storage.
