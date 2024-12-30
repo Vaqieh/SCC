@@ -30,10 +30,10 @@ class LoginController extends Controller
         return view('auth.loginperusahaan');
     }
 
-    // public function showLoginForm()
-    // {
-    //     return view('pengunjung.Dashboardpengunjung');
-    // }
+    public function showLoginForm()
+    {
+        return view('auth.semuaLogin');
+    }
 
     // Proses login untuk Admin
     public function loginAdmin(Request $request)
