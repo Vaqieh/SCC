@@ -2,29 +2,25 @@
 
 namespace Database\Factories;
 
+use App\Models\KelolaPerusahaan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\KelolaPerusahaan>
- */
 class KelolaPerusahaanFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    // Nama model yang akan digunakan oleh factory ini
+    protected $model = KelolaPerusahaan::class;
+
+    public function definition()
     {
         return [
-            'p_nama' => fake()->company(),
-            'email_perusahaan' => fake()->companyEmail(),
-            'jenis_industri' => fake()->word(),
-            'p_tahunBerdiri' => fake()->year(),
-            'negara' => fake()->country(), // Gunakan country() untuk mendapatkan nama negara
-            'provinsi' => fake()->state(),
-            'kabupaten' => fake()->city(),
-            'kota' => fake()->city(),
+            'p_nama' => $this->faker->company(),               // Nama Perusahaan
+            'email_perusahaan' => $this->faker->unique()->safeEmail(),  // Email perusahaan (unik)
+            'jenis_industri' => $this->faker->word(),         // Jenis industri
+            'p_tahunBerdiri' => $this->faker->year(),         // Tahun berdiri perusahaan
+            'negara' => $this->faker->country(),              // Negara perusahaan
+            'provinsi' => $this->faker->state(),              // Provinsi perusahaan
+            'kabupaten' => $this->faker->city(),              // Kabupaten perusahaan
+            'kota' => $this->faker->city(),                   // Kota perusahaan
         ];
     }
 }

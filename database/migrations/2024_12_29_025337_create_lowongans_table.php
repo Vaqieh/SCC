@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('lowongans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('perusahaan_id');
-            $table->foreignId('admin_id');
+            $table->foreignId('perusahaan_id')->constrained('kelola_perusahaans')->onDelete('cascade');
+            $table->foreignId('admin_id')->constrained()->onDelete('cascade');
             $table->string('nama_lowongan');
             $table->string('status_lowongan'); // Status: 'menunggu', 'ditolak', 'dibuka'
             $table->date('tanggal_buat');
@@ -28,6 +28,8 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+    
+
 
     /**
      * Reverse the migrations.

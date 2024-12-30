@@ -60,10 +60,14 @@ class AdminLowonganController extends Controller
         
         // Cek dan simpan gambar lowongan
         if ($request->hasFile('gambar_lowongan')) {
-            Storage::delete($lowongan->gambar_lowongan);  // Hapus gambar sebelumnya
+            // Hapus gambar lama jika ada
+            if ($lowongan->gambar_lowongan) {
+                Storage::delete($lowongan->gambar_lowongan);
+            }
+            // Simpan gambar baru
             $lowongan->gambar_lowongan = $request->file('gambar_lowongan')->store('public');
-            dd($lowongan->gambar_lowongan);  // Cek apakah path gambar sudah benar
         }
+        
         
         try {
             $lowongan->save();

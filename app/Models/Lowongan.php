@@ -10,20 +10,11 @@ class Lowongan extends Model
     use HasFactory;
     // Menentukan kolom-kolom yang bisa diisi
     protected $fillable = [
-        'admin_id',
-        'perusahaan_id',
-        'nama_lowongan',
-        'status_lowongan',
-        'tanggal_buat',
-        'tanggal_berakhir',
-        'tanggal_verifikasi',
-        'pendidikan',
-        'pengalaman_kerja',
-        'umur',
-        'gambar_lowongan',
-        'detail',
+        'admin_id', 'perusahaan_id', 'nama_lowongan', 'status_lowongan', 'tanggal_buat',
+        'tanggal_berakhir', 'tanggal_verifikasi', 'pendidikan', 'pengalaman_kerja',
+        'umur', 'gambar_lowongan', 'detail',
     ];
-
+    
     // Relasi ke Perusahaan
     public function perusahaan()
     {
