@@ -38,6 +38,7 @@ class AdminLowonganController extends Controller
     // Menyimpan data lowongan ke database
     public function store(Request $request)
     {
+        // dd($request->all()); 
         $requestData = $request->validate([
             'admin_id' => 'required|exists:admins,id',
             'perusahaan_id' => 'required|exists:kelola_perusahaans,id',
