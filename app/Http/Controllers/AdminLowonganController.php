@@ -28,10 +28,10 @@ class AdminLowonganController extends Controller
         // Ambil list admin dan perusahaan
         $data['listAdmin'] = Admin::orderBy('admin_nama', 'asc')->get();
         $data['listPerusahaan'] = KelolaPerusahaan::orderBy('p_nama', 'asc')->get();
-        
+
         // Debugging data listPerusahaan untuk memastikan data sudah ada
         // dd($data['listPerusahaan']);
-        
+
         return view('admin.KelolaLowonganCreated', $data);
     }
 
@@ -52,12 +52,12 @@ class AdminLowonganController extends Controller
             'gambar_lowongan' => 'required|image|mimes:jpeg,png,jpg|max:5000',
             'detail' => 'required|string|max:255',
         ]);
-        
+
 
         // Proses dan simpan data ke database
         $lowongan = new Lowongan();
         $lowongan->fill($requestData);
-        
+
         // Cek dan simpan gambar lowongan
         if ($request->hasFile('gambar_lowongan')) {
             // Hapus gambar lama jika ada
@@ -67,14 +67,14 @@ class AdminLowonganController extends Controller
             // Simpan gambar baru
             $lowongan->gambar_lowongan = $request->file('gambar_lowongan')->store('public');
         }
-        
-        
+
+
         try {
             $lowongan->save();
         } catch (\Exception $e) {
             dd($e->getMessage());  // Menampilkan pesan error jika ada masalah saat save
         }
-        
+
         return redirect('/kelolalowongan');
     }
 }
