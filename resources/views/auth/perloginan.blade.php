@@ -9,7 +9,7 @@
         <p>Login terlebih dahulu jika ingin masuk ke web</p>
     </div>
 
-    <form class="login-form" action="{{ route('login.pelamar') }}" method="POST">
+    <form class="login-form" action="{{ route('login.pelamar') }}" method="GET">
         @csrf
         <button type="submit" class="btn-custom">Login</button>
     </form>
@@ -26,12 +26,12 @@
     <p>Login terlebih dahulu jika ingin masuk ke web</p>
 </div>
 
-<form class="login-form" action="{{ route('login.perusahaan') }}" method="POST">
+<form class="login-form" action="{{ route('login.perusahaan') }}" method="GET">
     @csrf
     <button type="submit" class="btn-custom">Login</button>
 </form>
 
 <div class="text-link">
-    <p>Belum punya akun?? <a href="{{ route('password.request') }}">Daftar disini</a>.</p>
+    <p>Belum punya akun?? <a href="{{ route('register.perusahaan') }}">Daftar disini</a>.</p>
 </div>
 @endsection
