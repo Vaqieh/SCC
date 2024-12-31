@@ -526,7 +526,7 @@
     <!-- menu -->
     <div class="menu">
         <div class="menu-header">
-            <a href="/DashboardAdmin" class="menu-header-logo">
+            <a href="#" class="menu-header-logo">
                 <img src="{{ asset('image/logo_scc (1).png') }}" alt="logo" style="width: 110px; height: auto;">
                 <span style="font-size: 20px;">Sumatera Carrer Center</span>
             </a>
@@ -570,7 +570,7 @@
             <ul>
                 <li class="menu-divider">Dashboard</li>
                 <li>
-                    <a class="active" href="/DashboardAdmin">
+                    <a class="active" href="/admin/dashboard">
                         <span class="nav-link-icon">
                             <i class="bi bi-bar-chart"></i>
                         </span>

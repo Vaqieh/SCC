@@ -2,22 +2,27 @@
 
 namespace Database\Factories;
 
+use App\Models\KelolaPelamar;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Generator as Faker;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Kelola_Pelamar>
- */
 class KelolaPelamarFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = KelolaPelamar::class;
+
+    public function definition()
     {
         return [
-            //
+            'NamaPelamar' => $this->faker->name,
+            'TanggalLahir' => $this->faker->date(),
+            'Alamat' => $this->faker->address,
+            'JenisKelamin' => $this->faker->randomElement(['laki-laki', 'perempuan']),
+            'Kompetensi' => $this->faker->word(),
+            'sertifikat' => $this->faker->word(),
+            'cv' => 'cv_' . $this->faker->uuid . '.pdf',
+            'TanggalVerifikasi' => $this->faker->date(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
