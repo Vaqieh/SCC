@@ -13,11 +13,14 @@ use App\Http\Controllers\LamarController;
 use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Auth;
 
 // Rute yang dikelompokkan dengan middleware 'auth' hanya bisa diakses admin jika sudah login
 Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/profil', [ProfilController::class, 'showProfile'])->name('admin.profile');
+    Route::put('/admin/profil/update', [ProfilController::class, 'updateProfile'])->name('admin.profil.update');
     Route::resource('kelolapelamar', KelolaPelamarController::class);
     Route::resource('kelolaperusahaan', KelolaPerusahaanController::class);
     Route::resource('kelolalowongan', AdminLowonganController::class);

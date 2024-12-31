@@ -8,20 +8,21 @@
                 @csrf
 
                 <!-- Nama Admin -->
-<div class="form-group mt-3">
-    <label for="admin_nama">Nama Admin</label>
-    <div class="form-control-plaintext" id="admin_nama" style="color: #3399FF;">
-        {{ Auth::user()->name }}
-    </div>
-    <span class="text-danger">{{ $errors->first('name') }}</span>
-</div>
+                <div class="form-group mt-3">
+                    <label for="admin_nama">Nama Admin</label>
+                    <div class="form-control-plaintext" id="admin_nama" style="color: #3399FF;">
+                        {{ Auth::user()->name }}
+                    </div>
+                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                </div>
 
 
 
                 <!-- Nama Perusahaan -->
                 <div class="form-group mt-3">
                     <label for="perusahaan_id">Nama Perusahaan</label>
-                    <select name="perusahaan_id" class="form-control select2" data-placeholder="Cari Perusahaan" style="width: 100%;">
+                    <select name="perusahaan_id" class="form-control select2" data-placeholder="Cari Perusahaan"
+                        style="width: 100%;">
                         <option value="">-- Perusahaan --</option>
                         @foreach ($listPerusahaan as $perusahaan)
                             <option value="{{ $perusahaan->id }}" @selected(old('perusahaan_id') == $perusahaan->id)>

@@ -62,6 +62,9 @@ class LoginController extends Controller
             'password' => 'required|min:6',
         ]);
 
+        // Auth::user()->update([
+        //     'login_history' => now(),
+        // ]);
         // Proses login
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
