@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="content">
-
         <div class="row flex-column-reverse flex-md-row">
             <div class="col-md-8">
                 <div class="tab-content" id="myTabContent">
@@ -12,12 +11,11 @@
                                 <figure class="me-4 flex-shrink-0">
                                     <!-- Foto profil -->
                                     <img width="100" class="rounded-pill"
-                                        src="{{ asset('path/to/your/avatar/image.jpg') }}" alt="...">
+                                        src="../cakeadmin/html/images/user/FotoAdmin.jpeg" alt="...">
                                 </figure>
                                 <div class="flex-fill">
                                     <h5 class="mb-3">{{ Auth::user()->name }}</h5>
-                                    <p class="small text-muted mt-3">For best results, use an image at least
-                                        256px by 256px in either .jpg or .png format</p>
+                                    <p class="small text-muted mt-3">Lengkapi terlebih dahulu profil anda agar bisa mengakses semua fitur yang ada</p>
                                 </div>
                             </div>
                             <div class="card mb-4">
@@ -28,68 +26,49 @@
                                         @method('PUT')
 
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <!-- Nama Admin -->
-                                                <div class="mb-3">
-                                                    <label class="form-label">Name</label>
-                                                    <input type="text" class="form-control" name="name"
-                                                        value="{{ old('name', Auth::user()->name) }}">
-                                                </div>
-
-                                                <!-- Email Admin -->
-                                                <div class="mb-3">
-                                                    <label class="form-label">Email</label>
-                                                    <input type="email" class="form-control" name="email"
-                                                        value="{{ old('email', Auth::user()->email) }}">
-                                                </div>
-
-                                                <!-- Password Admin -->
-                                                <div class="mb-3">
-                                                    <label class="form-label">Password</label>
-                                                    <input type="password" class="form-control" name="password">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Confirm Password</label>
-                                                    <input type="password" class="form-control"
-                                                        name="password_confirmation">
-                                                </div>
-
+                                            <!-- Kolom Kiri (Nama dan Email) -->
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Name</label>
+                                                <input type="text" class="form-control" name="name"
+                                                    value="{{ old('name', Auth::user()->name) }}" disabled>
                                             </div>
-                                            <div class="col-md-6">
-                                                <!-- Nomor HP Admin -->
-                                                <div class="mb-3">
-                                                    <label class="form-label">Phone Number</label>
-                                                    <input type="text" class="form-control" name="phone_number"
-                                                        value="{{ old('phone_number', $profile->admin_nohp ?? '') }}">
-                                                </div>
 
-                                                <!-- Role -->
-                                                <div class="mb-3">
-                                                    <label class="form-label">Role</label>
-                                                    <input type="text" class="form-control"
-                                                        value="{{ Auth::user()->role }}" disabled>
-                                                </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" class="form-control" name="email"
+                                                    value="{{ old('email', Auth::user()->email) }}" disabled>
+                                            </div>
 
-                                                <!-- Login History -->
-                                                <div class="mb-3">
-                                                    <label class="form-label">Login History</label>
-                                                    <input type="text" class="form-control"
-                                                        value="{{ $profile->login_history ?? 'Belum ada login history' }}"
-                                                        disabled>
-                                                </div>
+                                            <!-- Kolom Kanan (Nomor HP, Role, Login History, Logout History) -->
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Phone Number</label>
+                                                <input type="text" class="form-control" name="phone_number"
+                                                    value="{{ old('phone_number', $profile->admin_nohp ?? '') }}">
+                                            </div>
 
-                                                <!-- Logout History -->
-                                                <div class="mb-3">
-                                                    <label class="form-label">Logout History</label>
-                                                    <input type="text" class="form-control"
-                                                        value="{{ $profile->logout_history ?? 'Belum ada logout history' }}"
-                                                        disabled>
-                                                </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Role</label>
+                                                <input type="text" class="form-control"
+                                                    value="{{ Auth::user()->role }}" disabled>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Login History</label>
+                                                <input type="text" class="form-control"
+                                                    value="{{ $profile->login_history ?? 'Belum ada login history' }}"
+                                                    disabled>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Logout History</label>
+                                                <input type="text" class="form-control"
+                                                    value="{{ $profile->logout_history ?? 'Belum ada logout history' }}"
+                                                    disabled>
                                             </div>
                                         </div>
 
                                         <!-- Submit Button -->
-                                        <div class="mt-4">
+                                        <div class="mt-4 text-center">
                                             <button type="submit" class="btn btn-primary">Save Changes</button>
                                         </div>
                                     </form>
