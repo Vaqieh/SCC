@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-{{-- Login Pelamar --}}
+    {{-- Login Pelamar --}}
 
 
     <div class="login-header">
@@ -20,18 +20,18 @@
 @endsection
 
 @section('content2')
-{{-- Login Perusahaan --}}
-<div class="login-header">
-    <h2>Login Perusahaan</h2>
-    <p>Login terlebih dahulu jika ingin masuk ke web</p>
-</div>
+    {{-- Login Perusahaan --}}
+    <div class="login-header">
+        <h2>Login Perusahaan</h2>
+        <p>Login terlebih dahulu jika ingin masuk ke web</p>
+    </div>
 
-<form class="login-form" action="{{ route('login.perusahaan') }}" method="GET">
-    @csrf
-    <button type="submit" class="btn-custom">Login</button>
-</form>
+    <form class="login-form" action="{{ route('login.perusahaan') }}" method="GET">
+        @csrf
+        <button type="submit" class="btn-custom">Login</button>
+    </form>
 
-<div class="text-link">
-    <p>Belum punya akun?? <a href="{{ route('register.perusahaan') }}">Daftar disini</a>.</p>
-</div>
+    <div class="text-link">
+        <p>Belum punya akun?? <a href="{{ route('register.perusahaan') }}">Daftar disini</a>.</p>
+    </div>
 @endsection

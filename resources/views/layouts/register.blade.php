@@ -194,6 +194,12 @@
     <div class="register-container">
         @yield('content')
     </div>
+
+    @if(request()->routeIs('register'))
+        <div class="register-container">
+            @yield('content2')
+        </div>
+    @endif
 </body>
 
 </html>

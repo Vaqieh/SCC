@@ -30,6 +30,11 @@ class RegisterController extends Controller
         return view('auth.registerperusahaan');
     }
 
+    public function showRegistrationForm()
+    {
+        return view('auth.perregistrasian');
+    }
+
     // Menangani proses registrasi untuk admin
     public function registerAdmin(Request $request)
     {
