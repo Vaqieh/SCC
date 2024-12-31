@@ -87,7 +87,7 @@ class RegisterController extends Controller
         } elseif ($role == 'pelamar') {
             return redirect()->route('pelamar.index');  // Pastikan route ini ada
         } elseif ($role == 'perusahaan') {
-            return redirect()->route('perusahaan.index');  // Pastikan route ini ada
+            return redirect()->route('perusahaan.dashboard');  // Pastikan route ini ada
         }
     }
 }

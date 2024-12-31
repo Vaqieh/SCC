@@ -12,10 +12,9 @@ class CreateAdminsTable extends Migration
             $table->id();
             $table->string('admin_nama');
             $table->string('admin_nohp');
-            $table->string('password_admin');
             $table->string('email');
-            $table->datetime('login_history');
-            $table->datetime('logout_history');
+            $table->datetime('login_history')->nullable();
+            $table->datetime('logout_history')->nullable();
             $table->timestamps();
         });
     }
@@ -23,5 +22,6 @@ class CreateAdminsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('admins');
+
     }
 }
