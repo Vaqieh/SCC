@@ -71,6 +71,7 @@
                     <tr>
                         <th>No</th>
                         <th>Perusahaan</th>
+                        <th>Gambar Lowongan</th>
                         <th>Nama Lowongan</th>
                         <th>Tanggal Verifikasi</th>
                         <th>Status</th>
@@ -81,7 +82,14 @@
                     @foreach ($kelolalowongan as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->perusahaan->nama_perusahaan }}</td>
+                            <td>{{ $item->perusahaan->p_nama }}</td>
+                            <td>
+                                @if ($item->gambar_lowongan)
+                                    <a href="{{ \Storage::url($item->gambar_lowongan) }}" target="blank">
+                                <img src="{{ \Storage::url($item->gambar_lowongan) }}" width="50">
+                            </a>
+                        @endif
+                            </td>
                             <td>{{ $item->nama_lowongan }}</td>
                             <td>{{ $item->tanggal_verifikasi }}</td>
                             <td>{{ $item->status_lowongan }}</td>

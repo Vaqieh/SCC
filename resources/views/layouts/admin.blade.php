@@ -996,6 +996,21 @@
             <!-- ./ Header mobile buttons -->
         </div>
         <!-- ./ header -->
+        <div class="container-fluid">
+            <!-- Cek apakah ada pesan error -->
+            @if (session()->has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            <!-- Cek apakah ada pesan sukses -->
+            @if (session()->has('success'))
+                <div class="alert alert-info" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
         <div>
             @yield('content')
         </div>

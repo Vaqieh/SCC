@@ -88,20 +88,41 @@
                 <td>{{ \Carbon\Carbon::parse($item->TanggalLahir)->format('d M Y') }}</td>
                 <td>{{ $item->Alamat }}</td>
                 <td>{{ $item->Kompetensi ?? '-' }}</td>
+                {{-- yang dibawah ini adalah contoh yang tidak bisa menampilkan filenya
+                     DIKARENAKAN di Folder PRIVATE, kalau PUBLIC bisa --}}
+                {{-- <td>
+                    <!-- Sertifikat -->
+                    @if ($item->sertifikat)
+                        <a href="{{ url('/file/'.$item->sertifikat) }}" target="_blank">Download Sertifikat</a>
+                    @else
+                        -
+                    @endif
+                </td>
+                <td>
+                    <!-- CV -->
+                    @if ($item->cv)
+                        <a href="{{ \Storage::url($item->cv) }}" target="_blank">Lihat CV</a>
+                    @else
+                        -
+                    @endif
+                </td> --}}
                 <td>
                     @if ($item->sertifikat)
-                        <a href="{{ \Storage::url($item->sertifikat) }}" target="blank">Lihat Sertifikat</a>
+                        <a href="{{ url('/file/sertifikat/' . basename($item->sertifikat)) }}" target="_blank">Lihat Sertifikat</a>
                     @else
                         -
                     @endif
                 </td>
+
+
                 <td>
                     @if ($item->cv)
-                        <a href="{{ \Storage::url($item->cv) }}" target="blank">Lihat CV</a>
+                        <a href="{{ url('/file/cv/' . basename($item->cv)) }}" target="_blank">Lihat CV</a>
                     @else
                         -
                     @endif
                 </td>
+
                 <td>{{ \Carbon\Carbon::parse($item->TanggalVerifikasi)->format('d M Y') }}</td>
                 <td>
                     <span class="badge {{ $item->status == 'aktif' ? 'bg-success' : 'bg-danger' }}">
