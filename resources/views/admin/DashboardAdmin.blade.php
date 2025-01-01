@@ -8,315 +8,327 @@
 
     @php
 
-// Mengambil jumlah pelamar berdasarkan jenis kelamin
-$totalLaki = App\Models\KelolaPelamar::where('JenisKelamin', 'laki-laki')->count();
-$totalPerempuan = App\Models\KelolaPelamar::where('JenisKelamin', 'perempuan')->count();
+        // Mengambil jumlah pelamar berdasarkan jenis kelamin
+        $totalLaki = App\Models\KelolaPelamar::where('JenisKelamin', 'laki-laki')->count();
+        $totalPerempuan = App\Models\KelolaPelamar::where('JenisKelamin', 'perempuan')->count();
 
-// Mengambil jumlah akun pelamar dan perusahaan
-$totalPelamar = App\Models\User::where('role', 'pelamar')->count();
-$totalPerusahaan = App\Models\User::where('role', 'perusahaan')->count();
-$totalEmail = App\Models\User::where('role', 'email')->count();
+        // Mengambil jumlah akun pelamar dan perusahaan
+        $totalPelamar = App\Models\User::where('role', 'pelamar')->count();
+        $totalPerusahaan = App\Models\User::where('role', 'perusahaan')->count();
+        $totalEmail = App\Models\User::where('role', 'email')->count();
 
-// Mengambil jumlah lowongan yang sudah diverifikasi per bulan
-$lowonganTerverifikasiPerBulan = DB::table('lowongans')
-    ->selectRaw('MONTH(tanggal_verifikasi) as bulan, YEAR(tanggal_verifikasi) as tahun, COUNT(*) as jumlah')
-    ->whereNotNull('tanggal_verifikasi')  // Pastikan hanya yang sudah diverifikasi
-    ->groupBy(DB::raw('MONTH(tanggal_verifikasi)'), DB::raw('YEAR(tanggal_verifikasi)'))
-    ->orderBy(DB::raw('YEAR(tanggal_verifikasi)'), 'asc')
-    ->orderBy(DB::raw('MONTH(tanggal_verifikasi)'), 'asc')
-    ->get();
+        // Mengambil jumlah lowongan yang sudah diverifikasi per bulan
+        $lowonganTerverifikasiPerBulan = DB::table('lowongans')
+            ->selectRaw('MONTH(tanggal_verifikasi) as bulan, YEAR(tanggal_verifikasi) as tahun, COUNT(*) as jumlah')
+            ->whereNotNull('tanggal_verifikasi') // Pastikan hanya yang sudah diverifikasi
+            ->groupBy(DB::raw('MONTH(tanggal_verifikasi)'), DB::raw('YEAR(tanggal_verifikasi)'))
+            ->orderBy(DB::raw('YEAR(tanggal_verifikasi)'), 'asc')
+            ->orderBy(DB::raw('MONTH(tanggal_verifikasi)'), 'asc')
+            ->get();
 
-// Mengambil jumlah lowongan yang belum diverifikasi per bulan
-$lowonganBelumTerverifikasiPerBulan = DB::table('lowongans')
-    ->selectRaw('MONTH(tanggal_buat) as bulan, YEAR(tanggal_buat) as tahun, COUNT(*) as jumlah')
-    ->whereNull('tanggal_verifikasi')  // Menampilkan hanya lowongan yang belum diverifikasi
-    ->groupBy(DB::raw('MONTH(tanggal_buat)'), DB::raw('YEAR(tanggal_buat)'))
-    ->orderBy(DB::raw('YEAR(tanggal_buat)'), 'asc')
-    ->orderBy(DB::raw('MONTH(tanggal_buat)'), 'asc')
-    ->get();
+        // Mengambil jumlah lowongan yang belum diverifikasi per bulan
+        $lowonganBelumTerverifikasiPerBulan = DB::table('lowongans')
+            ->selectRaw('MONTH(tanggal_buat) as bulan, YEAR(tanggal_buat) as tahun, COUNT(*) as jumlah')
+            ->whereNull('tanggal_verifikasi') // Menampilkan hanya lowongan yang belum diverifikasi
+            ->groupBy(DB::raw('MONTH(tanggal_buat)'), DB::raw('YEAR(tanggal_buat)'))
+            ->orderBy(DB::raw('YEAR(tanggal_buat)'), 'asc')
+            ->orderBy(DB::raw('MONTH(tanggal_buat)'), 'asc')
+            ->get();
 
-// Menyiapkan data untuk grafik
-$bulanLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-$jumlahLowonganTerverifikasi = array_fill(0, 12, 0); // Menginisialisasi data jumlah lowongan terverifikasi dengan 0
-$jumlahLowonganBelumTerverifikasi = array_fill(0, 12, 0); // Menginisialisasi data jumlah lowongan belum terverifikasi dengan 0
+        // Menyiapkan data untuk grafik
+        $bulanLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        $jumlahLowonganTerverifikasi = array_fill(0, 12, 0); // Menginisialisasi data jumlah lowongan terverifikasi dengan 0
+        $jumlahLowonganBelumTerverifikasi = array_fill(0, 12, 0); // Menginisialisasi data jumlah lowongan belum terverifikasi dengan 0
 
-foreach ($lowonganTerverifikasiPerBulan as $item) {
-    $bulanIndex = $item->bulan - 1;
-    $jumlahLowonganTerverifikasi[$bulanIndex] = $item->jumlah;
-}
+        foreach ($lowonganTerverifikasiPerBulan as $item) {
+            $bulanIndex = $item->bulan - 1;
+            $jumlahLowonganTerverifikasi[$bulanIndex] = $item->jumlah;
+        }
 
-foreach ($lowonganBelumTerverifikasiPerBulan as $item) {
-    $bulanIndex = $item->bulan - 1;
-    $jumlahLowonganBelumTerverifikasi[$bulanIndex] = $item->jumlah;
-}
+        foreach ($lowonganBelumTerverifikasiPerBulan as $item) {
+            $bulanIndex = $item->bulan - 1;
+            $jumlahLowonganBelumTerverifikasi[$bulanIndex] = $item->jumlah;
+        }
 
-@endphp
+    @endphp
 
-<style>
-    /* Ukuran canvas lebih besar dan responsif */
-    canvas {
-        width: 70% !important;  /* Mengatur lebar canvas menjadi 100% dari elemen induk */
-        height: 500px !important; /* Mengatur tinggi default canvas */
-        max-width: 100%; /* Tidak melebihi lebar 100% */
-        margin: auto;
-    }
+    <style>
+        /* Ukuran canvas lebih besar dan responsif */
+        canvas {
+            width: 100% !important;
+            /* Lebar canvas menyesuaikan ukuran elemen induk */
+            height: auto !important;
+            /* Tinggi menyesuaikan proporsi */
+            max-width: 600px;
+            /* Membatasi lebar maksimal agar tidak terlalu besar */
+            margin: auto;
+        }
 
-    .card {
-        border-radius: 15px;
-        border: none;
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-        padding: 20px;
-    }
+        /* Pastikan chart tetap terlihat bagus pada perangkat kecil */
+        @media (max-width: 768px) {
+            canvas {
+                max-width: 100%;
+                /* Agar canvas dapat mengisi layar kecil */
+                height: 300px;
+                /* Sesuaikan tinggi untuk perangkat kecil */
+            }
+        }
 
-    .card-header {
-        background-color: #1E3A8A;
-        color: rgb(0, 0, 0);
-        border-radius: 15px 15px 0 0;
-        font-weight: bold;
-        font-size: 20px;
-        padding: 15px;
-    }
+        .card {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 20px;
+        }
 
-    .chart-tooltip {
-        background-color: rgba(0, 0, 0, 0.7) !important;
-        color: white !important;
-        font-size: 14px;
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
-</style>
+        .card-header {
+            background-color: #1E3A8A;
+            color: rgb(0, 0, 0);
+            border-radius: 15px 15px 0 0;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 15px;
+        }
 
-<div class="row">
-    <!-- Card untuk grafik donut chart (Jenis Kelamin Pelamar) -->
-    <div class="col-lg-6 col-md-12 col-sm-12">
-        <div class="card widget h-100">
-            <div class="card-header d-flex">
-                <h6 class="card-title">Jumlah Pelamar Berdasarkan Jenis Kelamin</h6>
-            </div>
-            <div class="card-body">
-                <!-- Canvas tempat grafik donut ditampilkan -->
-                <canvas id="pelamarChart"></canvas>
-                <!-- Baris menampilkan persentase di bawah grafik -->
-                <div class="row text-center mb-3 mt-3">
-                    <div class="col-6">
-                        <div class="display-7" id="laki-laki-percentage">48%</div>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="bi bi-circle-fill text-orange me-2 small"></i>
-                            <span class="text-muted">Laki-laki</span>
+        .chart-tooltip {
+            background-color: rgba(0, 0, 0, 0.7) !important;
+            color: white !important;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+
+    <div class="row">
+        <!-- Card untuk grafik donut chart (Jenis Kelamin Pelamar) -->
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="card widget h-100">
+                <div class="card-header d-flex">
+                    <h6 class="card-title">Jumlah Pelamar Berdasarkan Jenis Kelamin</h6>
+                </div>
+                <div class="card-body">
+                    <!-- Canvas tempat grafik donut ditampilkan -->
+                    <canvas id="pelamarChart"></canvas>
+                    <!-- Baris menampilkan persentase di bawah grafik -->
+                    <div class="row text-center mb-3 mt-3">
+                        <div class="col-6">
+                            <div class="display-7" id="laki-laki-percentage">48%</div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-circle-fill text-orange me-2 small"></i>
+                                <span class="text-muted">Laki-laki</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="display-7" id="perempuan-percentage">30%</div>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="bi bi-circle-fill text-cyan me-2 small"></i>
-                            <span class="text-muted">Perempuan</span>
+                        <div class="col-6">
+                            <div class="display-7" id="perempuan-percentage">30%</div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-circle-fill text-cyan me-2 small"></i>
+                                <span class="text-muted">Perempuan</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Card untuk grafik donut chart (Jumlah Akun Pelamar dan Perusahaan) -->
-    <div class="col-lg-6 col-md-12 col-sm-12">
-        <div class="card widget h-100">
-            <div class="card-header d-flex">
-                <h6 class="card-title">Jumlah Data Akun Pelamar dan Perusahaan</h6>
-            </div>
-            <div class="card-body">
-                <!-- Canvas tempat grafik donut ditampilkan -->
-                <canvas id="accountChart"></canvas>
-                <!-- Baris menampilkan persentase di bawah grafik -->
-                <div class="row text-center mb-3 mt-3">
-                    <div class="col-4">
-                        <div class="display-7" id="pelamar-percentage">48%</div>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="bi bi-circle-fill text-orange me-2 small"></i>
-                            <span class="text-muted">Pelamar</span>
+        <!-- Card untuk grafik donut chart (Jumlah Akun Pelamar dan Perusahaan) -->
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="card widget h-100">
+                <div class="card-header d-flex">
+                    <h6 class="card-title">Jumlah Data Akun Pelamar dan Perusahaan</h6>
+                </div>
+                <div class="card-body">
+                    <!-- Canvas tempat grafik donut ditampilkan -->
+                    <canvas id="accountChart"></canvas>
+                    <!-- Baris menampilkan persentase di bawah grafik -->
+                    <div class="row text-center mb-3 mt-3">
+                        <div class="col-4">
+                            <div class="display-7" id="pelamar-percentage">48%</div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-circle-fill text-orange me-2 small"></i>
+                                <span class="text-muted">Pelamar</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="display-7" id="perusahaan-percentage">30%</div>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="bi bi-circle-fill text-cyan me-2 small"></i>
-                            <span class="text-muted">Perusahaan</span>
+                        <div class="col-4">
+                            <div class="display-7" id="perusahaan-percentage">30%</div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-circle-fill text-cyan me-2 small"></i>
+                                <span class="text-muted">Perusahaan</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="display-7" id="email-percentage">22%</div>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <i class="bi bi-circle-fill text-primary me-2 small"></i>
-                            <span class="text-muted">Email</span>
+                        <div class="col-4">
+                            <div class="display-7" id="email-percentage">22%</div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-circle-fill text-primary me-2 small"></i>
+                                <span class="text-muted">Email</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Card untuk grafik Line Chart (Jumlah Lowongan Terverifikasi Per Bulan) -->
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="card widget h-100">
-            <div class="card-header d-flex">
-                <h6 class="card-title">Jumlah Lowongan yang Terverifikasi per Bulan</h6>
-            </div>
-            <div class="card-body">
-                <!-- Canvas tempat grafik Line Chart ditampilkan -->
-                <canvas id="lowonganChart"></canvas>
+        <!-- Card untuk grafik Line Chart (Jumlah Lowongan Terverifikasi Per Bulan) -->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card widget h-100">
+                <div class="card-header d-flex">
+                    <h6 class="card-title">Jumlah Lowongan yang Terverifikasi per Bulan</h6>
+                </div>
+                <div class="card-body">
+                    <!-- Canvas tempat grafik Line Chart ditampilkan -->
+                    <canvas id="lowonganChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    // Konfigurasi Chart.js untuk Grafik Pelamar Berdasarkan Jenis Kelamin
-    var ctxPelamar = document.getElementById('pelamarChart').getContext('2d');
-    var pelamarChart = new Chart(ctxPelamar, {
-        type: 'doughnut',
-        data: {
-            labels: ['Laki-laki', 'Perempuan'],
-            datasets: [{
-                data: [{{ $totalLaki }}, {{ $totalPerempuan }}],
-                backgroundColor: ['#347DC1', '#E6A6C7'],
-                borderColor: ['#347DC1', '#E6A6C7'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true, // Menjaga proporsi grafik
-            plugins: {
-                legend: {
-                    position: 'top',
-                }
+    <script>
+        // Konfigurasi Chart.js untuk Grafik Pelamar Berdasarkan Jenis Kelamin
+        var ctxPelamar = document.getElementById('pelamarChart').getContext('2d');
+        var pelamarChart = new Chart(ctxPelamar, {
+            type: 'doughnut',
+            data: {
+                labels: ['Laki-laki', 'Perempuan'],
+                datasets: [{
+                    data: [{{ $totalLaki }}, {{ $totalPerempuan }}],
+                    backgroundColor: ['#347DC1', '#E6A6C7'],
+                    borderColor: ['#347DC1', '#E6A6C7'],
+                    borderWidth: 1
+                }]
             },
-            cutout: '40%',
-        }
-    });
-
-    // Konfigurasi Chart.js untuk Grafik Jumlah Akun
-    var ctxAccount = document.getElementById('accountChart').getContext('2d');
-    var accountChart = new Chart(ctxAccount, {
-        type: 'doughnut',
-        data: {
-            labels: ['Pelamar', 'Perusahaan'],
-            datasets: [{
-                data: [{{ $totalPelamar }}, {{ $totalPerusahaan }}],
-                backgroundColor: ['#FF5733', '#33FF57'],
-                borderColor: ['#FF5733', '#33FF57'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                }
-            },
-            cutout: '40%',
-        }
-    });
-</script>
-<script>
-    // Konfigurasi Chart.js untuk Grafik Jumlah Lowongan Terverifikasi dan Belum Terverifikasi per Bulan
-    var ctxLowongan = document.getElementById('lowonganChart').getContext('2d');
-    var lowonganChart = new Chart(ctxLowongan, {
-        type: 'line',
-        data: {
-            labels: @json($bulanLabels),  // Label Bulan (Jan, Feb, Mar, dst.)
-            datasets: [
-                {
-                    label: 'Lowongan Terverifikasi',
-                    data: @json($jumlahLowonganTerverifikasi),  // Data lowongan terverifikasi per bulan
-                    borderColor: '#4CAF50',  // Warna garis untuk lowongan terverifikasi
-                    backgroundColor: 'rgba(76, 175, 80, 0.2)',  // Warna latar belakang area grafik
-                    fill: true,  // Isi area di bawah garis
-                    tension: 0.4,  // Kurva garis
-                    borderWidth: 4,  // Lebar garis
-                    pointBackgroundColor: '#4CAF50',  // Warna titik pada grafik
-                    pointBorderColor: '#fff',  // Warna border titik
-                    pointBorderWidth: 2,  // Lebar border titik
-                    pointRadius: 6,  // Ukuran titik
-                    pointHoverRadius: 8,  // Ukuran titik saat hover
-                    pointHoverBackgroundColor: '#fff',  // Warna titik saat hover
-                    pointHoverBorderColor: '#4CAF50',  // Border titik saat hover
-                    pointHoverBorderWidth: 2,
-                    lineTension: 0.4,  // Kelembutan garis
+            options: {
+                responsive: true,
+                maintainAspectRatio: true, // Menjaga proporsi grafik
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
                 },
-                {
-                    label: 'Lowongan Belum Terverifikasi',
-                    data: @json($jumlahLowonganBelumTerverifikasi),  // Data lowongan belum terverifikasi per bulan
-                    borderColor: '#FF9800',  // Warna garis untuk lowongan belum terverifikasi
-                    backgroundColor: 'rgba(255, 152, 0, 0.2)',  // Warna latar belakang area grafik
-                    fill: true,  // Isi area di bawah garis
-                    tension: 0.4,  // Kurva garis
-                    borderWidth: 4,  // Lebar garis
-                    pointBackgroundColor: '#FF9800',  // Warna titik pada grafik
-                    pointBorderColor: '#fff',  // Warna border titik
-                    pointBorderWidth: 2,  // Lebar border titik
-                    pointRadius: 6,  // Ukuran titik
-                    pointHoverRadius: 8,  // Ukuran titik saat hover
-                    pointHoverBackgroundColor: '#fff',  // Warna titik saat hover
-                    pointHoverBorderColor: '#FF9800',  // Border titik saat hover
-                    pointHoverBorderWidth: 2,
-                    lineTension: 0.4,  // Kelembutan garis
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,  // Menghentikan menjaga aspek rasio default
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        title: function(tooltipItems) {
-                            // Menambahkan label yang lebih dinamis pada tooltip
-                            return tooltipItems[0].label + ' - Bulan ' + tooltipItems[0].label;
+                cutout: '40%',
+            }
+        });
+
+        // Konfigurasi Chart.js untuk Grafik Jumlah Akun
+        var ctxAccount = document.getElementById('accountChart').getContext('2d');
+        var accountChart = new Chart(ctxAccount, {
+            type: 'doughnut',
+            data: {
+                labels: ['Pelamar', 'Perusahaan'],
+                datasets: [{
+                    data: [{{ $totalPelamar }}, {{ $totalPerusahaan }}],
+                    backgroundColor: ['#FF5733', '#33FF57'],
+                    borderColor: ['#FF5733', '#33FF57'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                cutout: '40%',
+            }
+        });
+    </script>
+    <script>
+        // Konfigurasi Chart.js untuk Grafik Jumlah Lowongan Terverifikasi dan Belum Terverifikasi per Bulan
+        var ctxLowongan = document.getElementById('lowonganChart').getContext('2d');
+        var lowonganChart = new Chart(ctxLowongan, {
+            type: 'line',
+            data: {
+                labels: @json($bulanLabels), // Label Bulan (Jan, Feb, Mar, dst.)
+                datasets: [{
+                        label: 'Lowongan Terverifikasi',
+                        data: @json($jumlahLowonganTerverifikasi), // Data lowongan terverifikasi per bulan
+                        borderColor: '#4CAF50', // Warna garis untuk lowongan terverifikasi
+                        backgroundColor: 'rgba(76, 175, 80, 0.2)', // Warna latar belakang area grafik
+                        fill: true, // Isi area di bawah garis
+                        tension: 0.4, // Kurva garis
+                        borderWidth: 4, // Lebar garis
+                        pointBackgroundColor: '#4CAF50', // Warna titik pada grafik
+                        pointBorderColor: '#fff', // Warna border titik
+                        pointBorderWidth: 2, // Lebar border titik
+                        pointRadius: 6, // Ukuran titik
+                        pointHoverRadius: 8, // Ukuran titik saat hover
+                        pointHoverBackgroundColor: '#fff', // Warna titik saat hover
+                        pointHoverBorderColor: '#4CAF50', // Border titik saat hover
+                        pointHoverBorderWidth: 2,
+                        lineTension: 0.4, // Kelembutan garis
+                    },
+                    {
+                        label: 'Lowongan Belum Terverifikasi',
+                        data: @json($jumlahLowonganBelumTerverifikasi), // Data lowongan belum terverifikasi per bulan
+                        borderColor: '#FF9800', // Warna garis untuk lowongan belum terverifikasi
+                        backgroundColor: 'rgba(255, 152, 0, 0.2)', // Warna latar belakang area grafik
+                        fill: true, // Isi area di bawah garis
+                        tension: 0.4, // Kurva garis
+                        borderWidth: 4, // Lebar garis
+                        pointBackgroundColor: '#FF9800', // Warna titik pada grafik
+                        pointBorderColor: '#fff', // Warna border titik
+                        pointBorderWidth: 2, // Lebar border titik
+                        pointRadius: 6, // Ukuran titik
+                        pointHoverRadius: 8, // Ukuran titik saat hover
+                        pointHoverBackgroundColor: '#fff', // Warna titik saat hover
+                        pointHoverBorderColor: '#FF9800', // Border titik saat hover
+                        pointHoverBorderWidth: 2,
+                        lineTension: 0.4, // Kelembutan garis
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // Menghentikan menjaga aspek rasio default
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                // Menambahkan label yang lebih dinamis pada tooltip
+                                return tooltipItems[0].label + ' - Bulan ' + tooltipItems[0].label;
+                            },
+                            label: function(tooltipItem) {
+                                return 'Jumlah Lowongan: ' + tooltipItem.raw;
+                            }
                         },
-                        label: function(tooltipItem) {
-                            return 'Jumlah Lowongan: ' + tooltipItem.raw;
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Background tooltip
+                        titleColor: '#fff', // Warna judul tooltip
+                        bodyColor: '#fff', // Warna teks tooltip
+                        padding: 10,
+                        borderRadius: 5,
+                    },
+                    legend: {
+                        display: true, // Menampilkan legenda
+                        position: 'top',
+                        labels: {
+                            fontColor: '#333', // Warna teks legenda
+                            boxWidth: 20, // Ukuran kotak di legenda
+                            padding: 20 // Padding antara item legenda
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: 14,
+                                family: 'Arial, sans-serif'
+                            }
                         }
                     },
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',  // Background tooltip
-                    titleColor: '#fff',  // Warna judul tooltip
-                    bodyColor: '#fff',  // Warna teks tooltip
-                    padding: 10,
-                    borderRadius: 5,
-                },
-                legend: {
-                    display: true,  // Menampilkan legenda
-                    position: 'top',
-                    labels: {
-                        fontColor: '#333',  // Warna teks legenda
-                        boxWidth: 20,  // Ukuran kotak di legenda
-                        padding: 20  // Padding antara item legenda
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        font: {
-                            size: 14,
-                            family: 'Arial, sans-serif'
-                        }
-                    }
-                },
-                x: {
-                    ticks: {
-                        font: {
-                            size: 14,
-                            family: 'Arial, sans-serif'
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                family: 'Arial, sans-serif'
+                            }
                         }
                     }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
     <div class="col-lg-4 col-md-12">
         <div class="card h-100">
             <div class="card-body">
