@@ -7,6 +7,7 @@
     @endif
 
     @php
+
 // Mengambil jumlah pelamar berdasarkan jenis kelamin
 $totalLaki = App\Models\KelolaPelamar::where('JenisKelamin', 'laki-laki')->count();
 $totalPerempuan = App\Models\KelolaPelamar::where('JenisKelamin', 'perempuan')->count();
@@ -15,19 +16,74 @@ $totalPerempuan = App\Models\KelolaPelamar::where('JenisKelamin', 'perempuan')->
 $totalPelamar = App\Models\User::where('role', 'pelamar')->count();
 $totalPerusahaan = App\Models\User::where('role', 'perusahaan')->count();
 $totalEmail = App\Models\User::where('role', 'email')->count();
+
+// Mengambil jumlah lowongan yang sudah diverifikasi per bulan
+$lowonganTerverifikasiPerBulan = DB::table('lowongans')
+    ->selectRaw('MONTH(tanggal_verifikasi) as bulan, YEAR(tanggal_verifikasi) as tahun, COUNT(*) as jumlah')
+    ->whereNotNull('tanggal_verifikasi')  // Pastikan hanya yang sudah diverifikasi
+    ->groupBy(DB::raw('MONTH(tanggal_verifikasi)'), DB::raw('YEAR(tanggal_verifikasi)'))
+    ->orderBy(DB::raw('YEAR(tanggal_verifikasi)'), 'asc')
+    ->orderBy(DB::raw('MONTH(tanggal_verifikasi)'), 'asc')
+    ->get();
+
+// Mengambil jumlah lowongan yang belum diverifikasi per bulan
+$lowonganBelumTerverifikasiPerBulan = DB::table('lowongans')
+    ->selectRaw('MONTH(tanggal_buat) as bulan, YEAR(tanggal_buat) as tahun, COUNT(*) as jumlah')
+    ->whereNull('tanggal_verifikasi')  // Menampilkan hanya lowongan yang belum diverifikasi
+    ->groupBy(DB::raw('MONTH(tanggal_buat)'), DB::raw('YEAR(tanggal_buat)'))
+    ->orderBy(DB::raw('YEAR(tanggal_buat)'), 'asc')
+    ->orderBy(DB::raw('MONTH(tanggal_buat)'), 'asc')
+    ->get();
+
+// Menyiapkan data untuk grafik
+$bulanLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+$jumlahLowonganTerverifikasi = array_fill(0, 12, 0); // Menginisialisasi data jumlah lowongan terverifikasi dengan 0
+$jumlahLowonganBelumTerverifikasi = array_fill(0, 12, 0); // Menginisialisasi data jumlah lowongan belum terverifikasi dengan 0
+
+foreach ($lowonganTerverifikasiPerBulan as $item) {
+    $bulanIndex = $item->bulan - 1;
+    $jumlahLowonganTerverifikasi[$bulanIndex] = $item->jumlah;
+}
+
+foreach ($lowonganBelumTerverifikasiPerBulan as $item) {
+    $bulanIndex = $item->bulan - 1;
+    $jumlahLowonganBelumTerverifikasi[$bulanIndex] = $item->jumlah;
+}
+
 @endphp
 
 <style>
-    /* Batasi ukuran canvas untuk grafik */
+    /* Ukuran canvas lebih besar dan responsif */
     canvas {
-        max-width: 300px;
-        max-height: 300px;
+        width: 70% !important;  /* Mengatur lebar canvas menjadi 100% dari elemen induk */
+        height: 500px !important; /* Mengatur tinggi default canvas */
+        max-width: 100%; /* Tidak melebihi lebar 100% */
         margin: auto;
     }
 
-    /* Atur padding pada card agar lebih ringkas */
     .card {
+        border-radius: 15px;
+        border: none;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        padding: 20px;
+    }
+
+    .card-header {
+        background-color: #1E3A8A;
+        color: rgb(0, 0, 0);
+        border-radius: 15px 15px 0 0;
+        font-weight: bold;
+        font-size: 20px;
         padding: 15px;
+    }
+
+    .chart-tooltip {
+        background-color: rgba(0, 0, 0, 0.7) !important;
+        color: white !important;
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
     }
 </style>
 
@@ -98,6 +154,18 @@ $totalEmail = App\Models\User::where('role', 'email')->count();
             </div>
         </div>
     </div>
+    <!-- Card untuk grafik Line Chart (Jumlah Lowongan Terverifikasi Per Bulan) -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card widget h-100">
+            <div class="card-header d-flex">
+                <h6 class="card-title">Jumlah Lowongan yang Terverifikasi per Bulan</h6>
+            </div>
+            <div class="card-body">
+                <!-- Canvas tempat grafik Line Chart ditampilkan -->
+                <canvas id="lowonganChart"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -122,7 +190,7 @@ $totalEmail = App\Models\User::where('role', 'email')->count();
                     position: 'top',
                 }
             },
-            cutout: '70%',
+            cutout: '40%',
         }
     });
 
@@ -147,11 +215,108 @@ $totalEmail = App\Models\User::where('role', 'email')->count();
                     position: 'top',
                 }
             },
-            cutout: '70%',
+            cutout: '40%',
         }
     });
 </script>
-
+<script>
+    // Konfigurasi Chart.js untuk Grafik Jumlah Lowongan Terverifikasi dan Belum Terverifikasi per Bulan
+    var ctxLowongan = document.getElementById('lowonganChart').getContext('2d');
+    var lowonganChart = new Chart(ctxLowongan, {
+        type: 'line',
+        data: {
+            labels: @json($bulanLabels),  // Label Bulan (Jan, Feb, Mar, dst.)
+            datasets: [
+                {
+                    label: 'Lowongan Terverifikasi',
+                    data: @json($jumlahLowonganTerverifikasi),  // Data lowongan terverifikasi per bulan
+                    borderColor: '#4CAF50',  // Warna garis untuk lowongan terverifikasi
+                    backgroundColor: 'rgba(76, 175, 80, 0.2)',  // Warna latar belakang area grafik
+                    fill: true,  // Isi area di bawah garis
+                    tension: 0.4,  // Kurva garis
+                    borderWidth: 4,  // Lebar garis
+                    pointBackgroundColor: '#4CAF50',  // Warna titik pada grafik
+                    pointBorderColor: '#fff',  // Warna border titik
+                    pointBorderWidth: 2,  // Lebar border titik
+                    pointRadius: 6,  // Ukuran titik
+                    pointHoverRadius: 8,  // Ukuran titik saat hover
+                    pointHoverBackgroundColor: '#fff',  // Warna titik saat hover
+                    pointHoverBorderColor: '#4CAF50',  // Border titik saat hover
+                    pointHoverBorderWidth: 2,
+                    lineTension: 0.4,  // Kelembutan garis
+                },
+                {
+                    label: 'Lowongan Belum Terverifikasi',
+                    data: @json($jumlahLowonganBelumTerverifikasi),  // Data lowongan belum terverifikasi per bulan
+                    borderColor: '#FF9800',  // Warna garis untuk lowongan belum terverifikasi
+                    backgroundColor: 'rgba(255, 152, 0, 0.2)',  // Warna latar belakang area grafik
+                    fill: true,  // Isi area di bawah garis
+                    tension: 0.4,  // Kurva garis
+                    borderWidth: 4,  // Lebar garis
+                    pointBackgroundColor: '#FF9800',  // Warna titik pada grafik
+                    pointBorderColor: '#fff',  // Warna border titik
+                    pointBorderWidth: 2,  // Lebar border titik
+                    pointRadius: 6,  // Ukuran titik
+                    pointHoverRadius: 8,  // Ukuran titik saat hover
+                    pointHoverBackgroundColor: '#fff',  // Warna titik saat hover
+                    pointHoverBorderColor: '#FF9800',  // Border titik saat hover
+                    pointHoverBorderWidth: 2,
+                    lineTension: 0.4,  // Kelembutan garis
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,  // Menghentikan menjaga aspek rasio default
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            // Menambahkan label yang lebih dinamis pada tooltip
+                            return tooltipItems[0].label + ' - Bulan ' + tooltipItems[0].label;
+                        },
+                        label: function(tooltipItem) {
+                            return 'Jumlah Lowongan: ' + tooltipItem.raw;
+                        }
+                    },
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',  // Background tooltip
+                    titleColor: '#fff',  // Warna judul tooltip
+                    bodyColor: '#fff',  // Warna teks tooltip
+                    padding: 10,
+                    borderRadius: 5,
+                },
+                legend: {
+                    display: true,  // Menampilkan legenda
+                    position: 'top',
+                    labels: {
+                        fontColor: '#333',  // Warna teks legenda
+                        boxWidth: 20,  // Ukuran kotak di legenda
+                        padding: 20  // Padding antara item legenda
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        font: {
+                            size: 14,
+                            family: 'Arial, sans-serif'
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            size: 14,
+                            family: 'Arial, sans-serif'
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
     <div class="col-lg-4 col-md-12">
         <div class="card h-100">
             <div class="card-body">
