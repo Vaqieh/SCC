@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -90,6 +91,18 @@ class LoginController extends Controller
     {
         // Ambil role pengguna yang sedang login
         $role = Auth::user()->role;
+
+        // Jika pengguna adalah admin, update logout_history
+        if ($role == 'admin') {
+            $user = Auth::user(); // Ambil data pengguna yang sedang login
+            $profile = Admin::where('email', $user->email)->first(); // Cari profil admin berdasarkan email
+
+            if ($profile) {
+                // Update logout_history dengan waktu sekarang
+                $profile->logout_history = now();
+                $profile->save(); // Simpan perubahan ke tabel admins
+            }
+        }
 
         // Logout user
         Auth::logout();

@@ -7,6 +7,8 @@ use App\Models\Admin;
 use App\Models\KelolaPerusahaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreAdminLowonganRequest;
 
 class AdminLowonganController extends Controller
 {
@@ -14,7 +16,7 @@ class AdminLowonganController extends Controller
     public function index()
     {
         // Ambil data lowongan dengan pagination
-        if (request()->filled('q')){
+        if (request()->filled('q')) {
             $data['kelolalowongan'] = Lowongan::search(request('q'))->paginate(10);
         } else {
             $data['kelolalowongan'] = Lowongan::latest()->paginate(10);
@@ -25,21 +27,34 @@ class AdminLowonganController extends Controller
     // Menampilkan halaman untuk menambah lowongan
     public function create()
     {
-        // Ambil list admin dan perusahaan
-        $data['listAdmin'] = Admin::orderBy('admin_nama', 'asc')->get();
-        $data['listPerusahaan'] = KelolaPerusahaan::orderBy('p_nama', 'asc')->get();
+        $currentUser = Auth::user(); // Mendapatkan user yang sedang login
 
-        // Debugging data listPerusahaan untuk memastikan data sudah ada
-        // dd($data['listPerusahaan']);
+        // Ambil satu admin yang sesuai dengan email atau nama
+        $listAdmin = Admin::where('email', $currentUser->email)
+            ->orWhere('admin_nama', $currentUser->name)
+            ->first(); // Mengambil objek admin tunggal
+
+        // Cek jika admin tidak ditemukan
+        if (!$listAdmin) {
+            session()->flash('error', 'Profil admin belum lengkap. Mohon lengkapi profil Anda untuk melanjutkan.');
+            return back();
+        }
+
+        // Ambil list perusahaan
+        $data['listAdmin'] = $listAdmin;
+        $data['listPerusahaan'] = KelolaPerusahaan::orderBy('p_nama', 'asc')->get();
 
         return view('admin.KelolaLowonganCreated', $data);
     }
 
+
+
+
     // Menyimpan data lowongan ke database
-    public function store(Request $request)
+    public function store(StoreAdminLowonganRequest $request)
     {
-        // dd($request->all()); 
-        $requestData = $request->validate([
+        // dd($request->all());
+        $validatedData = $request->validate([
             'admin_id' => 'required|exists:admins,id',
             'perusahaan_id' => 'required|exists:kelola_perusahaans,id',
             'nama_lowongan' => 'required|string|max:255',
@@ -57,7 +72,17 @@ class AdminLowonganController extends Controller
 
         // Proses dan simpan data ke database
         $lowongan = new Lowongan();
-        $lowongan->fill($requestData);
+        $lowongan->admin_id = $validatedData['admin_id'];
+        $lowongan->perusahaan_id = $validatedData['perusahaan_id'];
+        $lowongan->nama_lowongan = $validatedData['nama_lowongan'];
+        $lowongan->status_lowongan = $validatedData['status_lowongan'];
+        $lowongan->tanggal_buat = $validatedData['tanggal_buat'];
+        $lowongan->tanggal_berakhir = $validatedData['tanggal_berakhir'];
+        $lowongan->tanggal_verifikasi = $validatedData['tanggal_verifikasi'];
+        $lowongan->pendidikan = $validatedData['pendidikan'];
+        $lowongan->pengalaman_kerja = $validatedData['pengalaman_kerja'];
+        $lowongan->umur = $validatedData['umur'];
+        $lowongan->detail = $validatedData['detail'];
 
         // Cek dan simpan gambar lowongan
         if ($request->hasFile('gambar_lowongan')) {
@@ -65,17 +90,14 @@ class AdminLowonganController extends Controller
             if ($lowongan->gambar_lowongan) {
                 Storage::delete($lowongan->gambar_lowongan);
             }
-            // Simpan gambar baru
-            $lowongan->gambar_lowongan = $request->file('gambar_lowongan')->store('public');
+            // Simpan gambar baru di folder 'public/lowongan'
+            $lowongan->gambar_lowongan = $request->file('gambar_lowongan')->store('lowongan', 'public');
         }
 
 
-        try {
-            $lowongan->save();
-        } catch (\Exception $e) {
-            dd($e->getMessage());  // Menampilkan pesan error jika ada masalah saat save
-        }
 
-        return redirect('/kelolalowongan');
+        $lowongan->save();
+
+        return back()->with('success', 'Data Lowongan berhasil ditambahkan!');
     }
 }

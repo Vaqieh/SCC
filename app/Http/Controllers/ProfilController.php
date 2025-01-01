@@ -28,32 +28,29 @@ class ProfilController extends Controller
 
         // Validasi data input
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:admins,email,' . $user->id, // Unique berdasarkan tabel admins
-            'phone_number' => 'nullable|string|max:15',
+            'phone_number' => 'nullable|string|max:15', // Validasi untuk nomor telepon admin
         ]);
 
         // Cari profil admin berdasarkan email
-        $profile = Admin::where('email', $user->email)->first(); // Ambil profil admin
+        $profile = Admin::where('email', $user->email)->first(); // Ambil profil admin berdasarkan email
 
         if ($profile) {
-            // Update profil admin (tanpa password)
-            $profile->admin_nama = $validatedData['name'];
+            // Update data admin (hanya mengupdate admin_nohp)
             $profile->admin_nohp = $validatedData['phone_number'];
 
             // Isi login_history dengan nilai default
-            $profile->login_history = now(); // Atau bisa NULL
+            $profile->login_history = now(); // Anda bisa mengganti ini sesuai kebutuhan
             $profile->save(); // Simpan perubahan ke tabel admins
         } else {
             // Jika profil admin tidak ditemukan, buat profil baru
             $profile = new Admin();
-            $profile->email = $user->email;
-            $profile->admin_nama = $validatedData['name'];
+            $profile->email = $user->email; // Menggunakan email dari tabel users
+            $profile->admin_nama = $user->name; // Menggunakan nama dari tabel users
             $profile->admin_nohp = $validatedData['phone_number'];
 
             // Isi login_history dengan nilai default
             $profile->login_history = now();
-            $profile->logout_history = now(); // Atau NULL
+            $profile->logout_history = null; // Atau NULL
             $profile->save();  // Simpan data baru ke tabel admins
         }
 

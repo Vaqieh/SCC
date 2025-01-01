@@ -7,31 +7,44 @@
             <form action="{{ route('kelolalowongan.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <!-- Nama Admin -->
-                <div class="form-group mt-3">
-                    <label for="admin_nama">Nama Admin</label>
-                    <div class="form-control-plaintext" id="admin_nama" style="color: #3399FF;">
-                        {{ Auth::user()->name }}
-                    </div>
-                    <span class="text-danger">{{ $errors->first('name') }}</span>
+
+
+                <!-- Form Admin -->
+                <div class="mb-3">
+                    <label for="admin_id" class="form-label">Admin</label>
+
+                    <!-- Pastikan listAdmin tidak null -->
+                    @if ($listAdmin)
+                        <!-- Input hidden untuk mengirimkan admin_id -->
+                        <input type="hidden" name="admin_id" value="{{ $listAdmin->id }}">
+
+                        <!-- Nama admin yang sedang login (hanya ditampilkan) -->
+                        <input type="text" class="form-control" value="{{ $listAdmin->admin_nama }}" disabled>
+                    @else
+                        <p class="text-danger">Admin profil belum lengkap. Mohon lengkapi profil Anda untuk menggunakan
+                            fitur ini.</p>
+                    @endif
+
+                    @error('admin_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
-
-
-                <!-- Nama Perusahaan -->
-                <div class="form-group mt-3">
-                    <label for="perusahaan_id">Nama Perusahaan</label>
-                    <select name="perusahaan_id" class="form-control select2" data-placeholder="Cari Perusahaan"
-                        style="width: 100%;">
-                        <option value="">-- Perusahaan --</option>
+                <!-- Form Perusahaan -->
+                <div class="mb-3">
+                    <label for="perusahaan_id" class="form-label">Nama Perusahaan</label>
+                    <select name="perusahaan_id" id="perusahaan_id" class="form-control" required>
+                        <option value="">-- Pilih Perusahaan --</option>
                         @foreach ($listPerusahaan as $perusahaan)
-                            <option value="{{ $perusahaan->id }}" @selected(old('perusahaan_id') == $perusahaan->id)>
-                                {{ $perusahaan->p_nama }}
-                            </option>
+                            <option value="{{ $perusahaan->id }}">{{ $perusahaan->p_nama }}</option>
                         @endforeach
                     </select>
-                    <span class="text-danger">{{ $errors->first('perusahaan_id') }}</span>
+
+                    @error('perusahaan_id')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
                 </div>
+
 
                 <!-- Nama Lowongan -->
                 <div class="form-group mt-3">
