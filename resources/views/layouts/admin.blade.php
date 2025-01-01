@@ -593,6 +593,24 @@
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
+                            <!-- Menggunakan ikon yang lebih sesuai, misalnya bi-clipboard-data -->
+                            <i class="bi bi-clipboard-data"></i>
+                        </span>
+                        <span>Kelola Data Panggilan Tes</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolapanggilantes">Data Panggilan Tes</a>
+                        </li>
+                        <li>
+                            <a href="/kelolapanggilantes/create">Tambah Data Panggilan Tes</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
                             <i class="bi-file-earmark-person"></i>
                         </span>
                         <span>Kelola Pelamar</span>
@@ -653,7 +671,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="./customers.html">
                         <span class="nav-link-icon">
                             <i class="bi bi-person-badge"></i>
@@ -676,7 +694,7 @@
                             <a href="./invoice-detail.html">Detail</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- <li class="menu-divider">Apps</li>
                 <li>
                     <a href="./chats.html">
