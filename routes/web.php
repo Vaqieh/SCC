@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminKelolaPanggilanTesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelolaPelamarController;
 use App\Http\Controllers\KelolaPerusahaanController;
-use App\Http\Controllers\KelolaLowonganController;
 use App\Http\Controllers\AdminLowonganController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PelamarController;
@@ -14,6 +14,7 @@ use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfilController;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 // Rute yang dikelompokkan dengan middleware 'auth' hanya bisa diakses admin jika sudah login
@@ -24,6 +25,20 @@ Route::middleware('auth')->group(function () {
     Route::resource('kelolapelamar', KelolaPelamarController::class);
     Route::resource('kelolaperusahaan', KelolaPerusahaanController::class);
     Route::resource('kelolalowongan', AdminLowonganController::class);
+    Route::resource('kelolapanggilantes', AdminKelolaPanggilanTesController::class);
+});
+
+Route::get('/file/{folder}/{filename}', function ($folder, $filename) {
+    // Path ke file
+    $filePath = storage_path("app/private/{$folder}/{$filename}");
+
+    // Pastikan file ada
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+
+    // Return file untuk download atau display
+    return response()->download($filePath);
 });
 
 

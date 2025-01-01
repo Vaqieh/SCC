@@ -17,5 +17,11 @@ class KelolaPerusahaan extends Model
     public function lowongans()
     {
         return $this->hasMany(Lowongan::class);
+
+    }
+    // Relasi ke PanggilanTes (Satu Perusahaan bisa memiliki banyak PanggilanTes)
+    public function panggilanTes()
+    {
+        return $this->hasMany(PanggilanTes::class);
     }
 }

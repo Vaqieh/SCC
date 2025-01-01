@@ -20,8 +20,13 @@ class Admin extends Model
     ];
 
     // Relasi hasMany ke tabel lowongan
-    public function lowongans()
+    public function lowongan()
     {
         return $this->hasMany(Lowongan::class);
+    }
+    // Relasi ke PanggilanTes (Satu Admin bisa memiliki banyak PanggilanTes)
+    public function panggilanTes()
+    {
+        return $this->hasMany(PanggilanTes::class);
     }
 }
