@@ -11,7 +11,7 @@ class KelolaPerusahaan extends Model
 
     protected $guarded = [];
 
-   
+
 
     // Relasi ke Lowongan
     public function lowongans()
