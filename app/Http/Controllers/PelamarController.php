@@ -50,6 +50,10 @@ class PelamarController extends Controller
     {
         //
     }
+    public function showDetail(Pelamar $pelamar)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
