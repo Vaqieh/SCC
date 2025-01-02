@@ -47,13 +47,10 @@ class AdminLowonganController extends Controller
         return view('admin.KelolaLowonganCreated', $data);
     }
 
-
-
-
     // Menyimpan data lowongan ke database
     public function store(StoreAdminLowonganRequest $request)
     {
-        // dd($request->all());
+        // Validasi data request
         $validatedData = $request->validate([
             'admin_id' => 'required|exists:admins,id',
             'perusahaan_id' => 'required|exists:kelola_perusahaans,id',
@@ -66,9 +63,9 @@ class AdminLowonganController extends Controller
             'pengalaman_kerja' => 'required|string|max:255',
             'umur' => 'required|integer|min:18',
             'gambar_lowongan' => 'required|image|mimes:jpeg,png,jpg|max:5000',
+            'file' => 'required|file|mimes:pdf,doc,docx,rar,zip|max:10000',
             'detail' => 'required|string|max:255',
         ]);
-
 
         // Proses dan simpan data ke database
         $lowongan = new Lowongan();
@@ -78,23 +75,28 @@ class AdminLowonganController extends Controller
         $lowongan->status_lowongan = $validatedData['status_lowongan'];
         $lowongan->tanggal_buat = $validatedData['tanggal_buat'];
         $lowongan->tanggal_berakhir = $validatedData['tanggal_berakhir'];
-        $lowongan->tanggal_verifikasi = $validatedData['tanggal_verifikasi'];
+        $lowongan->tanggal_verifikasi = $validatedData['tanggal_verifikasi'] ?: null;  // jika kosong, set null
         $lowongan->pendidikan = $validatedData['pendidikan'];
         $lowongan->pengalaman_kerja = $validatedData['pengalaman_kerja'];
         $lowongan->umur = $validatedData['umur'];
+        $lowongan->file = $validatedData['file'];
         $lowongan->detail = $validatedData['detail'];
 
         // Cek dan simpan gambar lowongan
         if ($request->hasFile('gambar_lowongan')) {
             // Hapus gambar lama jika ada
-            if ($lowongan->gambar_lowongan) {
+            if ($lowongan->gambar_lowongan && Storage::exists($lowongan->gambar_lowongan)) {
                 Storage::delete($lowongan->gambar_lowongan);
             }
             // Simpan gambar baru di folder 'public/lowongan'
             $lowongan->gambar_lowongan = $request->file('gambar_lowongan')->store('lowongan', 'public');
         }
 
-
+        // Cek dan simpan file jika ada
+        if ($request->hasFile('file')) {
+            // Simpan file di folder 'public/files'
+            $lowongan->file = $request->file('file')->store('files', 'public');
+        }
 
         $lowongan->save();
 

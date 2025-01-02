@@ -102,6 +102,11 @@
                     <label for="gambar_lowongan">Upload Gambar Lowongan</label>
                     <input type="file" name="gambar_lowongan" class="form-control" id="gambar_lowongan" accept="image/*">
                 </div>
+                <!-- Gambar Lowongan -->
+                <div class="form-group mt-3">
+                    <label for="file">Upload File</label>
+                    <input type="file" name="file" class="form-control" id="file" accept="file/*">
+                </div>
 
                 <!-- Syarat Umur -->
                 <div class="form-group mt-3">

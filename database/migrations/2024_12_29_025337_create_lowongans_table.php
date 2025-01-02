@@ -19,11 +19,12 @@ return new class extends Migration
             $table->string('status_lowongan'); // Status: 'menunggu', 'ditolak', 'dibuka'
             $table->date('tanggal_buat');
             $table->date('tanggal_berakhir');
-            $table->date('tanggal_verifikasi');
+            $table->date('tanggal_verifikasi')->nullable();
             $table->string('pendidikan');
             $table->string('pengalaman_kerja');
             $table->integer('umur');
             $table->string('gambar_lowongan');
+            $table->string('file');
             $table->text('detail');
             $table->timestamps();
         });
