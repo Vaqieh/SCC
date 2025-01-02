@@ -54,11 +54,15 @@
 
                 <!-- Status Lowongan -->
                 <div class="form-group mt-3">
-                    <label for="status_lowongan">Status Lowongan</label>
-                    <select name="status_lowongan" class="form-control" id="status_lowongan" required>
-                        <option value="open">Open</option>
-                        <option value="closed">Closed</option>
+                    <label for="status_lowongan">Status Panggilan Tes</label>
+                    <select class="form-control @error('status_lowongan') is-invalid @enderror" id="status_lowongan" name="status_lowongan">
+                        <option value="">Pilih Status Lowongan</option>
+                        <option value="diterima" {{ old('status_lowongan') == 'diterima' ? 'selected' : '' }}>Terima</option>
+                        <option value="ditolak" {{ old('status_lowongan') == 'ditolak' ? 'selected' : '' }}>Tolak</option>
                     </select>
+                    @error('status_lowongan')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <!-- Tanggal Buka dan Tanggal Berakhir -->

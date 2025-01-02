@@ -86,21 +86,23 @@
                             <td>
                                 @if ($item->gambar_lowongan)
                                     <a href="{{ \Storage::url($item->gambar_lowongan) }}" target="blank">
-                                <img src="{{ \Storage::url($item->gambar_lowongan) }}" width="50">
-                            </a>
-                        @endif
+                                        <img src="{{ \Storage::url($item->gambar_lowongan) }}" width="50">
+                                    </a>
+                                @endif
                             </td>
                             <td>{{ $item->nama_lowongan }}</td>
                             <td>{{ $item->tanggal_verifikasi }}</td>
-                            <td>{{ $item->status_lowongan }}</td>
+                            <td>
+                                @if ($item->status_lowongan == 'menunggu')
+                                    <span class="badge bg-warning text-dark">Menunggu</span>
+                                @elseif ($item->status_lowongan == 'diterima')
+                                    <span class="badge bg-success">Diterima</span>
+                                @elseif ($item->status_lowongan == 'ditolak')
+                                    <span class="badge bg-danger">Ditolak</span>
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{ route('kelolalowongan.show', $item->id) }}" class="btn btn-info">Show</a>
-
-                                {{-- <!-- Form untuk Verifikasi -->
-                                <form action=" {{ route('kelolalowongan.verify', $item->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    <button type="submit" class="btn btn-success">Verifikasi</button>
-                                </form> --}}
                             </td>
                         </tr>
                     @endforeach

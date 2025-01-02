@@ -41,25 +41,25 @@
             </div>
 
             <!-- Form Admin -->
-            <div class="mb-3">
-                <label for="admin_id" class="form-label">Admin</label>
+                <div class="mb-3">
+                    <label for="admin_id" class="form-label">Admin</label>
 
-                <!-- Pastikan listAdmin tidak null -->
-                @if ($listAdmin)
-                    <!-- Input hidden untuk mengirimkan admin_id -->
-                    <input type="hidden" name="admin_id" value="{{ $listAdmin->id }}">
+                    <!-- Pastikan listAdmin tidak null -->
+                    @if ($listAdmin)
+                        <!-- Input hidden untuk mengirimkan admin_id -->
+                        <input type="hidden" name="admin_id" value="{{ $listAdmin->id }}">
 
-                    <!-- Nama admin yang sedang login (hanya ditampilkan) -->
-                    <input type="text" class="form-control" value="{{ $listAdmin->admin_nama }}" disabled>
-                @else
-                    <p class="text-danger">Admin profil belum lengkap. Mohon lengkapi profil Anda untuk menggunakan
-                        fitur ini.</p>
-                @endif
+                        <!-- Nama admin yang sedang login (hanya ditampilkan) -->
+                        <input type="text" class="form-control" value="{{ $listAdmin->admin_nama }}" disabled>
+                    @else
+                        <p class="text-danger">Admin profil belum lengkap. Mohon lengkapi profil Anda untuk menggunakan
+                            fitur ini.</p>
+                    @endif
 
-                @error('admin_id')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
+                    @error('admin_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
             <div class="form-group mt-3">
                 <label for="nama">Nama Panggilan Tes</label>

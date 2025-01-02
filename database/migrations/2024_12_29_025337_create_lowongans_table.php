@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('perusahaan_id')->constrained('kelola_perusahaans')->onDelete('cascade');
             $table->foreignId('admin_id')->constrained()->onDelete('cascade');
             $table->string('nama_lowongan');
-            $table->string('status_lowongan'); // Status: 'menunggu', 'ditolak', 'dibuka'
+            $table->enum('status_lowongan',['menunggu','diterima','ditolak'])->default('menunggu'); // Status: 'menunggu', 'ditolak', 'dibuka'
             $table->date('tanggal_buat');
             $table->date('tanggal_berakhir');
             $table->date('tanggal_verifikasi')->nullable();
