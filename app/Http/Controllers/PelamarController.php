@@ -14,6 +14,7 @@ class PelamarController extends Controller
      */
     public function index()
     {
+        $data['kelolalowongan'] = \App\Models\Lowongan::latest()->paginate(4);
         // Cek apakah pengguna sudah login
         if (Auth::guest()) {
             return redirect()->route('login.pelamar');  // Redirect ke login admin jika belum login
@@ -23,7 +24,7 @@ class PelamarController extends Controller
             return redirect('/login/pelamar')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
         }
 
-        return view('pelamar.pelamarindex');
+        return view('pelamar.pelamarindex', $data);
     }
 
     /**

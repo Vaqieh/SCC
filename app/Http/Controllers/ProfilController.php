@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\KelolaPerusahaan;
+use App\Models\KelolaPelamar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,14 +15,25 @@ class ProfilController extends Controller
     {
         $user = Auth::user(); // Ambil data pengguna yang sedang login
 
-        // Ambil data profil admin
+        // Memeriksa role pengguna
         if ($user->role == 'admin') {
-            $profile = Admin::where('email', $user->email)->first(); // Ambil profil admin
+            // Jika role adalah admin, ambil data profil admin
+            $profile = Admin::where('email', $user->email)->first();
             return view('profil.profiladmin', compact('user', 'profile'));
+        } elseif ($user->role == 'perusahaan') {
+            // Jika role adalah perusahaan, ambil data profil perusahaan
+            $profile = KelolaPerusahaan::where('email_perusahaan', $user->email_perusahaan)->first();
+            return view('profil.profilperusahaan', compact('user', 'profile'));
+        } elseif ($user->role == 'pelamar') {
+            // Jika role adalah pelamar, ambil data profil pelamar
+            $profile = KelolaPelamar::where('email', $user->email)->first();
+            return view('profil.profilpelamar', compact('user', 'profile'));
         } else {
+            // Jika role tidak valid, redirect ke halaman home
             return redirect()->route('home')->with('error', 'Role tidak valid');
         }
     }
+
 
     // Mengupdate Profil Berdasarkan Role
     public function updateProfile(Request $request)

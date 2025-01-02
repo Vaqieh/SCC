@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('perusahaan/dashboard', [PerusahaanController::class, 'index'])->name('perusahaan.dashboard');
+    Route::get('/perusahaan/profil', [ProfilController::class, 'showProfile'])->name('perusahaan.profile');
+    Route::put('/perusahaan/profil/update', [ProfilController::class, 'updateProfile'])->name('perusahaan.profil.update');
     Route::resource('kelolalowonganperusahaan', PerusahaanController::class);
 });
 

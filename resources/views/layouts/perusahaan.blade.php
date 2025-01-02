@@ -537,7 +537,7 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center" data-bs-toggle="dropdown">
                     <div class="avatar me-3">
-                        <img src="cakeadmin/html/images/user/man_avatar5.jpg" class="rounded-circle" alt="image">
+                        <img src="../cakeadmin/html/images/user/FotoAdmin.jpeg" class="rounded-circle" alt="image">
                     </div>
                     <div>
                         {{ Auth::user()->name }}
@@ -545,13 +545,10 @@
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a href="#" class="dropdown-item d-flex align-items-center">
-                        <i class="bi bi-envelope dropdown-item-icon"></i> Inbox
+                    <a href="/admin/profil" class="dropdown-item d-flex align-items-center">
+                        <i class="bi bi-person dropdown-item-icon"></i> Profil
                     </a>
-                    <a href="#" class="dropdown-item d-flex align-items-center"
-                        data-sidebar-target="#settings">
-                        <i class="bi bi-gear dropdown-item-icon"></i> Settings
-                    </a>
+
                     <!-- Form logout dengan metode POST -->
                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                         @csrf

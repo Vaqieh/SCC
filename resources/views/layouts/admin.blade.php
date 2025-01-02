@@ -545,7 +545,7 @@
                     </div>
                     <div>
                         {{ Auth::user()->name }}
-                        <br><small class="text-muted">Admin</small>
+                        <br><small class="text-muted">{{ Auth::user()->role }}</small>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
@@ -607,7 +607,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
