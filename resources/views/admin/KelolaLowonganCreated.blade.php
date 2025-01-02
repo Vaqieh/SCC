@@ -104,7 +104,7 @@
                 </div>
                 <!-- Gambar Lowongan -->
                 <div class="form-group mt-3">
-                    <label for="file">Upload File</label>
+                    <label for="file">Upload Dokumen Legal</label>
                     <input type="file" name="file" class="form-control" id="file" accept="file/*">
                 </div>
 
