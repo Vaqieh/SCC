@@ -41,23 +41,20 @@
             </div>
 
             <!-- Form Admin -->
-            <div class="mb-3">
-                <label for="admin_id" class="form-label">Admin</label>
-
-                <!-- Pastikan listAdmin tidak null -->
-                @if ($listAdmin)
-                    <!-- Input hidden untuk mengirimkan admin_id -->
-                    <input type="hidden" name="admin_id" value="{{ $listAdmin->id }}">
-
-                    <!-- Nama admin yang sedang login (hanya ditampilkan) -->
-                    <input type="text" class="form-control" value="{{ $listAdmin->admin_nama }}" disabled>
-                @else
-                    <p class="text-danger">Admin profil belum lengkap. Mohon lengkapi profil Anda untuk menggunakan
-                        fitur ini.</p>
-                @endif
-
+            <div class="form-group mt-3">
+                <label for="admin_id">Admin</label>
+                <select class="form-control @error('admin_id') is-invalid @enderror" id="admin_id" name="admin_id">
+                    <option value="">Pilih Admin</option>
+                    @forelse($listAdmin as $admin)
+                        <option value="{{ $admin->id }}" {{ old('admin_id') == $admin->id ? 'selected' : '' }}>
+                            {{ $admin->admin_nama }}
+                        </option>
+                    @empty
+                        <option value="">Tidak ada admin</option>
+                    @endforelse
+                </select>
                 @error('admin_id')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
