@@ -188,6 +188,7 @@ class AdminLowonganController extends Controller
             'gambar_lowongan' => 'required|image|mimes:jpeg,png,jpg|max:5000',
             'file' => 'required|file|mimes:pdf,doc,docx,rar,zip|max:10000',
             'detail' => 'required|string|max:255',
+            'kuota' => 'required|string|max:255',
         ]);
 
         // Proses dan simpan data ke database
@@ -204,6 +205,7 @@ class AdminLowonganController extends Controller
         $lowongan->umur = $validatedData['umur'];
         $lowongan->file = $validatedData['file'];
         $lowongan->detail = $validatedData['detail'];
+        $lowongan->kuota = $validatedData['kuota'];
 
         // Cek dan simpan gambar lowongan
         if ($request->hasFile('gambar_lowongan')) {
