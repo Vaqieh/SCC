@@ -112,6 +112,12 @@
                     <input type="file" name="file" class="form-control" id="file" accept="file/*">
                 </div>
 
+                <!-- Kuota -->
+                <div class="form-group mt-3">
+                    <label for="kuota">Kuota</label>
+                    <input type="number" class="form-control" id="kuota" name="kuota" required>
+                </div>
+
                 <!-- Syarat Umur -->
                 <div class="form-group mt-3">
                     <label for="umur">Syarat Umur</label>
