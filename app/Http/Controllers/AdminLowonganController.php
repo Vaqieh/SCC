@@ -199,7 +199,7 @@ class AdminLowonganController extends Controller
         $lowongan->status_lowongan = $validatedData['status_lowongan'];
         $lowongan->tanggal_buat = $validatedData['tanggal_buat'];
         $lowongan->tanggal_berakhir = $validatedData['tanggal_berakhir'];
-        $lowongan->tanggal_verifikasi = $validatedData['tanggal_verifikasi'] ?: null;  // jika kosong, set null
+        $lowongan->tanggal_verifikasi = $validatedData['tanggal_verifikasi'] ?? null;  // jika kosong, set null
         $lowongan->pendidikan = $validatedData['pendidikan'];
         $lowongan->pengalaman_kerja = $validatedData['pengalaman_kerja'];
         $lowongan->umur = $validatedData['umur'];
