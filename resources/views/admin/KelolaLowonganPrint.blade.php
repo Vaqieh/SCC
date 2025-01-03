@@ -71,7 +71,7 @@
                     <h4>Daftar Lowongan</h4>
                 </div>
                 <div>
-                    <img src="../logo.png" alt="Logo" class="logo">
+                    <img src="{{ asset('image/logo_scc (1).png') }}" alt="Logo" class="logo">
                 </div>
             </div>
 
