@@ -26,6 +26,21 @@
 </head>
 
 <body>
+    <style>
+        /* CSS untuk menyesuaikan foto profil */
+        .profile-picture {
+            width: 100px;
+            /* Lebar foto */
+            height: 100px;
+            /* Tinggi foto */
+            object-fit: cover;
+            /* Menjaga rasio gambar dan memotong jika perlu */
+            border-radius: 50%;
+            /* Membuat gambar berbentuk lingkaran */
+            overflow: hidden;
+            /* Menghindari bagian gambar yang meluap keluar */
+        }
+    </style>
     <!-- preloader -->
     <div class="preloader">
         <img src="{{ asset('cakeadmin/html/logo.svg') }}" alt="logo">
@@ -537,7 +552,8 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center" data-bs-toggle="dropdown">
                     <div class="avatar me-3">
-                        <img src="../cakeadmin/html/images/user/FotoAdmin.jpeg" class="rounded-circle" alt="image">
+                        <img src="../cakeadmin/html/images/user/FotoAdmin.jpeg" class="rounded-circle"
+                            alt="image">
                     </div>
                     <div>
                         {{ Auth::user()->name }}
@@ -545,7 +561,7 @@
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a href="/admin/profil" class="dropdown-item d-flex align-items-center">
+                    <a href="/perusahaan/profil" class="dropdown-item d-flex align-items-center">
                         <i class="bi bi-person dropdown-item-icon"></i> Profil
                     </a>
 
