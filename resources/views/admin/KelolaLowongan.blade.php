@@ -111,6 +111,8 @@
                             </td>
                             <td>
                                 <a href="{{ route('kelolalowongan.edit', $item->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('kelolalowongan.show', $item->id) }}" class="btn btn-outline-secondary ">Print</a>
+
                             </td>
                         </tr>
                     @endforeach

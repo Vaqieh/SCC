@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreAdminLowonganRequest;
+use App\Models\KelolaPelamar;
 
 class AdminLowonganController extends Controller
 {
@@ -224,4 +225,28 @@ class AdminLowonganController extends Controller
 
         return back()->with('success', 'Data Lowongan berhasil ditambahkan!');
     }
+
+    public function show($id)
+{
+    // Ambil lowongan berdasarkan ID
+    $lowongan = Lowongan::find($id);
+
+    // Jika lowongan ditemukan, ambil semua pelamar yang sesuai
+    $pelamars = KelolaPelamar::where('id', $id)->get();  // Anda harus sesuaikan kondisi where ini
+    // Jika tidak ada hubungan eksplisit, mungkin melalui filter nama lowongan atau ID perusahaan
+
+    return view('admin.KelolaLowonganPrint', compact('lowongan', 'pelamars'));
+}
+
+
+
+
+    // public function printLowongan()
+    // {
+    //     // Mengambil semua data lowongan dari database
+    //     $lowongan = Lowongan::all();
+
+    //     // Meneruskan data ke view untuk ditampilkan
+    //     return view('admin.KelolaLowonganPrint', compact('lowongans'));
+    // }
 }
