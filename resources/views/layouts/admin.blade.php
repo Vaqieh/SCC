@@ -645,7 +645,7 @@
                             <a href="/kelolalowongan">Data Lowongan</a>
                         </li>
                         <li>
-                            <a href="/kelolalowonga/create">Tambah Data Lowongan</a>
+                            <a href="/kelolalowongan/create">Tambah Data Lowongan</a>
                         </li>
                     </ul>
                 </li>

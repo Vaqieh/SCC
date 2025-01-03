@@ -61,9 +61,10 @@
                         <div class="mb-3">
                             <label for="status_lowongan" class="form-label">Status Lowongan</label>
                             <select class="form-control @error('status_lowongan') is-invalid @enderror" id="status_lowongan" name="status_lowongan">
-                                <option value="">Pilih Status Lowongan</option>
                                 <option value="diterima" {{ old('status_lowongan') == 'diterima' ? 'selected' : '' }}>Terima</option>
                                 <option value="ditolak" {{ old('status_lowongan') == 'ditolak' ? 'selected' : '' }}>Tolak</option>
+                                <!-- Pilihan default: jika tidak dipilih apapun -->
+                                <option value="menunggu" {{ old('status_lowongan') == 'menunggu' ? 'selected' : '' }}>Menunggu</option>
                             </select>
                             @error('status_lowongan')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -78,6 +79,7 @@
                 </div>
 
 
+
                 <!-- Tanggal Buka dan Tanggal Berakhir -->
                 <div class="form-group mt-3">
                     <label for="tanggal_buat">Tanggal Buka</label>
@@ -88,7 +90,7 @@
                     <label for="tanggal_berakhir">Tanggal Berakhir</label>
                     <input type="date" name="tanggal_berakhir" id="tanggal_berakhir" class="form-control" required>
                 </div>
-                
+
                 <!-- Tanggal Verifikasi -->
                 <div class="mb-3">
                     <label for="tanggal_verifikasi" class="form-label">Tanggal Verifikasi</label>

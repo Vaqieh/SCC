@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('lowongans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('perusahaan_id')->constrained('kelola_perusahaans')->onDelete('cascade');
-            $table->foreignId('admin_id')->constrained()->onDelete('cascade');
+            $table->foreignId('admin_id')->nullable()->constrained()->onDelete('cascade')->change();
             $table->string('nama_lowongan');
             $table->enum('status_lowongan',['menunggu','diterima','ditolak'])->default('menunggu'); // Status: 'menunggu', 'ditolak', 'dibuka'
             $table->date('tanggal_buat');
@@ -25,11 +25,12 @@ return new class extends Migration
             $table->integer('umur');
             $table->string('gambar_lowongan');
             $table->string('file');
-            $table->text('detail');
+            $table->text('detail')->nullable();
+            $table->text('kuota')->nullable();
             $table->timestamps();
         });
     }
-    
+
 
 
     /**
@@ -37,6 +38,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lowongans');
+        Schema::table('lowongans', function (Blueprint $table) {
+            // Mengembalikan kolom admin_id menjadi tidak nullable
+            $table->foreignId('admin_id')->nullable(false)->constrained()->onDelete('cascade')->change();
+        });
     }
 };

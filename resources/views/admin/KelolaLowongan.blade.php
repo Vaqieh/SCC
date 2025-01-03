@@ -73,6 +73,7 @@
                         <th>Perusahaan</th>
                         <th>Gambar Lowongan</th>
                         <th>Nama Lowongan</th>
+                        <th>Dokumen Legal</th>
                         <th>Tanggal Verifikasi</th>
                         <th>Status</th>
                         <th>Aksi</th>
@@ -91,6 +92,13 @@
                                 @endif
                             </td>
                             <td>{{ $item->nama_lowongan }}</td>
+                            <td>
+                                @if ($item->file)
+                                    <a href="{{ asset('storage/' . $item->file) }}" target="_blank">Lihat Dokumen</a>
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td>{{ $item->tanggal_verifikasi }}</td>
                             <td>
                                 @if ($item->status_lowongan == 'menunggu')
@@ -102,7 +110,7 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('kelolalowongan.show', $item->id) }}" class="btn btn-info">Show</a>
+                                <a href="{{ route('kelolalowongan.edit', $item->id) }}" class="btn btn-info">Edit</a>
                             </td>
                         </tr>
                     @endforeach

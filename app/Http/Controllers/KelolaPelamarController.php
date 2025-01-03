@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\KelolaPelamar;
 use App\Http\Requests\StoreKelola_PelamarRequest;
 use App\Http\Requests\UpdateKelola_PelamarRequest;
@@ -10,6 +11,14 @@ class KelolaPelamarController extends Controller
 {
     public function index()
     {
+        if (Auth::guest()) {;
+            return redirect()->route('login.admin');  // Sesuaikan dengan role
+        }
+
+        // Jika sudah login, cek apakah role sesuai
+        if (Auth::user()->role !== 'admin') {
+            return redirect()->route('login.admin');  // Redirect ke login jika bukan admin
+        }
         $data['kelolapelamar'] = \App\Models\KelolaPelamar::latest()->paginate(10);
         return view('admin.KelolaPelamar', $data);
     }
