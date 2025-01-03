@@ -649,7 +649,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#">
                         <span class="nav-link-icon">
                             <i class="bi bi-wallet2"></i>
@@ -670,7 +670,7 @@
                             <a href="./buyer-wishlist.html">Wishlist</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- <li>
                     <a href="./customers.html">
                         <span class="nav-link-icon">
