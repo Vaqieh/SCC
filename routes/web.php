@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PelamarController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PerusahaanController;
+use App\Http\Controllers\PerusahaanPelamarController;
 use App\Http\Controllers\PerusahaanLowonganController;
 use App\Http\Controllers\LamarController;
 use App\Http\Controllers\LowonganController;
@@ -52,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/perusahaan/profil', [ProfilController::class, 'showProfile'])->name('perusahaan.profile');
     Route::put('/perusahaan/profil/update', [ProfilController::class, 'updateProfile'])->name('perusahaan.profil.update');
     Route::resource('kelolalowonganperusahaan', PerusahaanLowonganController::class);
+    Route::resource('kelolapelamarperusahaan', PerusahaanPelamarController::class);
 });
 
 Route::prefix('register')->group(function () {

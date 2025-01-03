@@ -606,6 +606,31 @@
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
+                            <i class="bi-file-earmark-person"></i>
+                        </span>
+                        <span>Kelola Pelamar</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolapelamarperusahaan">Daftar Pelamar</a>
+                        </li>
+                        <li>
+                            <a href="/kelolapelamarperusahaan/create">Tambah Pelamar</a>
+                        </li>
+                        <li>
+                            <a href="./product-detail.html">Product Detail</a>
+                        </li>
+                        <li>
+                            <a href="./shopping-cart.html">Shopping Cart</a>
+                        </li>
+                        <li>
+                            <a href="./checkout.html">Checkout</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
                             <i class="bi bi-wallet2"></i>
                         </span>
                         <span>Buyer</span>
