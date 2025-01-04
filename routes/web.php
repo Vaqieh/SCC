@@ -50,10 +50,19 @@ Route::middleware('auth')->group(function () {
     Route::get('pelamar/dashboard', [PelamarController::class, 'index'])->name('pelamar.index');
 });
 
+//rute untuk menampilkan lowongan
+Route::get('/pelamar/lowongan', [PelamarController::class, 'show'])->name('pelamar.lowongan');
+
+//rute untuk menampilkan lowongan detail
+Route::get('/pelamar/lowongan/{id}/detail', [PelamarController::class, 'showDetail'])->name('pelamar.lowongan.detail');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('perusahaan/dashboard', [PerusahaanController::class, 'index'])->name('perusahaan.dashboard');
     Route::get('/perusahaan/profil', [ProfilController::class, 'showProfile'])->name('perusahaan.profile');
     Route::put('/perusahaan/profil/update', [ProfilController::class, 'updateProfile'])->name('perusahaan.profil.update');
+    Route::resource('kelolalowonganperusahaan', PerusahaanController::class);
+
     Route::resource('kelolalowonganperusahaan', PerusahaanLowonganController::class);
     Route::resource('kelolapelamarperusahaan', PerusahaanPelamarController::class);
     Route::resource('kelolapanggilantesperusahaan', PerusahaanKelolaPanggilanTesController::class);
@@ -72,10 +81,6 @@ Route::prefix('register')->group(function () {
     Route::get('perusahaan', [RegisterController::class, 'showPerusahaanRegistrationForm'])->name('register.perusahaan');
     Route::post('perusahaan', [RegisterController::class, 'registerPerusahaan'])->name('register.perusahaan.submit');
 });
-
-
-
-
 
 // Rute dengan prefix 'login'
 Route::prefix('login')->group(function() {

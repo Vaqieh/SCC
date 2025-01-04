@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreAdminLowonganRequest;
+use App\Models\KelolaPelamar;
 
 class AdminLowonganController extends Controller
 {
@@ -187,6 +188,7 @@ class AdminLowonganController extends Controller
             'gambar_lowongan' => 'required|image|mimes:jpeg,png,jpg|max:5000',
             'file' => 'required|file|mimes:pdf,doc,docx,rar,zip|max:10000',
             'detail' => 'required|string|max:255',
+            'kuota' => 'required|string|max:255',
         ]);
 
         // Proses dan simpan data ke database
@@ -197,12 +199,13 @@ class AdminLowonganController extends Controller
         $lowongan->status_lowongan = $validatedData['status_lowongan'];
         $lowongan->tanggal_buat = $validatedData['tanggal_buat'];
         $lowongan->tanggal_berakhir = $validatedData['tanggal_berakhir'];
-        $lowongan->tanggal_verifikasi = $validatedData['tanggal_verifikasi'] ?: null;  // jika kosong, set null
+        $lowongan->tanggal_verifikasi = $validatedData['tanggal_verifikasi'] ?? null;  // jika kosong, set null
         $lowongan->pendidikan = $validatedData['pendidikan'];
         $lowongan->pengalaman_kerja = $validatedData['pengalaman_kerja'];
         $lowongan->umur = $validatedData['umur'];
         $lowongan->file = $validatedData['file'];
         $lowongan->detail = $validatedData['detail'];
+        $lowongan->kuota = $validatedData['kuota'];
 
         // Cek dan simpan gambar lowongan
         if ($request->hasFile('gambar_lowongan')) {
@@ -224,4 +227,28 @@ class AdminLowonganController extends Controller
 
         return back()->with('success', 'Data Lowongan berhasil ditambahkan!');
     }
+
+    public function show($id)
+{
+    // Ambil lowongan berdasarkan ID
+    $lowongan = Lowongan::find($id);
+
+    // Jika lowongan ditemukan, ambil semua pelamar yang sesuai
+    $pelamars = KelolaPelamar::where('id', $id)->get();  // Anda harus sesuaikan kondisi where ini
+    // Jika tidak ada hubungan eksplisit, mungkin melalui filter nama lowongan atau ID perusahaan
+
+    return view('admin.KelolaLowonganPrint', compact('lowongan', 'pelamars'));
+}
+
+
+
+
+    // public function printLowongan()
+    // {
+    //     // Mengambil semua data lowongan dari database
+    //     $lowongan = Lowongan::all();
+
+    //     // Meneruskan data ke view untuk ditampilkan
+    //     return view('admin.KelolaLowonganPrint', compact('lowongans'));
+    // }
 }

@@ -32,6 +32,7 @@ class KelolaPelamarController extends Controller
          // Validasi form
          $validatedData = $request->validate([
             'NamaPelamar' => 'required|string|max:255',
+            'email' => 'required|email',
             'TanggalLahir' => 'required|date',
             'JenisKelamin' => 'required|string',
             'Alamat' => 'required|string',
@@ -44,6 +45,7 @@ class KelolaPelamarController extends Controller
         // Menyimpan data pelamar ke database
         $pelamar = new KelolaPelamar();
         $pelamar->NamaPelamar = $validatedData['NamaPelamar'];
+        $pelamar->email = $validatedData['email'];
         $pelamar->TanggalLahir = $validatedData['TanggalLahir'];
         $pelamar->JenisKelamin = $validatedData['JenisKelamin'];
         $pelamar->Alamat = $validatedData['Alamat'];

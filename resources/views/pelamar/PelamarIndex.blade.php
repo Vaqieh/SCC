@@ -37,7 +37,7 @@
 
                 <div class="col-lg-6">
                     <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                        <img src="iLanding/assets/img/dashboard.png" alt="Team Work" class="img-fluid">
+                        <img src="../iLanding/assets/img/dashboard.png" alt="Team Work" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -45,66 +45,78 @@
             <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
                 <div class="col-lg-3 col-md-6"></div>
                 <div class="stat-content">
-                    <img src="iLanding/assets/img/pertamina.png" class="testimonial-img" alt=""
+                    <img src="../iLanding/assets/img/pertamina.png" class="testimonial-img" alt=""
                         style="width: 19%; height: 150px; object-fit: cover;">
 
-                    <img src="iLanding/assets/img/slb.jpg" class="testimonial-img" alt=""
+                    <img src="../iLanding/assets/img/slb.jpg" class="testimonial-img" alt=""
                         style="width: 19%; height: 150px; object-fit: cover;">
 
-                    <img src="iLanding/assets/img/hb.png" class="testimonial-img" alt=""
+                    <img src="../iLanding/assets/img/hb.png" class="testimonial-img" alt=""
                         style="width: 19%; height: 150px; object-fit: cover;">
 
-                    <img src="iLanding/assets/img/raap.jpg" class="testimonial-img" alt=""
+                    <img src="../iLanding/assets/img/raap.jpg" class="testimonial-img" alt=""
                         style="width: 19%; height: 150px; object-fit: cover;">
 
-                    <img src="iLanding/assets/img/fp.png" class="testimonial-img" alt=""
+                    <img src="../iLanding/assets/img/fp.png" class="testimonial-img" alt=""
                         style="width: 18%; height: 150px; object-fit: cover;">
                 </div>
             </div>
         </div>
         </div>
 
+        <!--Tampilan Total Pelamar-->
         <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
-
-            <div class="row gy-4">
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
-                            class="purecounter"></span>
-                        <p>Total Pelamar</p>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
+                    <div class="stat-icon mb-3">
+                        <i class="bi bi-person fs-2 text-primary"></i>
                     </div>
-                </div><!-- End Stats Item -->
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="30" data-purecounter-duration="1"
-                            class="purecounter"></span>
-                        <p>Total Perusahaan</p>
+                    <div class="stat-content">
+                        <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Pelamar</h4>
+                        <p class="fs-6 text-muted">1200</p>
                     </div>
-                </div><!-- End Stats Item -->
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1"
-                            class="purecounter"></span>
-                        <p>Lowongan Terbuka</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
+                    <div class="stat-icon mb-3">
+                        <i class="bi bi-building fs-2 text-success"></i>
                     </div>
-                </div><!-- End Stats Item -->
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
-                            class="purecounter"></span>
-                        <p>Lowongan Tertutup</p>
+                    <div class="stat-content">
+                        <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Perusahaan</h4>
+                        <p class="fs-6 text-muted">45</p>
                     </div>
-                </div><!-- End Stats Item -->
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
+                    <div class="stat-icon mb-3">
+                        <i class="bi bi-unlock fs-2 text-warning"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Lowongan Buka</h4>
+                        <p class="fs-6 text-muted">25</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
+                    <div class="stat-icon mb-3">
+                        <i class="bi bi-lock fs-2 text-danger"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Lowongan Tutup</h4>
+                        <p class="fs-6 text-muted">10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /End Tampilan Total -->
 
     </section><!-- /Hero Section -->
 
     <!-- Features Cards Section -->
     <section id="features-cards" class="features-cards section">
-
         <div class="container">
             <div class="row gy-4">
                 @foreach ($kelolalowongan as $item)
@@ -120,7 +132,12 @@
                             @endif
                             <div style="padding: 15px;">
                                 <h4 style="text-align: center; margin-bottom: 10px;">
+<<<<<<< HEAD
+                                    <!-- Tautan ke halaman detail lowongan -->
+                                    <a href="{{ route('pelamar.lowongan.detail', $item->id) }}"
+=======
                                     <a href="{{ route('kelolalowongan.show', $item->id) }}"
+>>>>>>> fb7c89a3ff01b31a2664cc1d413637bf1ea727f2
                                         style="text-decoration: none; color: black;"
                                         onmouseover="this.style.color='blue'" onmouseout="this.style.color='black'">
                                         {{ $item->nama_lowongan }}
@@ -144,9 +161,25 @@
                 @endforeach
             </div>
         </div>
+    </section>
 
+    <!-- Features 2 Section -->
+<div style="display: flex; justify-content: center; margin-top: 30px;">
+    <a href="{{ route('pelamar.lowongan') }}"
+        style="font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); text-decoration: none; font-family: 'Arial', sans-serif; 
+    padding: 12px 30px; border-radius: 25px; background: linear-gradient(90deg, #00b0ff, #80d0ff); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); transition: all 0.4s ease;"
+        onmouseover="this.style.background='linear-gradient(90deg, #80d0ff, #00b0ff)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 20px rgba(0, 0, 0, 0.3)';"
+        onmouseout="this.style.background='linear-gradient(90deg, #00b0ff, #80d0ff)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 15px rgba(0, 0, 0, 0.1)';">
+        Tampilkan lebih banyak lowongan
+    </a>
+</div>
+
+<<<<<<< HEAD
+=======
                 
     </section><!-- /Features 2 Section -->
+>>>>>>> fb7c89a3ff01b31a2664cc1d413637bf1ea727f2
 
     <!-- Features Section -->
     <section id="features" class="features section">
@@ -167,7 +200,7 @@
 
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="testimonial-item">
-                            <img src="iLanding/assets/img/testimonials/profile4.jpg" class="testimonial-img"
+                            <img src="../iLanding/assets/img/testimonials/profile4.jpg" class="testimonial-img"
                                 alt="">
                             <h3>Xavier</h3>
                             <h4>Programmer</h4>
@@ -192,7 +225,7 @@
 
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="testimonial-item">
-                            <img src="iLanding/assets/img/testimonials/profile1.jpg" class="testimonial-img"
+                            <img src="../iLanding/assets/img/testimonials/profile1.jpg" class="testimonial-img"
                                 alt="">
                             <h3>Sara Wilsson</h3>
                             <h4>Web Designer</h4>
@@ -216,7 +249,7 @@
 
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="testimonial-item">
-                            <img src="iLanding/assets/img/testimonials/profile3.jpg" class="testimonial-img"
+                            <img src="../iLanding/assets/img/testimonials/profile3.jpg" class="testimonial-img"
                                 alt="">
                             <h3>Jena Karlis</h3>
                             <h4>Manager</h4>
@@ -237,7 +270,7 @@
 
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="testimonial-item">
-                            <img src="iLanding/assets/img/testimonials/profile2.jpg" class="testimonial-img"
+                            <img src="../iLanding/assets/img/testimonials/profile2.jpg" class="testimonial-img"
                                 alt="">
                             <h3>Matthew Bomer</h3>
                             <h4>Direktur PT.Sumber Mandiri</h4>

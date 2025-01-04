@@ -77,10 +77,29 @@
                     <input type="date" name="tanggal_verifikasi" id="tanggal_verifikasi" class="form-control" required>
                 </div>
 
+                <!-- Tanggal Verifikasi -->
+                <div class="mb-3">
+                    <label for="tanggal_verifikasi" class="form-label">Tanggal Verifikasi</label>
+                    @if (!$listPerusahaan)
+                        <div class="mb-3">
+                            <label for="tanggal_verifikasi" class="form-label">Tanggal Verifikasi</label>
+                            <input type="date" name="tanggal_verifikasi" class="form-control">
+                            @error('tanggal_verifikasi')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    @else
+                        <!-- Jika yang login adalah perusahaan, tanggal_verifikasi disabled dan diberi class untuk efek abu-abu -->
+                        <input type="date" name="tanggal_verifikasi" class="form-control" disabled>
+                    @endif
+                </div>
+                
                 <div class="form-group mt-3">
                     <label for="tanggal_berakhir">Tanggal Berakhir</label>
                     <input type="date" name="tanggal_berakhir" id="tanggal_berakhir" class="form-control" required>
                 </div>
+
+
 
                 <!-- Pengalaman Kerja -->
                 <div class="form-group mt-3">
@@ -110,6 +129,12 @@
                 <div class="form-group mt-3">
                     <label for="file">Upload Dokumen Legal</label>
                     <input type="file" name="file" class="form-control" id="file" accept="file/*">
+                </div>
+
+                <!-- Kuota -->
+                <div class="form-group mt-3">
+                    <label for="kuota">Kuota</label>
+                    <input type="number" class="form-control" id="kuota" name="kuota" required>
                 </div>
 
                 <!-- Syarat Umur -->
