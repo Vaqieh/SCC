@@ -30,7 +30,7 @@
     <link href="{{ asset('iLanding/assets/css/main.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <style>
+    <!--<style>
         html,
         body {
             margin: 0;
@@ -121,7 +121,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app">-->
         <!-- Navbar -->
         <nav class="navbar navbar-expand-md shadow-sm mb-0" style="background-color: #9CD5FF;">
             <div class="container">
