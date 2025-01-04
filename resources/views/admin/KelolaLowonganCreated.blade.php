@@ -54,11 +54,15 @@
 
                 <!-- Status Lowongan -->
                 <div class="form-group mt-3">
-                    <label for="status_lowongan">Status Lowongan</label>
-                    <select name="status_lowongan" class="form-control" id="status_lowongan" required>
-                        <option value="open">Open</option>
-                        <option value="closed">Closed</option>
+                    <label for="status_lowongan">Status Panggilan Tes</label>
+                    <select class="form-control @error('status_lowongan') is-invalid @enderror" id="status_lowongan" name="status_lowongan">
+                        <option value="">Pilih Status Lowongan</option>
+                        <option value="diterima" {{ old('status_lowongan') == 'diterima' ? 'selected' : '' }}>Terima</option>
+                        <option value="ditolak" {{ old('status_lowongan') == 'ditolak' ? 'selected' : '' }}>Tolak</option>
                     </select>
+                    @error('status_lowongan')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <!-- Tanggal Buka dan Tanggal Berakhir -->
@@ -73,10 +77,29 @@
                     <input type="date" name="tanggal_verifikasi" id="tanggal_verifikasi" class="form-control" required>
                 </div>
 
+                <!-- Tanggal Verifikasi -->
+                <div class="mb-3">
+                    <label for="tanggal_verifikasi" class="form-label">Tanggal Verifikasi</label>
+                    @if (!$listPerusahaan)
+                        <div class="mb-3">
+                            <label for="tanggal_verifikasi" class="form-label">Tanggal Verifikasi</label>
+                            <input type="date" name="tanggal_verifikasi" class="form-control">
+                            @error('tanggal_verifikasi')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    @else
+                        <!-- Jika yang login adalah perusahaan, tanggal_verifikasi disabled dan diberi class untuk efek abu-abu -->
+                        <input type="date" name="tanggal_verifikasi" class="form-control" disabled>
+                    @endif
+                </div>
+                
                 <div class="form-group mt-3">
                     <label for="tanggal_berakhir">Tanggal Berakhir</label>
                     <input type="date" name="tanggal_berakhir" id="tanggal_berakhir" class="form-control" required>
                 </div>
+
+
 
                 <!-- Pengalaman Kerja -->
                 <div class="form-group mt-3">
@@ -101,6 +124,17 @@
                 <div class="form-group mt-3">
                     <label for="gambar_lowongan">Upload Gambar Lowongan</label>
                     <input type="file" name="gambar_lowongan" class="form-control" id="gambar_lowongan" accept="image/*">
+                </div>
+                <!-- Gambar Lowongan -->
+                <div class="form-group mt-3">
+                    <label for="file">Upload Dokumen Legal</label>
+                    <input type="file" name="file" class="form-control" id="file" accept="file/*">
+                </div>
+
+                <!-- Kuota -->
+                <div class="form-group mt-3">
+                    <label for="kuota">Kuota</label>
+                    <input type="number" class="form-control" id="kuota" name="kuota" required>
                 </div>
 
                 <!-- Syarat Umur -->

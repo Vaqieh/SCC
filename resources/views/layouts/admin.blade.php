@@ -541,11 +541,11 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center" data-bs-toggle="dropdown">
                     <div class="avatar me-3">
-                        <img src="../cakeadmin/html/images/user/FotoAdmin.jpeg" class="rounded-circle" alt="image">
+                        <img src="../cakeadmin/html/images/user/photoadmin.jpg" class="rounded-circle" alt="image">
                     </div>
                     <div>
                         {{ Auth::user()->name }}
-                        <br><small class="text-muted">Admin</small>
+                        <br><small class="text-muted">{{ Auth::user()->role }}</small>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
@@ -607,7 +607,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
@@ -645,11 +645,11 @@
                             <a href="/kelolalowongan">Data Lowongan</a>
                         </li>
                         <li>
-                            <a href="/kelolalowonga/create">Tambah Data Lowongan</a>
+                            <a href="/kelolalowongan/create">Tambah Data Lowongan</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#">
                         <span class="nav-link-icon">
                             <i class="bi bi-wallet2"></i>
@@ -670,7 +670,7 @@
                             <a href="./buyer-wishlist.html">Wishlist</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- <li>
                     <a href="./customers.html">
                         <span class="nav-link-icon">

@@ -12,7 +12,7 @@ class Lowongan extends Model
     protected $fillable = [
         'admin_id', 'perusahaan_id', 'nama_lowongan', 'status_lowongan', 'tanggal_buat',
         'tanggal_berakhir', 'tanggal_verifikasi', 'pendidikan', 'pengalaman_kerja',
-        'umur', 'gambar_lowongan', 'detail'
+        'umur', 'gambar_lowongan', 'detail', 'file',
     ];
     
     // Relasi ke Perusahaan

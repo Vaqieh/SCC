@@ -26,6 +26,21 @@
 </head>
 
 <body>
+    <style>
+        /* CSS untuk menyesuaikan foto profil */
+        .profile-picture {
+            width: 100px;
+            /* Lebar foto */
+            height: 100px;
+            /* Tinggi foto */
+            object-fit: cover;
+            /* Menjaga rasio gambar dan memotong jika perlu */
+            border-radius: 50%;
+            /* Membuat gambar berbentuk lingkaran */
+            overflow: hidden;
+            /* Menghindari bagian gambar yang meluap keluar */
+        }
+    </style>
     <!-- preloader -->
     <div class="preloader">
         <img src="{{ asset('cakeadmin/html/logo.svg') }}" alt="logo">
@@ -60,103 +75,8 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="activities">
                     <div class="tab-pane-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="px-0 list-group-item">
-                                <a href="#" class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <figure class="avatar avatar-info me-3">
-                                            <span class="avatar-text rounded-circle">
-                                                <i class="bi bi-person"></i>
-                                            </span>
-                                        </figure>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <p class="mb-0 fw-bold d-flex justify-content-between">
-                                            You joined a group
-                                        </p>
-                                        <span class="text-muted small">
-                                            <i class="bi bi-clock me-1"></i> Today
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="px-0 list-group-item">
-                                <a href="#" class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <figure class="avatar avatar-warning me-3">
-                                            <span class="avatar-text rounded-circle">
-                                                <i class="bi bi-hdd"></i>
-                                            </span>
-                                        </figure>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <p class="mb-0 fw-bold d-flex justify-content-between">
-                                            Storage is running low!
-                                        </p>
-                                        <span class="text-muted small">
-                                            <i class="bi bi-clock me-1"></i> Today
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="px-0 list-group-item">
-                                <a href="#" class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <figure class="avatar avatar-secondary me-3">
-                                            <span class="avatar-text rounded-circle">
-                                                <i class="bi bi-file-text"></i>
-                                            </span>
-                                        </figure>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <p class="mb-0 d-flex justify-content-between">
-                                            1 person sent a file
-                                        </p>
-                                        <span class="text-muted small">
-                                            <i class="bi bi-clock me-1"></i> Yesterday
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="px-0 list-group-item">
-                                <a href="#" class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <figure class="avatar avatar-success me-3">
-                                            <span class="avatar-text rounded-circle">
-                                                <i class="bi bi-download"></i>
-                                            </span>
-                                        </figure>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <p class="mb-0 d-flex justify-content-between">
-                                            Reports ready to download
-                                        </p>
-                                        <span class="text-muted small">
-                                            <i class="bi bi-clock me-1"></i> Yesterday
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="px-0 list-group-item">
-                                <a href="#" class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <figure class="avatar avatar-info me-3">
-                                            <span class="avatar-text rounded-circle">
-                                                <i class="bi bi-lock"></i>
-                                            </span>
-                                        </figure>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <p class="mb-0 d-flex justify-content-between">
-                                            2 steps verification
-                                        </p>
-                                        <span class="text-muted small">
-                                            <i class="bi bi-clock me-1"></i> 20 min ago
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
+                        
+
                     </div>
                     <div class="tab-pane-footer">
                         <a href="#" class="btn btn-success">
@@ -537,7 +457,8 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center" data-bs-toggle="dropdown">
                     <div class="avatar me-3">
-                        <img src="cakeadmin/html/images/user/man_avatar5.jpg" class="rounded-circle" alt="image">
+                        <img src="../cakeadmin/html/images/user/FotoAdmin.jpeg" class="rounded-circle"
+                            alt="image">
                     </div>
                     <div>
                         {{ Auth::user()->name }}
@@ -545,13 +466,10 @@
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a href="#" class="dropdown-item d-flex align-items-center">
-                        <i class="bi bi-envelope dropdown-item-icon"></i> Inbox
+                    <a href="/perusahaan/profil" class="dropdown-item d-flex align-items-center">
+                        <i class="bi bi-person dropdown-item-icon"></i> Profil
                     </a>
-                    <a href="#" class="dropdown-item d-flex align-items-center"
-                        data-sidebar-target="#settings">
-                        <i class="bi bi-gear dropdown-item-icon"></i> Settings
-                    </a>
+
                     <!-- Form logout dengan metode POST -->
                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                         @csrf
@@ -587,6 +505,31 @@
                         </li>
                         <li>
                             <a href="/kelolalowonganperusahaan/create">Tambah Data Lowongan</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi-file-earmark-person"></i>
+                        </span>
+                        <span>Kelola Pelamar</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolapelamarperusahaan">Daftar Pelamar</a>
+                        </li>
+                        <li>
+                            <a href="/kelolapelamarperusahaan/create">Tambah Pelamar</a>
+                        </li>
+                        <li>
+                            <a href="./product-detail.html">Product Detail</a>
+                        </li>
+                        <li>
+                            <a href="./shopping-cart.html">Shopping Cart</a>
+                        </li>
+                        <li>
+                            <a href="./checkout.html">Checkout</a>
                         </li>
                     </ul>
                 </li>
@@ -955,6 +898,21 @@
             <!-- ./ Header mobile buttons -->
         </div>
         <!-- ./ header -->
+        <div class="container-fluid">
+            <!-- Cek apakah ada pesan error -->
+            @if (session()->has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            <!-- Cek apakah ada pesan sukses -->
+            @if (session()->has('success'))
+                <div class="alert alert-info" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
         <div>
             @yield('content')
         </div>

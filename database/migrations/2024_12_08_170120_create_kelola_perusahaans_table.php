@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('p_nama');
             $table->string('email_perusahaan');
+            $table->string('foto')->nullable();
             $table->string('jenis_industri');
             $table->string('p_tahunBerdiri');
             $table->string('negara');
@@ -23,7 +24,7 @@ return new class extends Migration
             $table->string('kota');
             $table->timestamps();
         });
-        
+
     }
     public function down(): void
     {

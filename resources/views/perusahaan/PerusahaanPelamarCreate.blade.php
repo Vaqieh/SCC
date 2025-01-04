@@ -1,4 +1,4 @@
-@extends('layouts.admin', ['title' => 'Tambah Data Pelamar'])
+@extends('layouts.perusahaan', ['title' => 'Tambah Data Pelamar'])
 
 @section('content')
     <div class="card">
@@ -11,13 +11,6 @@
                     <input type="text" class="form-control @error('NamaPelamar') is-invalid @enderror" id="NamaPelamar"
                         name="NamaPelamar" value="{{ old('NamaPelamar') }}">
                     <span class="text-danger">{{ $errors->first('NamaPelamar') }}</span>
-                </div>
-
-                <div class="form-group mt-1 mb-3">
-                    <label for="email">Email Pelamar</label>
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                        name="email" value="{{ old('email') }}">
-                    <span class="text-danger">{{ $errors->first('email') }}</span>
                 </div>
 
                 <div class="form-group mt-1 mb-3">

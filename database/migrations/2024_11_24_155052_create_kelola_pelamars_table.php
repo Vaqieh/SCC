@@ -12,12 +12,14 @@ return new class extends Migration
         Schema::create('kelola_pelamars', function (Blueprint $table) {
             $table->id();
             $table->string('NamaPelamar');
+            $table->string('email');
             $table->date('TanggalLahir');
             $table->string('Alamat');
             $table->enum('JenisKelamin', ['laki-laki','perempuan']);
             $table->string('Kompetensi')->nullable();
             $table->string('sertifikat')->nullable();
             $table->string('cv');
+            $table->string('instansi')->nullable();
             $table->date('TanggalVerifikasi');
             $table->timestamps();
         });
