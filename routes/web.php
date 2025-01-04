@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminKelolaPanggilanTesController;
+use App\Http\Controllers\PerusahaanKelolaPanggilanTesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelolaPelamarController;
 use App\Http\Controllers\KelolaPerusahaanController;
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('kelolaperusahaan', KelolaPerusahaanController::class);
     Route::resource('kelolalowongan', AdminLowonganController::class);
     Route::resource('kelolapanggilantes', AdminKelolaPanggilanTesController::class);
+    
 });
 
 Route::get('/file/{folder}/{filename}', function ($folder, $filename) {
@@ -54,6 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/perusahaan/profil/update', [ProfilController::class, 'updateProfile'])->name('perusahaan.profil.update');
     Route::resource('kelolalowonganperusahaan', PerusahaanLowonganController::class);
     Route::resource('kelolapelamarperusahaan', PerusahaanPelamarController::class);
+    Route::resource('kelolapanggilantesperusahaan', PerusahaanKelolaPanggilanTesController::class);
 });
 
 Route::prefix('register')->group(function () {

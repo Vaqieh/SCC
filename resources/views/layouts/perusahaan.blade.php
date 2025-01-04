@@ -631,6 +631,23 @@
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
+                            <!-- Menggunakan ikon yang lebih sesuai, misalnya bi-clipboard-data -->
+                            <i class="bi bi-clipboard-data"></i>
+                        </span>
+                        <span>Kelola Data Panggilan Tes</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolapanggilantesperusahaan">Data Panggilan Tes</a>
+                        </li>
+                        <li>
+                            <a href="/kelolapanggilantesperusahaan/create">Tambah Data Panggilan Tes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
                             <i class="bi bi-wallet2"></i>
                         </span>
                         <span>Buyer</span>
