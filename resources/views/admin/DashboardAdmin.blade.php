@@ -6,52 +6,6 @@
         </div>
     @endif
 
-    @php
-
-        // Mengambil jumlah pelamar berdasarkan jenis kelamin
-        $totalLaki = App\Models\KelolaPelamar::where('JenisKelamin', 'laki-laki')->count();
-        $totalPerempuan = App\Models\KelolaPelamar::where('JenisKelamin', 'perempuan')->count();
-
-        // Mengambil jumlah akun pelamar dan perusahaan
-        $totalPelamar = App\Models\User::where('role', 'pelamar')->count();
-        $totalPerusahaan = App\Models\User::where('role', 'perusahaan')->count();
-        $totalEmail = App\Models\User::where('role', 'email')->count();
-
-        // Mengambil jumlah lowongan yang sudah diverifikasi per bulan
-        $lowonganTerverifikasiPerBulan = DB::table('lowongans')
-            ->selectRaw('MONTH(tanggal_verifikasi) as bulan, YEAR(tanggal_verifikasi) as tahun, COUNT(*) as jumlah')
-            ->whereNotNull('tanggal_verifikasi') // Pastikan hanya yang sudah diverifikasi
-            ->groupBy(DB::raw('MONTH(tanggal_verifikasi)'), DB::raw('YEAR(tanggal_verifikasi)'))
-            ->orderBy(DB::raw('YEAR(tanggal_verifikasi)'), 'asc')
-            ->orderBy(DB::raw('MONTH(tanggal_verifikasi)'), 'asc')
-            ->get();
-
-        // Mengambil jumlah lowongan yang belum diverifikasi per bulan
-        $lowonganBelumTerverifikasiPerBulan = DB::table('lowongans')
-            ->selectRaw('MONTH(tanggal_buat) as bulan, YEAR(tanggal_buat) as tahun, COUNT(*) as jumlah')
-            ->whereNull('tanggal_verifikasi') // Menampilkan hanya lowongan yang belum diverifikasi
-            ->groupBy(DB::raw('MONTH(tanggal_buat)'), DB::raw('YEAR(tanggal_buat)'))
-            ->orderBy(DB::raw('YEAR(tanggal_buat)'), 'asc')
-            ->orderBy(DB::raw('MONTH(tanggal_buat)'), 'asc')
-            ->get();
-
-        // Menyiapkan data untuk grafik
-        $bulanLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        $jumlahLowonganTerverifikasi = array_fill(0, 12, 0); // Menginisialisasi data jumlah lowongan terverifikasi dengan 0
-        $jumlahLowonganBelumTerverifikasi = array_fill(0, 12, 0); // Menginisialisasi data jumlah lowongan belum terverifikasi dengan 0
-
-        foreach ($lowonganTerverifikasiPerBulan as $item) {
-            $bulanIndex = $item->bulan - 1;
-            $jumlahLowonganTerverifikasi[$bulanIndex] = $item->jumlah;
-        }
-
-        foreach ($lowonganBelumTerverifikasiPerBulan as $item) {
-            $bulanIndex = $item->bulan - 1;
-            $jumlahLowonganBelumTerverifikasi[$bulanIndex] = $item->jumlah;
-        }
-
-    @endphp
-
     <style>
         /* Ukuran canvas lebih besar dan responsif */
         canvas {
