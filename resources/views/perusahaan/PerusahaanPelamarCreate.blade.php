@@ -21,6 +21,13 @@
                 </div>
 
                 <div class="form-group mt-1 mb-3">
+                    <label for="instansi">Instansi</label>
+                    <input type="text" class="form-control @error('instansi') is-invalid @enderror" id="instansi"
+                        name="instansi" value="{{ old('instansi') }}">
+                    <span class="text-danger">{{ $errors->first('instansi') }}</span>
+                </div>
+
+                <div class="form-group mt-1 mb-3">
                     <label for="JenisKelamin">Jenis Kelamin</label>
                     <select class="form-control @error('JenisKelamin') is-invalid @enderror" id="JenisKelamin"
                         name="JenisKelamin">

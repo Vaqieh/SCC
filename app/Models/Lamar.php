@@ -6,5 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lamar extends Model
 {
-    //
+    protected $table = 'lamar';
+    protected $guarded = [];
+
+    public function pelamar()
+    {
+        return $this->belongsTo(KelolaPelamar::class, 'pelamar_id');
+    }
+
+    public function lowongan()
+    {
+        return $this->belongsTo(Lowongan::class, 'lowongan_id');
+    }
 }

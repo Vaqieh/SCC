@@ -16,7 +16,7 @@ class ProfilController extends Controller
     {
         $user = Auth::user(); // Ambil data pengguna yang sedang login
 
-        // Memeriksa role pengguna
+        // Memeriksa role pengguna dan menampilkan profil sesuai role
         if ($user->role == 'admin') {
             // Jika role adalah admin, ambil data profil admin
             $profile = Admin::where('email', $user->email)->first();
@@ -40,12 +40,18 @@ class ProfilController extends Controller
     {
         $user = Auth::user(); // Ambil data pengguna yang sedang login
 
-        // if (!$user->email_perusahaan) {
-        //     return redirect()->back()->with('error', 'Email perusahaan tidak ditemukan. Silakan periksa profil Anda.');
-        // }
-
         // Validasi data input
         $validatedData = $request->validate([
+            'NamaPelamar' => 'required_if:role,pelamar|string|max:255',
+            'email' => 'required_if:role,pelamar|email|max:255',
+            'TanggalLahir' => 'required_if:role,pelamar|date',
+            'Alamat' => 'nullable|string|max:255',
+            'JenisKelamin' => 'nullable|in:laki-laki,perempuan',
+            'Kompetensi' => 'nullable|string|max:255',
+            'sertifikat' => 'nullable|string|max:255',
+            'cv' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+            'instansi' => 'nullable|string|max:255',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'phone_number' => 'nullable|string|max:15',
             'jenis_industri' => 'nullable|string|max:255',
             'p_tahunBerdiri' => 'nullable|integer',
@@ -53,10 +59,79 @@ class ProfilController extends Controller
             'provinsi' => 'nullable|string|max:255',
             'kabupaten' => 'nullable|string|max:255',
             'kota' => 'nullable|string|max:255',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Validasi untuk foto profil
         ]);
 
         // Memeriksa role pengguna dan memperbarui profil yang sesuai
+        if ($user->role == 'pelamar') {
+            // Cari profil pelamar berdasarkan email
+            $profile = KelolaPelamar::where('email', $user->email)->first();
+
+            if ($profile) {
+                // Update data profil pelamar
+                $profile->NamaPelamar = $validatedData['NamaPelamar'] ?? $profile->NamaPelamar;
+                $profile->email = $validatedData['email'] ?? $profile->email;
+                $profile->TanggalLahir = $validatedData['TanggalLahir'] ?? $profile->TanggalLahir;
+                $profile->Alamat = $validatedData['Alamat'] ?? $profile->Alamat;
+                $profile->JenisKelamin = $validatedData['JenisKelamin'] ?? $profile->JenisKelamin;
+                $profile->Kompetensi = $validatedData['Kompetensi'] ?? $profile->Kompetensi;
+                $profile->sertifikat = $validatedData['sertifikat'] ?? $profile->sertifikat;
+                $profile->instansi = $validatedData['instansi'] ?? $profile->instansi;
+
+                // Cek jika ada file CV yang diupload
+                if ($request->hasFile('cv')) {
+                    // Hapus CV lama jika ada
+                    if ($profile->cv && Storage::exists('public/' . $profile->cv)) {
+                        Storage::delete('public/' . $profile->cv);
+                    }
+
+                    // Simpan file CV yang baru
+                    $cvPath = $request->file('cv')->store('cv', 'public');
+                    $profile->cv = $cvPath;
+                }
+
+                // Cek jika ada foto profil yang diupload
+                if ($request->hasFile('foto')) {
+                    // Hapus foto profil lama jika ada
+                    if ($profile->foto && Storage::exists('public/' . $profile->foto)) {
+                        Storage::delete('public/' . $profile->foto);
+                    }
+
+                    // Simpan foto profil yang baru
+                    $fotoProfilPath = $request->file('foto')->store('foto_pelamar', 'public');
+                    $profile->foto = $fotoProfilPath;
+                }
+
+                $profile->save(); // Simpan perubahan ke tabel kelola_pelamar
+            } else {
+                // Jika profil pelamar tidak ditemukan, buat profil baru
+                $profile = new KelolaPelamar();
+                $profile->NamaPelamar = $validatedData['NamaPelamar'];
+                $profile->email = $user->email;
+                $profile->TanggalLahir = $validatedData['TanggalLahir'];
+                $profile->Alamat = $validatedData['Alamat'];
+                $profile->JenisKelamin = $validatedData['JenisKelamin'];
+                $profile->Kompetensi = $validatedData['Kompetensi'];
+                $profile->sertifikat = $validatedData['sertifikat'];
+                $profile->instansi = $validatedData['instansi'];
+
+                // Cek jika ada file CV yang diupload
+                if ($request->hasFile('cv')) {
+                    $cvPath = $request->file('cv')->store('cv', 'public');
+                    $profile->cv = $cvPath;
+                }
+
+                // Cek jika ada foto profil yang diupload
+                if ($request->hasFile('foto')) {
+                    $fotoProfilPath = $request->file('foto')->store('foto_pelamar', 'public');
+                    $profile->foto = $fotoProfilPath;
+                }
+
+                $profile->save(); // Simpan data baru ke tabel kelola_pelamar
+            }
+
+            return view('profil.profilpelamar', compact('user', 'profile'));
+        }
+
         if ($user->role == 'perusahaan') {
             // Cari profil perusahaan berdasarkan email_perusahaan
             $profile = KelolaPerusahaan::where('email_perusahaan', $user->email)->first();
@@ -78,7 +153,7 @@ class ProfilController extends Controller
                     }
 
                     // Simpan foto profil yang baru
-                    $fotoProfilPath = $request->file('foto')->store('foto', 'public');
+                    $fotoProfilPath = $request->file('foto')->store('foto_perusahaan', 'public');
                     $profile->foto = $fotoProfilPath;
                 }
 
@@ -97,19 +172,16 @@ class ProfilController extends Controller
 
                 // Cek jika ada foto profil yang diupload
                 if ($request->hasFile('foto')) {
-                    // Simpan foto profil
-                    $fotoProfilPath = $request->file('foto')->store('foto_profil', 'public');
+                    $fotoProfilPath = $request->file('foto')->store('foto_perusahaan', 'public');
                     $profile->foto = $fotoProfilPath;
                 }
 
                 $profile->save(); // Simpan data baru ke tabel kelola_perusahaan
             }
 
-            // Kembalikan ke tampilan profil perusahaan dengan data terbaru
             return view('profil.profilperusahaan', compact('user', 'profile'));
         }
 
-        // Jika role bukan 'perusahaan', kita juga bisa menangani profil admin atau pelamar.
         if ($user->role == 'admin') {
             // Cari profil admin berdasarkan email
             $profile = Admin::where('email', $user->email)->first();
@@ -131,17 +203,10 @@ class ProfilController extends Controller
                 $profile->save(); // Simpan data baru ke tabel admins
             }
 
-            // Kembalikan ke tampilan profil admin dengan data terbaru
             return view('profil.profiladmin', compact('user', 'profile'));
         }
 
-        // Jika role adalah pelamar
-        if ($user->role == 'pelamar') {
-            // Tangani profil pelamar jika diperlukan
-            // ...
-        }
-
-        // Jika tidak ada role yang sesuai, kembalikan ke halaman home
-        return redirect()->route('home')->with('error', 'Role tidak valid');
+        // Jika tidak ada role yang sesuai, kembalikan ke halaman login
+        return redirect()->route('login')->with('error', 'Role tidak valid');
     }
 }

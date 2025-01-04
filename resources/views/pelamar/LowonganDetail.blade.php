@@ -37,7 +37,7 @@
 
                     <!-- Button Lamar -->
                     <div class="text-center mt-4">
-                        <button class="btn btn-success btn-lg" style="padding: 10px 30px; font-size: 18px; font-weight: bold;" disabled>
+                        <button class="btn btn-success btn-lg" style="padding: 10px 30px; font-size: 18px; font-weight: bold;" >
                             Lamar Pekerjaan
                         </button>
                     </div>

@@ -16,6 +16,7 @@ use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\PerusahaanKelolaPanggilanTesController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,25 +47,24 @@ Route::get('/file/{folder}/{filename}', function ($folder, $filename) {
 
 Route::middleware('auth')->group(function () {
     Route::get('pelamar/dashboard', [PelamarController::class, 'index'])->name('pelamar.index');
+    Route::get('/pelamar/profil', [ProfilController::class, 'showProfile'])->name('pelamar.profile');
+    Route::put('/pelamar/profil/update', [ProfilController::class, 'updateProfile'])->name('pelamar.profil.update');
+    //rute untuk menampilkan lowongan
+    Route::get('/pelamar/lowongan', [PelamarController::class, 'show'])->name('pelamar.lowongan');
+
+    //rute untuk menampilkan lowongan detail
+    Route::get('/pelamar/lowongan/{id}/detail', [PelamarController::class, 'showDetail'])->name('pelamar.lowongan.detail');
+    Route::resource('kelolapanggilantesperusahaan', PerusahaanKelolaPanggilanTesController::class);
 });
 
-//rute untuk menampilkan lowongan
-Route::get('/pelamar/lowongan', [PelamarController::class, 'show'])->name('pelamar.lowongan');
-
-//rute untuk menampilkan lowongan detail
-Route::get('/pelamar/lowongan/{id}/detail', [PelamarController::class, 'showDetail'])->name('pelamar.lowongan.detail');
 
 
 Route::middleware('auth')->group(function () {
     Route::get('perusahaan/dashboard', [PerusahaanController::class, 'index'])->name('perusahaan.dashboard');
     Route::get('/perusahaan/profil', [ProfilController::class, 'showProfile'])->name('perusahaan.profile');
     Route::put('/perusahaan/profil/update', [ProfilController::class, 'updateProfile'])->name('perusahaan.profil.update');
-<<<<<<< HEAD
-    Route::resource('kelolalowonganperusahaan', PerusahaanController::class);
-=======
     Route::resource('kelolalowonganperusahaan', PerusahaanLowonganController::class);
     Route::resource('kelolapelamarperusahaan', PerusahaanPelamarController::class);
->>>>>>> fb7c89a3ff01b31a2664cc1d413637bf1ea727f2
 });
 
 Route::prefix('register')->group(function () {

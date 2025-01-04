@@ -149,6 +149,11 @@
                                     <li><a href="#features">Lowongan</a></li>
                                     <li><a href="#about">Tentang Kami</a></li>
                                     <li>
+                                        <a href="{{ route('pelamar.profile') }}" class="text-decoration-none">
+                                            Profil
+                                        </a>
+                                    </li>
+                                    <li>
                                         <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                             @csrf
                                             <button type="submit" class="btn btn-link text-decoration-none">Logout</button>
