@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pengunjung;
+use App\Models\Lowongan;
 
 class PengunjungController extends Controller
 {
@@ -12,8 +13,9 @@ class PengunjungController extends Controller
      */
     public function index()
     {
-        $data['pengunjung'] = Pengunjung::latest()->paginate(10);
-        return view('Pengunjung.DashboardPengunjung', $data);
+        $data['kelolalowongan'] = Lowongan::latest()->paginate(4);
+        $data['kelolalowongan'] = \App\Models\Lowongan::latest()->paginate(4);
+        return view('pengunjung.dashboardpengunjung', $data);
     }
 
     /**
