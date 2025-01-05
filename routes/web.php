@@ -17,7 +17,6 @@ use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfilController;
-use App\Http\Controllers\PerusahaanKelolaPanggilanTesController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,7 +55,11 @@ Route::middleware('auth')->group(function () {
 
     //rute untuk menampilkan lowongan detail
     Route::get('/pelamar/lowongan/{id}/detail', [PelamarController::class, 'showDetail'])->name('pelamar.lowongan.detail');
-    Route::resource('kelolapanggilantesperusahaan', PerusahaanKelolaPanggilanTesController::class);
+
+    Route::get('/lamar/create/{id}', [LamarController::class, 'create'])->name('lamar.create');
+    // Routing untuk halaman riwayat lamaran
+    Route::get('/lamar/riwayat', [LamarController::class, 'show'])->name('lamar.show');
+
 });
 
 
@@ -65,6 +68,8 @@ Route::middleware('auth')->group(function () {
     Route::get('perusahaan/dashboard', [PerusahaanController::class, 'index'])->name('perusahaan.dashboard');
     Route::get('/perusahaan/profil', [ProfilController::class, 'showProfile'])->name('perusahaan.profile');
     Route::put('/perusahaan/profil/update', [ProfilController::class, 'updateProfile'])->name('perusahaan.profil.update');
+    Route::resource('kelolapanggilantesperusahaan', PerusahaanKelolaPanggilanTesController::class);
+    // Route::resource('lamar', PerusahaanKelolaPanggilanTesController::class);
     Route::resource('kelolalowonganperusahaan', PerusahaanLowonganController::class);
     Route::resource('kelolapelamarperusahaan', PerusahaanPelamarController::class);
 });
