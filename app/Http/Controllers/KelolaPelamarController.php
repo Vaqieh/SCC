@@ -39,6 +39,7 @@ class KelolaPelamarController extends Controller
             'Kompetensi' => 'nullable|string',
             'sertifikat' => 'nullable|file|mimes:pdf,jpg,png',
             'cv' => 'required|file|mimes:pdf,doc,docx',
+            'instansi' => 'nullable|string',
             'TanggalVerifikasi' => 'nullable|date',
         ]);
 
@@ -50,6 +51,7 @@ class KelolaPelamarController extends Controller
         $pelamar->JenisKelamin = $validatedData['JenisKelamin'];
         $pelamar->Alamat = $validatedData['Alamat'];
         $pelamar->Kompetensi = $validatedData['Kompetensi'];
+        $pelamar->instansi = $validatedData['instansi'];
 
         // Menyimpan file sertifikat dan CV jika ada
         if ($request->hasFile('sertifikat')) {

@@ -134,7 +134,6 @@
                                 <h4 style="text-align: center; margin-bottom: 10px;">
                                     <!-- Tautan ke halaman detail lowongan -->
                                     <a href="{{ route('pelamar.lowongan.detail', $item->id) }}"
-                                    <a href="{{ route('kelolalowongan.show', $item->id) }}"
                                         style="text-decoration: none; color: black;"
                                         onmouseover="this.style.color='blue'" onmouseout="this.style.color='black'">
                                         {{ $item->nama_lowongan }}
@@ -163,15 +162,15 @@
     <!-- Features 2 Section -->
 <div style="display: flex; justify-content: center; margin-top: 30px;">
     <a href="{{ route('pelamar.lowongan') }}"
-        style="font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); text-decoration: none; font-family: 'Arial', sans-serif; 
-    padding: 12px 30px; border-radius: 25px; background: linear-gradient(90deg, #00b0ff, #80d0ff); 
+        style="font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); text-decoration: none; font-family: 'Arial', sans-serif;
+    padding: 12px 30px; border-radius: 25px; background: linear-gradient(90deg, #00b0ff, #80d0ff);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); transition: all 0.4s ease;"
         onmouseover="this.style.background='linear-gradient(90deg, #80d0ff, #00b0ff)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 20px rgba(0, 0, 0, 0.3)';"
         onmouseout="this.style.background='linear-gradient(90deg, #00b0ff, #80d0ff)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 15px rgba(0, 0, 0, 0.1)';">
         Tampilkan lebih banyak lowongan
     </a>
-</div>            
-    </section><!-- /Features 2 Section -->
+</div>
+
 
     <!-- Features Section -->
     <section id="features" class="features section">

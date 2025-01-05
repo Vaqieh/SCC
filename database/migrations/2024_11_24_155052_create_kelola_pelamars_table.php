@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('sertifikat')->nullable();
             $table->string('cv');
             $table->string('instansi')->nullable();
-            $table->date('TanggalVerifikasi');
+            $table->string('foto')->nullable();
+
             $table->timestamps();
         });
     }

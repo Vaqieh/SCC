@@ -31,6 +31,7 @@ class PerusahaanPelamarController extends Controller
             'Kompetensi' => 'nullable|string',
             'sertifikat' => 'nullable|file|mimes:pdf,jpg,png',
             'cv' => 'required|file|mimes:pdf,doc,docx',
+            'instansi' => 'required|string',
             'TanggalVerifikasi' => 'nullable|date',
         ]);
 
@@ -40,6 +41,7 @@ class PerusahaanPelamarController extends Controller
         $pelamar->TanggalLahir = $validatedData['TanggalLahir'];
         $pelamar->JenisKelamin = $validatedData['JenisKelamin'];
         $pelamar->Alamat = $validatedData['Alamat'];
+        $pelamar->instansi = $validatedData['instansi'];
         $pelamar->Kompetensi = $validatedData['Kompetensi'];
 
         // Menyimpan file sertifikat dan CV jika ada

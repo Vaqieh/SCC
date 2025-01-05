@@ -15,8 +15,8 @@ class PelamarController extends Controller
      */
     public function index()
     {
+
         $data['kelolalowongan'] = Lowongan::latest()->paginate(4);
-        $data['kelolalowongan'] = \App\Models\Lowongan::latest()->paginate(4);
         // Cek apakah pengguna sudah login
         if (Auth::guest()) {
             return redirect()->route('login.pelamar');  // Redirect ke login admin jika belum login
@@ -56,6 +56,7 @@ class PelamarController extends Controller
         // Mengirim data ke view pelamarLowongan.blade.php
         return view('pelamar.pelamarlowongan', compact('lowongans'));
     }
+
 
     public function showDetail($id)
     {

@@ -75,7 +75,7 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="activities">
                     <div class="tab-pane-body">
-                        
+
 
                     </div>
                     <div class="tab-pane-footer">
@@ -533,6 +533,23 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-receipt"></i>
+                        </span>
+                        <span>Kelola Lamaran </span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolalamaranperusahaan">Data Lamaran</a>
+                        </li>
+                        <li>
+                            <a href="/kelolalamaranperusahaan/create">Tambah Data Lamaran</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">

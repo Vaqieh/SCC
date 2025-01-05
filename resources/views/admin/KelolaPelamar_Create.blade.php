@@ -21,6 +21,13 @@
                 </div>
 
                 <div class="form-group mt-1 mb-3">
+                    <label for="instansi">Instansi</label>
+                    <input type="text" class="form-control @error('instansi') is-invalid @enderror" id="instansi"
+                        name="instansi" value="{{ old('instansi') }}">
+                    <span class="text-danger">{{ $errors->first('instansi') }}</span>
+                </div>
+
+                <div class="form-group mt-1 mb-3">
                     <label for="TanggalLahir">Tanggal Lahir</label>
                     <input type="date" class="form-control @error('TanggalLahir') is-invalid @enderror" id="TanggalLahir"
                         name="TanggalLahir" value="{{ old('TanggalLahir') }}">
