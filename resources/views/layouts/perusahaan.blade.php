@@ -494,7 +494,7 @@
                     </a>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="#">
                         <span class="nav-link-icon">
                             <i class="bi bi-briefcase"></i>
@@ -509,7 +509,7 @@
                             <a href="/kelolalowonganperusahaan/create">Tambah Data Lowongan</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
@@ -806,7 +806,7 @@
             </a>
             <!-- ./ Logo -->
             {{-- <div class="page-title">Dashboard</div> --}}
-            <form class="search-form">
+            {{-- <form class="search-form">
                 <div class="input-group">
                     <button class="btn btn-outline-light" type="button" id="button-addon1">
                         <i class="bi bi-search"></i>
@@ -817,15 +817,15 @@
                         <i class="bi bi-x"></i>
                     </a>
                 </div>
-            </form>
+            </form> --}}
             <div class="header-bar ms-auto">
                 <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="#" class="nav-link nav-link-notify" data-count="2"
                             data-sidebar-target="#notifications">
                             <i class="bi bi-bell icon-lg"></i>
                         </a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item dropdown">
                         <a href="#" class="nav-link nav-link-notify" data-count="3" data-bs-toggle="dropdown">
                             <i class="bi bi-cart2 icon-lg"></i>

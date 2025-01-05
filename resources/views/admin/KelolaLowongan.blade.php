@@ -16,7 +16,7 @@
             </nav>
         </div>
 
-        <div class="card">
+        {{-- <div class="card">
             <div class="card-body">
                 <div class="d-md-flex gap-4 align-items-center">
                     <div class="d-none d-md-flex">All Lowongan</div>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="table-responsive">
             <br>

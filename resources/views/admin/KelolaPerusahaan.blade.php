@@ -1,21 +1,21 @@
 @extends('layouts.admin', ['title' => 'Kelola Data Pelamar'])
 @section('content')
 <div class="content ">
-    
+
     <div class="mb-4">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="#">
-                        <i class="bi bi-globe2 small me-2"></i> Kelola 
+                        <i class="bi bi-globe2 small me-2"></i> Kelola
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Lowongan</li>
+                <li class="breadcrumb-item active" aria-current="page">Perusahaan</li>
             </ol>
         </nav>
     </div>
 
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-body">
             <div class="d-md-flex gap-4 align-items-center">
                 <div class="d-none d-md-flex">All Orders</div>
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="table-responsive">
         <br>
@@ -109,8 +109,8 @@
                     </td>
                 </tr>
                 @endforeach
-            
-        
+
+
             </tbody>
         </table>
         <!-- Pagination Links -->

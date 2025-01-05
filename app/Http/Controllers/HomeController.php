@@ -81,42 +81,42 @@ class HomeController extends Controller
     }
 
 
-    public function dashboardPerusahaan()
-    {
-        // Ambil jumlah lowongan berdasarkan status
-        $statusMenunggu = DB::table('lowongans')->where('status_lowongan', 'menunggu')->count();
-        $statusDiterima = DB::table('lowongans')->where('status_lowongan', 'diterima')->count();
-        $statusDitolak = DB::table('lowongans')->where('status_lowongan', 'ditolak')->count();
-        // Ambil jumlah pelamar berdasarkan jenis kelamin
-        $totalLaki = KelolaPelamar::where('JenisKelamin', 'laki-laki')->count();
-        $totalPerempuan = KelolaPelamar::where('JenisKelamin', 'perempuan')->count();
+    // public function dashboardPerusahaan()
+    // {
+    //     // Ambil jumlah lowongan berdasarkan status
+    //     $statusMenunggu = DB::table('lowongans')->where('status_lowongan', 'menunggu')->count();
+    //     $statusDiterima = DB::table('lowongans')->where('status_lowongan', 'diterima')->count();
+    //     $statusDitolak = DB::table('lowongans')->where('status_lowongan', 'ditolak')->count();
+    //     // Ambil jumlah pelamar berdasarkan jenis kelamin
+    //     $totalLaki = KelolaPelamar::where('JenisKelamin', 'laki-laki')->count();
+    //     $totalPerempuan = KelolaPelamar::where('JenisKelamin', 'perempuan')->count();
 
-        // Ambil jumlah total pelamar
-        $totalPelamar = KelolaPelamar::count();  // Add this line
+    //     // Ambil jumlah total pelamar
+    //     $totalPelamar = KelolaPelamar::count();  // Add this line
 
-        // Ambil semua pelamar untuk digunakan di view
-        $pelamars = KelolaPelamar::all(); // Ambil semua pelamar dari tabel
+    //     // Ambil semua pelamar untuk digunakan di view
+    //     $pelamars = KelolaPelamar::all(); // Ambil semua pelamar dari tabel
 
-        // Ambil jumlah pelamar per tahun
-        $pelamarPerTahun = KelolaPelamar::selectRaw('YEAR(created_at) as tahun, COUNT(*) as total')
-            ->groupBy('tahun')
-            ->orderBy('tahun', 'asc')
-            ->get();
+    //     // Ambil jumlah pelamar per tahun
+    //     $pelamarPerTahun = KelolaPelamar::selectRaw('YEAR(created_at) as tahun, COUNT(*) as total')
+    //         ->groupBy('tahun')
+    //         ->orderBy('tahun', 'asc')
+    //         ->get();
 
-        // Menyiapkan data untuk grafik
-        $tahunLabels = $pelamarPerTahun->pluck('tahun');
-        $totalPelamarPerTahun = $pelamarPerTahun->pluck('total');
-        // Mengirimkan data ke view perusahaan
-        return view('perusahaan.dashboardperusahaan', [
-            'totalLaki' => $totalLaki,
-            'totalPerempuan' => $totalPerempuan,
-            'totalPelamar' => $totalPelamar,  // Pass this to the view
-            'pelamars' => $pelamars, // Mengirimkan data pelamar
-            'statusMenunggu' => $statusMenunggu,
-            'statusDiterima' => $statusDiterima,
-            'statusDitolak' => $statusDitolak,
-            'tahunLabels' => $tahunLabels,  // Menambahkan labels tahun
-            'totalPelamarPerTahun' => $totalPelamarPerTahun,  // Menambahkan data jumlah pelamar per tahun
-        ]);
-    }
+    //     // Menyiapkan data untuk grafik
+    //     $tahunLabels = $pelamarPerTahun->pluck('tahun');
+    //     $totalPelamarPerTahun = $pelamarPerTahun->pluck('total');
+    //     // Mengirimkan data ke view perusahaan
+    //     return view('perusahaan.dashboardperusahaan', [
+    //         'totalLaki' => $totalLaki,
+    //         'totalPerempuan' => $totalPerempuan,
+    //         'totalPelamar' => $totalPelamar,  // Pass this to the view
+    //         'pelamars' => $pelamars, // Mengirimkan data pelamar
+    //         'statusMenunggu' => $statusMenunggu,
+    //         'statusDiterima' => $statusDiterima,
+    //         'statusDitolak' => $statusDitolak,
+    //         'tahunLabels' => $tahunLabels,  // Menambahkan labels tahun
+    //         'totalPelamarPerTahun' => $totalPelamarPerTahun,  // Menambahkan data jumlah pelamar per tahun
+    //     ]);
+    // }
 }
