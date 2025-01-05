@@ -72,13 +72,13 @@
                         name="cv">
                     <span class="text-danger">{{ $errors->first('cv') }}</span>
                 </div>
-
+{{-- 
                 <div class="form-group mt-1 mb-3">
                     <label for="TanggalVerifikasi">Tanggal Verifikasi</label>
                     <input type="date" class="form-control @error('TanggalVerifikasi') is-invalid @enderror" id="TanggalVerifikasi"
                         name="TanggalVerifikasi" value="{{ old('TanggalVerifikasi') }}">
                     <span class="text-danger">{{ $errors->first('TanggalVerifikasi') }}</span>
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary">SIMPAN</button>
             </form>

@@ -2,6 +2,15 @@
 
 @section('content')
 <div class="content">
+    @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     <div class="row flex-column-reverse flex-md-row">
         <div class="col-md-8">
             <div class="tab-content" id="myTabContent">
@@ -44,27 +53,29 @@
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Jenis Industri</label>
                                             <input type="text" class="form-control" name="jenis_industri"
-                                                value="{{ old('jenis_industri', $profile->jenis_industri ?? '') }}">
+                                                   value="{{ old('jenis_industri', $profile->jenis_industri ?? '') }}">
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Tahun Berdiri</label>
                                             <input type="number" class="form-control" name="p_tahunBerdiri"
-                                                value="{{ old('p_tahunBerdiri', $profile->p_tahunBerdiri ?? '') }}">
+                                                   value="{{ old('p_tahunBerdiri', $profile->p_tahunBerdiri ?? '') }}">
                                         </div>
 
-                                        <!-- Lokasi -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Negara</label>
                                             <input type="text" class="form-control" name="negara"
-                                                value="{{ old('negara', $profile->negara ?? '') }}">
+                                                   value="{{ old('negara', $profile->negara ?? '') }}">
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Provinsi</label>
                                             <input type="text" class="form-control" name="provinsi"
-                                                value="{{ old('provinsi', $profile->provinsi ?? '') }}">
+                                                   value="{{ old('provinsi', $profile->provinsi ?? '') }}">
                                         </div>
+
+
+
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Kabupaten</label>
@@ -79,6 +90,7 @@
                                         </div>
 
                                         <!-- Foto Profil (pindah ke bawah) -->
+                                        <!-- Foto Profil -->
                                         <div class="col-md-12 mb-3">
                                             <label class="form-label">Foto Profil</label>
                                             <input type="file" class="form-control" name="foto">

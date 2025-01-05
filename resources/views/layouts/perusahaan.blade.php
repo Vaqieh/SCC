@@ -453,12 +453,14 @@
                 <i class="bi bi-x"></i>
             </a>
         </div>
+
+
         <div class="menu-body">
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center" data-bs-toggle="dropdown">
                     <div class="avatar me-3">
-                        <img src="../cakeadmin/html/images/user/FotoAdmin.jpeg" class="rounded-circle"
-                            alt="image">
+                        <img src="{{ asset('storage/' . ($profile->foto ?? 'default.jpg')) }}" alt="Foto Profil"
+                            class="profile-picture">
                     </div>
                     <div>
                         {{ Auth::user()->name }}
@@ -484,7 +486,7 @@
             <ul>
                 <li class="menu-divider">Dashboard</li>
                 <li>
-                    <a class="active" href="/DashboardAdmin">
+                    <a class="active" href="/admin/dashboard">
                         <span class="nav-link-icon">
                             <i class="bi bi-bar-chart"></i>
                         </span>

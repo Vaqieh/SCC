@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lamar extends Model
 {
-    protected $table = 'lamar';
+    protected $table = 'lamars';
     protected $guarded = [];
 
     public function pelamar()

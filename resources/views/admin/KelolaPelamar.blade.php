@@ -10,12 +10,12 @@
                         <i class="bi bi-globe2 small me-2"></i> Dashboard
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                <li class="breadcrumb-item active" aria-current="page">Kelola Pelamar</li>
             </ol>
         </nav>
     </div>
 
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-body">
             <div class="d-md-flex gap-4 align-items-center">
                 <div class="d-none d-md-flex">All Orders</div>
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <table class="table table-striped">
         <thead>
@@ -69,14 +69,12 @@
                 <th>NO</th>
                 <th>Nama Pelamar</th>
                 <th>Jenis Kelamin</th>
+                <th>Instansi</th>
                 <th>Tanggal Lahir</th>
                 <th>Alamat</th>
                 <th>Kompetensi</th>
                 <th>Sertifikat</th>
                 <th>CV</th>
-                <th>Tanggal Verifikasi</th>
-                <th>Status</th>
-                <th class="text-end">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -85,6 +83,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->NamaPelamar }}</td>
                 <td>{{ $item->JenisKelamin }}</td>
+                <td>{{ $item->Instansi }}</td>
                 <td>{{ \Carbon\Carbon::parse($item->TanggalLahir)->format('d M Y') }}</td>
                 <td>{{ $item->Alamat }}</td>
                 <td>{{ $item->Kompetensi ?? '-' }}</td>
@@ -123,13 +122,13 @@
                     @endif
                 </td>
 
-                <td>{{ \Carbon\Carbon::parse($item->TanggalVerifikasi)->format('d M Y') }}</td>
+                {{-- <td>{{ \Carbon\Carbon::parse($item->TanggalVerifikasi)->format('d M Y') }}</td>
                 <td>
                     <span class="badge {{ $item->status == 'aktif' ? 'bg-success' : 'bg-danger' }}">
                         {{ $item->status == 'aktif' ? 'Aktif' : 'Non-Aktif' }}
                     </span>
                 </td>
-                <td class="text-end">
+                <td class="text-end"> --}}
                     {{-- <div class="d-flex">
                         <a href="{{ route('kelola_pelamar.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('kelola_pelamar.destroy', $item->id) }}" method="POST" class="d-inline">
