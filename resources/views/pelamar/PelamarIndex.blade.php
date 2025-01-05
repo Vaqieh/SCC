@@ -132,12 +132,9 @@
                             @endif
                             <div style="padding: 15px;">
                                 <h4 style="text-align: center; margin-bottom: 10px;">
-<<<<<<< HEAD
                                     <!-- Tautan ke halaman detail lowongan -->
                                     <a href="{{ route('pelamar.lowongan.detail', $item->id) }}"
-=======
                                     <a href="{{ route('kelolalowongan.show', $item->id) }}"
->>>>>>> fb7c89a3ff01b31a2664cc1d413637bf1ea727f2
                                         style="text-decoration: none; color: black;"
                                         onmouseover="this.style.color='blue'" onmouseout="this.style.color='black'">
                                         {{ $item->nama_lowongan }}
@@ -173,13 +170,8 @@
         onmouseout="this.style.background='linear-gradient(90deg, #00b0ff, #80d0ff)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 15px rgba(0, 0, 0, 0.1)';">
         Tampilkan lebih banyak lowongan
     </a>
-</div>
-
-<<<<<<< HEAD
-=======
-                
+</div>            
     </section><!-- /Features 2 Section -->
->>>>>>> fb7c89a3ff01b31a2664cc1d413637bf1ea727f2
 
     <!-- Features Section -->
     <section id="features" class="features section">

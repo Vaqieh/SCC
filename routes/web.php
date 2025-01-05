@@ -59,12 +59,10 @@ Route::middleware('auth')->group(function () {
     Route::get('perusahaan/dashboard', [PerusahaanController::class, 'index'])->name('perusahaan.dashboard');
     Route::get('/perusahaan/profil', [ProfilController::class, 'showProfile'])->name('perusahaan.profile');
     Route::put('/perusahaan/profil/update', [ProfilController::class, 'updateProfile'])->name('perusahaan.profil.update');
-<<<<<<< HEAD
     Route::resource('kelolalowonganperusahaan', PerusahaanController::class);
-=======
     Route::resource('kelolalowonganperusahaan', PerusahaanLowonganController::class);
     Route::resource('kelolapelamarperusahaan', PerusahaanPelamarController::class);
->>>>>>> fb7c89a3ff01b31a2664cc1d413637bf1ea727f2
+
 });
 
 Route::prefix('register')->group(function () {

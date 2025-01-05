@@ -15,11 +15,8 @@ class PelamarController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
         $data['kelolalowongan'] = Lowongan::latest()->paginate(4);
-=======
         $data['kelolalowongan'] = \App\Models\Lowongan::latest()->paginate(4);
->>>>>>> fb7c89a3ff01b31a2664cc1d413637bf1ea727f2
         // Cek apakah pengguna sudah login
         if (Auth::guest()) {
             return redirect()->route('login.pelamar');  // Redirect ke login admin jika belum login
@@ -59,20 +56,16 @@ class PelamarController extends Controller
         // Mengirim data ke view pelamarLowongan.blade.php
         return view('pelamar.pelamarlowongan', compact('lowongans'));
     }
-    public function showDetail(Pelamar $pelamar)
-    {
-        //
-    }
 
     public function showDetail($id)
-{
-    // Ambil data lowongan berdasarkan ID
-    $lowongan = \App\Models\Lowongan::findOrFail($id);
-    
-    // Kirim data ke view detail
-    return view('pelamar.lowongandetail', compact('lowongan'));
-}
-    
+    {
+        // Ambil data lowongan berdasarkan ID
+        $lowongan = \App\Models\Lowongan::findOrFail($id);
+
+        // Kirim data ke view detail
+        return view('pelamar.lowongandetail', compact('lowongan'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

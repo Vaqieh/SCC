@@ -133,121 +133,44 @@
             <!-- /About Section -->
 
             <!-- Daftar Lowongan Pekerjaan -->
-            <section id="hero" class="hero section">
-                <div class="container text-center"
-                    style="border: 1px solid #ddd; border-radius: 10px; padding: 20px; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <h2 class="mb-5"><b>Daftar Lowongan Pekerjaan</b></h2>
-
-                    <!-- Grid Layout -->
-                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
-                        <!-- Card 1 -->
-                        <div
-                            style="border: 1px solid #ddd; border-radius: 10px; width: 23%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                            <img src="iLanding/assets/img/programmer.jpg" alt="Poster Programmer"
-                                style="width: 100%; height: 150px; object-fit: cover;">
-                            <div style="padding: 15px; text-align: left;">
-                                <h4 style="margin-bottom: 10px; font-size: 18px;">
-                                    <center><a href="/LowonganPengunjung.php" style="text-decoration: none; color: black;"
-                                            onmouseover="this.style.color='blue'"
-                                            onmouseout="this.style.color='black'">Programmer</a> </center>
-                                </h4>
-                                <p style="font-size: 14px; color: #555; margin: 5px 0;">
-                                    <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>POLITEKNIK
-                                    CALTEX RIAU
-                                </p>
-                                <p style="font-size: 13px; color: #777; margin: 5px 0;">
-                                    <i class="bi bi-lock" style="margin-right: 5px; color: #777;"></i>17 September 2024 -
-                                    13 Oktober 2024
-                                </p>
-                                <p style="font-size: 13px; color: #777;">
-                                    <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Dibutuhkan: 0
-                                    orang
-                                </p>
+            <section id="features-cards" class="features-cards section">
+                <div class="container">
+                    <div class="row gy-4">
+                        @foreach ($kelolalowongan as $item)
+                            <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                                <div
+                                    style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                    @if ($item->gambar_lowongan)
+                                        <img src="{{ \Storage::url($item->gambar_lowongan) }}" alt="Gambar Lowongan"
+                                            style="width: 100%; height: 150px; object-fit: cover;">
+                                    @else
+                                        <img src="path/to/default-image.jpg" alt="Default Image"
+                                            style="width: 100%; height: 150px; object-fit: cover;">
+                                    @endif
+                                    <div style="padding: 15px;">
+                                        <h4 style="text-align: center; margin-bottom: 10px; color: black;">
+                                            {{ $item->nama_lowongan }}
+                                        </h4>
+                                        <p style="font-size: 14px; color: #555;">
+                                            <i class="bi bi-building"
+                                                style="margin-right: 5px; color: #555;"></i>{{ $item->perusahaan->p_nama ?? 'Perusahaan Tidak Diketahui' }}
+                                        </p>
+                                        <p style="font-size: 13px; color: #777;">
+                                            <i class="bi bi-calendar"
+                                                style="margin-right: 5px; color: #777;"></i>{{ $item->tanggal_verifikasi ?? 'Belum Diverifikasi' }}
+                                        </p>
+                                        <p style="font-size: 13px; color: #777;">
+                                            <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Status:
+                                            {{ $item->status_lowongan }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div
-                            style="border: 1px solid #ddd; border-radius: 10px; width: 23%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                            <img src="iLanding/assets/img/staf_marketing.jpg" alt="Poster Marketing"
-                                style="width: 100%; height: 150px; object-fit: cover;">
-                            <div style="padding: 15px; text-align: left;">
-                                <h4 style="margin-bottom: 10px; font-size: 18px;">
-                                    <center><a href="detail2.html" style="text-decoration: none; color: black;"
-                                            onmouseover="this.style.color='blue'"
-                                            onmouseout="this.style.color='black'">Staf Marketing PCR</a> </center>
-                                </h4>
-                                <p style="font-size: 14px; color: #555; margin: 5px 0;">
-                                    <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>POLITEKNIK
-                                    CALTEX RIAU
-                                </p>
-                                <p style="font-size: 13px; color: #777; margin: 5px 0;">
-                                    <i class="bi bi-lock" style="margin-right: 5px; color: #777;"></i>17 September 2024 -
-                                    13 Oktober 2024
-                                </p>
-                                <p style="font-size: 13px; color: #777;">
-                                    <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Dibutuhkan: 0
-                                    orang
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div
-                            style="border: 1px solid #ddd; border-radius: 10px; width: 23%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                            <img src="iLanding/assets/img/staf.png" alt="Poster Staf Administrasi"
-                                style="width: 100%; height: 150px; object-fit: cover;">
-                            <div style="padding: 15px; text-align: left;">
-                                <h4 style="margin-bottom: 10px; font-size: 18px;">
-                                    <center><a href="detail3.html" style="text-decoration: none; color: black;"
-                                            onmouseover="this.style.color='blue'"
-                                            onmouseout="this.style.color='black'">Staf Administrasi</a> </center>
-                                </h4>
-                                <p style="font-size: 14px; color: #555; margin: 5px 0;">
-                                    <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>POLITEKNIK
-                                    CALTEX RIAU
-                                </p>
-                                <p style="font-size: 13px; color: #777; margin: 5px 0;">
-                                    <i class="bi bi-lock" style="margin-right: 5px; color: #777;"></i>17 September 2024 -
-                                    13 Oktober 2024
-                                </p>
-                                <p style="font-size: 13px; color: #777;">
-                                    <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Dibutuhkan: 0
-                                    orang
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div
-                            style="border: 1px solid #ddd; border-radius: 10px; width: 23%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                            <img src="iLanding/assets/img/dosen.jpg" alt="Poster Dosen"
-                                style="width: 100%; height: 150px; object-fit: cover;">
-                            <div style="padding: 15px; text-align: left;">
-                                <h4 style="margin-bottom: 10px; font-size: 18px;">
-                                    <center><a href="detail4.html" style="text-decoration: none; color: black;"
-                                            onmouseover="this.style.color='blue'"
-                                            onmouseout="this.style.color='black'">Dosen Program Studi Sistem Informasi</a>
-                                    </center>
-                                </h4>
-                                <p style="font-size: 14px; color: #555; margin: 5px 0;">
-                                    <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>POLITEKNIK
-                                    CALTEX RIAU
-                                </p>
-                                <p style="font-size: 13px; color: #777; margin: 5px 0;">
-                                    <i class="bi bi-lock" style="margin-right: 5px; color: #777;"></i>17 September 2024 -
-                                    13 Oktober 2024
-                                </p>
-                                <p style="font-size: 13px; color: #777;">
-                                    <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Dibutuhkan: 0
-                                    orang
-                                </p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </section>
-
+            
             <!-- Testimonials -->
             <section id="testimonials" class="testimonials section light-background">
 
