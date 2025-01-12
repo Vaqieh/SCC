@@ -123,26 +123,46 @@
             </tbody>
         </table>
         <!-- Pagination Links -->
-        {{ $kelolapanggilantes->links() }}
-    </div>
+        <nav class="mt-4" aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <!-- Previous Page Link -->
+                @if ($kelolapelamar->onFirstPage())
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $kelolapelamar->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                @endif
 
-    <nav class="mt-4" aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+                <!-- Pagination Links -->
+                @foreach ($kelolapelamar->getUrlRange(1, $kelolapelamar->lastPage()) as $page => $url)
+                    <li class="page-item {{ $kelolapelamar->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                <!-- Next Page Link -->
+                @if ($kelolapelamar->hasMorePages())
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $kelolapelamar->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                @else
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </nav>
 
     </div>
 @endsection
