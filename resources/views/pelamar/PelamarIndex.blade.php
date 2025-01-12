@@ -2,11 +2,14 @@
 
 @section('content')
     @php
-        use App\Models\LowonganPekerjaan;
+        use App\Models\Lowongan;
 
-        // Mengambil semua lowongan yang ada di database
-        $kelolalowonganperusahaan = LowonganPekerjaan::all();
+        // Mengambil semua lowongan yang telah diverifikasi dan statusnya diterima
+        $kelolalowonganperusahaan = Lowongan::where('status_lowongan', 'diterima')
+            ->whereNotNull('tanggal_verifikasi') // Pastikan sudah diverifikasi
+            ->get();
     @endphp
+
     <main class="main">
 
         <!-- Hero Section -->
@@ -119,66 +122,53 @@
             <!-- /End Tampilan Total -->
 
         </section><!-- /Hero Section -->
-
+        <h2
+            style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Arial', sans-serif, justify-content: center; margin-top: 30px;;">
+            Daftar Lowongan Pekerjaan
+        </h2>
         <!-- Features Cards Section -->
         <section id="features-cards" class="features-cards section">
             <div class="container">
                 <div class="row gy-4">
                     @foreach ($kelolalowonganperusahaan as $item)
-                        @php
-                            // Menghitung status berdasarkan tanggal buka dan tanggal berakhir
-                            $current_date = \Carbon\Carbon::now(); // Ambil waktu sekarang
-                            $status = 'Menunggu'; // Default status
-
-                            // Cek apakah tanggal sekarang sebelum tanggal buka
-                            if ($current_date->isBefore($item->tanggal_buat)) {
-                                $status = 'Menunggu'; // Belum dibuka
-                            }
-                            // Cek apakah tanggal sekarang berada di antara tanggal buka dan tanggal berakhir
-                            elseif ($current_date->isBetween($item->tanggal_buat, $item->tanggal_berakhir)) {
-                                $status = 'Buka'; // Sedang dibuka
-                            }
-                            // Cek apakah tanggal sekarang setelah tanggal berakhir
-                            elseif ($current_date->isAfter($item->tanggal_berakhir)) {
-                                $status = 'Tutup'; // Sudah berakhir
-                            }
-                        @endphp
-
-                        <!-- Card for each job vacancy -->
-                        <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                            <div
-                                style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                                @if ($item->gambar_lowongan)
-                                    <img src="{{ \Storage::url($item->gambar_lowongan) }}" alt="Gambar Lowongan"
-                                        style="width: 100%; height: 150px; object-fit: cover;">
-                                @else
-                                    <img src="path/to/default-image.jpg" alt="Default Image"
-                                        style="width: 100%; height: 150px; object-fit: cover;">
-                                @endif
-                                <div style="padding: 15px;">
-                                    <h4 style="text-align: center; margin-bottom: 10px;">
-                                        <!-- Tautan ke halaman detail lowongan -->
-                                        <a href="{{ route('pelamar.lowongan.detail', $item->id) }}"
-                                            style="text-decoration: none; color: black;"
-                                            onmouseover="this.style.color='blue'" onmouseout="this.style.color='black'">
-                                            {{ $item->nama_lowongan }}
-                                        </a>
-                                    </h4>
-                                    <p style="font-size: 14px; color: #555;">
-                                        <i class="bi bi-building"
-                                            style="margin-right: 5px; color: #555;"></i>{{ $item->perusahaan->p_nama ?? 'Perusahaan Tidak Diketahui' }}
-                                    </p>
-                                    <p style="font-size: 13px; color: #777;">
-                                        <i class="bi bi-calendar"
-                                            style="margin-right: 5px; color: #777;"></i>{{ $item->tanggal_verifikasi ?? 'Belum Diverifikasi' }}
-                                    </p>
-                                    <p style="font-size: 13px; color: #777;">
-                                        <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Status:
-                                        {{ $status }}
-                                    </p>
+                        @if ($item->status_lowongan == 'diterima')
+                            <!-- Menambahkan pengecekan status 'diterima' -->
+                            <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                                <div
+                                    style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                    @if ($item->gambar_lowongan)
+                                        <img src="{{ \Storage::url($item->gambar_lowongan) }}" alt="Gambar Lowongan"
+                                            style="width: 100%; height: 150px; object-fit: cover;">
+                                    @else
+                                        <img src="path/to/default-image.jpg" alt="Default Image"
+                                            style="width: 100%; height: 150px; object-fit: cover;">
+                                    @endif
+                                    <div style="padding: 15px;">
+                                        <h4 style="text-align: center; margin-bottom: 10px;">
+                                            <!-- Tautan ke halaman detail lowongan -->
+                                            <a href="{{ route('pelamar.lowongan.detail', $item->id) }}"
+                                                style="text-decoration: none; color: black;"
+                                                onmouseover="this.style.color='blue'"
+                                                onmouseout="this.style.color='black'">
+                                                {{ $item->nama_lowongan }}
+                                            </a>
+                                        </h4>
+                                        <p style="font-size: 14px; color: #555;">
+                                            <i class="bi bi-building"
+                                                style="margin-right: 5px; color: #555;"></i>{{ $item->perusahaan->p_nama ?? 'Perusahaan Tidak Diketahui' }}
+                                        </p>
+                                        <p style="font-size: 13px; color: #777;">
+                                            <i class="bi bi-calendar"
+                                                style="margin-right: 5px; color: #777;"></i>{{ $item->tanggal_verifikasi ?? 'Belum Diverifikasi' }}
+                                        </p>
+                                        <p style="font-size: 13px; color: #777;">
+                                            <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Status:
+                                            {{ $item->status_lowongan }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -188,9 +178,9 @@
 
         <!-- Features 2 Section -->
 
-        <div
-            style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 30px;">
-            <h2 style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Arial', sans-serif;">
+        <div style="display: flex; flex-direction: column; align-items: center; ">
+            <h2
+                style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Arial', sans-serif, justify-content: center; margin-top: 30px;;">
                 Daftar Lowongan Pekerjaan
             </h2>
 
