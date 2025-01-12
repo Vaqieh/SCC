@@ -98,7 +98,7 @@
     <nav class="mt-4" aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <!-- Previous Page Link -->
-            @if ($lowongans->onFirstPage())
+            @if ($kelolapelamarperusahaan->onFirstPage())
             <li class="page-item disabled">
                     <a class="page-link" href="#" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
@@ -106,23 +106,23 @@
                 </li>
             @else
                 <li class="page-item">
-                    <a class="page-link" href="{{ $lowongans->previousPageUrl() }}" aria-label="Previous">
+                    <a class="page-link" href="{{ $kelolapelamarperusahaan->previousPageUrl() }}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
             @endif
 
             <!-- Pagination Links -->
-            @foreach ($lowongans->getUrlRange(1, $lowongans->lastPage()) as $page => $url)
-                <li class="page-item {{ $lowongans->currentPage() == $page ? 'active' : '' }}">
+            @foreach ($kelolapelamarperusahaan->getUrlRange(1, $kelolapelamarperusahaan->lastPage()) as $page => $url)
+                <li class="page-item {{ $kelolapelamarperusahaan->currentPage() == $page ? 'active' : '' }}">
                     <a class="page-link" href="{{ $url }}">{{ $page }}</a>
                 </li>
             @endforeach
 
             <!-- Next Page Link -->
-            @if ($lowongans->hasMorePages())
+            @if ($kelolapelamarperusahaan->hasMorePages())
                 <li class="page-item">
-                    <a class="page-link" href="{{ $lowongans->nextPageUrl() }}" aria-label="Next">
+                    <a class="page-link" href="{{ $kelolapelamarperusahaan->nextPageUrl() }}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
