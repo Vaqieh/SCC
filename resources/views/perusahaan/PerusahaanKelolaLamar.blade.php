@@ -40,6 +40,7 @@
                             <td>{{ $lowongan->tanggal_berakhir }}</td>
                             <td>
                                 <a href="{{ route('kelolalamarperusahaan.pelamar', $lowongan->id) }}" class="btn btn-info">Lihat</a>
+                                <a href="{{ route('kelolalamarperusahaan.print', $lowongan->id) }}" class="btn btn-outline-secondary ">Print</a>
                             </td>
                         </tr>
                     @endforeach

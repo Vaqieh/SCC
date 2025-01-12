@@ -69,7 +69,7 @@ class PerusahaanLamarController extends Controller
             'Alamat' => 'required|string|max:255',             // Alamat wajib diisi
             'JenisKelamin' => 'required|in:laki-laki,perempuan',  // Pilih jenis kelamin
             'cv' => 'nullable|file|mimes:pdf,doc,docx|max:10000',   // Validasi untuk CV (jika ada)
-            'sertifikat' => 'nullable|file|mimes:pdf,doc,docx|max:10000', // Sertifikat (jika ada)
+            'sertifikat.*' => 'nullable|file|mimes:pdf,doc,docx|max:10000', // Sertifikat (jika ada)
         ]);
 
         // Menyimpan data lamaran pekerjaan
@@ -91,8 +91,13 @@ class PerusahaanLamarController extends Controller
 
         // Cek dan simpan sertifikat jika ada
         if ($request->hasFile('sertifikat')) {
-            // Simpan file sertifikat di folder 'public/sertifikat'
-            $lamaran->sertifikat = $request->file('sertifikat')->store('sertifikat', 'public');
+            $sertifikatFiles = [];
+            foreach ($request->file('sertifikat') as $file) {
+                // Simpan file ke dalam folder 'public/sertifikat'
+                $sertifikatFiles[] = $file->store('sertifikat', 'public');
+            }
+            // Simpan path sertifikat dalam bentuk array di database
+            $lamaran->sertifikat = json_encode($sertifikatFiles);  // Simpan sebagai JSON string
         }
 
         // Menyimpan data lamaran ke database
@@ -105,11 +110,21 @@ class PerusahaanLamarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($lowongan_id)
     {
-        // Menampilkan detail lamaran
-        $lamaran = Lamar::findOrFail($id);  // Pastikan ID lamaran ditemukan
-        return view('lamar.show', compact('lamaran'));  // Pastikan Anda punya view lamaran.show
+        if (Auth::guest()) {
+            return redirect()->route('login.perusahaan');  // Sesuaikan dengan role
+        }
+
+        // Jika sudah login, cek apakah role sesuai
+        if (Auth::user()->role !== 'perusahaan') {
+            return redirect()->route('login.perusahaan');  // Redirect ke login jika bukan perusahaan
+        }
+        //coba hapus atas ini kalau error
+        $lowongan = Lowongan::findOrFail($lowongan_id);
+        $lamarans = $lowongan->lamars; // Ambil semua lamaran yang terkait dengan lowongan ini
+
+        return view('perusahaan.PerusahaanKelolaLamarPrint', compact('lowongan', 'lamarans'));
     }
 
 
@@ -180,14 +195,5 @@ class PerusahaanLamarController extends Controller
 
         // Tampilkan halaman dengan data pelamar
         return view('perusahaan.PerusahaanLamarPelamarLowongan', compact('lowongan', 'pelamars'));
-    }
-
-    public function printLamaran($lamaran_id)
-    {
-        // Ambil data lamaran berdasarkan ID
-        $lamaran = Lamar::findOrFail($lamaran_id);
-
-        // Tampilkan view untuk print
-        return view('perusahaan.PrintLamaran', compact('lamaran'));
     }
 }
