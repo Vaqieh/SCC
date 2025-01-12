@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('JenisKelamin', ['laki-laki','perempuan']);
             $table->string('Kompetensi')->nullable();
             $table->string('sertifikat')->nullable();
-            $table->string('cv');
+            $table->string('cv')->nullable();
             $table->string('instansi')->nullable();
             $table->string('foto')->nullable();
 

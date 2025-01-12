@@ -2,16 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Lamar;
 use Illuminate\Database\Seeder;
 
 class LamarSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
+        Lamar::factory()->count(10)->create();  // Membuat 10 lamaran secara acak
     }
 }

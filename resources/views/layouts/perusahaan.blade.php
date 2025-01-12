@@ -486,7 +486,7 @@
             <ul>
                 <li class="menu-divider">Dashboard</li>
                 <li>
-                    <a class="active" href="/admin/dashboard">
+                    <a class="active" href="/perusahaan/dashboard">
                         <span class="nav-link-icon">
                             <i class="bi bi-bar-chart"></i>
                         </span>
@@ -510,7 +510,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#">
                         <span class="nav-link-icon">
                             <i class="bi-file-earmark-person"></i>
@@ -534,7 +534,22 @@
                             <a href="./checkout.html">Checkout</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
+                <li>
+                    <a href="#">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-receipt"></i>
+                        </span>
+                        <span>Kelola Panggilan Tes </span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/kelolapanggilantesperusahaan">Data Panggilan Tes</a>
+                        </li>
+                        <li>
+                            <a href="/kelolapanggilantesperusahaan/create">Tambah Data Panggilan Tes</a>
+                        </li>
+                    </ul>
                 <li>
                     <a href="#">
                         <span class="nav-link-icon">
@@ -544,15 +559,15 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="/kelolalamaranperusahaan">Data Lamaran</a>
+                            <a href="/kelolalamarperusahaan">Data Lamaran</a>
                         </li>
-                        <li>
-                            <a href="/kelolalamaranperusahaan/create">Tambah Data Lamaran</a>
-                        </li>
+                        {{-- <li>
+                            <a href="/kelolalamarperusahaan/create">Tambah Data Lamaran</a>
+                        </li> --}}
                     </ul>
                 </li>
                 <li>
-                <li>
+                {{-- <li>
                     <a href="#">
                         <span class="nav-link-icon">
                             <i class="bi bi-wallet2"></i>
@@ -573,8 +588,8 @@
                             <a href="./buyer-wishlist.html">Wishlist</a>
                         </li>
                     </ul>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a href="./customers.html">
                         <span class="nav-link-icon">
                             <i class="bi bi-person-badge"></i>
@@ -597,7 +612,7 @@
                             <a href="./invoice-detail.html">Detail</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- <li class="menu-divider">Apps</li>
                 <li>
                     <a href="./chats.html">
@@ -806,7 +821,7 @@
             </a>
             <!-- ./ Logo -->
             {{-- <div class="page-title">Dashboard</div> --}}
-            <form class="search-form">
+            {{-- <form class="search-form">
                 <div class="input-group">
                     <button class="btn btn-outline-light" type="button" id="button-addon1">
                         <i class="bi bi-search"></i>
@@ -817,15 +832,15 @@
                         <i class="bi bi-x"></i>
                     </a>
                 </div>
-            </form>
+            </form> --}}
             <div class="header-bar ms-auto">
                 <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="#" class="nav-link nav-link-notify" data-count="2"
                             data-sidebar-target="#notifications">
                             <i class="bi bi-bell icon-lg"></i>
                         </a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item dropdown">
                         <a href="#" class="nav-link nav-link-notify" data-count="3" data-bs-toggle="dropdown">
                             <i class="bi bi-cart2 icon-lg"></i>

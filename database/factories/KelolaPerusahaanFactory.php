@@ -13,14 +13,17 @@ class KelolaPerusahaanFactory extends Factory
     public function definition()
     {
         return [
-            'p_nama' => $this->faker->company(),               // Nama Perusahaan
+            'p_nama' => $this->faker->company(),                  // Nama Perusahaan
             'email_perusahaan' => $this->faker->unique()->safeEmail(),  // Email perusahaan (unik)
-            'jenis_industri' => $this->faker->word(),         // Jenis industri
-            'p_tahunBerdiri' => $this->faker->year(),         // Tahun berdiri perusahaan
-            'negara' => $this->faker->country(),              // Negara perusahaan
-            'provinsi' => $this->faker->state(),              // Provinsi perusahaan
-            'kabupaten' => $this->faker->city(),              // Kabupaten perusahaan
-            'kota' => $this->faker->city(),                   // Kota perusahaan
+            'foto' => $this->faker->imageUrl(640, 480, 'business', true), // Foto perusahaan (URL gambar acak)
+            'jenis_industri' => $this->faker->word(),              // Jenis industri
+            'p_tahunBerdiri' => $this->faker->year(),              // Tahun berdiri perusahaan
+            'negara' => $this->faker->country(),                   // Negara perusahaan
+            'provinsi' => $this->faker->state(),                   // Provinsi perusahaan
+            'kabupaten' => $this->faker->city(),                   // Kabupaten perusahaan
+            'kota' => $this->faker->city(),                        // Kota perusahaan
+            'created_at' => now(),                                  // Timestamp created_at
+            'updated_at' => now(),                                  // Timestamp updated_at
         ];
     }
 }

@@ -14,7 +14,6 @@ class LowonganSeeder extends Seeder
      */
     public function run()
     {
-        // Mengisi tabel lowongan dengan 10 data dummy
-        Lowongan::factory(200)->create();
+        Lowongan::factory()->count(10)->create();
     }
 }

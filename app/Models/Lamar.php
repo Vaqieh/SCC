@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Lamar extends Model
 {
-    protected $table = 'lamar';
+    use HasFactory;
+    protected $table = 'lamars';
     protected $guarded = [];
 
     public function pelamar()

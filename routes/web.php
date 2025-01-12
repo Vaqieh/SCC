@@ -17,13 +17,14 @@ use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\PerusahaanLamarController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 // Rute yang dikelompokkan dengan middleware 'auth' hanya bisa diakses admin jika sudah login
 Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/profil', [ProfilController::class, 'showProfile'])->name('admin.profile');
+    Route::get('/admin/profil', [ProfilController::class, 'showProfileAdmin'])->name('admin.profile');
     Route::put('/admin/profil/update', [ProfilController::class, 'updateProfile'])->name('admin.profil.update');
     Route::resource('kelolapelamar', KelolaPelamarController::class);
     Route::resource('kelolaperusahaan', KelolaPerusahaanController::class);
@@ -48,7 +49,7 @@ Route::get('/file/{folder}/{filename}', function ($folder, $filename) {
 
 Route::middleware('auth')->group(function () {
     Route::get('pelamar/dashboard', [PelamarController::class, 'index'])->name('pelamar.index');
-    Route::get('/pelamar/profil', [ProfilController::class, 'showProfile'])->name('pelamar.profile');
+    Route::get('/pelamar/profil', [ProfilController::class, 'showProfilePelamar'])->name('pelamar.profile');
     Route::put('/pelamar/profil/update', [ProfilController::class, 'updateProfile'])->name('pelamar.profil.update');
     //rute untuk menampilkan lowongan
     Route::get('/pelamar/lowongan', [PelamarController::class, 'show'])->name('pelamar.lowongan');
@@ -56,6 +57,7 @@ Route::middleware('auth')->group(function () {
     //rute untuk menampilkan lowongan detail
     Route::get('/pelamar/lowongan/{id}/detail', [PelamarController::class, 'showDetail'])->name('pelamar.lowongan.detail');
 
+    Route::resource('lamar', LamarController::class);
     Route::get('/lamar/create/{id}', [LamarController::class, 'create'])->name('lamar.create');
     // Routing untuk halaman riwayat lamaran
     Route::get('/lamar/riwayat', [LamarController::class, 'show'])->name('lamar.show');
@@ -65,13 +67,18 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('perusahaan/dashboard', [PerusahaanController::class, 'index'])->name('perusahaan.dashboard');
-    Route::get('/perusahaan/profil', [ProfilController::class, 'showProfile'])->name('perusahaan.profile');
+    Route::get('perusahaan/dashboard', [HomeController::class, 'dashboardperusahaan'])->name('perusahaan.dashboard');
+    Route::get('/perusahaan/profil', [ProfilController::class, 'showProfilePerusahaan'])->name('perusahaan.profile');
     Route::put('/perusahaan/profil/update', [ProfilController::class, 'updateProfile'])->name('perusahaan.profil.update');
     Route::resource('kelolapanggilantesperusahaan', PerusahaanKelolaPanggilanTesController::class);
-    // Route::resource('lamar', PerusahaanKelolaPanggilanTesController::class);
+    Route::resource('lamar', PerusahaanKelolaPanggilanTesController::class);
     Route::resource('kelolalowonganperusahaan', PerusahaanLowonganController::class);
     Route::resource('kelolapelamarperusahaan', PerusahaanPelamarController::class);
+
+    Route::resource('kelolalamarperusahaan', PerusahaanLamarController::class);
+    Route::put('kelolalamarperusahaan/{id}', [PerusahaanLamarController::class, 'update'])->name('kelolalamarperusahaan.update');
+    Route::get('kelolalamarperusahaan/{id}/edit', [PerusahaanLamarController::class, 'edit'])->name('kelolalamarperusahaan.edit');
+
 });
 
 Route::prefix('register')->group(function () {

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('panggilan_tes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lowongan_id');
-            $table->foreignId('perusahaan_id');
-            $table->foreignId('admin_id');
+            $table->foreignId('lowongan_id')->constrained('lowongans')->onDelete('cascade');
+            $table->foreignId('perusahaan_id')->constrained('kelola_perusahaans')->onDelete('cascade');
+            $table->foreignId('admin_id')->nullable()->constrained()->onDelete('cascade')->change();
             $table-> string('nama');
             $table->date('tanggal_pt');
             $table->enum('status', ['dibuka','ditutup']);

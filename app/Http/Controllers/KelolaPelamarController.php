@@ -40,7 +40,6 @@ class KelolaPelamarController extends Controller
             'sertifikat' => 'nullable|file|mimes:pdf,jpg,png',
             'cv' => 'required|file|mimes:pdf,doc,docx',
             'instansi' => 'nullable|string',
-            'TanggalVerifikasi' => 'nullable|date',
         ]);
 
         // Menyimpan data pelamar ke database
@@ -62,7 +61,7 @@ class KelolaPelamarController extends Controller
             $pelamar->cv = $request->file('cv')->store('cv');
         }
 
-        $pelamar->TanggalVerifikasi = $validatedData['TanggalVerifikasi'] ?? null;
+        // $pelamar->TanggalVerifikasi = $validatedData['TanggalVerifikasi'] ?? null;
 
         $pelamar->save();
 

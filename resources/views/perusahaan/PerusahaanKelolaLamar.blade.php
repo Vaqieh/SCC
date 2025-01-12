@@ -20,8 +20,8 @@
         <!-- Table with Pagination -->
         <div class="table-responsive">
             <br>
-            <a href="{{ route('lamar.create') }}" class="btn btn-primary mb-3">Buat Lamaran Baru</a>
-            
+            {{-- <a href="{{ route('kelolalamarperusahaan.create') }}" class="btn btn-primary mb-3">Buat Lamaran Baru</a> --}}
+
             <table class="table table-custom table-lg mb-0">
                 <thead>
                     <tr>
@@ -35,7 +35,8 @@
                 <tbody>
                     @foreach ($lamar as $key => $lamaran)
                         <tr>
-                            <td>{{ $lamar->firstItem() + $key }}</td> <!-- Pagination adjustment -->
+                            <!-- Nomor urut dengan pagination -->
+                            <td>{{ $lamar->firstItem() + $key }}</td> <!-- Menyesuaikan nomor urut dengan pagination -->
                             <td>{{ $lamaran->lowongan->nama_lowongan }}</td>
                             <td>{{ $lamaran->pelamar->name }}</td>
                             <td>
@@ -48,9 +49,9 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('lamar.show', $lamaran->id) }}" class="btn btn-info">Lihat</a>
-                                <a href="{{ route('lamar.edit', $lamaran->id) }}" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('lamar.destroy', $lamaran->id) }}" method="POST" style="display:inline;">
+                                <a href="{{ route('kelolalamarperusahaan.show', $lamaran->id) }}" class="btn btn-info">Lihat</a>
+                                <a href="{{ route('kelolalamarperusahaan.edit', $lamaran->id) }}" class="btn btn-warning">Edit</a>
+                                <form action="{{ route('kelolalamarperusahaan.destroy', $lamaran->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
@@ -60,10 +61,10 @@
                     @endforeach
                 </tbody>
             </table>
-            
+
             <!-- Pagination -->
             <div class="mt-3">
-                {{ $lamar->links() }} <!-- Menampilkan pagination -->
+                {{-- {{ $lamar->links() }} <!-- Menampilkan pagination --> --}}
             </div>
         </div>
 

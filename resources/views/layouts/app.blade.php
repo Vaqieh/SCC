@@ -145,23 +145,42 @@
 
                             <nav id="navmenu" class="navmenu">
                                 <ul>
-                                    <li><a href="#hero" class="active">Dashboard</a></li>
+                                    <li><a href="/pelamar/dashboard" class="active">Dashboard</a></li>
                                     <li><a href="#features">Lowongan</a></li>
                                     <li><a href="#about">Tentang Kami</a></li>
-                                    <li>
-                                        <a href="{{ route('pelamar.profile') }}" class="text-decoration-none">
-                                            Profil
-                                        </a>
+
+                                    <!-- Profil Dropdown -->
+                                    <li class="dropdown">
+                                        <!-- Cek apakah pengguna sudah login -->
+                                        @auth
+                                            <!-- Jika sudah login, tampilkan nama pengguna -->
+                                            <a href="#" class="text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Profil
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                                <!-- Menampilkan Nama Pengguna -->
+                                                <li><a class="dropdown-item" href="{{ route('pelamar.profile') }}">{{ Auth::user()->name }}</a></li>
+
+                                                <!-- Tombol Logout dengan gaya yang konsisten -->
+                                                <li>
+                                                    <!-- Ganti tombol form menjadi <a> yang berfungsi sebagai link untuk logout -->
+                                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        <a href="javascript:void(0);" class="dropdown-item" onclick="this.closest('form').submit();">Logout</a>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        @else
+                                            <!-- Jika belum login, tampilkan tombol Login -->
+                                            <a href="{{ route('login') }}" class="text-decoration-none">Login</a>
+                                        @endauth
                                     </li>
-                                    <li>
-                                        <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                                            @csrf
-                                            <button type="submit" class="btn btn-link text-decoration-none">Logout</button>
-                                        </form>
-                                    </li>
+
                                 </ul>
                                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                             </nav>
+
+
                         </div>
                     </header>
                 </div>

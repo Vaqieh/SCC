@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="content">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="row flex-column-reverse flex-md-row">
             <div class="col-md-8">
                 <div class="tab-content" id="myTabContent">
@@ -11,17 +21,19 @@
                                 <figure class="me-4 flex-shrink-0">
                                     <!-- Foto profil -->
                                     <img width="100" class="rounded-pill"
-                                        src="../cakeadmin/html/images/user/FotoAdmin.jpeg" alt="...">
+                                        src="../../cakeadmin/html/images/user/FotoAdmin.jpeg" class="rounded-circle"
+                                        alt="Photo profile">
                                 </figure>
                                 <div class="flex-fill">
                                     <h5 class="mb-3">{{ Auth::user()->name }}</h5>
-                                    <p class="small text-muted mt-3">Lengkapi terlebih dahulu profil anda agar bisa mengakses semua fitur yang ada</p>
+                                    <p class="small text-muted mt-3">Lengkapi terlebih dahulu profil anda agar bisa
+                                        mengakses semua fitur yang ada</p>
                                 </div>
                             </div>
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <h6 class="card-title mb-4">Basic Information</h6>
-                                    <form action="{{ route('perusahaan.profil.update') }}" method="POST">
+                                    <form action="{{ route('admin.profil.update') }}" method="POST">
                                         @csrf
                                         @method('PUT')
 
@@ -39,17 +51,20 @@
                                                     value="{{ old('email', Auth::user()->email) }}" disabled>
                                             </div>
 
-                                            <!-- Kolom Kanan (Nomor HP, Role, Login History, Logout History) -->
-                                            <div class="col-md-6 mb-3">
+                                             <!-- Kolom Kanan (Nomor HP, Role, Login History, Logout History) -->
+                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Phone Number</label>
                                                 <input type="text" class="form-control" name="phone_number"
                                                     value="{{ old('phone_number', $profile->admin_nohp ?? '') }}">
+                                                @error('phone_number')
+                                                    <div class="text-danger">{{ $message }}</div> <!-- Menampilkan error untuk phone_number -->
+                                                @enderror
                                             </div>
 
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Role</label>
-                                                <input type="text" class="form-control"
-                                                    value="{{ Auth::user()->role }}" disabled>
+                                                <input type="text" class="form-control" value="{{ Auth::user()->role }}"
+                                                    disabled>
                                             </div>
 
                                             <div class="col-md-6 mb-3">

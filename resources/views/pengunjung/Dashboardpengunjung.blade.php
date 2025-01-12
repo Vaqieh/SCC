@@ -22,8 +22,8 @@
                                 Mulai Perjalanan Karir Anda!
                             </h3>
                             <div class="hero-buttons">
-                                <a href="loginPelamar.blade.php" class="btn btn-primary me-0 me-sm-2 mx-1">LOGIN PELAMAR</a>
-                                <a href="loginPerusahaan.blade.php" class="btn btn-primary me-0 me-sm-2 mx-1">LOGIN
+                                <a href="/login/pelamar" class="btn btn-primary me-0 me-sm-2 mx-1">LOGIN PELAMAR</a>
+                                <a href="/login/perusahaan" class="btn btn-primary me-0 me-sm-2 mx-1">LOGIN
                                     PERUSAHAAN</a>
                                 <br>
                             </div>
@@ -170,7 +170,7 @@
                     </div>
                 </div>
             </section>
-            
+
             <!-- Testimonials -->
             <section id="testimonials" class="testimonials section light-background">
 

@@ -59,6 +59,7 @@
             <div class="card widget h-100">
                 <div class="card-header d-flex">
                     <h6 class="card-title">Jumlah Pelamar Berdasarkan Jenis Kelamin</h6>
+
                 </div>
                 <div class="card-body">
                     <!-- Canvas tempat grafik donut ditampilkan -->
@@ -67,7 +68,11 @@
                     <div class="row text-center mb-3 mt-3">
                         <div class="col-6">
                             <div class="display-7" id="laki-laki-percentage">
-                                {{ round(($totalLaki / ($totalLaki + $totalPerempuan)) * 100) }}%
+                                @if (($totalLaki + $totalPerempuan) > 0)
+                                    {{ round(($totalLaki / ($totalLaki + $totalPerempuan)) * 100) }}%
+                                @else
+                                    0%
+                                @endif
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <i class="bi bi-circle-fill text-orange me-2 small"></i>
@@ -76,7 +81,11 @@
                         </div>
                         <div class="col-6">
                             <div class="display-7" id="perempuan-percentage">
-                                {{ round(($totalPerempuan / ($totalLaki + $totalPerempuan)) * 100) }}%
+                                @if (($totalLaki + $totalPerempuan) > 0)
+                                    {{ round(($totalPerempuan / ($totalLaki + $totalPerempuan)) * 100) }}%
+                                @else
+                                    0%
+                                @endif
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <i class="bi bi-circle-fill text-cyan me-2 small"></i>
@@ -87,6 +96,9 @@
                 </div>
             </div>
         </div>
+
+
+
         <!-- Card untuk grafik donut chart Status Lowongan -->
         <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="card widget h-100">
@@ -230,18 +242,18 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             // Ambil data pelamar per tahun yang dikirim dari controller
-            var tahunLabels = @json($tahunLabels);  // Tahun
-            var totalPelamarPerTahun = @json($totalPelamarPerTahun);  // Total pelamar per tahun
-    
+            var tahunLabels = @json($tahunLabels); // Tahun
+            var totalPelamarPerTahun = @json($totalPelamarPerTahun); // Total pelamar per tahun
+
             // Konfigurasi Chart.js untuk grafik batang
             var ctxPelamar = document.getElementById('pelamarPerTahunChart').getContext('2d');
             var pelamarPerTahunChart = new Chart(ctxPelamar, {
                 type: 'bar',
                 data: {
-                    labels: tahunLabels,  // Tahun pada sumbu x
+                    labels: tahunLabels, // Tahun pada sumbu x
                     datasets: [{
                         label: 'Jumlah Pelamar',
-                        data: totalPelamarPerTahun,  // Total pelamar pada sumbu y
+                        data: totalPelamarPerTahun, // Total pelamar pada sumbu y
                         backgroundColor: '#1E3A8A',
                         borderColor: '#1E3A8A',
                         borderWidth: 1
@@ -273,4 +285,4 @@
             });
         </script>
     </div>
-    @endsection
+@endsection

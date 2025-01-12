@@ -24,10 +24,10 @@ class PerusahaanLamarController extends Controller
      */
     public function create()
     {
-        // Menampilkan form untuk membuat lamaran baru
-        return view('lamar.create'); // Sesuaikan dengan view form untuk membuat lamaran
+        // // Menampilkan form untuk membuat lamaran baru
+        // return view('lamar.create'); // Sesuaikan dengan view form untuk membuat lamaran
     }
-    
+
     /**
      * Store a newly created resource in storage.
      */
@@ -71,7 +71,7 @@ class PerusahaanLamarController extends Controller
         $lamaran->save();
 
         // Redirect kembali dengan pesan sukses
-        return redirect()->route('lamar.index')->with('success', 'Lamaran berhasil dikirim!');
+        return redirect()->route('kelolalamarperusahaan.index')->with('success', 'Lamaran berhasil dikirim!');
     }
 
     /**
@@ -87,66 +87,34 @@ class PerusahaanLamarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         // Menampilkan form untuk mengedit lamaran
         $lamaran = Lamar::findOrFail($id);  // Menemukan lamaran berdasarkan ID
-        return view('perusahaanPerusahaanKelolaLamarEdit', compact('lamaran'));  // Pastikan Anda punya view lamaran.edit
+        return view('perusahaan.PerusahaanKelolaLamarEdit', compact('lamaran'));  // Pastikan Anda punya view lamaran.edit
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        // Validasi data request
-        $validatedData = $request->validate([
-            'lowongan_id' => 'required|exists:lowongans,id',  // Validasi untuk lowongan_id
-            'instansi' => 'required|string|max:255',           // Instansi wajib diisi
-            'TanggalLahir' => 'required|date',                 // Tanggal lahir wajib diisi
-            'Alamat' => 'required|string|max:255',             // Alamat wajib diisi
-            'JenisKelamin' => 'required|in:laki-laki,perempuan',  // Pilih jenis kelamin
-            'cv' => 'nullable|file|mimes:pdf,doc,docx|max:10000',   // Validasi untuk CV (jika ada)
-            'sertifikat' => 'nullable|file|mimes:pdf,doc,docx|max:10000', // Sertifikat (jika ada)
-        ]);
+    public function update(Request $request, $id)
+{
+    // Validasi status jika diperlukan
+    $validated = $request->validate([
+        'status' => 'required|in:Menunggu,Diterima,Ditolak', // Contoh validasi status
+    ]);
 
-        // Mencari lamaran yang akan diperbarui
-        $lamaran = Lamar::findOrFail($id);  // Menemukan lamaran berdasarkan ID
+    // Mencari lamaran berdasarkan ID
+    $lamaran = Lamar::findOrFail($id);
 
-        // Update data lamaran
-        $lamaran->lowongan_id = $validatedData['lowongan_id'];
-        $lamaran->TanggalLahir = $validatedData['TanggalLahir'];
-        $lamaran->Alamat = $validatedData['Alamat'];
-        $lamaran->JenisKelamin = $validatedData['JenisKelamin'];
-        $lamaran->Kompetensi = $request->Kompetensi;
-        $lamaran->instansi = $validatedData['instansi'];
+    // Memperbarui status lamaran
+    $lamaran->status = $validated['status'];  // Gunakan hasil validasi untuk memperbarui status
+    $lamaran->save();
 
-        // Cek dan simpan CV jika ada
-        if ($request->hasFile('cv')) {
-            // Hapus file lama jika ada
-            if ($lamaran->cv && Storage::exists($lamaran->cv)) {
-                Storage::delete($lamaran->cv);
-            }
-            // Simpan file CV baru
-            $lamaran->cv = $request->file('cv')->store('cv', 'public');
-        }
+    // Redirect atau tampilkan pesan sukses
+    return redirect()->route('kelolalamarperusahaan.index')->with('success', 'Status lamaran berhasil diperbarui!');
+}
 
-        // Cek dan simpan sertifikat jika ada
-        if ($request->hasFile('sertifikat')) {
-            // Hapus file lama jika ada
-            if ($lamaran->sertifikat && Storage::exists($lamaran->sertifikat)) {
-                Storage::delete($lamaran->sertifikat);
-            }
-            // Simpan file sertifikat baru
-            $lamaran->sertifikat = $request->file('sertifikat')->store('sertifikat', 'public');
-        }
-
-        // Menyimpan data lamaran ke database
-        $lamaran->save();
-
-        // Redirect kembali dengan pesan sukses
-        return redirect()->route('lamar.index')->with('success', 'Lamaran berhasil diperbarui!');
-    }
 
     /**
      * Remove the specified resource from storage.

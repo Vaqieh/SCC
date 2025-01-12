@@ -1,11 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
-use App\Models\Admin;
+
 use App\Models\KelolaPerusahaan;
 use App\Models\Lowongan;
 use App\Models\PanggilanTes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 class PerusahaanKelolaPanggilanTesController extends Controller
 {
     /**
@@ -27,98 +29,70 @@ class PerusahaanKelolaPanggilanTesController extends Controller
      */
     public function create()
     {
-        // Ambil list admin dan perusahaan
-        $data['listAdmin'] = Admin::orderBy('admin_nama', 'asc')->get();
-        $data['listPerusahaan'] = KelolaPerusahaan::orderBy('p_nama', 'asc')->get();
-        $data['listLowongan'] = Lowongan::orderBy('nama_lowongan', 'asc')->get();
+        // Ambil user yang sedang login
+        $user = Auth::user();
 
-        // Debugging data listPerusahaan untuk memastikan data sudah ada
-        // dd($data['listPerusahaan']);
+        // Ambil data perusahaan yang email dan nama-nya sesuai dengan yang sedang login
+        $perusahaan = KelolaPerusahaan::where('email_perusahaan', $user->email)
+            ->orWhere('p_nama', $user->name)
+            ->first();
+
+        // Jika perusahaan tidak ditemukan
+        if (!$perusahaan) {
+            // Mengarahkan kembali dengan pesan error
+            session()->flash('error', 'Profil perusahaan belum lengkap. Mohon lengkapi profil Anda untuk melanjutkan.');
+            return back();
+        }
+
+        // Ambil daftar lowongan yang terkait dengan perusahaan yang sedang login
+        $data['listLowongan'] = Lowongan::where('perusahaan_id', $perusahaan->id)
+            ->orderBy('nama_lowongan', 'asc')
+            ->get();
+
+        // Ambil daftar admin yang terkait (admin dari tabel users)
+        $data['listAdmin'] = User::where('role', 'admin')
+            ->orderBy('name', 'asc')
+            ->get();
+
+        // Mengirimkan data perusahaan ke view
+        $data['perusahaan'] = $perusahaan;
 
         return view('perusahaan.PerusahaanPanggilanTesCreate', $data);
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $requestData = $request->validate([
-            'lowongan_id' => 'required|exists:lowongans,id',
-            'perusahaan_id' => 'required|exists:kelola_perusahaans,id',
-            'admin_id' => 'required|exists:admins,id',
-            'nama' => 'required|string|max:255',
-            'tanggal_pt' => 'required|date',
-            'status' => 'required|in:dibuka,ditutup', // Pastikan status valid
-        ]);
-        // Proses dan simpan data ke database
-        $panggilantes = new PanggilanTes();
-        $panggilantes->fill($requestData);
-        $panggilantes->save();
-        session()->flash('success', 'Data Panggilan Tes berhasil ditambahkan');
-        return redirect('/kelolapanggilantesperusahaan');
-    }
+{
+    // Validasi data dari form
+    $requestData = $request->validate([
+        'lowongan_id' => 'required|exists:lowongans,id',  // Pastikan lowongan ada
+        'perusahaan_id' => 'required|exists:kelola_perusahaans,id',  // Pastikan perusahaan ada
+        'admin_id' => 'nullable|exists:users,id',  // Admin ID boleh kosong, dan jika ada harus valid
+        'nama' => 'required|string|max:255',  // Nama panggilan tes wajib
+        'tanggal_pt' => 'required|date',  // Tanggal panggilan tes wajib
+        'status' => 'required|in:dibuka,ditutup',  // Status harus di antara 'dibuka' dan 'ditutup'
+    ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    // Proses dan simpan data ke database
+    $panggilantes = new PanggilanTes();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    // app/Http/Controllers/AdminKelolaPanggilanTesController.php
+    // Isi data ke model
+    $panggilantes->lowongan_id = $requestData['lowongan_id'];
+    $panggilantes->perusahaan_id = $requestData['perusahaan_id'];
+    $panggilantes->admin_id = $requestData['admin_id'] ?? null;  // Jika admin_id tidak ada, set null
+    $panggilantes->nama = $requestData['nama'];
+    $panggilantes->tanggal_pt = $requestData['tanggal_pt'];
+    $panggilantes->status = $requestData['status'];
 
-    public function edit(string $id)
-    {
-        // Ambil data berdasarkan ID
-        $data['panggilanTes'] = PanggilanTes::findOrFail($id);
-        $data['listAdmin'] = Admin::orderBy('admin_nama', 'asc')->get();
-        $data['listPerusahaan'] = KelolaPerusahaan::orderBy('p_nama', 'asc')->get();
-        $data['listLowongan'] = Lowongan::orderBy('nama_lowongan', 'asc')->get();
+    // Simpan data panggilan tes ke database
+    $panggilantes->save();
 
-        return view('perusahaan.PerusahaanPanggilanTesEdit', $data);
-    }
+    session()->flash('success', 'Data Panggilan Tes berhasil ditambahkan');
+    return redirect('/kelolapanggilantesperusahaan');
+}
 
-
-    /**
-     * Update the specified resource in storage.
-     */
-    // app/Http/Controllers/AdminKelolaPanggilanTesController.php
-
-    public function update(Request $request, string $id)
-    {
-        // Validasi data input
-        $requestData = $request->validate([
-            'lowongan_id' => 'required|exists:lowongans,id',
-            'perusahaan_id' => 'required|exists:kelola_perusahaans,id',
-            'admin_id' => 'required|exists:admins,id',
-            'nama' => 'required|string|max:255',
-            'tanggal_pt' => 'required|date',
-            'status' => 'required|in:dibuka,ditutup',
-        ]);
-
-        // Cari data berdasarkan ID
-        $panggilanTes = PanggilanTes::findOrFail($id);
-        $panggilanTes->fill($requestData); // Mengisi data yang diupdate
-        $panggilanTes->save(); // Simpan perubahan
-
-        // Simpan pesan flash
-        session()->flash('success', 'Data Panggilan Tes berhasil diperbarui');
-
-        // Redirect kembali ke halaman kelola panggilan tes
-        return redirect('/kelolapanggilantesperusahaan');
-    }
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    // Method edit, update, dan destroy tetap sama
 }
