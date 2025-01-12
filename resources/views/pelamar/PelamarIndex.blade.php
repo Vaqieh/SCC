@@ -122,22 +122,30 @@
             <!-- /End Tampilan Total -->
 
         </section><!-- /Hero Section -->
-        <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-            <h2 style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Arial', sans-serif;">
-                Daftar Lowongan Pekerjaan
-            </h2>
-        </div>
-        
+        <h2
+            style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Arial', sans-serif; text-align: center; margin-top: 30px;">
+            Daftar Lowongan Pekerjaan
+        </h2>
+
+
         <!-- Features Cards Section -->
         <section id="features-cards" class="features-cards section">
             <div class="container">
                 <div class="row gy-4">
                     @foreach ($kelolalowonganperusahaan as $item)
-                        @if ($item->status_lowongan == 'diterima')
-                            <!-- Menambahkan pengecekan status 'diterima' -->
+                        @if ($item->status_lowongan == 'diterima') <!-- Menambahkan pengecekan status 'diterima' -->
+                            @php
+                                // Menghitung status berdasarkan tanggal buat dan tanggal berakhir
+                                $current_date = \Carbon\Carbon::now(); // Ambil waktu sekarang
+                                $status = 'Tutup'; // Default status adalah 'Tutup' jika tanggal sekarang setelah tanggal berakhir
+        
+                                // Jika tanggal sekarang sebelum atau sama dengan tanggal berakhir, statusnya 'Buka'
+                                if ($current_date->isBefore($item->tanggal_berakhir) || $current_date->isSameDay($item->tanggal_berakhir)) {
+                                    $status = 'Buka'; // Sedang dibuka
+                                }
+                            @endphp
                             <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                                <div
-                                    style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                <div style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                                     @if ($item->gambar_lowongan)
                                         <img src="{{ \Storage::url($item->gambar_lowongan) }}" alt="Gambar Lowongan"
                                             style="width: 100%; height: 150px; object-fit: cover;">
@@ -149,23 +157,33 @@
                                         <h4 style="text-align: center; margin-bottom: 10px;">
                                             <!-- Tautan ke halaman detail lowongan -->
                                             <a href="{{ route('pelamar.lowongan.detail', $item->id) }}"
-                                                style="text-decoration: none; color: black;"
-                                                onmouseover="this.style.color='blue'"
+                                                style="text-decoration: none; color: black;" onmouseover="this.style.color='blue'"
                                                 onmouseout="this.style.color='black'">
                                                 {{ $item->nama_lowongan }}
                                             </a>
                                         </h4>
                                         <p style="font-size: 14px; color: #555;">
-                                            <i class="bi bi-building"
-                                                style="margin-right: 5px; color: #555;"></i>{{ $item->perusahaan->p_nama ?? 'Perusahaan Tidak Diketahui' }}
+                                            <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>
+                                            {{ $item->perusahaan->p_nama ?? 'Perusahaan Tidak Diketahui' }}
+                                        </p>
+        
+                                        <!-- Tampilkan tanggal buka dan tanggal tutup -->
+                                        <p style="font-size: 13px; color: #777;">
+                                            <i class="bi bi-calendar" style="margin-right: 5px; color: #777;"></i>
+                                            <strong>Tanggal Buka:</strong> {{ \Carbon\Carbon::parse($item->tanggal_buat)->format('d M Y') }}
                                         </p>
                                         <p style="font-size: 13px; color: #777;">
-                                            <i class="bi bi-calendar"
-                                                style="margin-right: 5px; color: #777;"></i>{{ $item->tanggal_verifikasi ?? 'Belum Diverifikasi' }}
+                                            <i class="bi bi-calendar" style="margin-right: 5px; color: #777;"></i>
+                                            <strong>Tanggal Tutup:</strong> {{ \Carbon\Carbon::parse($item->tanggal_berakhir)->format('d M Y') }}
                                         </p>
+        
+                                        <!-- Menampilkan Status dengan Badge -->
                                         <p style="font-size: 13px; color: #777;">
-                                            <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Status:
-                                            {{ $item->status_lowongan }}
+                                            <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>
+                                            Status: 
+                                            <span class="badge {{ $status == 'Buka' ? 'bg-primary' : 'bg-danger' }}">
+                                                {{ $status }}
+                                            </span>
                                         </p>
                                     </div>
                                 </div>
@@ -175,13 +193,14 @@
                 </div>
             </div>
         </section>
+        
 
 
 
         <!-- Features 2 Section -->
 
         <div style="display: flex; flex-direction: column; align-items: center; ">
-           
+
 
             <a href="{{ route('pelamar.lowongan') }}"
                 style="font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); text-decoration: none; font-family: 'Arial', sans-serif;
