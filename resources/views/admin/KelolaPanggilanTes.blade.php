@@ -126,7 +126,7 @@
         <nav class="mt-4" aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <!-- Previous Page Link -->
-                @if ($kelolapelamar->onFirstPage())
+                @if ($kelolapanggilantes->onFirstPage())
                     <li class="page-item disabled">
                         <a class="page-link" href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
@@ -134,23 +134,23 @@
                     </li>
                 @else
                     <li class="page-item">
-                        <a class="page-link" href="{{ $kelolapelamar->previousPageUrl() }}" aria-label="Previous">
+                        <a class="page-link" href="{{ $kelolapanggilantes->previousPageUrl() }}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
                 @endif
 
                 <!-- Pagination Links -->
-                @foreach ($kelolapelamar->getUrlRange(1, $kelolapelamar->lastPage()) as $page => $url)
-                    <li class="page-item {{ $kelolapelamar->currentPage() == $page ? 'active' : '' }}">
+                @foreach ($kelolapanggilantes->getUrlRange(1, $kelolapanggilantes->lastPage()) as $page => $url)
+                    <li class="page-item {{ $kelolapanggilantes->currentPage() == $page ? 'active' : '' }}">
                         <a class="page-link" href="{{ $url }}">{{ $page }}</a>
                     </li>
                 @endforeach
 
                 <!-- Next Page Link -->
-                @if ($kelolapelamar->hasMorePages())
+                @if ($kelolapanggilantes->hasMorePages())
                     <li class="page-item">
-                        <a class="page-link" href="{{ $kelolapelamar->nextPageUrl() }}" aria-label="Next">
+                        <a class="page-link" href="{{ $kelolapanggilantes->nextPageUrl() }}" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
