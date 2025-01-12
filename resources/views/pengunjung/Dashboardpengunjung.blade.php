@@ -154,7 +154,7 @@
             <section id="features-cards" class="features-cards section">
                 <div class="container">
                     <div class="row gy-4">
-                        @foreach ($kelolalowongan as $item)
+                        @foreach ($kelolalowongan->where('status_verifikasi', 'Diterima') as $item) <!-- Filter berdasarkan status diterima -->
                             @php
                                 // Menghitung status berdasarkan tanggal buka dan tanggal tutup
                                 $current_date = \Carbon\Carbon::now();
@@ -184,7 +184,11 @@
                                         </p>
                                         <p style="font-size: 13px; color: #777;">
                                             <i class="bi bi-calendar" style="margin-right: 5px; color: #777;"></i>
-                                            {{ $item->tanggal_verifikasi ?? 'Belum Diverifikasi' }}
+                                            <strong>Tanggal Buka:</strong> {{ \Carbon\Carbon::parse($item->tanggal_buat)->format('d M Y') }}
+                                        </p>
+                                        <p style="font-size: 13px; color: #777;">
+                                            <i class="bi bi-calendar" style="margin-right: 5px; color: #777;"></i>
+                                            <strong>Tanggal Tutup:</strong> {{ \Carbon\Carbon::parse($item->tanggal_berakhir)->format('d M Y') }}
                                         </p>
                                         <p style="font-size: 13px; color: #777;">
                                             <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>
@@ -203,6 +207,7 @@
                     </div>
                 </div>
             </section>
+            
             
 
             <!-- Testimonials -->
