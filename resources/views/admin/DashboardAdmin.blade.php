@@ -9,21 +9,22 @@
     <style>
         /* Ukuran canvas lebih besar dan responsif */
         canvas {
-            width: 100% !important;
-            /* Lebar canvas menyesuaikan ukuran elemen induk */
-            height: auto !important;
-            /* Tinggi menyesuaikan proporsi */
-            max-width: 600px;
-            /* Membatasi lebar maksimal agar tidak terlalu besar */
+            width: 80% !important;
+            /* Ubah persentase sesuai kebutuhan */
+            height: 300px !important;
+            /* Tentukan tinggi chart yang diinginkan */
+            max-width: 300px;
+            /* Maksimum lebar chart */
             margin: auto;
         }
+
 
         /* Pastikan chart tetap terlihat bagus pada perangkat kecil */
         @media (max-width: 768px) {
             canvas {
                 max-width: 100%;
                 /* Agar canvas dapat mengisi layar kecil */
-                height: 300px;
+                height: 100px;
                 /* Sesuaikan tinggi untuk perangkat kecil */
             }
         }
@@ -68,7 +69,11 @@
                     <div class="row text-center mb-3 mt-3">
                         <div class="col-6">
                             <div class="display-7" id="laki-laki-percentage">
-                                {{ round(($totalLaki / ($totalLaki + $totalPerempuan)) * 100) }}%
+                                @if ($totalLaki + $totalPerempuan > 0)
+                                    {{ round(($totalLaki / ($totalLaki + $totalPerempuan)) * 100) }}%
+                                @else
+                                    0%
+                                @endif
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <i class="bi bi-circle-fill text-orange me-2 small"></i>
@@ -77,7 +82,11 @@
                         </div>
                         <div class="col-6">
                             <div class="display-7" id="perempuan-percentage">
-                                {{ round(($totalPerempuan / ($totalLaki + $totalPerempuan)) * 100) }}%
+                                @if ($totalLaki + $totalPerempuan > 0)
+                                    {{ round(($totalPerempuan / ($totalLaki + $totalPerempuan)) * 100) }}%
+                                @else
+                                    0%
+                                @endif
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <i class="bi bi-circle-fill text-cyan me-2 small"></i>
@@ -88,6 +97,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- Card untuk grafik donut chart (Jumlah Akun Pelamar dan Perusahaan) -->
         <div class="col-lg-6 col-md-12 col-sm-12">
@@ -225,6 +235,7 @@
                         }
                     },
                     cutout: '40%', // Membuat grafik berbentuk donut
+                    aspectRatio: 1, // Menentukan rasio aspek (1:1 untuk bentuk lingkaran)
                 }
             });
         </script>
