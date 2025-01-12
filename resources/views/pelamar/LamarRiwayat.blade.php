@@ -29,9 +29,9 @@
                                     <td>
                                         @if($item->status == 'menunggu')
                                             <span class="badge bg-warning">Menunggu</span>
-                                        @elseif($item->status == 'accepted')
+                                        @elseif($item->status == 'diterima')
                                             <span class="badge bg-success">Diterima</span>
-                                        @elseif($item->status == 'rejected')
+                                        @elseif($item->status == 'ditolak')
                                             <span class="badge bg-danger">Ditolak</span>
                                         @else
                                             <span class="badge bg-secondary">Tidak Diketahui</span>

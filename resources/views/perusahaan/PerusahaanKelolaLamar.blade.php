@@ -39,7 +39,7 @@
                             <td>{{ $lowongan->tanggal_buat }}</td>
                             <td>{{ $lowongan->tanggal_berakhir }}</td>
                             <td>
-                                <a href="{{ route('kelolalamarperusahaan.show', $lowongan->id) }}" class="btn btn-info">Lihat</a>
+                                <a href="{{ route('kelolalamarperusahaan.pelamar', $lowongan->id) }}" class="btn btn-info">Lihat</a>
                             </td>
                         </tr>
                     @endforeach

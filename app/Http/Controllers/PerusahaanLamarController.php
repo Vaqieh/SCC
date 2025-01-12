@@ -112,6 +112,7 @@ class PerusahaanLamarController extends Controller
         return view('lamar.show', compact('lamaran'));  // Pastikan Anda punya view lamaran.show
     }
 
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -126,22 +127,22 @@ class PerusahaanLamarController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-{
-    // Validasi status jika diperlukan
-    $validated = $request->validate([
-        'status' => 'required|in:Menunggu,Diterima,Ditolak', // Contoh validasi status
-    ]);
+    {
+        // Validasi status jika diperlukan
+        $validated = $request->validate([
+            'status' => 'required|in:Menunggu,Diterima,Ditolak', // Contoh validasi status
+        ]);
 
-    // Mencari lamaran berdasarkan ID
-    $lamaran = Lamar::findOrFail($id);
+        // Mencari lamaran berdasarkan ID
+        $lamaran = Lamar::findOrFail($id);
 
-    // Memperbarui status lamaran
-    $lamaran->status = $validated['status'];  // Gunakan hasil validasi untuk memperbarui status
-    $lamaran->save();
+        // Memperbarui status lamaran
+        $lamaran->status = $validated['status'];  // Gunakan hasil validasi untuk memperbarui status
+        $lamaran->save();
 
-    // Redirect atau tampilkan pesan sukses
-    return redirect()->route('kelolalamarperusahaan.index')->with('success', 'Status lamaran berhasil diperbarui!');
-}
+        // Redirect atau tampilkan pesan sukses
+        return redirect()->route('kelolalamarperusahaan.index')->with('success', 'Status lamaran berhasil diperbarui!');
+    }
 
 
     /**
@@ -165,5 +166,28 @@ class PerusahaanLamarController extends Controller
 
         // Redirect kembali dengan pesan sukses
         return redirect()->route('lamar.index')->with('success', 'Lamaran berhasil dihapus!');
+    }
+
+    public function pelamarLowongan($lowongan_id)
+    {
+        // Ambil lowongan berdasarkan ID
+        $lowongan = Lowongan::findOrFail($lowongan_id);
+
+        // Ambil semua pelamar yang melamar untuk lowongan ini beserta statusnya
+        $pelamars = Lamar::where('lowongan_id', $lowongan->id)
+            ->with('pelamar')  // Hubungkan dengan model pelamar
+            ->get();
+
+        // Tampilkan halaman dengan data pelamar
+        return view('perusahaan.PerusahaanLamarPelamarLowongan', compact('lowongan', 'pelamars'));
+    }
+
+    public function printLamaran($lamaran_id)
+    {
+        // Ambil data lamaran berdasarkan ID
+        $lamaran = Lamar::findOrFail($lamaran_id);
+
+        // Tampilkan view untuk print
+        return view('perusahaan.PrintLamaran', compact('lamaran'));
     }
 }

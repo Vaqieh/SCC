@@ -175,14 +175,14 @@
 
 
                             <!-- Foto Profil -->
-                            <div class="mb-4">
+                            {{-- <div class="mb-4">
                                 <label for="foto" class="form-label">Link Foto Profil</label>
                                 <input type="text" class="form-control" id="foto" name="foto"
                                     value="{{ old('foto', $profile->foto ?? '') }}" disabled>
                                 @error('foto')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
 
                             <!-- Tombol Kirim -->

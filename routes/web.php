@@ -79,6 +79,10 @@ Route::middleware('auth')->group(function () {
     Route::put('kelolalamarperusahaan/{id}', [PerusahaanLamarController::class, 'update'])->name('kelolalamarperusahaan.update');
     Route::get('kelolalamarperusahaan/{id}/edit', [PerusahaanLamarController::class, 'edit'])->name('kelolalamarperusahaan.edit');
 
+    Route::get('perusahaan/lowongan/{lowongan_id}/pelamar', [PerusahaanLamarController::class, 'pelamarLowongan'])->name('kelolalamarperusahaan.pelamar');
+    Route::get('perusahaan/lamaran/{lamaran_id}/print', [PerusahaanLamarController::class, 'printLamaran'])->name('kelolalamarperusahaan.print');
+
+
 });
 
 Route::prefix('register')->group(function () {

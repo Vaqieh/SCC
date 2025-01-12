@@ -66,7 +66,7 @@ class LamarController extends Controller
         'Kompetensi' => 'nullable|string|max:255',
         'cv' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
         'sertifikat.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        'foto' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+        // 'foto' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
     ]);
 
     // Ambil profil pelamar berdasarkan email yang sedang login
@@ -113,13 +113,13 @@ class LamarController extends Controller
             $lamaran->sertifikat = $profile->sertifikat ?? null; // Ambil dari profil jika tidak di-upload
         }
 
-        // Menyimpan Foto Profil jika di-upload
-        if ($request->hasFile('foto')) {
-            $fotoPath = $request->file('foto')->store('foto', 'public');
-            $lamaran->foto = $fotoPath;
-        } else {
-            $lamaran->foto = $profile->foto ?? null; // Ambil foto profil dari profil jika tidak ada file baru
-        }
+        // // Menyimpan Foto Profil jika di-upload
+        // if ($request->hasFile('foto')) {
+        //     $fotoPath = $request->file('foto')->store('foto', 'public');
+        //     $lamaran->foto = $fotoPath;
+        // } else {
+        //     $lamaran->foto = $profile->foto ?? null; // Ambil foto profil dari profil jika tidak ada file baru
+        // }
 
         // Simpan data lamaran ke database
         $lamaran->save();
