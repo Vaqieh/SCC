@@ -54,8 +54,8 @@ class ProfilController extends Controller
     public function updateProfile(Request $request)
     {
         $user = Auth::user(); // Ambil data pengguna yang sedang login
-
-        // Validasi data input berdasarkan role
+    
+        // Validasi data input
         $validatedData = $request->validate([
             'NamaPelamar' => 'required_if:role,pelamar|string|max:255',
             'email' => 'required_if:role,pelamar|email|max:255',
@@ -63,7 +63,7 @@ class ProfilController extends Controller
             'Alamat' => 'nullable|string|max:255',
             'JenisKelamin' => 'nullable|in:laki-laki,perempuan',
             'Kompetensi' => 'nullable|string|max:255',
-            'sertifikat' => 'nullable|file|mimes:pdf|max:2048',
+            'sertifikat.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'cv' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
             'instansi' => 'nullable|string|max:255',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
@@ -75,12 +75,12 @@ class ProfilController extends Controller
             'kabupaten' => 'nullable|string|max:255',
             'kota' => 'nullable|string|max:255',
         ]);
-
+    
         // Memeriksa role pengguna dan memperbarui profil yang sesuai
         if ($user->role == 'pelamar') {
             // Cari profil pelamar berdasarkan email
             $profile = KelolaPelamar::where('email', $user->email)->first();
-
+    
             if ($profile) {
                 // Update data profil pelamar
                 $profile->NamaPelamar = $validatedData['NamaPelamar'] ?? $profile->NamaPelamar;
@@ -89,43 +89,59 @@ class ProfilController extends Controller
                 $profile->Alamat = $validatedData['Alamat'] ?? $profile->Alamat;
                 $profile->JenisKelamin = $validatedData['JenisKelamin'] ?? $profile->JenisKelamin;
                 $profile->Kompetensi = $validatedData['Kompetensi'] ?? $profile->Kompetensi;
-                $profile->sertifikat = $validatedData['sertifikat'] ?? $profile->sertifikat;
                 $profile->instansi = $validatedData['instansi'] ?? $profile->instansi;
-
+        
                 // Cek jika ada file CV yang diupload
                 if ($request->hasFile('cv')) {
                     // Hapus CV lama jika ada
                     if ($profile->cv && Storage::exists('public/' . $profile->cv)) {
                         Storage::delete('public/' . $profile->cv);
                     }
-
+        
                     // Simpan file CV yang baru
                     $cvPath = $request->file('cv')->store('cv', 'public');
                     $profile->cv = $cvPath;
                 }
+    
                 // Cek jika ada file sertifikat yang diupload
                 if ($request->hasFile('sertifikat')) {
                     // Hapus sertifikat lama jika ada
-                    if ($profile->sertifikat && Storage::exists('public/' . $profile->sertifikat)) {
-                        Storage::delete('public/' . $profile->sertifikat);
+                    if ($profile->sertifikat) {
+                        $oldSertifikatPaths = json_decode($profile->sertifikat);
+                        foreach ($oldSertifikatPaths as $oldSertifikat) {
+                            if (Storage::exists('public/' . $oldSertifikat)) {
+                                Storage::delete('public/' . $oldSertifikat);
+                            }
+                        }
                     }
-
-                    // Simpan file sertifikat yang baru
-                    $sertifikatPath = $request->file('sertifikat')->store('sertifikat', 'public');
-                    $profile->sertifikat = $sertifikatPath;
+    
+                    // Proses setiap file sertifikat
+                    $sertifikatPaths = [];
+                    foreach ($request->file('sertifikat') as $file) {
+                        $sertifikatPath = $file->storeAs(
+                            'sertifikat', 
+                            uniqid('sertifikat_', true) . '.' . $file->getClientOriginalExtension(), // Menyimpan dengan ekstensi asli
+                            'public'
+                        );
+                        $sertifikatPaths[] = $sertifikatPath;
+                    }
+    
+                    // Simpan array sertifikat dalam bentuk JSON
+                    $profile->sertifikat = json_encode($sertifikatPaths);
                 }
+    
                 // Cek jika ada foto profil yang diupload
                 if ($request->hasFile('foto')) {
                     // Hapus foto profil lama jika ada
                     if ($profile->foto && Storage::exists('public/' . $profile->foto)) {
                         Storage::delete('public/' . $profile->foto);
                     }
-
+        
                     // Simpan foto profil yang baru
                     $fotoProfilPath = $request->file('foto')->store('foto_pelamar', 'public');
                     $profile->foto = $fotoProfilPath;
                 }
-
+        
                 $profile->save(); // Simpan perubahan ke tabel kelola_pelamar
             } else {
                 // Jika profil pelamar tidak ditemukan, buat profil baru
@@ -136,30 +152,38 @@ class ProfilController extends Controller
                 $profile->Alamat = $validatedData['Alamat'];
                 $profile->JenisKelamin = $validatedData['JenisKelamin']; // Pastikan nilai default kosong
                 $profile->Kompetensi = $validatedData['Kompetensi'] ?? null;
-                $profile->sertifikat = $validatedData['sertifikat'] ?? null; // Pastikan nilai default kosong
                 $profile->instansi = $validatedData['instansi'] ?? null;
-                $profile->cv = $validatedData['cv'] ?? null;
-
+        
                 // Cek jika ada file CV yang diupload
                 if ($request->hasFile('cv')) {
                     $cvPath = $request->file('cv')->store('cv', 'public');
                     $profile->cv = $cvPath;
                 }
+        
                 // Cek jika ada file sertifikat yang diupload
                 if ($request->hasFile('sertifikat')) {
-                    $sertifikatPath = $request->file('sertifikat')->store('sertifikat', 'public');
-                    $profile->sertifikat = $sertifikatPath;
+                    $sertifikatPaths = [];
+                    foreach ($request->file('sertifikat') as $file) {
+                        $sertifikatPath = $file->storeAs(
+                            'sertifikat', 
+                            uniqid('sertifikat_', true) . '.' . $file->getClientOriginalExtension(),
+                            'public'
+                        );
+                        $sertifikatPaths[] = $sertifikatPath;
+                    }
+    
+                    $profile->sertifikat = json_encode($sertifikatPaths);
                 }
-
+        
                 // Cek jika ada foto profil yang diupload
                 if ($request->hasFile('foto')) {
                     $fotoProfilPath = $request->file('foto')->store('foto_pelamar', 'public');
                     $profile->foto = $fotoProfilPath;
                 }
-
+        
                 $profile->save(); // Simpan data baru ke tabel kelola_pelamar
             }
-
+    
             return redirect()->route('pelamar.profile')->with('success', 'Profil pelamar berhasil diperbarui.');
         }
 

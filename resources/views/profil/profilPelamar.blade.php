@@ -98,7 +98,7 @@
                                 <!-- Sertifikat -->
                                 <div class="col-md-6">
                                     <label for="sertifikat" class="form-label">Sertifikat</label>
-                                    <input type="file" class="form-control" name="sertifikat">
+                                    <input type="file" class="form-control" name="sertifikat[]" multiple>
 
                                     @if ($profile && $profile->sertifikat)
                                         <a href="{{ Storage::url($profile->sertifikat) }}" target="_blank"
@@ -162,8 +162,18 @@
                                 <div class="mb-3">
                                     <strong>Sertifikat:</strong>
                                     @if ($profile && $profile->sertifikat)
-                                        <a href="{{ url('/storage/sertifikat/' . basename($profile->sertifikat)) }}"
-                                            target="_blank" class="btn btn-info btn-sm">Lihat Sertifikat</a>
+                                        @php
+                                            // Mendekode array sertifikat yang disimpan dalam bentuk JSON
+                                            $sertifikatPaths = json_decode($profile->sertifikat);
+                                        @endphp
+                                        
+                                        @if ($sertifikatPaths)
+                                            @foreach ($sertifikatPaths as $sertifikat)
+                                                <a href="{{ Storage::url($sertifikat) }}" target="_blank" class="btn btn-info btn-sm">Lihat Sertifikat</a>
+                                            @endforeach
+                                        @else
+                                            <span>- Belum Ada Sertifikat</span>
+                                        @endif
                                     @else
                                         <span>- Belum Ada Sertifikat</span>
                                     @endif
