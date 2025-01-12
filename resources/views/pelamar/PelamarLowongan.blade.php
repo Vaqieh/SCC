@@ -46,10 +46,18 @@
                                     <i class="bi bi-building" style="margin-right: 5px;"></i>
                                     {{ $item->perusahaan->p_nama ?? 'Perusahaan Tidak Diketahui' }}
                                 </p>
+                                
+                                <!-- Tanggal Buka dan Tanggal Tutup -->
                                 <p class="text-muted" style="font-size: 13px;">
                                     <i class="bi bi-calendar" style="margin-right: 5px;"></i>
-                                    {{ $item->tanggal_verifikasi ?? 'Belum Diverifikasi' }}
+                                    <strong>Tanggal Buka:</strong> {{ \Carbon\Carbon::parse($item->tanggal_buat)->format('d M Y') }}
                                 </p>
+                                <p class="text-muted" style="font-size: 13px;">
+                                    <i class="bi bi-calendar" style="margin-right: 5px;"></i>
+                                    <strong>Tanggal Tutup:</strong> {{ \Carbon\Carbon::parse($item->tanggal_berakhir)->format('d M Y') }}
+                                </p>
+
+                                <!-- Status Lowongan -->
                                 <p class="text-muted" style="font-size: 13px;">
                                     <i class="bi bi-person" style="margin-right: 5px;"></i>
                                     Status: {{ $status }} <!-- Menampilkan status Buka atau Tutup -->

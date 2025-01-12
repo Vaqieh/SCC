@@ -24,7 +24,7 @@
                             @endif
                         </div>
 
-                        <!-- Detail Lowongan -->
+                        <!-- Informasi Lowongan -->
                         <h4 style="font-weight: bold; color: #007BFF; margin-top: 20px;">Informasi Tambahan</h4>
                         
                         <!-- Status Lowongan -->
@@ -45,10 +45,31 @@
                             <strong>Tanggal Tutup:</strong> {{ \Carbon\Carbon::parse($lowongan->tanggal_berakhir)->format('d M Y') }}
                         </p>
 
-                        <!-- Tanggal Verifikasi -->
+                        <!-- Pendidikan yang dibutuhkan -->
                         <p style="line-height: 1.8; color: #555;">
-                            <strong>Tanggal Verifikasi:</strong> {{ $lowongan->tanggal_verifikasi ?? 'Belum diverifikasi' }}
+                            <strong>Pendidikan:</strong> {{ $lowongan->pendidikan ?? 'Tidak ada keterangan' }}
                         </p>
+
+                        <!-- Pengalaman Kerja yang dibutuhkan -->
+                        <p style="line-height: 1.8; color: #555;">
+                            <strong>Pengalaman Kerja:</strong> {{ $lowongan->pengalaman_kerja ?? 'Tidak ada keterangan' }}
+                        </p>
+
+                        <!-- Umur yang dibutuhkan -->
+                        <p style="line-height: 1.8; color: #555;">
+                            <strong>Umur:</strong> {{ $lowongan->umur ?? 'Tidak ada keterangan' }} tahun
+                        </p>
+
+                        <!-- Kuota yang dibutuhkan -->
+                        <p style="line-height: 1.8; color: #555;">
+                            <strong>Kuota:</strong> {{ $lowongan->kuota ?? 'Tidak ada keterangan' }}
+                        </p>
+
+                        <!-- Detail Lowongan -->
+                        <div style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; background-color: #f8f9fa;">
+                            <h5 style="font-weight: bold; color: #007BFF;">Detail Pekerjaan:</h5>
+                            <p style="color: #555;">{{ $lowongan->detail ?? 'Tidak ada deskripsi lebih lanjut' }}</p>
+                        </div>
 
                         <!-- Button Lamar -->
                         <div class="text-center mt-4">
