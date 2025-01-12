@@ -278,7 +278,7 @@
             <!-- /Testimonials Section -->
 
             <!-- Stats Section -->
-            <section id="stats" class="stats section">
+            {{-- <section id="stats" class="stats section">
 
                 <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -316,7 +316,7 @@
                             </div>
                         </div><!-- End Stats Item -->
 
-                    </div>
+                    </div> --}}
 
                 </div>
 

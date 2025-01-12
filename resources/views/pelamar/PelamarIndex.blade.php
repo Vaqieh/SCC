@@ -160,16 +160,21 @@
     </section>
 
     <!-- Features 2 Section -->
-<div style="display: flex; justify-content: center; margin-top: 30px;">
-    <a href="{{ route('pelamar.lowongan') }}"
-        style="font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); text-decoration: none; font-family: 'Arial', sans-serif;
+    <div style="text-align: center; margin-top: 20px;">
+        <h2 style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Arial', sans-serif;">
+            Daftar Lowongan Pekerjaan
+        </h2>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 30px;">
+        <a href="{{ route('pelamar.lowongan') }}"
+            style="font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); text-decoration: none; font-family: 'Arial', sans-serif;
     padding: 12px 30px; border-radius: 25px; background: linear-gradient(90deg, #00b0ff, #80d0ff);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); transition: all 0.4s ease;"
-        onmouseover="this.style.background='linear-gradient(90deg, #80d0ff, #00b0ff)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 20px rgba(0, 0, 0, 0.3)';"
-        onmouseout="this.style.background='linear-gradient(90deg, #00b0ff, #80d0ff)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 15px rgba(0, 0, 0, 0.1)';">
-        Tampilkan lebih banyak lowongan
-    </a>
-</div>
+            onmouseover="this.style.background='linear-gradient(90deg, #80d0ff, #00b0ff)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 20px rgba(0, 0, 0, 0.3)';"
+            onmouseout="this.style.background='linear-gradient(90deg, #00b0ff, #80d0ff)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 15px rgba(0, 0, 0, 0.1)';">
+            Tampilkan lebih banyak lowongan
+        </a>
+    </div>
 
 
     <!-- Features Section -->
