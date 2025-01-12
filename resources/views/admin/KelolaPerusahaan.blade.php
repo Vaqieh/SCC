@@ -114,26 +114,48 @@
             </tbody>
         </table>
         <!-- Pagination Links -->
-        {{ $kelolaperusahaan->links() }}
-    </div>
+        <nav class="mt-4" aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <!-- Previous Page Link -->
+                @if ($kelolaperusahaan->onFirstPage())
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $kelolaperusahaan->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                @endif
 
-    <nav class="mt-4" aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+                <!-- Pagination Links -->
+                @foreach ($kelolaperusahaan->getUrlRange(1, $kelolaperusahaan->lastPage()) as $page => $url)
+                    <li class="page-item {{ $kelolaperusahaan->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                <!-- Next Page Link -->
+                @if ($kelolaperusahaan->hasMorePages())
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $kelolaperusahaan->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                @else
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </nav>
+
+    </div>
 
     </div>
 @endsection

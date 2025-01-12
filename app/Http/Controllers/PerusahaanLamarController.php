@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KelolaPerusahaan;  // Pastikan model KelolaPerusahaan sudah ada
+use App\Models\Lowongan;  // Pastikan model KelolaPerusahaan sudah ada
 use App\Models\Lamar;  // Pastikan model Lamaran sudah ada
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage; // Tambahkan import ini
@@ -14,10 +16,36 @@ class PerusahaanLamarController extends Controller
      */
     public function index()
     {
-        // Mengambil data lamaran dengan paginasi
-        $lamar = Lamar::paginate(10); // Ganti 10 dengan jumlah data per halaman sesuai kebutuhan
-        return view('perusahaan.PerusahaanKelolaLamar', compact('lamar'));
+        if (Auth::guest()) {
+            return redirect()->route('login.perusahaan');  // Sesuaikan dengan role
+        }
+
+        // Jika sudah login, cek apakah role sesuai
+        if (Auth::user()->role !== 'perusahaan') {
+            return redirect()->route('login.perusahaan');  // Redirect ke login jika bukan perusahaan
+        }
+
+        // Ambil data perusahaan yang sedang login
+        $currentUser = Auth::user();
+        $perusahaan = KelolaPerusahaan::where('email_perusahaan', $currentUser->email)
+            ->orWhere('p_nama', $currentUser->name)
+            ->first(); // Ambil perusahaan berdasarkan email atau nama
+
+        // Jika perusahaan tidak ditemukan, tampilkan pesan error
+        if (!$perusahaan) {
+            session()->flash('error', 'Profil perusahaan belum lengkap. Mohon lengkapi profil Anda untuk melanjutkan.');
+            return back();
+        }
+
+        // Ambil data lowongan yang terkait dengan perusahaan ini, beserta jumlah pelamar
+        $lowongans = Lowongan::where('perusahaan_id', $perusahaan->id)
+            ->withCount('lamars')  // Menghitung jumlah pelamar untuk setiap lowongan
+            ->paginate(10);
+
+        // Menampilkan data lowongan beserta jumlah pelamar
+        return view('perusahaan.PerusahaanKelolaLamar', compact('lowongans'));
     }
+
 
     /**
      * Show the form for creating a new resource.

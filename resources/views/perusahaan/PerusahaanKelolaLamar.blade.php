@@ -19,53 +19,72 @@
 
         <!-- Table with Pagination -->
         <div class="table-responsive">
-            <br>
-            {{-- <a href="{{ route('kelolalamarperusahaan.create') }}" class="btn btn-primary mb-3">Buat Lamaran Baru</a> --}}
-
             <table class="table table-custom table-lg mb-0">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Lowongan</th>
-                        <th>Pelamar</th>
-                        <th>Status</th>
+                        <th>Jumlah Pelamar</th>
+                        <th>Tanggal Buka</th>
+                        <th>Tanggal Tutup</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($lamar as $key => $lamaran)
+                    @foreach ($lowongans as $key => $lowongan)
                         <tr>
-                            <!-- Nomor urut dengan pagination -->
-                            <td>{{ $lamar->firstItem() + $key }}</td> <!-- Menyesuaikan nomor urut dengan pagination -->
-                            <td>{{ $lamaran->lowongan->nama_lowongan }}</td>
-                            <td>{{ $lamaran->pelamar->name }}</td>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $lowongan->nama_lowongan }}</td>
+                            <td>{{ $lowongan->lamars_count }}</td>  <!-- Menampilkan jumlah pelamar -->
+                            <td>{{ $lowongan->tanggal_buat }}</td>
+                            <td>{{ $lowongan->tanggal_berakhir }}</td>
                             <td>
-                                @if ($lamaran->status == 'menunggu')
-                                    <span class="badge bg-warning text-dark">Menunggu</span>
-                                @elseif ($lamaran->status == 'diterima')
-                                    <span class="badge bg-success">Diterima</span>
-                                @elseif ($lamaran->status == 'ditolak')
-                                    <span class="badge bg-danger">Ditolak</span>
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('kelolalamarperusahaan.show', $lamaran->id) }}" class="btn btn-info">Lihat</a>
-                                <a href="{{ route('kelolalamarperusahaan.edit', $lamaran->id) }}" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('kelolalamarperusahaan.destroy', $lamaran->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
-                                </form>
+                                <a href="{{ route('kelolalamarperusahaan.show', $lowongan->id) }}" class="btn btn-info">Lihat</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            <nav class="mt-4" aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <!-- Previous Page Link -->
+                    @if ($lowongans->onFirstPage())
+                    <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    @else
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $lowongans->previousPageUrl() }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    @endif
 
-            <!-- Pagination -->
-            <div class="mt-3">
-                {{-- {{ $lamar->links() }} <!-- Menampilkan pagination --> --}}
-            </div>
+                    <!-- Pagination Links -->
+                    @foreach ($lowongans->getUrlRange(1, $lowongans->lastPage()) as $page => $url)
+                        <li class="page-item {{ $lowongans->currentPage() == $page ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                        </li>
+                    @endforeach
+
+                    <!-- Next Page Link -->
+                    @if ($lowongans->hasMorePages())
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $lowongans->nextPageUrl() }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    @else
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+            </nav>
         </div>
 
     </div>

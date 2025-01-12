@@ -160,6 +160,7 @@
                                             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                                                 <!-- Menampilkan Nama Pengguna -->
                                                 <li><a class="dropdown-item" href="{{ route('pelamar.profile') }}">{{ Auth::user()->name }}</a></li>
+                                                <li><a class="dropdown-item" href="{{ route('lamar.show') }}">Riwayat Lamaran</a></li>
 
                                                 <!-- Tombol Logout dengan gaya yang konsisten -->
                                                 <li>

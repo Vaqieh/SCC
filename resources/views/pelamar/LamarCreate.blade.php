@@ -4,10 +4,25 @@
     <br><br><br>
 
     <div class="container">
+
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <!-- Menampilkan pesan error -->
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                <!-- Menampilkan pesan sukses -->
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="card shadow-sm" style="border-radius: 15px; overflow: hidden;">
                     <div class="card-header text-center bg-primary text-white" style="padding: 20px;">
+
                         <h2 style="font-weight: bold; font-family: 'Poppins', sans-serif;">Form Lamaran Pekerjaan</h2>
                     </div>
                     <div class="card-body" style="padding: 30px; font-family: 'Roboto', sans-serif;">
@@ -131,14 +146,33 @@
                                 @enderror
                             </div>
 
-                            <!-- Sertifikat Upload -->
                             <div class="mb-4">
-                                <label for="sertifikat" class="form-label">Upload Sertifikat</label>
-                                <input type="file" class="form-control" id="sertifikat" name="sertifikat">
+                                <label for="sertifikat" class="form-label">Upload Sertifikat (Optional)</label>
+                                <input type="file" class="form-control" id="sertifikat" name="sertifikat[]" multiple>
+
+                                @if ($profile && $profile->sertifikat)
+                                    <div class="row">
+                                        @php
+                                            $sertifikatPaths = json_decode($profile->sertifikat);
+                                        @endphp
+                                        @foreach ($sertifikatPaths as $sertifikat)
+                                            <div class="col-4 mb-2">
+                                                <a href="{{ Storage::url($sertifikat) }}" target="_blank">
+                                                    <img src="{{ Storage::url($sertifikat) }}" alt="Sertifikat"
+                                                        class="img-fluid">
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @else
+                                    <p class="mt-2 text-muted">Sertifikat belum diupload.</p>
+                                @endif
+
                                 @error('sertifikat')
-                                    <div class="text-danger">{{ $message }}</div>
+                                    <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
+
 
                             <!-- Foto Profil -->
                             <div class="mb-4">

@@ -14,7 +14,7 @@ class Lowongan extends Model
         'tanggal_berakhir', 'tanggal_verifikasi', 'pendidikan', 'pengalaman_kerja',
         'umur', 'gambar_lowongan', 'detail', 'file',
     ];
-    
+
     // Relasi ke Perusahaan
     public function perusahaan()
     {
@@ -30,5 +30,9 @@ class Lowongan extends Model
     public function panggilanTes()
     {
         return $this->hasMany(PanggilanTes::class);
+    }
+    public function lamars()
+    {
+        return $this->hasMany(Lamar::class, 'lowongan_id');
     }
 }

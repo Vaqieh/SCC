@@ -1,6 +1,7 @@
 @extends('layouts.app', ['title' => 'Riwayat Lamaran'])
 
 @section('content')
+<br><br><br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -26,8 +27,8 @@
                                     <td>{{ $item->lowongan->nama_lowongan }}</td>
                                     <td>{{ $item->created_at->format('d M Y') }}</td>
                                     <td>
-                                        @if($item->status == 'pending')
-                                            <span class="badge bg-warning">Pending</span>
+                                        @if($item->status == 'menunggu')
+                                            <span class="badge bg-warning">Menunggu</span>
                                         @elseif($item->status == 'accepted')
                                             <span class="badge bg-success">Diterima</span>
                                         @elseif($item->status == 'rejected')

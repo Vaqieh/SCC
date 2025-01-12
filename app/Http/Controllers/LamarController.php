@@ -52,84 +52,115 @@ class LamarController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+{
+    $user = Auth::user(); // Ambil data pengguna yang sedang login
 
-        $user = Auth::user(); // Ambil data pengguna yang sedang login
+    // Validasi data input dari form lamaran
+    $validatedData = $request->validate([
+        'lowongan_id' => 'required|exists:lowongans,id', // Validasi lowongan yang dipilih
+        'TanggalLahir' => 'required|date',
+        'Alamat' => 'nullable|string|max:255',
+        'JenisKelamin' => 'nullable|in:laki-laki,perempuan',
+        'status' => 'nullable|string|max:50',
+        'instansi' => 'nullable|string|max:50',
+        'Kompetensi' => 'nullable|string|max:255',
+        'cv' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+        'sertifikat.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'foto' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+    ]);
 
-        // Validasi data input dari form lamaran
-        $validatedData = $request->validate([
-            'lowongan_id' => 'required|exists:lowongans,id', // Validasi lowongan yang dipilih
-            // 'NamaPelamar' => 'required|string|max:255',
-            // 'email' => 'required|email',
-            'TanggalLahir' => 'required|date',
-            'Alamat' => 'nullable|string|max:255',
-            'JenisKelamin' => 'nullable|in:laki-laki,perempuan',
-            'status' => 'nullable|string|max:50',
-            'instansi' => 'nullable|string|max:50',
-            'Kompetensi' => 'nullable|string|max:255',
-            'cv' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
-            'sertifikat' => 'nullable|file|mimes:pdf|max:2048',
-            'foto' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-        ]);
+    // Ambil profil pelamar berdasarkan email yang sedang login
+    $profile = KelolaPelamar::where('email', $user->email)->first();
 
-        // Ambil profil pelamar berdasarkan email yang sedang login
-        $profile = KelolaPelamar::where('email', $user->email)->first();
+    if ($profile) {
+        // Cek apakah pelamar sudah melamar lowongan ini sebelumnya
+        $existingLamaran = Lamar::where('pelamar_id', $profile->id)
+            ->where('lowongan_id', $validatedData['lowongan_id'])
+            ->first();
 
-
-        if ($profile) {
-            // Membuat lamaran baru
-            $lamaran = new Lamar();
-            $lamaran->lowongan_id = $validatedData['lowongan_id'];
-            $lamaran->pelamar_id = $user->id;
-            $lamaran->email = $profile->email;;
-            $lamaran->status = $validatedData['status'] ?? 'menunggu';
-            $lamaran->TanggalLahir = $validatedData['TanggalLahir'];
-            $lamaran->Alamat = $validatedData['Alamat'] ?? $profile->Alamat;
-            $lamaran->JenisKelamin = $validatedData['JenisKelamin'] ?? $profile->JenisKelamin;
-            $lamaran->Kompetensi = $validatedData['Kompetensi'] ?? $profile->Kompetensi;
-            $lamaran->instansi = $validatedData['instansi'] ?? $profile->instansi;
-
-            // Menyimpan CV jika di-upload
-            if ($request->hasFile('cv')) {
-                $cvPath = $request->file('cv')->store('cv', 'public');
-                $lamaran->cv = $cvPath;
-            }
-
-            // Menyimpan Sertifikat jika di-upload
-            if ($request->hasFile('sertifikat')) {
-                $sertifikatPath = $request->file('sertifikat')->store('sertifikat', 'public');
-                $lamaran->sertifikat = $sertifikatPath;
-            }
-
-            // Menyimpan Foto Profil jika di-upload
-            if ($request->hasFile('foto')) {
-                $fotoPath = $request->file('foto')->store('foto', 'public');
-                $lamaran->foto = $fotoPath;
-            }
-
-            // Simpan data lamaran ke database
-            $lamaran->save();
-
-            return redirect()->route('lamar.show', ['lamar' => $lamaran->id])->with('success', 'Lamaran berhasil dikirim!');
-        } else {
-            return redirect()->route('pelamar.profile')->with('error', 'Profil pelamar tidak ditemukan.');
+        if ($existingLamaran) {
+            return back()->with('error', 'Anda sudah melamar lowongan ini sebelumnya.');
         }
+
+        // Membuat lamaran baru
+        $lamaran = new Lamar();
+        $lamaran->lowongan_id = $validatedData['lowongan_id'];
+        $lamaran->pelamar_id = $profile->id;  // Menyimpan ID dari pelamar yang sesuai
+        $lamaran->email = $profile->email;
+        $lamaran->status = $validatedData['status'] ?? 'menunggu';
+        $lamaran->TanggalLahir = $validatedData['TanggalLahir'];
+        $lamaran->Alamat = $validatedData['Alamat'] ?? $profile->Alamat;
+        $lamaran->JenisKelamin = $validatedData['JenisKelamin'] ?? $profile->JenisKelamin;
+        $lamaran->Kompetensi = $validatedData['Kompetensi'] ?? $profile->Kompetensi;
+        $lamaran->instansi = $validatedData['instansi'] ?? $profile->instansi;
+
+        // Menyimpan CV jika di-upload
+        if ($request->hasFile('cv')) {
+            $cvPath = $request->file('cv')->store('cv', 'public');
+            $lamaran->cv = $cvPath;
+        } else {
+            $lamaran->cv = $profile->cv ?? null; // Jika tidak ada file, ambil dari profil
+        }
+
+        // Menyimpan Sertifikat jika di-upload
+        if ($request->hasFile('sertifikat')) {
+            $sertifikatPaths = [];
+            foreach ($request->file('sertifikat') as $sertifikat) {
+                $sertifikatPaths[] = $sertifikat->store('sertifikat', 'public');
+            }
+            $lamaran->sertifikat = json_encode($sertifikatPaths); // Menyimpan array sebagai JSON
+        } else {
+            $lamaran->sertifikat = $profile->sertifikat ?? null; // Ambil dari profil jika tidak di-upload
+        }
+
+        // Menyimpan Foto Profil jika di-upload
+        if ($request->hasFile('foto')) {
+            $fotoPath = $request->file('foto')->store('foto', 'public');
+            $lamaran->foto = $fotoPath;
+        } else {
+            $lamaran->foto = $profile->foto ?? null; // Ambil foto profil dari profil jika tidak ada file baru
+        }
+
+        // Simpan data lamaran ke database
+        $lamaran->save();
+
+        return redirect()->route('lamar.show')->with('success', 'Lamaran berhasil dikirim!');
+    } else {
+        return redirect()->route('pelamar.profile')->with('error', 'Profil pelamar tidak ditemukan.');
     }
+}
+
+
+
+
 
     /**
      * Display the specified resource.
      */
+    // Controller LamarController.php
+
     public function show()
-{
-    // Ambil data pelamar berdasarkan email pengguna yang sedang login
-    $pelamar = KelolaPelamar::where('email', Auth::user()->email)->first();
+    {
+        // Ambil data pelamar berdasarkan email pengguna yang sedang login
+        $pelamar = KelolaPelamar::where('email', Auth::user()->email)->first();
 
-    // Ambil semua lamaran yang terkait dengan pelamar yang sedang login
-    $lamaran = Lamar::where('pelamar_id', $pelamar->id)->get();
+        if ($pelamar) {
+            // Ambil semua lamaran yang terkait dengan pelamar yang sedang login
+            $lamaran = Lamar::where('pelamar_id', $pelamar->id)
+                ->with('lowongan') // Mengambil relasi lowongan
+                ->get();
 
-    // Kirim data lamaran ke view LamarRiwayat
-    return view('pelamar.LamarRiwayat', compact('lamaran'));
-}
+            // Debugging: Cek hasil query lamaran
+            if ($lamaran->isEmpty()) {
+                return view('pelamar.LamarRiwayat', ['message' => 'Belum ada riwayat lamaran.']);
+            }
+
+            // Kirim data $lamaran ke view
+            return view('pelamar.LamarRiwayat', compact('lamaran'));
+        }
+
+        return redirect()->route('pelamar.profile')->with('error', 'Pelamar tidak ditemukan.');
+    }
 
 
 

@@ -932,7 +932,7 @@
             <!-- ./ Header mobile buttons -->
         </div>
         <!-- ./ header -->
-        <div class="container-fluid">
+        {{-- <div class="container-fluid">
             <!-- Cek apakah ada pesan error -->
             @if (session()->has('error'))
                 <div class="alert alert-danger" role="alert">
@@ -946,7 +946,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-        </div>
+        </div> --}}
         <div>
             @yield('content')
         </div>

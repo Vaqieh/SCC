@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('lamar', LamarController::class);
     Route::get('/lamar/create/{id}', [LamarController::class, 'create'])->name('lamar.create');
     // Routing untuk halaman riwayat lamaran
-    Route::get('/lamar/riwayat', [LamarController::class, 'show'])->name('lamar.show');
+    Route::get('/lamar/riwayat/', [LamarController::class, 'show'])->name('lamar.show');
 
 });
 
