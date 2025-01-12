@@ -10,6 +10,6 @@ class AdminSeeder extends Seeder
     public function run()
     {
         // Menggunakan factory untuk membuat 10 data dummy Admin
-        Admin::factory()->count(10)->create();
+        Admin::factory()->count(5)->create();
     }
 }

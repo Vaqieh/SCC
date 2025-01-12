@@ -16,7 +16,7 @@
             </nav>
         </div>
 
-        
+
 
         <div class="table-responsive">
             <br>
@@ -30,7 +30,7 @@
                         <th>Nama Lowongan</th>
                         <th>Tanggal Verifikasi</th>
                         <th>Status</th>
-                        <th>Aksi</th>
+                        {{-- <th>Aksi</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -56,9 +56,9 @@
                                     <span class="badge bg-danger">Ditolak</span>
                                 @endif
                             </td>
-                            <td>
+                            {{-- <td>
                                 <a href="{{ route('kelolalowonganperusahaan.show', $item->id) }}" class="btn btn-info">Show</a>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>

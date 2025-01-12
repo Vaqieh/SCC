@@ -12,23 +12,42 @@ use App\Http\Requests\StorePerusahaanLowonganRequest;
 class PerusahaanLowonganController extends Controller
 {
     public function index()
-    {
-        if (Auth::guest()) {;
-            return redirect()->route('login.perusahaan');  // Sesuaikan dengan role
-        }
-
-        // Jika sudah login, cek apakah role sesuai
-        if (Auth::user()->role !== 'perusahaan') {
-            return redirect()->route('login.perusahaan');  // Redirect ke login jika bukan admin
-        }
-        // Ambil data lowongan dengan pagination
-        if (request()->filled('q')) {
-            $data['kelolalowonganperusahaan'] = Lowongan::search(request('q'))->paginate(10);
-        } else {
-            $data['kelolalowonganperusahaan'] = Lowongan::latest()->paginate(10);
-        }
-        return view('perusahaan.PerusahaanLowonganIndex', $data);
+{
+    if (Auth::guest()) {
+        return redirect()->route('login.perusahaan');  // Sesuaikan dengan role
     }
+
+    // Jika sudah login, cek apakah role sesuai
+    if (Auth::user()->role !== 'perusahaan') {
+        return redirect()->route('login.perusahaan');  // Redirect ke login jika bukan perusahaan
+    }
+
+    // Ambil data perusahaan yang sedang login
+    $currentUser = Auth::user();
+    $perusahaan = KelolaPerusahaan::where('email_perusahaan', $currentUser->email)
+        ->orWhere('p_nama', $currentUser->name)
+        ->first(); // Ambil perusahaan berdasarkan email atau nama
+
+    // Jika perusahaan tidak ditemukan, tampilkan pesan error
+    if (!$perusahaan) {
+        session()->flash('error', 'Profil perusahaan belum lengkap. Mohon lengkapi profil Anda untuk melanjutkan.');
+        return back();
+    }
+
+    // Ambil data lowongan yang terkait dengan perusahaan ini
+    if (request()->filled('q')) {
+        $data['kelolalowonganperusahaan'] = Lowongan::where('perusahaan_id', $perusahaan->id)
+            ->search(request('q'))  // Menambahkan search filter jika ada query parameter
+            ->paginate(10);
+    } else {
+        $data['kelolalowonganperusahaan'] = Lowongan::where('perusahaan_id', $perusahaan->id)
+            ->latest()  // Urutkan berdasarkan yang terbaru
+            ->paginate(10);
+    }
+
+    return view('perusahaan.PerusahaanLowonganIndex', $data);
+}
+
 
     // Menampilkan halaman untuk menambah lowongan
     public function create()

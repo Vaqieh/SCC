@@ -14,23 +14,40 @@ use Illuminate\Database\QueryException;
 class ProfilController extends Controller
 {
     // Menampilkan Profil Berdasarkan Role
-    public function showProfile()
+    // Fungsi untuk menampilkan profil admin
+    public function showProfileAdmin()
     {
         $user = Auth::user(); // Ambil data pengguna yang sedang login
-
-        // Memeriksa role pengguna dan menampilkan profil sesuai role
-        if ($user->role == 'admin') {
-            $profile = Admin::where('email', $user->email)->first();
-            return view('profil.profiladmin', compact('user', 'profile'));
-        } elseif ($user->role == 'perusahaan') {
-            $profile = KelolaPerusahaan::where('email_perusahaan', $user->email)->first();
-            return view('profil.profilperusahaan', compact('user', 'profile'));
-        } elseif ($user->role == 'pelamar') {
-            $profile = KelolaPelamar::where('email', $user->email)->first();
-            return view('profil.profilpelamar', compact('user', 'profile'));
-        } else {
-            return redirect()->route('login')->with('error', 'Role tidak valid');
+        if ($user->role != 'admin') {
+            return redirect()->route('login.admin')->with('error', 'Akses hanya untuk admin');
         }
+
+        $profile = Admin::where('email', $user->email)->first();
+        return view('profil.profiladmin', compact('user', 'profile'));
+    }
+
+    // Fungsi untuk menampilkan profil perusahaan
+    public function showProfilePerusahaan()
+    {
+        $user = Auth::user(); // Ambil data pengguna yang sedang login
+        if ($user->role != 'perusahaan') {
+            return redirect()->route('login.perusahaan')->with('error', 'Akses hanya untuk perusahaan');
+        }
+
+        $profile = KelolaPerusahaan::where('email_perusahaan', $user->email)->first();
+        return view('profil.profilperusahaan', compact('user', 'profile'));
+    }
+
+    // Fungsi untuk menampilkan profil pelamar
+    public function showProfilePelamar()
+    {
+        $user = Auth::user(); // Ambil data pengguna yang sedang login
+        if ($user->role != 'pelamar') {
+            return redirect()->route('login.pelamar')->with('error', 'Akses hanya untuk pelamar');
+        }
+
+        $profile = KelolaPelamar::where('email', $user->email)->first();
+        return view('profil.profilpelamar', compact('user', 'profile'));
     }
 
     // Mengupdate Profil Berdasarkan Role

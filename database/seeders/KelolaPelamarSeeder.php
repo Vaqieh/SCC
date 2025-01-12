@@ -2,14 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\KelolaPelamar;
+use Illuminate\Database\Seeder;
 
 class KelolaPelamarSeeder extends Seeder
 {
     public function run()
     {
-        // Membuat 10 data dummy pelamar
-        KelolaPelamar::factory()->count(50)->create();
+        KelolaPelamar::factory()->count(10)->create();  // Membuat 10 pelamar secara acak
     }
 }
