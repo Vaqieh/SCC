@@ -122,10 +122,12 @@
             <!-- /End Tampilan Total -->
 
         </section><!-- /Hero Section -->
-        <h2
-            style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Arial', sans-serif, justify-content: center; margin-top: 30px;;">
-            Daftar Lowongan Pekerjaan
-        </h2>
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+            <h2 style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Arial', sans-serif;">
+                Daftar Lowongan Pekerjaan
+            </h2>
+        </div>
+        
         <!-- Features Cards Section -->
         <section id="features-cards" class="features-cards section">
             <div class="container">
@@ -179,10 +181,7 @@
         <!-- Features 2 Section -->
 
         <div style="display: flex; flex-direction: column; align-items: center; ">
-            <h2
-                style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Arial', sans-serif, justify-content: center; margin-top: 30px;;">
-                Daftar Lowongan Pekerjaan
-            </h2>
+           
 
             <a href="{{ route('pelamar.lowongan') }}"
                 style="font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); text-decoration: none; font-family: 'Arial', sans-serif;
