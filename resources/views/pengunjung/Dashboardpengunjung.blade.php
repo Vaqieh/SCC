@@ -39,6 +39,7 @@
 
             <!--Tampilan Total Pelamar-->
             <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
+                <!-- Total Pelamar -->
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
                         <div class="stat-icon mb-3">
@@ -46,10 +47,12 @@
                         </div>
                         <div class="stat-content">
                             <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Pelamar</h4>
-                            <p class="fs-6 text-muted">1200</p>
+                            <p class="fs-6 text-muted">{{ \App\Models\KelolaPelamar::count() }}</p>
                         </div>
                     </div>
                 </div>
+            
+                <!-- Total Perusahaan -->
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
                         <div class="stat-icon mb-3">
@@ -57,10 +60,12 @@
                         </div>
                         <div class="stat-content">
                             <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Perusahaan</h4>
-                            <p class="fs-6 text-muted">45</p>
+                            <p class="fs-6 text-muted">{{ \App\Models\KelolaPerusahaan::count() }}</p>
                         </div>
                     </div>
                 </div>
+            
+                <!-- Total Lowongan Buka -->
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
                         <div class="stat-icon mb-3">
@@ -68,10 +73,16 @@
                         </div>
                         <div class="stat-content">
                             <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Lowongan Buka</h4>
-                            <p class="fs-6 text-muted">25</p>
+                            <p class="fs-6 text-muted">
+                                {{ \App\Models\Lowongan::whereDate('tanggal_buat', '<=', now())  // Tanggal buka sudah lewat
+                                    ->whereDate('tanggal_berakhir', '>=', now())  // Tanggal tutup belum lewat
+                                    ->count() }}
+                            </p>
                         </div>
                     </div>
                 </div>
+            
+                <!-- Total Lowongan Tutup -->
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
                         <div class="stat-icon mb-3">
@@ -79,11 +90,15 @@
                         </div>
                         <div class="stat-content">
                             <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Lowongan Tutup</h4>
-                            <p class="fs-6 text-muted">10</p>
+                            <p class="fs-6 text-muted">
+                                {{ \App\Models\Lowongan::whereDate('tanggal_berakhir', '<', now()) // Tanggal tutup sudah lewat
+                                    ->count() }}
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <!-- /End Tampilan Total -->
 
             <!-- Card -->
@@ -137,9 +152,18 @@
                 <div class="container">
                     <div class="row gy-4">
                         @foreach ($kelolalowongan as $item)
+                            @php
+                                // Menghitung status berdasarkan tanggal buka dan tanggal tutup
+                                $current_date = \Carbon\Carbon::now();
+                                $status = 'Tutup'; // Default status adalah 'Tutup' jika tanggal sekarang setelah tanggal berakhir
+            
+                                // Jika tanggal sekarang sebelum atau sama dengan tanggal berakhir, statusnya 'Buka'
+                                if ($current_date->isBefore($item->tanggal_berakhir) || $current_date->isSameDay($item->tanggal_berakhir)) {
+                                    $status = 'Buka'; // Sedang dibuka
+                                }
+                            @endphp
                             <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                                <div
-                                    style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                <div style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                                     @if ($item->gambar_lowongan)
                                         <img src="{{ \Storage::url($item->gambar_lowongan) }}" alt="Gambar Lowongan"
                                             style="width: 100%; height: 150px; object-fit: cover;">
@@ -152,17 +176,23 @@
                                             {{ $item->nama_lowongan }}
                                         </h4>
                                         <p style="font-size: 14px; color: #555;">
-                                            <i class="bi bi-building"
-                                                style="margin-right: 5px; color: #555;"></i>{{ $item->perusahaan->p_nama ?? 'Perusahaan Tidak Diketahui' }}
+                                            <i class="bi bi-building" style="margin-right: 5px; color: #555;"></i>
+                                            {{ $item->perusahaan->p_nama ?? 'Perusahaan Tidak Diketahui' }}
                                         </p>
                                         <p style="font-size: 13px; color: #777;">
-                                            <i class="bi bi-calendar"
-                                                style="margin-right: 5px; color: #777;"></i>{{ $item->tanggal_verifikasi ?? 'Belum Diverifikasi' }}
+                                            <i class="bi bi-calendar" style="margin-right: 5px; color: #777;"></i>
+                                            {{ $item->tanggal_verifikasi ?? 'Belum Diverifikasi' }}
                                         </p>
                                         <p style="font-size: 13px; color: #777;">
-                                            <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>Status:
-                                            {{ $item->status_lowongan }}
+                                            <i class="bi bi-person" style="margin-right: 5px; color: #777;"></i>
+                                            Status: {{ $status }} <!-- Menampilkan status Buka atau Tutup -->
                                         </p>
+                                        <!-- Status Button (Hijau untuk Buka, Merah untuk Tutup) -->
+                                        <div class="text-center mt-3">
+                                            <span class="badge {{ $status == 'Buka' ? 'bg-success' : 'bg-danger' }}">
+                                                {{ $status }}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -170,6 +200,7 @@
                     </div>
                 </div>
             </section>
+            
 
             <!-- Testimonials -->
             <section id="testimonials" class="testimonials section light-background">
