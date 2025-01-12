@@ -146,7 +146,10 @@
                 </div>
             </section>
             <!-- /About Section -->
-
+            <h2
+            style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Nunito', sans-serif; text-align: center; margin-top: 30px;">
+            Daftar Lowongan Pekerjaan
+        </h2>
             <!-- Daftar Lowongan Pekerjaan -->
             <section id="features-cards" class="features-cards section">
                 <div class="container">
