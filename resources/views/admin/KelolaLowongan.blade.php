@@ -119,10 +119,47 @@
                 </tbody>
             </table>
 
-            <!-- Pagination -->
-            <div>
-                {{ $kelolalowongan->links() }}
-            </div>
+            <!-- Pagination Links -->
+        <nav class="mt-4" aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <!-- Previous Page Link -->
+                @if ($kelolapanggilantes->onFirstPage())
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $kelolapanggilantes->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                @endif
+
+                <!-- Pagination Links -->
+                @foreach ($kelolapanggilantes->getUrlRange(1, $kelolapanggilantes->lastPage()) as $page => $url)
+                    <li class="page-item {{ $kelolapanggilantes->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                <!-- Next Page Link -->
+                @if ($kelolapanggilantes->hasMorePages())
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $kelolapanggilantes->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                @else
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </nav>
         </div>
     </div>
 @endsection
