@@ -103,10 +103,6 @@
                     @endif
                 </ul>
             </nav>
-            <!-- Pagination -->
-            <div>
-                {{ $kelolalowonganperusahaan->links() }}
-            </div>
         </div>
     </div>
 @endsection
