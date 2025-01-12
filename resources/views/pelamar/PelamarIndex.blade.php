@@ -74,6 +74,7 @@
 
             <!--Tampilan Total Pelamar-->
             <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
+                <!-- Total Pelamar -->
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
                         <div class="stat-icon mb-3">
@@ -81,10 +82,12 @@
                         </div>
                         <div class="stat-content">
                             <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Pelamar</h4>
-                            <p class="fs-6 text-muted">1200</p>
+                            <p class="fs-6 text-muted">{{ \App\Models\KelolaPelamar::count() }}</p>
                         </div>
                     </div>
                 </div>
+            
+                <!-- Total Perusahaan -->
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
                         <div class="stat-icon mb-3">
@@ -92,10 +95,12 @@
                         </div>
                         <div class="stat-content">
                             <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Perusahaan</h4>
-                            <p class="fs-6 text-muted">45</p>
+                            <p class="fs-6 text-muted">{{ \App\Models\KelolaPerusahaan::count() }}</p>
                         </div>
                     </div>
                 </div>
+            
+                <!-- Total Lowongan Buka -->
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
                         <div class="stat-icon mb-3">
@@ -103,10 +108,16 @@
                         </div>
                         <div class="stat-content">
                             <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Lowongan Buka</h4>
-                            <p class="fs-6 text-muted">25</p>
+                            <p class="fs-6 text-muted">
+                                {{ \App\Models\Lowongan::whereDate('tanggal_buat', '<=', now())  // Tanggal buka sudah lewat
+                                    ->whereDate('tanggal_berakhir', '>=', now())  // Tanggal tutup belum lewat
+                                    ->count() }}
+                            </p>
                         </div>
                     </div>
                 </div>
+            
+                <!-- Total Lowongan Tutup -->
                 <div class="col-lg-3 col-md-6">
                     <div class="stat-item rounded shadow p-4 text-center" style="background-color: #f8f9fa;">
                         <div class="stat-icon mb-3">
@@ -114,16 +125,20 @@
                         </div>
                         <div class="stat-content">
                             <h4 class="mb-0" style="font-size: 1.25rem; font-weight: 600;">Total Lowongan Tutup</h4>
-                            <p class="fs-6 text-muted">10</p>
+                            <p class="fs-6 text-muted">
+                                {{ \App\Models\Lowongan::whereDate('tanggal_berakhir', '<', now()) // Tanggal tutup sudah lewat
+                                    ->count() }}
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <!-- /End Tampilan Total -->
 
         </section><!-- /Hero Section -->
         <h2
-            style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Arial', sans-serif; text-align: center; margin-top: 30px;">
+            style="font-size: 24px; font-weight: bold; color: #333; font-family: 'Nunito', sans-serif; text-align: center; margin-top: 30px;">
             Daftar Lowongan Pekerjaan
         </h2>
 
